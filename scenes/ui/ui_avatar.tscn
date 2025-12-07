@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7i6lo43napfl"]
+[gd_scene load_steps=5 format=3 uid="uid://b7i6lo43napfl"]
 
 [ext_resource type="Texture2D" uid="uid://bbrshh7oddct8" path="res://assets/ui/frame_empty.png" id="1_1cfvi"]
 [ext_resource type="Script" uid="uid://dbnub4n1bqvdl" path="res://scenes/ui/ui_avatar.gd" id="1_km680"]
 [ext_resource type="Texture2D" uid="uid://dlpjytq2bny22" path="res://assets/ui/fill_1.png" id="2_kiu1l"]
+[ext_resource type="Texture2D" uid="uid://dww4vd7mes75c" path="res://assets/ui/fill_2.png" id="4_x6ls6"]
 
 [node name="UIAvatar" type="Control"]
 layout_mode = 3
@@ -45,3 +46,30 @@ stretch_margin_top = 4
 stretch_margin_right = 50
 stretch_margin_bottom = 4
 texture_progress = ExtResource("2_kiu1l")
+
+[node name="BarMagickaBg" type="TextureProgressBar" parent="TextureAvatar"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 104.0
+offset_right = 686.0
+offset_bottom = 162.0
+value = 100.0
+stretch_margin_left = 16
+stretch_margin_top = 4
+stretch_margin_right = 50
+stretch_margin_bottom = 4
+texture_progress = ExtResource("4_x6ls6")
+tint_progress = Color(0.94, 0.94, 0.94, 0.501961)
+
+[node name="BarMagickaFg" type="TextureProgressBar" parent="TextureAvatar"]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 104.0
+offset_right = 686.0
+offset_bottom = 162.0
+value = 100.0
+stretch_margin_left = 16
+stretch_margin_top = 4
+stretch_margin_right = 50
+stretch_margin_bottom = 4
+texture_progress = ExtResource("4_x6ls6")
