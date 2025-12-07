@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://pbsowlunvlgi"]
+[gd_scene load_steps=7 format=4 uid="uid://pbsowlunvlgi"]
 
 [ext_resource type="TileSet" uid="uid://cajhppsvok48x" path="res://resources/tile_set_world.tres" id="1_377w7"]
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="1_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://b2fiha4dm60m5" path="res://scenes/props/cabin.tscn" id="2_bovvr"]
 [ext_resource type="TileSet" uid="uid://838vgvof2ytn" path="res://resources/tile_set_hex.tres" id="3_xb4v1"]
 [ext_resource type="TileSet" uid="uid://rugniitp3pp0" path="res://resources/tile_set_tiny.tres" id="4_urvlt"]
+[ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="6_d4w6o"]
 
 [node name="Level" type="Node"]
 
@@ -43,3 +44,7 @@ tile_set = ExtResource("4_urvlt")
 [node name="Cabin" parent="Map/Props" instance=ExtResource("2_bovvr")]
 visible = false
 position = Vector2(-336, 176)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIAvatar" parent="CanvasLayer" instance=ExtResource("6_d4w6o")]
