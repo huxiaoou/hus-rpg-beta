@@ -94,9 +94,9 @@ func on_magicka_changed(new_magicka: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test_add"):
-		on_health_changed(clampf(bar_health_fg.value + 20, bar_health_fg.min_value, bar_health_fg.max_value))
-		on_magicka_changed(clampf(bar_magicka_fg.value + 40, bar_magicka_fg.min_value, bar_magicka_fg.max_value))
+		on_health_changed(clampf(bar_health_fg.value + randf_range(0, 10), bar_health_fg.min_value, bar_health_fg.max_value))
+		on_magicka_changed(clampf(bar_magicka_fg.value + randf_range(0, 10), bar_magicka_fg.min_value, bar_magicka_fg.max_value))
 	elif event.is_action_pressed("test_subtract"):
-		on_health_changed(clampf(bar_health_fg.value - 20, bar_health_fg.min_value, bar_health_fg.max_value))
-		on_magicka_changed(clampf(bar_magicka_fg.value - 40, bar_magicka_fg.min_value, bar_magicka_fg.max_value))
+		on_health_changed(clampf(bar_health_fg.value - randf_range(0, 10), bar_health_fg.min_value, bar_health_fg.max_value))
+		on_magicka_changed(clampf(bar_magicka_fg.value - randf_range(0, 10), bar_magicka_fg.min_value, bar_magicka_fg.max_value))
 	return
