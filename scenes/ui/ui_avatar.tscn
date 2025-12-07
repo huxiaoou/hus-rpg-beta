@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7i6lo43napfl"]
+
+[ext_resource type="Texture2D" uid="uid://bbrshh7oddct8" path="res://assets/ui/frame_empty.png" id="1_1cfvi"]
+[ext_resource type="Script" uid="uid://dbnub4n1bqvdl" path="res://scenes/ui/ui_avatar.gd" id="1_km680"]
+[ext_resource type="Texture2D" uid="uid://dlpjytq2bny22" path="res://assets/ui/fill_1.png" id="2_kiu1l"]
+
+[node name="UIAvatar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_km680")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TextureAvatar" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1cfvi")
+
+[node name="BarHealthBg" type="TextureProgressBar" parent="TextureAvatar"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 34.0
+offset_right = 690.0
+offset_bottom = 92.0
+value = 100.0
+stretch_margin_left = 16
+stretch_margin_top = 4
+stretch_margin_right = 50
+stretch_margin_bottom = 4
+texture_progress = ExtResource("2_kiu1l")
+tint_progress = Color(0.94, 0.94, 0.94, 0.25098)
+
+[node name="BarHealthFg" type="TextureProgressBar" parent="TextureAvatar"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 34.0
+offset_right = 690.0
+offset_bottom = 92.0
+value = 100.0
+stretch_margin_left = 16
+stretch_margin_top = 4
+stretch_margin_right = 50
+stretch_margin_bottom = 4
+texture_progress = ExtResource("2_kiu1l")
