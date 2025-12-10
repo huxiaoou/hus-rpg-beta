@@ -12,8 +12,8 @@
 
 [node name="LevelSideScroll" type="Node"]
 script = ExtResource("1_5s1k5")
-lim_left = -1920
-lim_right = 1920
+lim_left = -1920.0
+lim_right = 1920.0
 
 [node name="CameraController" parent="." instance=ExtResource("2_oyyia")]
 
