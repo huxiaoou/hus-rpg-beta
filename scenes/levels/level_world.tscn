@@ -1,24 +1,24 @@
-[gd_scene load_steps=5 format=4 uid="uid://pbsowlunvlgi"]
+[gd_scene load_steps=6 format=4 uid="uid://pbsowlunvlgi"]
 
-[ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="1_b2cq8"]
-[ext_resource type="Script" uid="uid://dlya8v2v12tue" path="res://scenes/levels/layer_hex.gd" id="3_urvlt"]
-[ext_resource type="TileSet" uid="uid://838vgvof2ytn" path="res://resources/tile_set_hex.tres" id="3_xb4v1"]
-[ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="6_d4w6o"]
+[ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="1_ls1yl"]
+[ext_resource type="Script" uid="uid://lk38fkcel3v8" path="res://scenes/levels/level_world.gd" id="1_xx7ag"]
+[ext_resource type="TileSet" uid="uid://838vgvof2ytn" path="res://resources/tile_set_hex.tres" id="2_xx7ag"]
+[ext_resource type="Script" uid="uid://dlya8v2v12tue" path="res://scenes/levels/layer_hex.gd" id="3_x4fyf"]
+[ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="4_vru8e"]
 
-[node name="Level" type="Node"]
+[node name="LevelWorld" type="Node"]
+script = ExtResource("1_xx7ag")
 
-[node name="CameraController" parent="." instance=ExtResource("1_b2cq8")]
+[node name="CameraController" parent="." instance=ExtResource("1_ls1yl")]
 
 [node name="Map" type="Node" parent="."]
 
 [node name="LayerHex" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD/////BAABAAEAAAAAAP//BAAEAAAAAAAAAAAABAAEAAAAAAABAP7/BAABAAEAAAAAAP7/BAADAAAAAAAAAP3/BAADAAAAAAABAP//BAAFAAAAAAACAP7/BAAFAAAAAAABAP3/BAADAAAAAAABAAAABAABAAEAAAACAAAABAAFAAAAAAAAAAEABAAEAAAAAAABAAEABAADAAAAAAAAAAIABAADAAEAAAD//wEABAADAAEAAAD//wIABAAEAAEAAAD+/wEABAAEAAEAAAD//wAABAAEAAEAAAD+/wIABAACAAAAAAD+/wMABAACAAAAAAD//wMABAACAAAAAAD9/wEABAABAAAAAAD+/wAABAABAAAAAAD+////BAACAAAAAAD9/wMABAACAAEAAAD8/wEABAACAAEAAAD9/wIABAACAAEAAAD9/wAABAACAAEAAAD+//7/BAADAAIAAAD///7/BAAFAAAAAAD///3/BAAFAAAAAAD+//3/BAADAAEAAAD9//3/BAADAAIAAAD9//7/BAACAAAAAAD9////BAADAAAAAAACAP//BAADAAIAAAADAP7/BAADAAIAAAACAAEABAADAAIAAAABAAIABAADAAIAAAACAAIABAADAAAAAAADAAAABAADAAAAAAADAP//BAAAAAEAAAAEAAAABAAAAAEAAAADAAEABAAAAAEAAAADAAIABAACAAAAAAACAAMABAACAAAAAAABAAMABAABAAAAAAAAAAMABAABAAAAAAD+/wQABAACAAEAAAD//wQABAACAAEAAAAAAAQABAACAAEAAAABAAQABAACAAEAAAACAAQABAACAAEAAAADAAQABAACAAEAAAADAAMABAACAAEAAAAEAAIABAACAAEAAAAEAAEABAACAAEAAAAFAAAABAACAAEAAAAEAP//BAAFAAAAAAAEAP7/BAAEAAAAAAADAP3/BAACAAAAAAACAP3/BAABAAAAAAD9//z/BAACAAEAAAD+//z/BAACAAAAAAD///z/BAADAAIAAAD///v/BAACAAEAAAAAAPz/BAADAAEAAAAAAPv/BAACAAEAAAABAPz/BAADAAIAAAABAPv/BAACAAEAAAACAPz/BAACAAAAAAACAPv/BAACAAEAAAADAPv/BAACAAEAAAD+//v/BAACAAEAAAD8//3/BAACAAEAAAD8//7/BAACAAEAAAD8////BAACAAEAAAD8/wAABAACAAEAAAADAPz/BAACAAAAAAAEAPz/BAACAAEAAAAEAP3/BAACAAEAAAAFAP7/BAACAAEAAAAFAP//BAACAAEAAAAEAPv/BAACAAEAAAAFAP3/BAACAAEAAAAFAPv/BAACAAEAAAAFAPz/BAACAAEAAAAFAAEABAACAAEAAAAGAPv/BAACAAEAAAAHAPv/BAACAAEAAAAHAPz/BAACAAEAAAAHAP3/BAACAAEAAAAGAP3/BAACAAEAAAAGAPz/BAACAAEAAAAGAP7/BAACAAEAAAAHAP7/BAACAAEAAAAGAP//BAACAAEAAAAGAAAABAACAAEAAAAFAAIABAACAAEAAAAEAAMABAACAAEAAAACAAUABAACAAEAAAABAAUABAACAAEAAAAAAAUABAACAAEAAAD//wUABAACAAEAAAD+/wUABAACAAEAAAD9/wUABAACAAEAAAD9/wQABAACAAEAAAD8/wQABAACAAEAAAD8/wMABAACAAEAAAD7/wMABAACAAEAAAD8/wIABAACAAEAAAD7/wIABAACAAEAAAD7/wEABAACAAEAAAD7/wAABAACAAEAAAD7////BAACAAEAAAD7//7/BAACAAEAAAD7/wQABAACAAEAAAD8/wUABAACAAEAAAD7/wUABAACAAEAAAD6/wQABAACAAEAAAD6/wMABAACAAEAAAD6/wIABAACAAEAAAA=")
-tile_set = ExtResource("3_xb4v1")
-script = ExtResource("3_urvlt")
-
-[node name="Props" type="Node" parent="Map"]
+tile_set = ExtResource("2_xx7ag")
+script = ExtResource("3_x4fyf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UIAvatar" parent="CanvasLayer" instance=ExtResource("6_d4w6o")]
+[node name="UIAvatar" parent="CanvasLayer" instance=ExtResource("4_vru8e")]
