@@ -6,14 +6,15 @@ class_name CameraController
 
 @onready var camera_2d: Camera2D = $Camera2D
 
-var lim_left_top: Vector2i = Vector2i(-1920 % 2, -1080 % 2)
-var lim_right_down: Vector2i = Vector2i(1920 % 2, 1080 % 2)
+var lim_left_top: Vector2 = Vector2(-1920.0 / 2, -1080.0 / 2)
+var lim_right_down: Vector2 = Vector2(1920.0 / 2, 1080.0 / 2)
 var target_position: Vector2
 
 
-func set_camera_lim(left_top: Vector2i, right_down: Vector2i) -> void:
+func set_camera_lim(left_top: Vector2, right_down: Vector2) -> void:
 	lim_left_top = left_top
 	lim_right_down = right_down
+	return
 
 
 func _process(delta: float) -> void:
