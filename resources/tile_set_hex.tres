@@ -28,7 +28,6 @@ texture_region_size = Vector2i(256, 448)
 
 [resource]
 tile_shape = 3
-tile_layout = 2
 tile_size = Vector2i(256, 256)
 custom_data_layer_0/name = "cross_hex"
 custom_data_layer_0/type = 1

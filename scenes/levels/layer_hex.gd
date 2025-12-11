@@ -17,15 +17,41 @@ func _process(_delta: float) -> void:
 		print(cur_grid)
 
 
+func get_offset_left(grid: Vector2i, size: int = 1) -> Vector2i:
+	return grid + Vector2i(-1, 0) * size
+
+
+func get_offset_right(grid: Vector2i, size: int = 1) -> Vector2i:
+	return grid + Vector2i(1, 0) * size
+
+
+func get_offset_left_upper(grid: Vector2i, size: int = 1) -> Vector2i:
+	return grid + (Vector2i(-1, -1) if grid.y % 2 == 0 else Vector2i(0, -1)) * size
+
+
+func get_offset_left_lower(grid: Vector2i, size: int = 1) -> Vector2i:
+	return grid + (Vector2i(-1, 1) if grid.y % 2 == 0 else Vector2i(0, 1)) * size
+
+
+func get_offset_right_upper(grid: Vector2i, size: int = 1) -> Vector2i:
+	return grid + (Vector2i(0, -1) if grid.y % 2 == 0 else Vector2i(1, -1)) * size
+
+
+func get_offset_right_lower(grid: Vector2i, size: int = 1) -> Vector2i:
+	return grid + (Vector2i(0, 1) if grid.y % 2 == 0 else Vector2i(1, 1)) * size
+
+
 func global_pos_to_grid(global_pos: Vector2) -> Vector2i:
 	return local_to_map(to_local(global_pos))
+
 
 func grid_to_global_pos(grid: Vector2i) -> Vector2:
 	return to_global(map_to_local(grid))
 
+
 func update_lower_grids_alpha(grid: Vector2i, alternative: int) -> void:
-	set_grid_alpha(grid + Vector2i(0, 1), alternative)
-	set_grid_alpha(grid + Vector2i(-1, 1), alternative)
+	set_grid_alpha(get_offset_left_lower(grid), alternative)
+	set_grid_alpha(get_offset_right_lower(grid), alternative)
 	return
 
 
