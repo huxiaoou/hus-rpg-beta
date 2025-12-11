@@ -12,4 +12,6 @@ func _ready() -> void:
 	print(lim_cells.end)
 	var left_top_pos: Vector2i = layer_hex.grid_to_global_pos(lim_cells.position)
 	var right_bottom_pos: Vector2i = layer_hex.grid_to_global_pos(lim_cells.end)
-	camera_controller.set_camera_lim(left_top_pos + get_viewport().size / 2, right_bottom_pos - get_viewport().size /2)
+	var lim_left_top: Vector2i = left_top_pos + layer_hex.tile_set.tile_size / 2 + get_viewport().size / 2
+	var lim_right_bottom: Vector2i = right_bottom_pos - layer_hex.tile_set.tile_size / 2 - get_viewport().size / 2
+	camera_controller.set_camera_lim(lim_left_top, lim_right_bottom)
