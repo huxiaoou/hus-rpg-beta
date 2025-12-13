@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj57s7qg1gj4a"]
+
+[ext_resource type="Script" uid="uid://4mm02trmm5g7" path="res://scenes/levels/parallax_bg_layer.gd" id="1_o0gta"]
+
+[node name="ParallaxBgLayer" type="Parallax2D"]
+repeat_size = Vector2(1920, 0)
+repeat_times = 5
+script = ExtResource("1_o0gta")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
