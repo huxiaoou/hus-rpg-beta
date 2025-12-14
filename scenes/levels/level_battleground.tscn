@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=4 uid="uid://c640eb6d5fi7a"]
+
+[ext_resource type="Script" uid="uid://cyqyl4ed5ujlw" path="res://scenes/levels/level_battleground.gd" id="1_n2fys"]
+[ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_nuhci"]
+[ext_resource type="AudioStream" uid="uid://bp3qemwbmgn20" path="res://assets/audios/Fantasy Vol8 Loria Main.wav" id="3_2ukec"]
+[ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="3_sm58c"]
+[ext_resource type="TileSet" uid="uid://c884hvc0bg6ua" path="res://resources/tile_set_hex_battle.tres" id="5_oanf1"]
+[ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="6_r8k2h"]
+
+[node name="LevelBattleground" type="Node"]
+script = ExtResource("1_n2fys")
+bg_texture = ExtResource("2_nuhci")
+bg_music = ExtResource("3_2ukec")
+
+[node name="CameraController" parent="." instance=ExtResource("3_sm58c")]
+
+[node name="Sprite2DBg" type="Sprite2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Maps" type="Node" parent="."]
+
+[node name="LayerBattleNav" type="TileMapLayer" parent="Maps"]
+tile_map_data = PackedByteArray("AAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAD//wIAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAAAAQAAAAAAAAABAAEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAMAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAQAAAAAAAAACAAMAAQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAD3/wAAAQAAAAAAAAD3/wEAAQAAAAAAAAD3/wIAAQAAAAAAAAD3/wMAAQAAAAAAAAD4/wAAAQAAAAAAAAD4/wEAAQAAAAAAAAD4/wIAAQAAAAAAAAD4/wMAAQAAAAAAAAD5/wAAAQAAAAAAAAD5/wEAAQAAAAAAAAD5/wIAAQAAAAAAAAD5/wMAAQAAAAAAAAD6/wAAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wIAAQAAAAAAAAD6/wMAAQAAAAAAAAD7/wAAAQAAAAAAAAD7/wEAAQAAAAAAAAD7/wIAAQAAAAAAAAD7/wMAAQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wIAAQAAAAAAAAD8/wMAAQAAAAAAAAD9/wAAAQAAAAAAAAD9/wEAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wMAAQAAAAAAAAD3////AQAAAAAAAAD5////AQAAAAAAAAD7////AQAAAAAAAAD9////AQAAAAAAAAD/////AQAAAAAAAAABAP//AQAAAAAAAAADAP//AQAAAAAAAAAFAP//AQAAAAAAAAAHAP//AQAAAAAAAAA=")
+tile_set = ExtResource("5_oanf1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_bottom = 596.0
+scale = Vector2(0.5, 0.5)
+
+[node name="UIAvatar1" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_r8k2h")]
+layout_mode = 2
+
+[node name="UIAvatar2" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_r8k2h")]
+layout_mode = 2
+
+[node name="UIAvatar3" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_r8k2h")]
+layout_mode = 2
+
+[node name="UIAvatar4" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_r8k2h")]
+layout_mode = 2

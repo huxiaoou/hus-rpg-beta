@@ -2,11 +2,11 @@ extends Node
 
 class_name LevelSideScroll
 
-@export_category("Side Scroll")
+@export_group("Side Scroll")
 @export var lim_left: float = 0
 @export var lim_right: float = 0
 
-@export_category("Textures")
+@export_group("Textures")
 @export var parallax_backgrounds_textures: Array[Texture2D]
 
 @onready var camera_controller: CameraController = $CameraController

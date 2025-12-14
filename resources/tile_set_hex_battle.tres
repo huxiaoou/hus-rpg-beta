@@ -1,0 +1,18 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c884hvc0bg6ua"]
+
+[ext_resource type="Texture2D" uid="uid://dnwmj61ujk5j" path="res://assets/grids/dimand.png" id="1_re8ut"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w5g4r"]
+texture = ExtResource("1_re8ut")
+margins = Vector2i(1, 1)
+texture_region_size = Vector2i(190, 94)
+0:0/0 = 0
+0:0/0/modulate = Color(1, 1, 1, 0.25098)
+
+[resource]
+tile_shape = 1
+tile_offset_axis = 1
+tile_size = Vector2i(192, 96)
+custom_data_layer_0/name = "cross_hex"
+custom_data_layer_0/type = 1
+sources/1 = SubResource("TileSetAtlasSource_w5g4r")

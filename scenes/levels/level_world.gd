@@ -3,7 +3,7 @@ extends Node
 class_name LevelWorld
 
 @onready var camera_controller: CameraController = $CameraController
-@onready var layer_hex: LayerHex = $Map/LayerHex
+@onready var layer_hex: LayerHexWorld = $Map/LayerHexWorld
 
 
 func _ready() -> void:
