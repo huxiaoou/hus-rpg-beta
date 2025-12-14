@@ -1,6 +1,6 @@
 extends Node
 
-class_name LevelSidescroll
+class_name LevelSideScroll
 
 @export_category("Side Scroll")
 @export var lim_left: float = 0
