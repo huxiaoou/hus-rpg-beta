@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dww4vd7mes75c" path="res://assets/ui/fill_2.png" id="4_x6ls6"]
 
 [node name="UIAvatar" type="Control"]
+custom_minimum_size = Vector2(712, 196)
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(0.5, 0.5)
@@ -16,8 +17,8 @@ one_shot = true
 
 [node name="TextureAvatar" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 714.0
+offset_bottom = 201.0
 texture = ExtResource("1_1cfvi")
 
 [node name="BarHealthBg" type="TextureProgressBar" parent="TextureAvatar"]

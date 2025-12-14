@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d18msr70wfdk"
-path="res://.godot/imported/TX Tileset Stone Ground.png-59daa95a71a3d932f2eb70d1311aee56.ctex"
+uid="uid://cd5qr7xr07r6r"
+path="res://.godot/imported/Low_battlebacks_forest.png-18c24d5ee417777a6223d07eec559510.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/TX Tileset Stone Ground.png"
-dest_files=["res://.godot/imported/TX Tileset Stone Ground.png-59daa95a71a3d932f2eb70d1311aee56.ctex"]
+source_file="res://assets/backgrounds/Low_battlebacks_forest.png"
+dest_files=["res://.godot/imported/Low_battlebacks_forest.png-18c24d5ee417777a6223d07eec559510.ctex"]
 
 [params]
 

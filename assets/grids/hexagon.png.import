@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmj31e0urvdda"
-path="res://.godot/imported/platform -grass2 to water-spritesheet - Godot.png-ff1fda6efad0f6098f5a460d93e91bc7.ctex"
+uid="uid://c0nsymcfjppbt"
+path="res://.godot/imported/hexagon.png-47756baa650bab3d4f0df5374ece9359.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/platform -grass2 to water-spritesheet - Godot.png"
-dest_files=["res://.godot/imported/platform -grass2 to water-spritesheet - Godot.png-ff1fda6efad0f6098f5a460d93e91bc7.ctex"]
+source_file="res://assets/grids/hexagon.png"
+dest_files=["res://.godot/imported/hexagon.png-47756baa650bab3d4f0df5374ece9359.ctex"]
 
 [params]
 

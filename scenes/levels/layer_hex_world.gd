@@ -1,6 +1,6 @@
 extends TileMapLayer
 
-class_name LayerHex
+class_name LayerHexWorld
 
 enum { TILE_MODULATE_FULL, TILE_MODULATE_TRANS }
 var cur_grid: Vector2i = Vector2i(0, 0)

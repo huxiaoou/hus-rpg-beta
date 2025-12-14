@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="1_ls1yl"]
 [ext_resource type="Script" uid="uid://lk38fkcel3v8" path="res://scenes/levels/level_world.gd" id="1_xx7ag"]
 [ext_resource type="TileSet" uid="uid://838vgvof2ytn" path="res://resources/tile_set_hex_world.tres" id="2_xx7ag"]
-[ext_resource type="Script" uid="uid://dlya8v2v12tue" path="res://scenes/levels/layer_hex_world.gd" id="3_x4fyf"]
+[ext_resource type="Script" uid="uid://dlya8v2v12tue" path="res://scenes/levels/layer_hex.gd" id="3_x4fyf"]
 [ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="4_vru8e"]
 
 [node name="LevelWorld" type="Node"]
