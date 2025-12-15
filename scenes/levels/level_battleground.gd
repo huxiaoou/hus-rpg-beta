@@ -7,12 +7,13 @@ class_name LevelBattleground
 @export var bg_music: AudioStream
 
 @onready var sprite_2d_bg: Sprite2D = $Sprite2DBg
-@onready var camera_controller: CameraController = $CameraController
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var layer_battle_nav: LayerBattleNav = $Maps/LayerBattleNav
 
 func _ready() -> void:
-	camera_controller.set_camera_lim(Vector2(0, 0), Vector2(0, 0))
 	sprite_2d_bg.texture = bg_texture
 	audio_stream_player.stream = bg_music
 	audio_stream_player.play()
+	
+	ManagerGridBattle.layer_nav = layer_battle_nav
 	return
