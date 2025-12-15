@@ -15,6 +15,10 @@ run/main_scene="uid://pbsowlunvlgi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ManagerGridBattle="*res://scenes/autoloads/manager_grid_battle.gd"
+
 [display]
 
 window/size/viewport_width=1920
