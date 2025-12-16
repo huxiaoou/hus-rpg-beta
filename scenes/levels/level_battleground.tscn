@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c640eb6d5fi7a"]
+[gd_scene load_steps=10 format=4 uid="uid://c640eb6d5fi7a"]
 
 [ext_resource type="Script" uid="uid://cyqyl4ed5ujlw" path="res://scenes/levels/level_battleground.gd" id="1_n2fys"]
 [ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_nuhci"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://d4d8rou4hff7d" path="res://scenes/levels/layer_battle_nav.gd" id="5_r8k2h"]
 [ext_resource type="PackedScene" uid="uid://glfluus0hekk" path="res://scenes/levels/grid_indicator_battle.tscn" id="6_hb233"]
 [ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="6_r8k2h"]
+[ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="8_xc085"]
+[ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="9_j8met"]
 
 [node name="LevelBattleground" type="Node"]
 script = ExtResource("1_n2fys")
@@ -44,3 +46,7 @@ layout_mode = 2
 
 [node name="UIAvatar4" parent="CanvasLayer/VBoxContainer" instance=ExtResource("6_r8k2h")]
 layout_mode = 2
+
+[node name="Unit" parent="." instance=ExtResource("8_xc085")]
+position = Vector2(224, 608)
+script = ExtResource("9_j8met")
