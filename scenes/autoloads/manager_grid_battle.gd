@@ -14,5 +14,10 @@ func global_pos_to_grid(global_pos: Vector2) -> Vector2i:
 func grid_to_global_pos(grid: Vector2i) -> Vector2:
 	return layer_nav.grid_to_global_pos(grid)
 
+
 func grid_is_walkable(grid: Vector2i) -> bool:
 	return layer_nav.grid_is_walkable(grid)
+
+
+func get_grids_path(start_grid: Vector2i, end_grid: Vector2i) -> Array[Vector2i]:
+	return layer_nav.get_grids_path(start_grid, end_grid)

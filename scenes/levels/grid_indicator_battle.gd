@@ -13,4 +13,5 @@ func _process(_delta: float) -> void:
 		return
 	mouse_grid = new_mouse_grid
 	global_position = ManagerGridBattle.grid_to_global_pos(mouse_grid)
+	print("Enter Grid (%d, %d)" % [mouse_grid.x, mouse_grid.y])
 	return
