@@ -16,4 +16,5 @@ func _ready() -> void:
 	audio_stream_player.play()
 	
 	ManagerGridBattle.layer_nav = layer_battle_nav
+	ManagerGridBattle.layer_nav.setup()
 	return
