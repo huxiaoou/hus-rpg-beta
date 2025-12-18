@@ -27,7 +27,7 @@ func add_all_points() -> void:
 		astar.add_point(cell_id, cell_to_point(cell))
 
 	for point_id in astar.get_point_ids():
-		var cell: Vector2i = astar.get_point_position(point_id)
+		var cell: Vector2i = point_to_cell(astar.get_point_position(point_id))
 		var potential_cells: Array[Vector2i] = get_surrounding_cells(cell)
 		var valid_neighbor_cells: Array[Vector2i] = []
 		for potential_cell in potential_cells:
@@ -43,7 +43,7 @@ func update_points() -> void:
 	for cell in get_used_cells():
 		datasets_grid[cell] = DataGridBattle.new()
 		if not get_cell_tile_data(cell).get_custom_data("walkable"):
-			astar.set_point_disabled(astar.get_closest_point(cell))
+			astar.set_point_disabled(astar.get_closest_point(cell_to_point(cell)))
 			datasets_grid[cell].walkable = false
 	return
 
