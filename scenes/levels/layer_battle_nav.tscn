@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2r2qyutmbsd2"]
+
+[ext_resource type="Script" uid="uid://d4d8rou4hff7d" path="res://scenes/levels/layer_battle_nav.gd" id="1_mnpys"]
+
+[node name="LayerBattleNav" type="TileMapLayer"]
+script = ExtResource("1_mnpys")
