@@ -27,17 +27,15 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse_click"):
-		var start_grid: Vector2i = ManagerGridBattle.global_pos_to_grid(position)
-		var end_grid: Vector2i = ManagerGridBattle.global_pos_to_grid(get_global_mouse_position())
+		var start_grid: Vector2i = ManagerGridBattle.point_to_cell(position)
+		var end_grid: Vector2i = ManagerGridBattle.get_mouse_cell()
 		if end_grid.x > start_grid.x:
 			animated_sprite_2d.scale.x = 1 * abs(animated_sprite_2d.scale.x)
 		elif end_grid.x < start_grid.x:
 			animated_sprite_2d.scale.x = -1 * abs(animated_sprite_2d.scale.x)
-		var path_grids: Array[Vector2i] = ManagerGridBattle.get_grids_path(start_grid, end_grid)
-		print(path_grids)
-		for grid: Vector2i in path_grids:
-			var gp_point: Vector2 = ManagerGridBattle.grid_to_global_pos(grid)
-			path_gp_points.append(gp_point)
+		var points_path: Array[Vector2] = ManagerGridBattle.get_points_path(start_grid, end_grid)
+		print(points_path)
+		path_gp_points.append_array(points_path)
 		set_target_pos_from_path()
 	return
 
