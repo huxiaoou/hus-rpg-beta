@@ -34,7 +34,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif end_grid.x < start_grid.x:
 			animated_sprite_2d.scale.x = -1 * abs(animated_sprite_2d.scale.x)
 		var points_path: Array[Vector2] = ManagerGridBattle.get_points_path(start_grid, end_grid)
-		print(points_path)
 		path_gp_points.append_array(points_path)
 		set_target_pos_from_path()
 	return
