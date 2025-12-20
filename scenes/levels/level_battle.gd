@@ -1,6 +1,6 @@
 extends Node
 
-class_name LevelBattleground
+class_name LevelBattle
 
 @export_group("background")
 @export var bg_texture: Texture2D
@@ -10,11 +10,12 @@ class_name LevelBattleground
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var layer_battle_nav: LayerBattleNav = $Maps/LayerBattleNav
 
+
 func _ready() -> void:
 	sprite_2d_bg.texture = bg_texture
 	audio_stream_player.stream = bg_music
 	audio_stream_player.play()
-	
+
 	ManagerGridBattle.layer_nav = layer_battle_nav
 	ManagerGridBattle.layer_nav.setup()
 	return
