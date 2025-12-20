@@ -1,4 +1,4 @@
-class_name DataGridBattle
+class_name DataCellBattle
 
 var walkable: bool = true
 var occupiant: Unit = null

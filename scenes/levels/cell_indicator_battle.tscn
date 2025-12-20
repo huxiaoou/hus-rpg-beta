@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://glfluus0hekk"]
 
 [ext_resource type="Texture2D" uid="uid://dodj0ou2lrfg0" path="res://assets/grids/hex_grid_indicator_192x96.png" id="1_58fhc"]
-[ext_resource type="Script" uid="uid://jlmu4acesk2u" path="res://scenes/levels/grid_indicator_battle.gd" id="1_608no"]
+[ext_resource type="Script" uid="uid://jlmu4acesk2u" path="res://scenes/levels/cell_indicator_battle.gd" id="1_608no"]
 
 [sub_resource type="Animation" id="Animation_58fhc"]
 length = 0.001
@@ -66,7 +66,7 @@ _data = {
 &"show": SubResource("Animation_608no")
 }
 
-[node name="GridIndicatorBattle" type="Node2D"]
+[node name="CellIndicatorBattle" type="Node2D"]
 script = ExtResource("1_608no")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

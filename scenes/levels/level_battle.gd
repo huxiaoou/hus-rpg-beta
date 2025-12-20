@@ -9,6 +9,7 @@ class_name LevelBattle
 @onready var sprite_2d_bg: Sprite2D = $Sprite2DBg
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var layer_battle_nav: LayerBattleNav = $Maps/LayerBattleNav
+@onready var cell_indicator_battle: CellIndicatorBattle = $Maps/CellIndicatorBattle
 
 
 func _ready() -> void:
@@ -16,6 +17,7 @@ func _ready() -> void:
 	audio_stream_player.stream = bg_music
 	audio_stream_player.play()
 
-	ManagerGridBattle.layer_nav = layer_battle_nav
-	ManagerGridBattle.layer_nav.setup()
+	ManagerCellBattle.layer_nav = layer_battle_nav
+	ManagerCellBattle.layer_nav.setup()
+	ManagerCellBattle.cell_indicator_battle = cell_indicator_battle
 	return

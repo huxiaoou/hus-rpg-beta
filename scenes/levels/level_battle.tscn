@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cyqyl4ed5ujlw" path="res://scenes/levels/level_battle.gd" id="1_d4bfr"]
 [ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_k1ymq"]
 [ext_resource type="AudioStream" uid="uid://bp3qemwbmgn20" path="res://assets/audios/Fantasy Vol8 Loria Main.wav" id="3_wuj0f"]
-[ext_resource type="PackedScene" uid="uid://glfluus0hekk" path="res://scenes/levels/grid_indicator_battle.tscn" id="4_lxgdc"]
+[ext_resource type="PackedScene" uid="uid://glfluus0hekk" path="res://scenes/levels/cell_indicator_battle.tscn" id="4_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://2r2qyutmbsd2" path="res://scenes/levels/layer_battle_nav.tscn" id="5_odxcu"]
 [ext_resource type="TileSet" uid="uid://c884hvc0bg6ua" path="res://resources/tile_set_hex_battle.tres" id="6_or4fg"]
 [ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="7_pd4wd"]
@@ -21,7 +21,7 @@ offset = Vector2(960, 540)
 
 [node name="Maps" type="Node" parent="."]
 
-[node name="GridIndicatorBattle" parent="Maps" instance=ExtResource("4_lxgdc")]
+[node name="CellIndicatorBattle" parent="Maps" instance=ExtResource("4_lxgdc")]
 
 [node name="LayerBattleNav" parent="Maps" instance=ExtResource("5_odxcu")]
 tile_map_data = PackedByteArray("AAAAAAcAAgAAAAAAAAAAAAgAAgAAAAAAAAABAAYAAgAAAAAAAAABAAcAAgAAAAAAAAABAAgAAgAAAAAAAAACAAYAAgAAAAAAAAACAAcAAgAAAAAAAAACAAgAAgAAAAAAAAADAAYAAgAAAAAAAAADAAcAAgAAAAAAAAADAAgAAgAAAAAAAAAEAAYAAgAAAAAAAAAEAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAAFAAYAAgABAAAAAAAFAAcAAgABAAAAAAAFAAgAAgABAAAAAAAGAAYAAgAAAAAAAAAGAAcAAgABAAAAAAAGAAgAAgAAAAAAAAAHAAYAAgAAAAAAAAAHAAcAAgABAAAAAAAHAAgAAgAAAAAAAAAIAAYAAgAAAAAAAAAIAAcAAgABAAAAAAAIAAgAAgAAAAAAAAAJAAYAAgABAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAKAAYAAgAAAAAAAAAKAAcAAgABAAAAAAAKAAgAAgABAAAAAAALAAYAAgAAAAAAAAALAAcAAgAAAAAAAAALAAgAAgAAAAAAAAAMAAcAAgAAAAAAAAAMAAgAAgAAAAAAAAAMAAkAAgAAAAAAAAAAAAkAAgAAAAAAAAABAAkAAgAAAAAAAAACAAkAAgAAAAAAAAACAAoAAgAAAAAAAAADAAkAAgAAAAAAAAAEAAkAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAkAAgAAAAAAAAAGAAkAAgAAAAAAAAAGAAoAAgAAAAAAAAAHAAkAAgAAAAAAAAAIAAkAAgAAAAAAAAAIAAoAAgAAAAAAAAAJAAkAAgAAAAAAAAAKAAkAAgABAAAAAAAKAAoAAgAAAAAAAAALAAkAAgAAAAAAAAAAAAYAAgAAAAAAAAABAAUAAgAAAAAAAAADAAUAAgAAAAAAAAAMAAYAAgAAAAAAAAACAAUAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAUAAgABAAAAAAAGAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAAIAAUAAgAAAAAAAAAJAAUAAgAAAAAAAAAKAAUAAgAAAAAAAAALAAUAAgAAAAAAAAA=")

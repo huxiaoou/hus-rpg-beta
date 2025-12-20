@@ -28,9 +28,9 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse_click"):
-		var start_grid: Vector2i = ManagerGridBattle.point_to_cell(position)
-		var end_grid: Vector2i = ManagerGridBattle.get_mouse_cell()
-		var points_path: Array[Vector2] = ManagerGridBattle.get_points_path(start_grid, end_grid)
+		var start_cell: Vector2i = ManagerCellBattle.point_to_cell(position)
+		var end_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
+		var points_path: Array[Vector2] = ManagerCellBattle.get_points_path(start_cell, end_cell)
 		path_gp_points.append_array(points_path)
 		set_target_pos_from_path()
 		adjust_animation_direction()
