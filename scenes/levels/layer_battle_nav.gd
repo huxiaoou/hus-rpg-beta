@@ -43,16 +43,16 @@ func add_all_points() -> void:
 func update_points() -> void:
 	for cell in get_used_cells():
 		datasets_grid[cell] = DataGridBattle.new()
-		if not get_cell_tile_data(cell).get_custom_data("walkable"):
+		if not cell_is_walkable(cell):
 			astar.set_point_disabled(astar.get_closest_point(cell))
 			datasets_grid[cell].walkable = false
 	return
 
 
-func get_cells_path(start_grid: Vector2i, end_grid: Vector2i) -> Array[Vector2i]:
-	var start_point_id: int = astar.get_closest_point(start_grid)
-	var end_point_id: int = astar.get_closest_point(end_grid)
-	if end_grid.distance_to(astar.get_point_position(end_point_id)) > 1e-2:
+func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]:
+	var start_point_id: int = astar.get_closest_point(start_cell)
+	var end_point_id: int = astar.get_closest_point(end_cell)
+	if end_cell.distance_to(astar.get_point_position(end_point_id)) > 1e-2:
 		print("Target cell is not in battle.")
 		return []
 
@@ -64,8 +64,8 @@ func get_cells_path(start_grid: Vector2i, end_grid: Vector2i) -> Array[Vector2i]
 	return cells_path
 
 
-func get_points_path(start_grid: Vector2i, end_grid: Vector2i) -> Array[Vector2]:
-	var cells_path: Array[Vector2i] = get_cells_path(start_grid, end_grid)
+func get_points_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2]:
+	var cells_path: Array[Vector2i] = get_cells_path(start_cell, end_cell)
 	var points_path: Array[Vector2] = []
 	for cell: Vector2i in cells_path:
 		points_path.append(cell_to_point(cell))
@@ -84,8 +84,8 @@ func cell_to_point(cell: Vector2i) -> Vector2:
 	return to_global(map_to_local(cell))
 
 
-func grid_is_walkable(grid: Vector2i) -> bool:
-	var tile_data: TileData = get_cell_tile_data(grid)
+func cell_is_walkable(cell: Vector2i) -> bool:
+	var tile_data: TileData = get_cell_tile_data(cell)
 	if tile_data:
 		return tile_data.get_custom_data("walkable")
 	return false
