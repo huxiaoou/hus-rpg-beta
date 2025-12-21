@@ -2,27 +2,22 @@ extends Node2D
 
 class_name Unit
 
-@export var move_speed: float = 500
-
 @onready var character_body_2d: CharacterBody2D = $CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $CharacterBody2D/AnimatedSprite2D
-
-var is_casting: bool = false
-var target_pos: Vector2 = Vector2(0, 0)
-var path_gp_points: Array[Vector2] = []
+@onready var ability_move: AbilityMove = $AbilityMove
 
 
 func _ready() -> void:
-	target_pos = position
+	setup()
 	return
 
 
-func _process(delta: float) -> void:
-	if position != target_pos:
-		position = position.move_toward(target_pos, delta * move_speed)
-	else:
-		set_target_pos_from_path()
-		adjust_animation_direction()
+func setup() -> void:
+	ability_move.unit_owner = self
+
+
+func move_toward(target_pos: Vector2, distance: float) -> void:
+	position = position.move_toward(target_pos, distance)
 	return
 
 
@@ -30,29 +25,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left_mouse_click"):
 		var start_cell: Vector2i = ManagerCellBattle.point_to_cell(position)
 		var end_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
-		var points_path: Array[Vector2] = ManagerCellBattle.get_points_path(start_cell, end_cell)
-		path_gp_points.append_array(points_path)
-		set_target_pos_from_path()
-		adjust_animation_direction()
+		ability_move.start(start_cell, end_cell)
 	return
 
 
-func set_target_pos_from_path():
-	if path_gp_points.is_empty():
-		return
-	target_pos = path_gp_points.pop_front()
-	return
-
-
-func adjust_animation_direction():
+func adjust_animation_direction(target_pos: Vector2) -> bool:
 	if target_pos.x > position.x:
 		animated_sprite_2d.scale.x = abs(animated_sprite_2d.scale.x)
-	elif target_pos.x < position.x:
+		return true
+	if target_pos.x < position.x:
 		animated_sprite_2d.scale.x = -abs(animated_sprite_2d.scale.x)
-	else:
-		if not path_gp_points.is_empty():
-			if path_gp_points[-1].x > position.x:
-				animated_sprite_2d.scale.x = abs(animated_sprite_2d.scale.x)
-			elif path_gp_points[-1].x < position.x:
-				animated_sprite_2d.scale.x = -abs(animated_sprite_2d.scale.x)
-	return
+		return true
+	return false
