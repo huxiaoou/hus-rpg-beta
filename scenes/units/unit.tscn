@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene load_steps=18 format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="Texture2D" uid="uid://dtb6grpi1ewrm" path="res://assets/units/unit_viking_idle.png" id="1_qgilm"]
+[ext_resource type="PackedScene" uid="uid://dpf2u33rg7u5p" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(64, 64)
@@ -113,3 +114,5 @@ sprite_frames = SubResource("SpriteFrames_wy2ti")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.312279
+
+[node name="AbilityMove" parent="." instance=ExtResource("3_cx6aj")]

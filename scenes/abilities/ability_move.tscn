@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpf2u33rg7u5p"]
+
+[ext_resource type="Script" uid="uid://c1hi6d3ieskev" path="res://scenes/abilities/ability_move.gd" id="1_w8lu7"]
+
+[node name="AbilityMove" type="Node"]
+script = ExtResource("1_w8lu7")
+short_name = "Move"
+id = "ability_move"
+description = "To move in the battle"
