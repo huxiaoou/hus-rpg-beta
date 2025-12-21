@@ -14,6 +14,7 @@ func start(start_cell: Vector2i, end_cell: Vector2i) -> void:
         return
     is_casting = true
     unit_owner.play_animation("walk")
+    audio_player.play()
     path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
     set_target_pos_from_path()
     adjust_animation_direction()
@@ -34,6 +35,7 @@ func _process(delta: float) -> void:
 func set_target_pos_from_path():
     if path_gp_points.is_empty():
         is_casting = false
+        audio_player.playing = false
         unit_owner.play_animation("idle")
         return
     target_pos = path_gp_points.pop_front()
