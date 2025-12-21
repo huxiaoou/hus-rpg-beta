@@ -7,6 +7,8 @@ class_name Ability
 @export var description: String
 @export var icon: Texture2D
 
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+
 var unit_owner: Unit = null
 var is_casting: bool = false
 

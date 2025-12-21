@@ -15,6 +15,7 @@ bg_texture = ExtResource("2_k1ymq")
 bg_music = ExtResource("3_wuj0f")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGMusic"
 
 [node name="Sprite2DBg" type="Sprite2D" parent="."]
 offset = Vector2(960, 540)
