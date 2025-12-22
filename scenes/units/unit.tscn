@@ -1,9 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene load_steps=38 format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="Texture2D" uid="uid://dtb6grpi1ewrm" path="res://assets/units/unit_viking_idle.png" id="1_qgilm"]
 [ext_resource type="Texture2D" uid="uid://dmcool0pagnte" path="res://assets/units/unit_viking_walk.png" id="3_6k8ya"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
+[ext_resource type="AudioStream" uid="uid://couwc1h3p2cmx" path="res://assets/audios/Movement_Combat_01.wav" id="4_mgebg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(64, 64)
@@ -228,11 +229,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 36.0
+"speed": 24.0
 }]
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_6e3tn")
+walk_astream = ExtResource("4_mgebg")
+walk_frames = Array[int]([4])
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
@@ -245,6 +248,12 @@ scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_wy2ti")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.205153
+frame = 7
+frame_progress = 0.597668
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
+stream = ExtResource("4_mgebg")
+volume_db = 12.0
+bus = &"SFX"
 
 [node name="AbilityMove" parent="." instance=ExtResource("3_cx6aj")]

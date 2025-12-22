@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://yw4plj15ogko"]
+[gd_scene load_steps=3 format=3 uid="uid://yw4plj15ogko"]
 
 [ext_resource type="PackedScene" uid="uid://c1k5fhydqq6y1" path="res://scenes/abilities/ability.tscn" id="1_w8lu7"]
 [ext_resource type="Script" uid="uid://c1hi6d3ieskev" path="res://scenes/abilities/ability_move.gd" id="2_bvkof"]
-[ext_resource type="AudioStream" uid="uid://dyr6aen5uothm" path="res://assets/audios/run-fast-on-asphalt-393096.mp3" id="3_syv0r"]
 
 [node name="AbilityMove" instance=ExtResource("1_w8lu7")]
 script = ExtResource("2_bvkof")
@@ -10,6 +9,3 @@ move_speed = 200.0
 short_name = "Move"
 id = "ability_move"
 description = "To move in the battle ground."
-
-[node name="AudioStreamPlayer2D" parent="." index="0"]
-stream = ExtResource("3_syv0r")
