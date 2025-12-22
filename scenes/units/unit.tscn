@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene load_steps=39 format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="Texture2D" uid="uid://dtb6grpi1ewrm" path="res://assets/units/unit_viking_idle.png" id="1_qgilm"]
+[ext_resource type="AudioStream" uid="uid://c3d87nbpgj3du" path="res://assets/audios/Footsteps_Walk_Grass_Mono_03.wav" id="2_rk2mp"]
 [ext_resource type="Texture2D" uid="uid://dmcool0pagnte" path="res://assets/units/unit_viking_walk.png" id="3_6k8ya"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
 [ext_resource type="AudioStream" uid="uid://couwc1h3p2cmx" path="res://assets/audios/Movement_Combat_01.wav" id="4_mgebg"]
@@ -234,7 +235,7 @@ animations = [{
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_6e3tn")
-walk_astream = ExtResource("4_mgebg")
+walk_astream = ExtResource("2_rk2mp")
 walk_frames = Array[int]([4])
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
