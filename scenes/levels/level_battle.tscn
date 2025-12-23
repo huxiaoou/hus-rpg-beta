@@ -15,7 +15,6 @@ bg_texture = ExtResource("2_k1ymq")
 bg_music = ExtResource("3_wuj0f")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -12.0
 bus = &"BGMusic"
 
 [node name="Sprite2DBg" type="Sprite2D" parent="."]
