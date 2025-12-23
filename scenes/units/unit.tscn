@@ -446,4 +446,4 @@ libraries = {
 }
 
 [node name="AbilityMove" parent="." instance=ExtResource("3_cx6aj")]
-move_speed = 160.0
+move_speed = 120.0
