@@ -5,7 +5,7 @@
 
 [node name="AbilityMove" instance=ExtResource("1_w8lu7")]
 script = ExtResource("2_bvkof")
-move_speed = 160.0
+move_speed = 120.0
 short_name = "Move"
 id = "ability_move"
 description = "To move in the battle ground."
