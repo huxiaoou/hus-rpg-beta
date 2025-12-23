@@ -1,11 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene load_steps=42 format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="Texture2D" uid="uid://dtb6grpi1ewrm" path="res://assets/units/unit_viking_idle.png" id="1_qgilm"]
-[ext_resource type="AudioStream" uid="uid://c3d87nbpgj3du" path="res://assets/audios/Footsteps_Walk_Grass_Mono_03.wav" id="2_rk2mp"]
+[ext_resource type="AudioStream" uid="uid://cbvdppyvwbwtb" path="res://assets/audios/Footsteps_Leaves_Walk_04.wav" id="2_rk2mp"]
 [ext_resource type="Texture2D" uid="uid://dmcool0pagnte" path="res://assets/units/unit_viking_walk.png" id="3_6k8ya"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
-[ext_resource type="AudioStream" uid="uid://couwc1h3p2cmx" path="res://assets/audios/Movement_Combat_01.wav" id="4_mgebg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(64, 64)
@@ -233,10 +232,117 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="Animation" id="Animation_44d7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_mgebg"]
+resource_name = "idle"
+length = 0.5004
+loop_mode = 1
+step = 0.0417
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.333433, 0.375, 0.416667, 0.458333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 5, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_rk2mp"]
+resource_name = "walk"
+length = 0.7506
+loop_mode = 1
+step = 0.0417
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.333433, 0.375, 0.416667, 0.458333, 0.5, 0.541667, 0.583333, 0.625, 0.666667, 0.708333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 5, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.166667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_44d7s"]
+_data = {
+&"RESET": SubResource("Animation_44d7s"),
+&"idle": SubResource("Animation_mgebg"),
+&"walk": SubResource("Animation_rk2mp")
+}
+
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_6e3tn")
-walk_astream = ExtResource("2_rk2mp")
-walk_frames = Array[int]([4])
+stream_walk = ExtResource("2_rk2mp")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
@@ -248,13 +354,14 @@ position = Vector2(-5, -72)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_wy2ti")
 animation = &"walk"
-autoplay = "idle"
-frame = 7
-frame_progress = 0.597668
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CharacterBody2D"]
-stream = ExtResource("4_mgebg")
 volume_db = 12.0
 bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_44d7s")
+}
 
 [node name="AbilityMove" parent="." instance=ExtResource("3_cx6aj")]

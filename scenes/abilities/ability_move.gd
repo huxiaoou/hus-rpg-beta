@@ -13,8 +13,8 @@ func start(start_cell: Vector2i, end_cell: Vector2i) -> void:
         print("Ability %s is casting" % short_name)
         return
     is_casting = true
+    unit_owner.load_audio_stream("walk")
     unit_owner.play_animation("walk")
-    unit_owner.load_audio_stream(unit_owner.walk_astream)
     path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
     set_target_pos_from_path()
     adjust_animation_direction()
