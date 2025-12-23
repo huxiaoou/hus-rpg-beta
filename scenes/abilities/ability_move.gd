@@ -2,7 +2,7 @@ extends Ability
 
 class_name AbilityMove
 
-@export var move_speed: float = 200
+@export var move_speed: float = 160
 
 var target_pos: Vector2 = Vector2(0, 0)
 var path_gp_points: Array[Vector2] = []
