@@ -3,7 +3,7 @@ extends Node2D
 class_name Unit
 
 @export_group("Audios")
-@export var stream_walk: AudioStream
+@export var astream_walk: AudioStream
 
 @onready var sprite_body: AnimatedSprite2D = $CharacterBody2D/SpriteBody
 @onready var sprite_shadow: AnimatedSprite2D = $CharacterBody2D/SpriteShadow
@@ -16,8 +16,13 @@ var astreams: Dictionary[String, AudioStream] = { }
 
 func _ready() -> void:
     ability_move.unit_owner = self
-    astreams["walk"] = stream_walk
+    setup_astreams()
     play_animation("idle")
+    return
+
+
+func setup_astreams() -> void:
+    astreams["walk"] = astream_walk
     return
 
 
