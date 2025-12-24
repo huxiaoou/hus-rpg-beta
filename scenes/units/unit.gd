@@ -40,10 +40,8 @@ func move_toward(target_pos: Vector2, distance: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("left_mouse_click"):
-        var start_cell: Vector2i = ManagerCellBattle.point_to_cell(position)
-        var end_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
-        mgr_abilities.get_ability("ability_move").start(start_cell, end_cell)
+    if event.is_action_pressed("ability_1"):
+        mgr_abilities.activiate_ability("ability_move")
     return
 
 

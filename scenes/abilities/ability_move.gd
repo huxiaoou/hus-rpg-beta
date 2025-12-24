@@ -8,6 +8,12 @@ var target_pos: Vector2 = Vector2(0, 0)
 var path_gp_points: Array[Vector2] = []
 
 
+func launch() -> void:
+    var start_cell: Vector2i = ManagerCellBattle.point_to_cell(owner_unit.position)
+    var end_cell: Vector2i = target_cells[0]
+    start(start_cell, end_cell)
+
+
 func start(start_cell: Vector2i, end_cell: Vector2i) -> void:
     if is_casting:
         print("Ability %s is casting" % short_name)
