@@ -12,9 +12,10 @@ func start(start_cell: Vector2i, end_cell: Vector2i) -> void:
     if is_casting:
         print("Ability %s is casting" % short_name)
         return
+    super.start(start_cell, end_cell)
     is_casting = true
-    unit_owner.load_audio_stream("walk")
-    unit_owner.play_animation("walk")
+    owner_unit.load_audio_stream("walk")
+    owner_unit.play_animation("walk")
     path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
     set_target_pos_from_path()
     adjust_animation_direction()
@@ -24,8 +25,8 @@ func start(start_cell: Vector2i, end_cell: Vector2i) -> void:
 func _process(delta: float) -> void:
     if not is_casting:
         return
-    if unit_owner.position != target_pos:
-        unit_owner.move_toward(target_pos, delta * move_speed)
+    if owner_unit.position != target_pos:
+        owner_unit.move_toward(target_pos, delta * move_speed)
     else:
         set_target_pos_from_path()
         adjust_animation_direction()
@@ -35,14 +36,14 @@ func _process(delta: float) -> void:
 func set_target_pos_from_path():
     if path_gp_points.is_empty():
         is_casting = false
-        unit_owner.play_animation("idle")
+        owner_unit.play_animation("idle")
         return
     target_pos = path_gp_points.pop_front()
     return
 
 
 func adjust_animation_direction():
-    if not unit_owner.adjust_animation_direction(target_pos):
+    if not owner_unit.adjust_animation_direction(target_pos):
         if not path_gp_points.is_empty():
-            unit_owner.adjust_animation_direction(path_gp_points[-1])
+            owner_unit.adjust_animation_direction(path_gp_points[-1])
     return

@@ -9,13 +9,13 @@ class_name Unit
 @onready var sprite_shadow: AnimatedSprite2D = $CharacterBody2D/SpriteShadow
 @onready var sfx_player: AudioStreamPlayer2D = $CharacterBody2D/SfxPlayer
 @onready var anim_player: AnimationPlayer = $CharacterBody2D/AnimPlayer
-@onready var ability_move: AbilityMove = $AbilityMove
+@onready var mgr_abilities: ManagerAbilities = $ManagerAbilities
 
 var astreams: Dictionary[String, AudioStream] = { }
 
 
 func _ready() -> void:
-    ability_move.unit_owner = self
+    mgr_abilities.setup(self)
     setup_astreams()
     play_animation("idle")
     return
@@ -43,7 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("left_mouse_click"):
         var start_cell: Vector2i = ManagerCellBattle.point_to_cell(position)
         var end_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
-        ability_move.start(start_cell, end_cell)
+        mgr_abilities.get_ability("ability_move").start(start_cell, end_cell)
     return
 
 

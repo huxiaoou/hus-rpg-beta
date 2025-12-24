@@ -1,10 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene load_steps=43 format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="Texture2D" uid="uid://dtb6grpi1ewrm" path="res://assets/units/unit_viking_idle.png" id="1_qgilm"]
 [ext_resource type="AudioStream" uid="uid://cbvdppyvwbwtb" path="res://assets/audios/Footsteps_Leaves_Walk_04.wav" id="2_rk2mp"]
 [ext_resource type="Texture2D" uid="uid://dmcool0pagnte" path="res://assets/units/unit_viking_walk.png" id="3_6k8ya"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
+[ext_resource type="PackedScene" uid="uid://crdmqwektpqdb" path="res://scenes/abilities/manager_abilities.tscn" id="4_mgebg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(64, 64)
@@ -414,7 +415,7 @@ _data = {
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_6e3tn")
-stream_walk = ExtResource("2_rk2mp")
+astream_walk = ExtResource("2_rk2mp")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
@@ -445,4 +446,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_44d7s")
 }
 
-[node name="AbilityMove" parent="." instance=ExtResource("3_cx6aj")]
+[node name="ManagerAbilities" parent="." instance=ExtResource("4_mgebg")]
+
+[node name="AbilityMove" parent="ManagerAbilities" instance=ExtResource("3_cx6aj")]
