@@ -4,21 +4,30 @@ class_name AbilityMove
 
 @export var move_speed: float = 120
 
+var start_cell: Vector2i
+var end_cell: Vector2i
 var target_pos: Vector2 = Vector2(0, 0)
 var path_gp_points: Array[Vector2] = []
 
 
+func _ready() -> void:
+    max_num_target_cells = 1
+    max_num_target_units = 0
+    return
+
+
 func launch() -> void:
-    var start_cell: Vector2i = ManagerCellBattle.point_to_cell(owner_unit.position)
-    var end_cell: Vector2i = target_cells[0]
-    start(start_cell, end_cell)
+    super.launch()
+    start_cell = ManagerCellBattle.point_to_cell(owner_unit.position)
+    end_cell = target_cells[0]
+    start()
+    return
 
 
-func start(start_cell: Vector2i, end_cell: Vector2i) -> void:
+func start() -> void:
     if is_casting:
         print("Ability %s is casting" % short_name)
         return
-    super.start(start_cell, end_cell)
     is_casting = true
     owner_unit.load_audio_stream("walk")
     owner_unit.play_animation("walk")
@@ -41,8 +50,9 @@ func _process(delta: float) -> void:
 
 func set_target_pos_from_path():
     if path_gp_points.is_empty():
-        is_casting = false
         owner_unit.play_animation("idle")
+        ManagerCellBattle.set_cell_white(target_cells[0])
+        finish()
         return
     target_pos = path_gp_points.pop_front()
     return
