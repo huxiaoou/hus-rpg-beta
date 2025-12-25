@@ -11,7 +11,7 @@ func setup(_owner_unit: Unit) -> void:
     owner_unit = _owner_unit
     for ability: Ability in get_children():
         if is_instance_of(ability, Ability):
-            ability.setup(owner_unit, set_active_ability)
+            ability.setup(owner_unit, deactivate_ability)
             abilities[ability.id] = ability
 
 
@@ -33,3 +33,13 @@ func activiate_ability(id: String) -> bool:
     active_ability.is_active = true
     print("Active ability %s" % active_ability.short_name)
     return true
+
+
+func deactivate_ability():
+    if active_ability == null:
+        print("There is no active ability to deactivate")
+        return
+    active_ability.is_active = false
+    print("Deactivate ability %s" % active_ability.short_name)
+    active_ability = null
+    return

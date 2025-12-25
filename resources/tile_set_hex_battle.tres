@@ -5,11 +5,20 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_re8ut"]
 texture = ExtResource("1_w5g4r")
 texture_region_size = Vector2i(192, 96)
+0:0/next_alternative_id = 4
 0:0/0 = 0
 0:0/0/modulate = Color(1, 1, 1, 0.376471)
 0:0/0/custom_data_0 = true
+0:0/1 = 1
+0:0/1/modulate = Color(0.82, 0.579467, 0.164, 0.376471)
+0:0/2 = 2
+0:0/2/modulate = Color(0.0035, 0.35, 0.182525, 0.376471)
+0:0/3 = 3
+0:0/3/modulate = Color(0.72, 0.22104, 0.1656, 0.376471)
+1:0/next_alternative_id = 2
 1:0/0 = 0
 1:0/0/modulate = Color(1, 1, 1, 0.376471)
+1:0/1 = 1
 
 [resource]
 tile_shape = 3
