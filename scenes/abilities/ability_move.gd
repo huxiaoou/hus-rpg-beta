@@ -16,25 +16,19 @@ func _ready() -> void:
     return
 
 
-func launch() -> void:
-    super.launch()
-    start_cell = ManagerCellBattle.point_to_cell(owner_unit.position)
-    end_cell = target_cells[0]
-    start()
-    return
-
-
-func start() -> void:
-    if is_casting:
-        print("Ability %s is casting" % short_name)
-        return
-    is_casting = true
-    owner_unit.load_audio_stream("walk")
-    owner_unit.play_animation("walk")
-    path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
-    set_target_pos_from_path()
-    adjust_animation_direction()
-    return
+func launch() -> bool:
+    if super.launch():
+        start_cell = ManagerCellBattle.point_to_cell(owner_unit.position)
+        end_cell = target_cells[0]
+        selected.emit()
+        is_casting = true
+        owner_unit.load_audio_stream("walk")
+        owner_unit.play_animation("walk")
+        path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
+        set_target_pos_from_path()
+        adjust_animation_direction()
+        return true
+    return false
 
 
 func _process(delta: float) -> void:
