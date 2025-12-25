@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://crdmqwektpqdb"]
+[gd_scene load_steps=5 format=3 uid="uid://crdmqwektpqdb"]
 
 [ext_resource type="Script" uid="uid://dq73d4gbwse15" path="res://scenes/abilities/manager_abilities.gd" id="1_qsnjf"]
+[ext_resource type="AudioStream" uid="uid://c4l1bl2autee1" path="res://assets/audios/Toggle A 001.wav" id="2_0hvq8"]
+[ext_resource type="AudioStream" uid="uid://dc36tsxfat3v5" path="res://assets/audios/Toggle B 001.wav" id="3_lis2h"]
+[ext_resource type="AudioStream" uid="uid://dpeneqij6e68j" path="res://assets/audios/Toggle C 001.wav" id="4_lis2h"]
 
 [node name="ManagerAbilities" type="Node"]
 script = ExtResource("1_qsnjf")
+selected_stream = ExtResource("2_0hvq8")
+canceled_stream = ExtResource("3_lis2h")
+warning_stream = ExtResource("4_lis2h")
+
+[node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
