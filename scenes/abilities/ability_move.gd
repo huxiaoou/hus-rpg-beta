@@ -4,6 +4,9 @@ class_name AbilityMove
 
 @export var move_speed: float = 120
 
+var potential_target_cell: Vector2i
+var potential_path_cells: Array[Vector2i] = []
+var potential_path_cells_new: Array[Vector2i] = []
 var start_cell: Vector2i
 var end_cell: Vector2i
 var target_pos: Vector2 = Vector2(0, 0)
@@ -31,8 +34,30 @@ func launch() -> bool:
     return false
 
 
+func deactivate() -> void:
+    for cell in potential_path_cells:
+        ManagerCellBattle.set_cell_white(cell)
+    potential_path_cells.clear()
+    super.deactivate()
+    return
+
+
 func _process(delta: float) -> void:
+    if not is_active:
+        return
     if not is_casting:
+        if target_cells.size() >= max_num_target_cells:
+            return
+        if potential_target_cell != ManagerCellBattle.get_indicator_cell():
+            potential_target_cell = ManagerCellBattle.get_indicator_cell()
+            potential_path_cells_new = ManagerCellBattle.get_cells_path(owner_unit.cell, potential_target_cell)
+            for cell in potential_path_cells:
+                if cell not in potential_path_cells_new:
+                    ManagerCellBattle.set_cell_white(cell)
+            for cell in potential_path_cells_new:
+                if cell not in potential_path_cells:
+                    ManagerCellBattle.set_cell_cyan(cell)
+            potential_path_cells = potential_path_cells_new
         return
     if owner_unit.position != target_pos:
         owner_unit.move_toward(target_pos, delta * move_speed)
