@@ -48,3 +48,4 @@ layout_mode = 2
 
 [node name="Unit" parent="." instance=ExtResource("8_66584")]
 position = Vector2(224, 608)
+init_cell = Vector2i(3, 6)

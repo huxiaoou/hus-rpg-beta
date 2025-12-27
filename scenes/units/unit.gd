@@ -2,6 +2,9 @@ extends Node2D
 
 class_name Unit
 
+@export_group("Init")
+@export var init_cell: Vector2i
+
 @export_group("Audios")
 @export var astream_walk: AudioStream
 
@@ -12,6 +15,11 @@ class_name Unit
 @onready var mgr_abilities: ManagerAbilities = $ManagerAbilities
 
 var astreams: Dictionary[String, AudioStream] = { }
+var cell: Vector2i:
+    get:
+        return ManagerCellBattle.point_to_cell(position)
+    set(value):
+        position = ManagerCellBattle.cell_to_point(value)
 
 
 func _ready() -> void:
@@ -23,6 +31,10 @@ func _ready() -> void:
 
 func setup_astreams() -> void:
     astreams["walk"] = astream_walk
+    return
+
+func setup_in_battle()->void:
+    cell = init_cell
     return
 
 

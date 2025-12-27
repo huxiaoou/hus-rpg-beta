@@ -2,12 +2,16 @@ extends Node
 
 class_name ManagerAbilities
 
+@export_group("Abilities")
+@export var scenes_abilities: Array[PackedScene] = []
+
 @export_group("Audios")
 @export var selected_stream: AudioStream
 @export var canceled_stream: AudioStream
 @export var warning_stream: AudioStream
 
 @onready var sfx_player: AudioStreamPlayer2D = $SfxPlayer
+@onready var abilities_node: Node = $AbilitiesNode
 
 var owner_unit: Unit
 var active_ability: Ability = null
@@ -17,11 +21,11 @@ var sfx_streams: Dictionary[String, AudioStream] = { }
 
 func setup(_owner_unit: Unit) -> void:
     owner_unit = _owner_unit
-    for ability in get_children():
-        if is_instance_of(ability, Ability):
-            ability.setup(owner_unit, deactivate_ability)
-            abilities[ability.id] = ability
-            connect_ability(ability)
+    for scene_ability in scenes_abilities:
+        var ability = scene_ability.instantiate()
+        abilities_node.add_child(ability)
+        ability.setup(owner_unit, deactivate_ability, connect_ability)
+        abilities[ability.id] = ability
     sfx_streams = {
         "selected": selected_stream,
         "canceled": canceled_stream,
