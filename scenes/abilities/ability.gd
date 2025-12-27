@@ -22,10 +22,11 @@ signal canceled()
 signal warning()
 
 
-func setup(_owner_unit: Unit, _deactivate_callback: Callable) -> void:
+func setup(_owner_unit: Unit, _deactivate_callback: Callable, _connect: Callable) -> void:
     owner_unit = _owner_unit
     deactivate_callback = _deactivate_callback
     is_casting = false
+    _connect.call(self)
     return
 
 
@@ -69,7 +70,7 @@ func _unhandled_input(event: InputEvent) -> void:
             ManagerCellBattle.set_cell_red(target_cell)
             selected.emit()
             print("%s is add to target cells" % target_cell)
-        else:
+        else: # target_cells.size() >= max_num_target_cells:
             launch()
     elif event.is_action_pressed("right_mouse_click"):
         if target_cells.size() > 0:

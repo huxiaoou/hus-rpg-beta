@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func launch() -> bool:
     if super.launch():
-        start_cell = ManagerCellBattle.point_to_cell(owner_unit.position)
+        start_cell = owner_unit.cell
         end_cell = target_cells[0]
         selected.emit()
         is_casting = true

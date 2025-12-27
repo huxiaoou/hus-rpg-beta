@@ -427,5 +427,4 @@ libraries = {
 }
 
 [node name="ManagerAbilities" parent="." instance=ExtResource("4_mgebg")]
-
-[node name="AbilityMove" parent="ManagerAbilities" instance=ExtResource("3_cx6aj")]
+scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj")])

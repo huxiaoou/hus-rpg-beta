@@ -12,3 +12,5 @@ canceled_stream = ExtResource("3_lis2h")
 warning_stream = ExtResource("4_lis2h")
 
 [node name="SfxPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AbilitiesNode" type="Node" parent="."]
