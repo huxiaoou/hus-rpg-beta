@@ -28,6 +28,10 @@ func get_points_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2]
     return layer_nav.get_points_path(start_cell, end_cell)
 
 
+func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]:
+    return layer_nav.get_cells_path(start_cell, end_cell)
+
+
 func set_cell_white(cell: Vector2i) -> void:
     layer_nav.set_cell_white(cell)
     return
@@ -45,4 +49,14 @@ func set_cell_green(cell: Vector2i) -> void:
 
 func set_cell_red(cell: Vector2i) -> void:
     layer_nav.set_cell_red(cell)
+    return
+
+
+func set_cell_gray(cell: Vector2i) -> void:
+    layer_nav.set_cell_gray(cell)
+    return
+
+
+func set_cell_cyan(cell: Vector2i) -> void:
+    layer_nav.set_cell_cyan(cell)
     return

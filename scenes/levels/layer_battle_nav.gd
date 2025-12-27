@@ -5,7 +5,14 @@ class_name LayerBattleNav
 var astar: AStar2D = null
 var datasets_cells: Dictionary[Vector2i, DataCellBattle] = { }
 
-enum { TILE_COLOR_WHITE, TILE_COLOR_YELLOW, TILE_COLOR_GREEN, TILE_COLOR_RED }
+enum {
+    TILE_COLOR_WHITE,
+    TILE_COLOR_YELLOW,
+    TILE_COLOR_GREEN,
+    TILE_COLOR_RED,
+    TILE_COLOR_GRAY,
+    TILE_COLOR_CYAN,
+}
 
 # ---
 # cell: Vector2i, cell coordinates in tilemaplayer
@@ -62,7 +69,7 @@ func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]
     var cells_path: Array[Vector2i] = []
     for point_id in id_path:
         cells_path.append(astar.get_point_position(point_id) as Vector2i)
-    print(cells_path)
+    # print(cells_path)
     return cells_path
 
 
@@ -116,6 +123,17 @@ func set_cell_green(cell: Vector2i) -> void:
     set_cell_to_alternative(cell, TILE_COLOR_GREEN)
     return
 
+
 func set_cell_red(cell: Vector2i) -> void:
     set_cell_to_alternative(cell, TILE_COLOR_RED)
+    return
+
+
+func set_cell_gray(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_GRAY)
+    return
+
+
+func set_cell_cyan(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_CYAN)
     return
