@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
                     ManagerCellBattle.set_cell_white(cell)
             for cell in potential_path_cells_new:
                 if cell not in potential_path_cells:
-                    ManagerCellBattle.set_cell_cyan(cell)
+                    ManagerCellBattle.set_cell_gray(cell)
             potential_path_cells = potential_path_cells_new
         return
     if owner_unit.position != target_pos:
