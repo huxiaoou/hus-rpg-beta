@@ -66,7 +66,7 @@ func activiate_ability(id: String) -> bool:
         play_warning()
         print("There is ability named '%s'to activate" % id)
         return false
-    active_ability.activate()
+    active_ability.change_state("aiming")
     return true
 
 
