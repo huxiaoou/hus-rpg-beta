@@ -33,23 +33,23 @@ func setup(_owner_unit: Unit, _deactivate_callback: Callable, _connect: Callable
 func activate() -> void:
     is_active = true
     selected.emit()
-    print("Ability %s is activated" % short_name)
+    print("%s activates Ability %s " % [owner_unit.name, short_name])
     return
 
 
 func deactivate() -> void:
     is_active = false
     canceled.emit()
-    print("Deactivate ability %s" % short_name)
+    print("%s deactivate ability %s" % [owner_unit.name, short_name])
     return
 
 
 func launch() -> bool:
     if is_casting:
         warning.emit()
-        print("Ability %s is casting" % short_name)
+        print("%s is casting ability" % [owner_unit.name, short_name])
         return false
-    print("Ability %s launches." % short_name)
+    print("%s launches ability %s." % [owner_unit.name, short_name])
     return true
 
 
@@ -69,7 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
             target_cells.append(target_cell)
             ManagerCellBattle.set_cell_red(target_cell)
             selected.emit()
-            print("%s is add to target cells" % target_cell)
+            print("Cell %s is add to target cells" % target_cell)
         else: # target_cells.size() >= max_num_target_cells:
             launch()
     elif event.is_action_pressed("right_mouse_click"):
@@ -81,7 +81,7 @@ func _unhandled_input(event: InputEvent) -> void:
                 var target_cell: Vector2i = target_cells.pop_back()
                 ManagerCellBattle.set_cell_white(target_cell)
                 canceled.emit()
-                print("%s is canceled" % target_cell)
+                print("Cell %s is dropped out from target cells" % target_cell)
         else: # target_cells.size() == 0
             canceled.emit()
             deactivate_callback.call()
