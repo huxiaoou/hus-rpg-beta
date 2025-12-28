@@ -47,9 +47,9 @@ func deactivate() -> void:
 func launch() -> bool:
     if is_casting:
         warning.emit()
-        print("%s is casting ability" % [owner_unit.name, short_name])
+        print("%s is casting ability %s" % [owner_unit.name, short_name])
         return false
-    print("%s launches ability %s." % [owner_unit.name, short_name])
+    print("%s launches ability %s" % [owner_unit.name, short_name])
     return true
 
 
