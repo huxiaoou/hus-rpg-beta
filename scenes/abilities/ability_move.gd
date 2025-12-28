@@ -67,10 +67,17 @@ func _process(delta: float) -> void:
     return
 
 
+func finish() -> void:
+    owner_unit.play_animation("idle")
+    potential_path_cells.clear()
+    ManagerCellBattle.set_cell_white(target_cells[0])
+    super.finish()
+    return
+
+
 func set_target_pos_from_path():
+    ManagerCellBattle.set_cell_white(ManagerCellBattle.point_to_cell(target_pos))
     if path_gp_points.is_empty():
-        owner_unit.play_animation("idle")
-        ManagerCellBattle.set_cell_white(target_cells[0])
         finish()
         return
     target_pos = path_gp_points.pop_front()
