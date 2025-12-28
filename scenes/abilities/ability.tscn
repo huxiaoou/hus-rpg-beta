@@ -1,6 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1k5fhydqq6y1"]
+[gd_scene load_steps=5 format=3 uid="uid://c1k5fhydqq6y1"]
 
 [ext_resource type="Script" uid="uid://35rnra4sh6je" path="res://scenes/abilities/ability.gd" id="1_d2gvf"]
+[ext_resource type="Script" uid="uid://vien4of5dp3o" path="res://scenes/abilities/states/ability_state_aiming.gd" id="2_iid0f"]
+[ext_resource type="Script" uid="uid://b7md58yjdadp6" path="res://scenes/abilities/states/ability_state_casting.gd" id="3_07gh6"]
+[ext_resource type="Script" uid="uid://6xwb5p2bcqiu" path="res://scenes/abilities/states/ability_state_deactive.gd" id="4_xo7rr"]
 
 [node name="Ability" type="Node"]
 script = ExtResource("1_d2gvf")
+short_name = null
+id = null
+description = null
+
+[node name="States" type="Node" parent="."]
+
+[node name="AbilityStateAiming" type="Node" parent="States"]
+script = ExtResource("2_iid0f")
+state_name = "Aiming"
+
+[node name="AbilityStateCasting" type="Node" parent="States"]
+script = ExtResource("3_07gh6")
+state_name = "Casting"
+
+[node name="AbilityStateDeactive" type="Node" parent="States"]
+script = ExtResource("4_xo7rr")
+state_name = "Deactive"
