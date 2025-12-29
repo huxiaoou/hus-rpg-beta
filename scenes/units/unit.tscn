@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene load_steps=15 format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="AudioStream" uid="uid://cbvdppyvwbwtb" path="res://assets/audios/Footsteps_Leaves_Walk_04.wav" id="2_rk2mp"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
 [ext_resource type="SpriteFrames" uid="uid://eispd8jrh5mt" path="res://resources/sprt_frms_viking.tres" id="3_mgebg"]
 [ext_resource type="PackedScene" uid="uid://crdmqwektpqdb" path="res://scenes/abilities/manager_abilities.tscn" id="4_mgebg"]
+[ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="6_rk2mp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(64, 64)
@@ -427,4 +428,4 @@ libraries = {
 }
 
 [node name="ManagerAbilities" parent="." instance=ExtResource("4_mgebg")]
-scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj")])
+scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("6_rk2mp")])
