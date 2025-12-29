@@ -54,6 +54,8 @@ func move_toward(target_pos: Vector2, distance: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("ability_1"):
         mgr_abilities.activiate_ability("ability_move")
+    elif event.is_action_pressed("ability_2"):
+        mgr_abilities.activiate_ability("ability_sword")
     return
 
 
