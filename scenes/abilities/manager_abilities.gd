@@ -17,6 +17,9 @@ var owner_unit: Unit
 var active_ability: Ability = null
 var abilities: Dictionary[String, Ability] = { }
 var sfx_streams: Dictionary[String, AudioStream] = { }
+var is_active: bool:
+    get:
+        return active_ability != null
 
 
 func setup(_owner_unit: Unit) -> void:
@@ -24,7 +27,7 @@ func setup(_owner_unit: Unit) -> void:
     for scene_ability in scenes_abilities:
         var ability = scene_ability.instantiate()
         abilities_node.add_child(ability)
-        ability.setup(owner_unit, deactivate_ability, connect_ability)
+        ability.setup(owner_unit, connect_ability)
         abilities[ability.id] = ability
     sfx_streams = {
         "selected": selected_stream,
@@ -38,6 +41,7 @@ func connect_ability(ability: Ability) -> void:
     ability.selected.connect(on_ability_selected)
     ability.canceled.connect(on_ability_canceled)
     ability.warning.connect(on_ability_warning)
+    ability.deactivated.connect(on_ability_deactivated)
     return
 
 
@@ -70,12 +74,7 @@ func activiate_ability(id: String) -> bool:
     return true
 
 
-func deactivate_ability():
-    if active_ability == null:
-        play_warning()
-        print("There is no active ability to deactivate")
-        return
-    active_ability.deactivate()
+func on_ability_deactivated():
     active_ability = null
     return
 
@@ -103,4 +102,9 @@ func play_canceled() -> void:
 
 func play_warning() -> void:
     _play("warning")
+    return
+
+func show_active_ability() ->void:
+    play_warning()
+    print("%s has ability %s as active" % [owner_unit.name, active_ability.short_name])
     return

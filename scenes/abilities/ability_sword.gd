@@ -17,8 +17,7 @@ func _ready() -> void:
 
 func activate() -> void:
     super.activate()
-    for d: int in range(-attack_range, attack_range + 1):
-        var avlb_cell: Vector2i = owner_unit.cell + Vector2i(d, 0)
+    for avlb_cell: Vector2i in ManagerCellBattle.get_cells_in_range(owner_unit.cell, attack_range):
         if ManagerCellBattle.cell_is_walkable(avlb_cell):
             ManagerCellBattle.set_cell_gray(avlb_cell)
             available_cells.append(avlb_cell)
@@ -49,9 +48,17 @@ func _process(_delta: float) -> void:
     return
 
 
+func launch() -> bool:
+    if super.launch():
+        owner_unit.play_animation("attack")
+        await owner_unit.anim_player.animation_finished
+        finish()
+        return true
+    return false
+
+
 func finish() -> void:
     owner_unit.play_animation("idle")
-    available_cells.clear()
-    ManagerCellBattle.set_cell_white(target_cells[0])
+    ManagerCellBattle.set_cell_gray(target_cells[0])
     super.finish()
     return

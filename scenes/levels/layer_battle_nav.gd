@@ -137,3 +137,16 @@ func set_cell_gray(cell: Vector2i) -> void:
 func set_cell_cyan(cell: Vector2i) -> void:
     set_cell_to_alternative(cell, TILE_COLOR_CYAN)
     return
+
+
+func get_cells_in_range(cell: Vector2i, rng: int = 1) -> Array[Vector2i]:
+    if rng == 1:
+        return get_surrounding_cells(cell)
+    var res: Array[Vector2i] = []
+    for xd: int in range(-rng * 2, rng * 2 + 1):
+        for yd: int in range(-rng * 2, rng * 2 + 1):
+            var potential_cell: Vector2i = cell + Vector2i(xd, yd)
+            var potential_path: Array[Vector2i] = get_cells_path(cell, potential_cell)
+            if potential_path.size() <= (rng + 1):
+                res.append(potential_cell)
+    return res
