@@ -33,7 +33,8 @@ func setup_astreams() -> void:
     astreams["walk"] = astream_walk
     return
 
-func setup_in_battle()->void:
+
+func setup_in_battle() -> void:
     cell = init_cell
     return
 
@@ -53,8 +54,14 @@ func move_toward(target_pos: Vector2, distance: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("ability_1"):
+        if mgr_abilities.is_active:
+            mgr_abilities.show_active_ability()
+            return
         mgr_abilities.activiate_ability("ability_move")
     elif event.is_action_pressed("ability_2"):
+        if mgr_abilities.is_active:
+            mgr_abilities.show_active_ability()
+            return
         mgr_abilities.activiate_ability("ability_sword")
     return
 

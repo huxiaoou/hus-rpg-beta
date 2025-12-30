@@ -10,7 +10,6 @@ class_name Ability
 var owner_unit: Unit = null
 var is_active: bool = false
 var is_casting: bool = false
-var deactivate_callback: Callable
 
 var max_num_target_cells: int = 16
 var max_num_target_units: int = 16
@@ -20,11 +19,12 @@ var target_units: Array[Unit] = []
 signal selected()
 signal canceled()
 signal warning()
+signal deactivated()
 
 
-func setup(_owner_unit: Unit, _deactivate_callback: Callable, _connect: Callable) -> void:
+func setup(_owner_unit: Unit, _connect: Callable) -> void:
     owner_unit = _owner_unit
-    deactivate_callback = _deactivate_callback
+    is_active = false
     is_casting = false
     _connect.call(self)
     return
@@ -83,6 +83,7 @@ func _unhandled_input(event: InputEvent) -> void:
                 canceled.emit()
                 print("Cell %s is dropped out from target cells" % target_cell)
         else: # target_cells.size() == 0
+            deactivate()
             canceled.emit()
-            deactivate_callback.call()
+            deactivated.emit()
     return

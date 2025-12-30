@@ -60,3 +60,7 @@ func set_cell_gray(cell: Vector2i) -> void:
 func set_cell_cyan(cell: Vector2i) -> void:
     layer_nav.set_cell_cyan(cell)
     return
+
+
+func get_cells_in_range(cell: Vector2i, rng: int = 1) -> Array[Vector2i]:
+    return layer_nav.get_cells_in_range(cell, rng)
