@@ -4,6 +4,7 @@ class_name Unit
 
 @export_group("Init")
 @export var init_cell: Vector2i
+@export var sprt_frms: SpriteFrames
 
 @export_group("Audios")
 @export var astream_walk: AudioStream
@@ -24,6 +25,7 @@ var cell: Vector2i:
 
 func _ready() -> void:
     mgr_abilities.setup(self)
+    setup_animations()
     setup_astreams()
     play_animation("idle")
     return
@@ -31,6 +33,12 @@ func _ready() -> void:
 
 func setup_astreams() -> void:
     astreams["walk"] = astream_walk
+    return
+
+
+func setup_animations() -> void:
+    sprite_body.sprite_frames = sprt_frms
+    sprite_shadow.sprite_frames = sprt_frms
     return
 
 
@@ -72,6 +80,18 @@ func adjust_animation_direction(target_pos: Vector2) -> bool:
         sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
         return true
     if target_pos.x < position.x:
+        sprite_body.scale.x = -abs(sprite_body.scale.x)
+        sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
+        return true
+    return false
+
+
+func adjust_animation_direction_from_cell(target_cell: Vector2i) -> bool:
+    if target_cell.x > cell.x:
+        sprite_body.scale.x = abs(sprite_body.scale.x)
+        sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
+        return true
+    if target_cell.x < cell.x:
         sprite_body.scale.x = -abs(sprite_body.scale.x)
         sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
         return true
