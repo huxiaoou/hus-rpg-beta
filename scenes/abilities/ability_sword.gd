@@ -50,6 +50,7 @@ func _process(_delta: float) -> void:
 
 func launch() -> bool:
     if super.launch():
+        owner_unit.adjust_animation_direction_from_cell(target_cells[0])
         owner_unit.play_animation("attack")
         await owner_unit.anim_player.animation_finished
         finish()
