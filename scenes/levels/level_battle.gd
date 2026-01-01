@@ -10,7 +10,8 @@ class_name LevelBattle
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var layer_battle_nav: LayerBattleNav = $Maps/LayerBattleNav
 @onready var cell_indicator_battle: CellIndicatorBattle = $Maps/CellIndicatorBattle
-@onready var unit: Unit = $Unit
+@onready var unit_viking: Unit = $UnitViking
+@onready var unit_skull: Unit = $UnitSkull
 
 
 func _ready() -> void:
@@ -21,5 +22,6 @@ func _ready() -> void:
     ManagerCellBattle.layer_nav = layer_battle_nav
     ManagerCellBattle.layer_nav.setup()
     ManagerCellBattle.cell_indicator_battle = cell_indicator_battle
-    unit.setup_in_battle()
+    unit_viking.setup_in_battle()
+    unit_skull.setup_in_battle()
     return

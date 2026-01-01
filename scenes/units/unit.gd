@@ -4,7 +4,6 @@ class_name Unit
 
 @export_group("Init")
 @export var init_cell: Vector2i
-@export var sprt_frms: SpriteFrames
 
 @export_group("Audios")
 @export var astream_walk: AudioStream
@@ -25,7 +24,6 @@ var cell: Vector2i:
 
 func _ready() -> void:
     mgr_abilities.setup(self)
-    setup_animations()
     setup_astreams()
     play_animation("idle")
     return
@@ -33,12 +31,6 @@ func _ready() -> void:
 
 func setup_astreams() -> void:
     astreams["walk"] = astream_walk
-    return
-
-
-func setup_animations() -> void:
-    sprite_body.sprite_frames = sprt_frms
-    sprite_shadow.sprite_frames = sprt_frms
     return
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c640eb6d5fi7a"]
+[gd_scene load_steps=10 format=4 uid="uid://c640eb6d5fi7a"]
 
 [ext_resource type="Script" uid="uid://cyqyl4ed5ujlw" path="res://scenes/levels/level_battle.gd" id="1_d4bfr"]
 [ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_k1ymq"]
@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://2r2qyutmbsd2" path="res://scenes/levels/layer_battle_nav.tscn" id="5_odxcu"]
 [ext_resource type="TileSet" uid="uid://c884hvc0bg6ua" path="res://resources/tile_set_hex_battle.tres" id="6_or4fg"]
 [ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="7_pd4wd"]
-[ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="8_66584"]
+[ext_resource type="PackedScene" uid="uid://t6nau0ubmot8" path="res://scenes/units/unit_skull.tscn" id="8_d4bfr"]
+[ext_resource type="PackedScene" uid="uid://bm5m1mow7et3r" path="res://scenes/units/unit_viking.tscn" id="8_k1ymq"]
 
 [node name="LevelBattle" type="Node"]
 script = ExtResource("1_d4bfr")
@@ -46,6 +47,8 @@ layout_mode = 2
 [node name="UIAvatar4" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_pd4wd")]
 layout_mode = 2
 
-[node name="Unit" parent="." instance=ExtResource("8_66584")]
-position = Vector2(224, 608)
-init_cell = Vector2i(3, 6)
+[node name="UnitViking" parent="." instance=ExtResource("8_k1ymq")]
+init_cell = Vector2i(3, 5)
+
+[node name="UnitSkull" parent="." instance=ExtResource("8_d4bfr")]
+init_cell = Vector2i(4, 6)
