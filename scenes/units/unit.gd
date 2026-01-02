@@ -2,6 +2,16 @@ extends Node2D
 
 class_name Unit
 
+enum GroupFlag {
+    ALLY,
+    ENEMY,
+    NEUTRAL,
+}
+
+@export_group("Attributes")
+@export var initiative: int = 12
+@export var group_flag: GroupFlag = GroupFlag.NEUTRAL
+
 @export_group("Init")
 @export var init_cell: Vector2i
 
@@ -20,6 +30,14 @@ var cell: Vector2i:
         return ManagerCellBattle.point_to_cell(position)
     set(value):
         position = ManagerCellBattle.cell_to_point(value)
+
+
+static func sort_by_initiative(a: Unit, b: Unit) -> bool:
+    if a.initiative == b.initiative:
+        if a.group_flag == b.group_flag:
+            return true
+        return a.group_flag < b.group_flag
+    return a.initiative > b.initiative
 
 
 func _ready() -> void:
@@ -53,6 +71,9 @@ func move_toward(target_pos: Vector2, distance: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+    if not ManagerTurnsAndRounds.is_active(self):
+        return
+
     if event.is_action_pressed("ability_1"):
         if mgr_abilities.is_active:
             mgr_abilities.show_active_ability()

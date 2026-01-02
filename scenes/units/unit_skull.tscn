@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://c2mv8hkq0xwqm" path="res://resources/sprt_frms_skull.tres" id="2_40vi7"]
 
 [node name="UnitSkull" instance=ExtResource("1_aaq5n")]
+group_flag = 1
 
 [node name="SpriteShadow" parent="CharacterBody2D" index="1"]
 sprite_frames = ExtResource("2_40vi7")
