@@ -5,18 +5,12 @@ class_name ManagerAbilities
 @export_group("Abilities")
 @export var scenes_abilities: Array[PackedScene] = []
 
-@export_group("Audios")
-@export var selected_stream: AudioStream
-@export var canceled_stream: AudioStream
-@export var warning_stream: AudioStream
-
-@onready var sfx_player: AudioStreamPlayer2D = $SfxPlayer
 @onready var abilities_node: Node = $AbilitiesNode
+@onready var aplayer_gmply: APlayerUnitGamePlay = $APlayerUnitGamePlay
 
 var owner_unit: Unit
 var active_ability: Ability = null
 var abilities: Dictionary[String, Ability] = { }
-var sfx_streams: Dictionary[String, AudioStream] = { }
 var is_active: bool:
     get:
         return active_ability != null
@@ -29,11 +23,6 @@ func setup(_owner_unit: Unit) -> void:
         abilities_node.add_child(ability)
         ability.setup(owner_unit, connect_ability)
         abilities[ability.id] = ability
-    sfx_streams = {
-        "selected": selected_stream,
-        "canceled": canceled_stream,
-        "warning": warning_stream,
-    }
     return
 
 
@@ -46,17 +35,17 @@ func connect_ability(ability: Ability) -> void:
 
 
 func on_ability_selected() -> void:
-    play_selected()
+    aplayer_gmply.play_selected()
     return
 
 
 func on_ability_canceled() -> void:
-    play_canceled()
+    aplayer_gmply.play_canceled()
     return
 
 
 func on_ability_warning() -> void:
-    play_warning()
+    aplayer_gmply.play_warning()
     return
 
 
@@ -67,7 +56,7 @@ func get_ability(id: String) -> Ability:
 func activiate_ability(id: String) -> bool:
     active_ability = get_ability(id)
     if active_ability == null:
-        play_warning()
+        aplayer_gmply.play_warning()
         print("There is ability named '%s'to activate" % id)
         return false
     active_ability.activate()
@@ -78,33 +67,8 @@ func on_ability_deactivated():
     active_ability = null
     return
 
-# --------------
-# --- Audios ---
-# --------------
 
-
-func _play(stream_name: String) -> void:
-    sfx_player.stop()
-    sfx_player.stream = sfx_streams.get(stream_name)
-    sfx_player.play()
-    return
-
-
-func play_selected() -> void:
-    _play("selected")
-    return
-
-
-func play_canceled() -> void:
-    _play("canceled")
-    return
-
-
-func play_warning() -> void:
-    _play("warning")
-    return
-
-func show_active_ability() ->void:
-    play_warning()
+func show_active_ability() -> void:
+    aplayer_gmply.play_warning()
     print("%s has ability %s as active" % [owner_unit.name, active_ability.short_name])
     return
