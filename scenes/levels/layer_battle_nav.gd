@@ -6,11 +6,11 @@ var astar: AStar2D = null
 var datasets_cells: Dictionary[Vector2i, DataCellBattle] = { }
 
 enum {
-    TILE_COLOR_WHITE,
+    TILE_COLOR_VANILLA,
     TILE_COLOR_YELLOW,
     TILE_COLOR_GREEN,
-    TILE_COLOR_RED,
-    TILE_COLOR_GRAY,
+    TILE_COLOR_TARGET,
+    TILE_COLOR_POTENTIAL,
     TILE_COLOR_CYAN,
 }
 
@@ -109,8 +109,8 @@ func set_cell_to_alternative(cell: Vector2i, alternative: int) -> void:
     return
 
 
-func set_cell_white(cell: Vector2i) -> void:
-    set_cell_to_alternative(cell, TILE_COLOR_WHITE)
+func set_cell_vanilla(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_VANILLA)
     return
 
 
@@ -124,13 +124,13 @@ func set_cell_green(cell: Vector2i) -> void:
     return
 
 
-func set_cell_red(cell: Vector2i) -> void:
-    set_cell_to_alternative(cell, TILE_COLOR_RED)
+func set_cell_target(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_TARGET)
     return
 
 
-func set_cell_gray(cell: Vector2i) -> void:
-    set_cell_to_alternative(cell, TILE_COLOR_GRAY)
+func set_cell_potential(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_POTENTIAL)
     return
 
 

@@ -32,8 +32,8 @@ func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]
     return layer_nav.get_cells_path(start_cell, end_cell)
 
 
-func set_cell_white(cell: Vector2i) -> void:
-    layer_nav.set_cell_white(cell)
+func set_cell_vanilla(cell: Vector2i) -> void:
+    layer_nav.set_cell_vanilla(cell)
     return
 
 
@@ -47,13 +47,13 @@ func set_cell_green(cell: Vector2i) -> void:
     return
 
 
-func set_cell_red(cell: Vector2i) -> void:
-    layer_nav.set_cell_red(cell)
+func set_cell_target(cell: Vector2i) -> void:
+    layer_nav.set_cell_target(cell)
     return
 
 
-func set_cell_gray(cell: Vector2i) -> void:
-    layer_nav.set_cell_gray(cell)
+func set_cell_potential(cell: Vector2i) -> void:
+    layer_nav.set_cell_potential(cell)
     return
 
 
