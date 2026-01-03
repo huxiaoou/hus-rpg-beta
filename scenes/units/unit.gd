@@ -2,6 +2,8 @@ extends Node2D
 
 class_name Unit
 
+signal unit_turn_finished(unit: Unit)
+
 enum GroupFlag {
     ALLY,
     ENEMY,
@@ -79,11 +81,19 @@ func _unhandled_input(event: InputEvent) -> void:
             mgr_abilities.show_active_ability()
             return
         mgr_abilities.activiate_ability("ability_move")
+        get_viewport().set_input_as_handled()
     elif event.is_action_pressed("ability_2"):
         if mgr_abilities.is_active:
             mgr_abilities.show_active_ability()
             return
         mgr_abilities.activiate_ability("ability_sword")
+        get_viewport().set_input_as_handled()
+    elif event.is_action_pressed("EndTurn"):
+        if mgr_abilities.is_active:
+            mgr_abilities.show_active_ability()
+            return
+        unit_turn_finished.emit(self)
+        get_viewport().set_input_as_handled()
     return
 
 
