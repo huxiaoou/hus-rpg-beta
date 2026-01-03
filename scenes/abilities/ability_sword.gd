@@ -19,14 +19,14 @@ func activate() -> void:
     super.activate()
     for avlb_cell: Vector2i in ManagerCellBattle.get_cells_in_range(owner_unit.cell, attack_range):
         if ManagerCellBattle.cell_is_walkable(avlb_cell):
-            ManagerCellBattle.set_cell_gray(avlb_cell)
+            ManagerCellBattle.set_cell_potential(avlb_cell)
             available_cells.append(avlb_cell)
     return
 
 
 func deactivate() -> void:
     for cell in available_cells:
-        ManagerCellBattle.set_cell_white(cell)
+        ManagerCellBattle.set_cell_vanilla(cell)
     available_cells.clear()
     super.deactivate()
     return
@@ -41,7 +41,7 @@ func _process(_delta: float) -> void:
         potential_target_cell_new = ManagerCellBattle.get_indicator_cell()
         if potential_target_cell != potential_target_cell_new:
             if potential_target_cell_new in available_cells:
-                ManagerCellBattle.set_cell_gray(potential_target_cell)
+                ManagerCellBattle.set_cell_potential(potential_target_cell)
                 potential_target_cell = potential_target_cell_new
                 ManagerCellBattle.set_cell_yellow(potential_target_cell)
         return
@@ -60,6 +60,6 @@ func launch() -> bool:
 
 func finish() -> void:
     owner_unit.play_animation("idle")
-    ManagerCellBattle.set_cell_gray(target_cells[0])
+    ManagerCellBattle.set_cell_potential(target_cells[0])
     super.finish()
     return

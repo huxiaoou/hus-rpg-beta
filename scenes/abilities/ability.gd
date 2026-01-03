@@ -67,7 +67,7 @@ func _unhandled_input(event: InputEvent) -> void:
         if target_cells.size() < max_num_target_cells:
             var target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
             target_cells.append(target_cell)
-            ManagerCellBattle.set_cell_red(target_cell)
+            ManagerCellBattle.set_cell_target(target_cell)
             selected.emit()
             print("Cell %s is add to target cells" % target_cell)
         else: # target_cells.size() >= max_num_target_cells:
@@ -79,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
                 print("Ability %s is casting, can not cancel target" % short_name)
             else:
                 var target_cell: Vector2i = target_cells.pop_back()
-                ManagerCellBattle.set_cell_white(target_cell)
+                ManagerCellBattle.set_cell_vanilla(target_cell)
                 canceled.emit()
                 print("Cell %s is dropped out from target cells" % target_cell)
         else: # target_cells.size() == 0

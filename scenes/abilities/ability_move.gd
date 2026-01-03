@@ -35,7 +35,7 @@ func launch() -> bool:
 
 func deactivate() -> void:
     for cell in potential_path_cells:
-        ManagerCellBattle.set_cell_white(cell)
+        ManagerCellBattle.set_cell_vanilla(cell)
     potential_path_cells.clear()
     super.deactivate()
     return
@@ -52,10 +52,10 @@ func _process(delta: float) -> void:
             potential_path_cells_new = ManagerCellBattle.get_cells_path(owner_unit.cell, potential_target_cell)
             for cell in potential_path_cells:
                 if cell not in potential_path_cells_new:
-                    ManagerCellBattle.set_cell_white(cell)
+                    ManagerCellBattle.set_cell_vanilla(cell)
             for cell in potential_path_cells_new:
                 if cell not in potential_path_cells:
-                    ManagerCellBattle.set_cell_gray(cell)
+                    ManagerCellBattle.set_cell_potential(cell)
             potential_path_cells = potential_path_cells_new
         return
     if owner_unit.position != target_pos:
@@ -69,13 +69,13 @@ func _process(delta: float) -> void:
 func finish() -> void:
     owner_unit.play_animation("idle")
     potential_path_cells.clear()
-    ManagerCellBattle.set_cell_white(target_cells[0])
+    ManagerCellBattle.set_cell_potential(target_cells[0])
     super.finish()
     return
 
 
 func set_target_pos_from_path():
-    ManagerCellBattle.set_cell_white(ManagerCellBattle.point_to_cell(target_pos))
+    ManagerCellBattle.set_cell_vanilla(ManagerCellBattle.point_to_cell(target_pos))
     if path_gp_points.is_empty():
         finish()
         return
