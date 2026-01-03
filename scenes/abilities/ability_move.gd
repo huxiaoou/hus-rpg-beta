@@ -25,7 +25,6 @@ func launch() -> bool:
         end_cell = target_cells[0]
         selected.emit()
         is_casting = true
-        owner_unit.load_audio_stream("walk")
         owner_unit.play_animation("walk")
         path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
         set_target_pos_from_path()

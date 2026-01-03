@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxvh4mn6kfwsn"]
+
+[ext_resource type="Script" uid="uid://tej7f2wsu6ew" path="res://scenes/audios/a_player_unit_game_play.gd" id="1_lt7ve"]
+[ext_resource type="AudioStream" uid="uid://c4l1bl2autee1" path="res://assets/audios/Toggle A 001.wav" id="2_3iskv"]
+[ext_resource type="AudioStream" uid="uid://dc36tsxfat3v5" path="res://assets/audios/Toggle B 001.wav" id="3_3j6re"]
+[ext_resource type="AudioStream" uid="uid://dpeneqij6e68j" path="res://assets/audios/Toggle C 001.wav" id="4_eltwr"]
+[ext_resource type="AudioStream" uid="uid://cbvdppyvwbwtb" path="res://assets/audios/Footsteps_Leaves_Walk_04.wav" id="5_ejl4f"]
+[ext_resource type="AudioStream" uid="uid://daxo50u5wjmt" path="res://assets/audios/Metallic_Sword_Impact_01.wav" id="6_tjveu"]
+
+[node name="APlayerUnitGamePlay" type="Node"]
+script = ExtResource("1_lt7ve")
+selected = ExtResource("2_3iskv")
+canceled = ExtResource("3_3j6re")
+warning = ExtResource("4_eltwr")
+unit_walk = ExtResource("5_ejl4f")
+unit_sword = ExtResource("6_tjveu")
+
+[node name="APlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"GamePlay"
