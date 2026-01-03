@@ -47,7 +47,8 @@ layout_mode = 2
 [node name="UIAvatar4" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_pd4wd")]
 layout_mode = 2
 
-[node name="Units" type="Node" parent="."]
+[node name="Units" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="UnitSkull" parent="Units" instance=ExtResource("8_d4bfr")]
 init_cell = Vector2i(4, 6)
