@@ -17,12 +17,8 @@ enum GroupFlag {
 @export_group("Init")
 @export var init_cell: Vector2i
 
-@export_group("Audios")
-@export var astream_walk: AudioStream
-
 @onready var sprite_body: AnimatedSprite2D = $CharacterBody2D/SpriteBody
 @onready var sprite_shadow: AnimatedSprite2D = $CharacterBody2D/SpriteShadow
-@onready var sfx_player: AudioStreamPlayer2D = $CharacterBody2D/SfxPlayer
 @onready var anim_player: AnimationPlayer = $CharacterBody2D/AnimPlayer
 @onready var mgr_abilities: ManagerAbilities = $ManagerAbilities
 
@@ -44,27 +40,13 @@ static func sort_by_initiative(a: Unit, b: Unit) -> bool:
 
 func _ready() -> void:
     mgr_abilities.setup(self)
-    setup_astreams()
     play_animation("idle")
-    return
-
-
-func setup_astreams() -> void:
-    astreams["walk"] = astream_walk
     return
 
 
 func setup_in_battle() -> void:
     cell = init_cell
     return
-
-
-func load_audio_stream(astream_name: String) -> void:
-    var astream_to_load: AudioStream = astreams[astream_name]
-    if sfx_player.stream != astream_to_load:
-        sfx_player.stop()
-        sfx_player.stream = astream_to_load
-        return
 
 
 func move_toward(target_pos: Vector2, distance: float) -> void:

@@ -6,42 +6,44 @@ class_name APlayerUnitGamePlay
 @export var selected: AudioStream
 @export var canceled: AudioStream
 @export var warning: AudioStream
+@export var unit_walk: AudioStream
+@export var unit_sword: AudioStream
 
 @onready var a_player: AudioStreamPlayer2D = $APlayer
-
-var sfx_streams: Dictionary[String, AudioStream] = { }
-
-
-func _ready() -> void:
-    sfx_streams = {
-        "selected": selected,
-        "canceled": canceled,
-        "warning": warning,
-    }
-    return
 
 # --------------
 # --- Audios ---
 # --------------
 
 
-func _play(stream_name: String) -> void:
-    a_player.stop()
-    a_player.stream = sfx_streams.get(stream_name)
+func _play(stream: AudioStream) -> void:
+    if a_player.stream != stream:
+        a_player.stop()
+        a_player.stream = stream
     a_player.play()
     return
 
 
 func play_selected() -> void:
-    _play("selected")
+    _play(selected)
     return
 
 
 func play_canceled() -> void:
-    _play("canceled")
+    _play(canceled)
     return
 
 
 func play_warning() -> void:
-    _play("warning")
+    _play(warning)
+    return
+
+
+func play_unit_walk() -> void:
+    _play(unit_walk)
+    return
+
+
+func play_unit_sword() -> void:
+    _play(unit_sword)
     return
