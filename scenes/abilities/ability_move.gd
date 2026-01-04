@@ -37,6 +37,7 @@ func deactivate() -> void:
     for cell in potential_path_cells:
         ManagerCellBattle.set_cell_vanilla(cell)
     potential_path_cells.clear()
+    ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
     super.deactivate()
     return
 
