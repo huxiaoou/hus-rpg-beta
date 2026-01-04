@@ -28,6 +28,7 @@ func get_units() -> Array[Unit]:
 func init_units(units: Array[Unit]) -> void:
     for unit in units:
         unit.setup_in_battle()
+        ManagerCellBattle.disable_cell(unit.cell, unit)
     return
 
 

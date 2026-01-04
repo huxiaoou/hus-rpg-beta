@@ -18,8 +18,8 @@ enum {
 # cell: Vector2i, cell coordinates in tilemaplayer
 # point: Vector2, position
 # point = cell_to_point(cell)
-# cell = global_pos_to_cell(point)
-# cells:Vector2i are used as points in AStar
+# cell = pos_to_cell(point)
+# cells: Vector2i are used as points in AStar
 
 
 func setup() -> void:
@@ -59,7 +59,7 @@ func update_points() -> void:
 
 
 func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]:
-    var start_point_id: int = astar.get_closest_point(start_cell)
+    var start_point_id: int = astar.get_closest_point(start_cell, true)
     var end_point_id: int = astar.get_closest_point(end_cell)
     if end_cell.distance_to(astar.get_point_position(end_point_id)) > 1e-2:
         print("Target cell is not in battle.")
@@ -69,7 +69,7 @@ func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]
     var cells_path: Array[Vector2i] = []
     for point_id in id_path:
         cells_path.append(astar.get_point_position(point_id) as Vector2i)
-    # print(cells_path)
+    print(cells_path)
     return cells_path
 
 
@@ -150,3 +150,20 @@ func get_cells_in_range(cell: Vector2i, rng: int = 1) -> Array[Vector2i]:
             if potential_path.size() <= (rng + 1):
                 res.append(potential_cell)
     return res
+
+
+func disable_cell(cell: Vector2i, unit: Unit) -> void:
+    astar.set_point_disabled(astar.get_closest_point(cell), true)
+    datasets_cells[cell].walkable = false
+    datasets_cells[cell].occupiant = unit
+    return
+
+
+func enable_cell(cell: Vector2i) -> void:
+    astar.set_point_disabled(astar.get_closest_point(cell, true), false)
+    datasets_cells[cell].walkable = true
+    datasets_cells[cell].occupiant = null
+    return
+
+func cell_is_reachable(cell: Vector2i) -> bool:
+    return datasets_cells[cell].is_reachable

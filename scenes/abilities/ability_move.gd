@@ -27,6 +27,8 @@ func launch() -> bool:
         is_casting = true
         owner_unit.play_animation("walk")
         path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
+        ManagerCellBattle.enable_cell(start_cell)
+        ManagerCellBattle.disable_cell(end_cell, owner_unit)
         set_target_pos_from_path()
         adjust_animation_direction()
         return true
@@ -40,6 +42,10 @@ func deactivate() -> void:
     ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
     super.deactivate()
     return
+
+
+func is_valid(cell: Vector2i) -> bool:
+    return ManagerCellBattle.cell_is_reachable(cell)
 
 
 func _process(delta: float) -> void:
