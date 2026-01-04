@@ -60,16 +60,24 @@ func finish() -> void:
     return
 
 
+func is_valid(_cell: Vector2i) -> bool:
+    return true
+
+
 func _unhandled_input(event: InputEvent) -> void:
     if not is_active:
         return
     if event.is_action_pressed("left_mouse_click"):
         if target_cells.size() < max_num_target_cells:
             var target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
-            target_cells.append(target_cell)
-            ManagerCellBattle.set_cell_target(target_cell)
-            selected.emit()
-            print("Cell %s is add to target cells" % target_cell)
+            if is_valid(target_cell):
+                target_cells.append(target_cell)
+                ManagerCellBattle.set_cell_target(target_cell)
+                selected.emit()
+                print("Cell %s is add to target cells" % target_cell)
+            else:
+                warning.emit()
+                print("Cell %s is invaild" % target_cell)
         else: # target_cells.size() >= max_num_target_cells:
             launch()
     elif event.is_action_pressed("right_mouse_click"):

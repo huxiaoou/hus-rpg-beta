@@ -64,3 +64,17 @@ func set_cell_cyan(cell: Vector2i) -> void:
 
 func get_cells_in_range(cell: Vector2i, rng: int = 1) -> Array[Vector2i]:
     return layer_nav.get_cells_in_range(cell, rng)
+
+
+func disable_cell(cell: Vector2i, unit: Unit) -> void:
+    layer_nav.disable_cell(cell, unit)
+    return
+
+
+func enable_cell(cell: Vector2i) -> void:
+    layer_nav.enable_cell(cell)
+    return
+
+
+func cell_is_reachable(cell: Vector2i) -> bool:
+    return layer_nav.cell_is_reachable(cell)
