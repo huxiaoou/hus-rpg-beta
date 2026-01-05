@@ -37,8 +37,8 @@ func set_cell_vanilla(cell: Vector2i) -> void:
     return
 
 
-func set_cell_yellow(cell: Vector2i) -> void:
-    layer_nav.set_cell_yellow(cell)
+func set_cell_focused(cell: Vector2i) -> void:
+    layer_nav.set_cell_focused(cell)
     return
 
 

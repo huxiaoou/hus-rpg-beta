@@ -7,7 +7,7 @@ var datasets_cells: Dictionary[Vector2i, DataCellBattle] = { }
 
 enum {
     TILE_COLOR_VANILLA,
-    TILE_COLOR_YELLOW,
+    TILE_COLOR_FOCUSED,
     TILE_COLOR_GREEN,
     TILE_COLOR_TARGET,
     TILE_COLOR_POTENTIAL,
@@ -69,7 +69,7 @@ func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]
     var cells_path: Array[Vector2i] = []
     for point_id in id_path:
         cells_path.append(astar.get_point_position(point_id) as Vector2i)
-    print(cells_path)
+    # print(cells_path)
     return cells_path
 
 
@@ -114,8 +114,8 @@ func set_cell_vanilla(cell: Vector2i) -> void:
     return
 
 
-func set_cell_yellow(cell: Vector2i) -> void:
-    set_cell_to_alternative(cell, TILE_COLOR_YELLOW)
+func set_cell_focused(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_FOCUSED)
     return
 
 
@@ -154,6 +154,7 @@ func get_cells_by_range(cell: Vector2i, rng: int = 0) -> Dictionary[int, Array]:
                 if potential_edge_cell in d[r - 1] or potential_edge_cell in d[r - 2]:
                     continue
                 d[r].append(potential_edge_cell)
+    # print(d)
     return d
 
 

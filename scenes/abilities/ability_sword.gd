@@ -18,9 +18,11 @@ func _ready() -> void:
 func activate() -> void:
     super.activate()
     for avlb_cell: Vector2i in ManagerCellBattle.get_cells_in_range(owner_unit.cell, attack_range):
-        if ManagerCellBattle.cell_is_walkable(avlb_cell):
-            ManagerCellBattle.set_cell_potential(avlb_cell)
-            available_cells.append(avlb_cell)
+        ManagerCellBattle.set_cell_potential(avlb_cell)
+        available_cells.append(avlb_cell)
+        print("set %s potential white" % avlb_cell)
+    potential_target_cell = available_cells[0]
+    ManagerCellBattle.set_cell_focused(potential_target_cell)
     return
 
 
@@ -33,7 +35,7 @@ func deactivate() -> void:
 
 
 func is_valid(cell: Vector2i) -> bool:
-    return ManagerCellBattle.get_cell_occupiant(cell) != null
+    return ManagerCellBattle.get_cell_occupiant(cell) != null and cell in available_cells
 
 
 func _process(_delta: float) -> void:
@@ -47,7 +49,7 @@ func _process(_delta: float) -> void:
             if potential_target_cell_new in available_cells:
                 ManagerCellBattle.set_cell_potential(potential_target_cell)
                 potential_target_cell = potential_target_cell_new
-                ManagerCellBattle.set_cell_yellow(potential_target_cell)
+                ManagerCellBattle.set_cell_focused(potential_target_cell)
         return
     return
 
