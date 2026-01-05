@@ -2,7 +2,7 @@ extends Ability
 
 class_name AbilitySword
 
-@export var attack_range: int = 2
+@export var attack_range: int = 1
 
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
@@ -30,6 +30,10 @@ func deactivate() -> void:
     available_cells.clear()
     super.deactivate()
     return
+
+
+func is_valid(cell: Vector2i) -> bool:
+    return ManagerCellBattle.get_cell_occupiant(cell) != null
 
 
 func _process(_delta: float) -> void:

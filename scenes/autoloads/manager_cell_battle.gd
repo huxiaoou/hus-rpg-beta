@@ -62,7 +62,11 @@ func set_cell_cyan(cell: Vector2i) -> void:
     return
 
 
-func get_cells_in_range(cell: Vector2i, rng: int = 1) -> Array[Vector2i]:
+func get_cells_by_range(cell: Vector2i, rng: int = 0) -> Dictionary[int, Array]:
+    return layer_nav.get_cells_by_range(cell, rng)
+
+
+func get_cells_in_range(cell: Vector2i, rng: int = 0) -> Array[Vector2i]:
     return layer_nav.get_cells_in_range(cell, rng)
 
 
@@ -78,3 +82,7 @@ func enable_cell(cell: Vector2i) -> void:
 
 func cell_is_reachable(cell: Vector2i) -> bool:
     return layer_nav.cell_is_reachable(cell)
+
+
+func get_cell_occupiant(cell: Vector2i) -> Unit:
+    return layer_nav.get_cell_occupiant(cell)
