@@ -139,16 +139,29 @@ func set_cell_cyan(cell: Vector2i) -> void:
     return
 
 
-func get_cells_in_range(cell: Vector2i, rng: int = 1) -> Array[Vector2i]:
-    if rng == 1:
-        return get_surrounding_cells(cell)
+func get_cells_by_range(cell: Vector2i, rng: int = 0) -> Dictionary[int, Array]:
+    if rng <= 0:
+        return { 0: [cell] }
+    # rng >= 1:
+    var d: Dictionary[int, Array] = {
+        0: [cell],
+        1: get_surrounding_cells(cell),
+    }
+    for r in range(2, rng + 1):
+        d[r] = []
+        for edge_cell: Vector2i in d[r - 1]:
+            for potential_edge_cell: Vector2i in get_surrounding_cells(edge_cell):
+                if potential_edge_cell in d[r - 1] or potential_edge_cell in d[r - 2]:
+                    continue
+                d[r].append(potential_edge_cell)
+    return d
+
+
+func get_cells_in_range(cell: Vector2i, rng: int = 0) -> Array[Vector2i]:
+    var d: Dictionary[int, Array] = get_cells_by_range(cell, rng)
     var res: Array[Vector2i] = []
-    for xd: int in range(-rng * 2, rng * 2 + 1):
-        for yd: int in range(-rng * 2, rng * 2 + 1):
-            var potential_cell: Vector2i = cell + Vector2i(xd, yd)
-            var potential_path: Array[Vector2i] = get_cells_path(cell, potential_cell)
-            if potential_path.size() <= (rng + 1):
-                res.append(potential_cell)
+    for ary in d.values():
+        res.append_array(ary)
     return res
 
 
@@ -165,5 +178,10 @@ func enable_cell(cell: Vector2i) -> void:
     datasets_cells[cell].occupiant = null
     return
 
+
 func cell_is_reachable(cell: Vector2i) -> bool:
     return datasets_cells[cell].is_reachable
+
+
+func get_cell_occupiant(cell: Vector2i) -> Unit:
+    return datasets_cells[cell].occupiant
