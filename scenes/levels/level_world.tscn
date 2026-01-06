@@ -10,6 +10,7 @@
 script = ExtResource("1_xx7ag")
 
 [node name="CameraController" parent="." instance=ExtResource("1_ls1yl")]
+enable_move = true
 
 [node name="Map" type="Node" parent="."]
 

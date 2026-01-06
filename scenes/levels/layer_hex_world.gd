@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
         update_lower_cells_alpha(cur_cell, TILE_MODULATE_FULL)
         update_lower_cells_alpha(new_cell, TILE_MODULATE_TRANS)
         cur_cell = new_cell
-        print(cur_cell)
+        print("Current cell = %s" % cur_cell)
 
 
 func get_offset_left(cell: Vector2i, size: int = 1) -> Vector2i:
