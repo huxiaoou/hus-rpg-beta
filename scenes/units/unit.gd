@@ -112,3 +112,10 @@ func play_animation(animation: String) -> void:
 func emit_unit_attack_impacted() -> void:
     unit_attack_impacted.emit(self)
     return
+
+
+func on_hurt(_unit: Unit) -> void:
+    anim_player.play("hurt")
+    await anim_player.animation_finished
+    anim_player.play("idle")
+    return
