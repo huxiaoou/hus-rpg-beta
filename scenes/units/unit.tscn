@@ -127,6 +127,20 @@ tracks/4/keys = {
 "method": &"play_unit_sword"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.32),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emit_unit_attack_impacted"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_amp7q"]
 resource_name = "die"

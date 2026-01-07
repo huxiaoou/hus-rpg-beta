@@ -3,6 +3,7 @@ extends Node2D
 class_name Unit
 
 signal unit_turn_finished(unit: Unit)
+signal unit_attack_impacted(unit: Unit)
 
 enum GroupFlag {
     ALLY,
@@ -105,4 +106,9 @@ func adjust_animation_direction_from_cell(target_cell: Vector2i) -> bool:
 
 func play_animation(animation: String) -> void:
     anim_player.play(animation)
+    return
+
+
+func emit_unit_attack_impacted() -> void:
+    unit_attack_impacted.emit(self)
     return

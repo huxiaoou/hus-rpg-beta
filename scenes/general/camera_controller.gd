@@ -2,15 +2,29 @@ extends Node
 
 class_name CameraController
 
-@export_group("camera")
+@export_group("move")
+@export var init_offset: Vector2 = Vector2(1920.0 / 2, 1080.0 / 2)
 @export var enable_move: bool = false
 @export var move_speed: float = 500
 
+@export_group("trauma")
+@export var decay: float = 1.618 # How fast shake fades
+@export var max_offset: int = 12 # Max pixel shake
+@export var trauma_power: float = 2.0 # How trauma affects intensity
+
 @onready var camera_2d: Camera2D = $Camera2D
 
+# move
 var lim_left_top: Vector2 = Vector2(-1920.0 / 2, -1080.0 / 2)
 var lim_right_down: Vector2 = Vector2(1920.0 / 2, 1080.0 / 2)
 var target_position: Vector2
+
+# trauma
+var trauma = 0.0
+
+
+func _ready() -> void:
+    camera_2d.offset = init_offset
 
 
 func set_camera_lim(left_top: Vector2, right_down: Vector2) -> void:
@@ -26,6 +40,7 @@ func _process(delta: float) -> void:
             target_position = camera_2d.global_position + camera_mov_direction * move_speed * delta
         clamp_target_pos()
         track_target_pos()
+    shake(delta)
     return
 
 
@@ -42,3 +57,24 @@ func track_target_pos() -> void:
 
 func camera_offset() -> Vector2:
     return camera_2d.offset
+
+
+func add_trauma(amount):
+    camera_2d.make_current()
+    trauma = min(1.0, trauma + amount) # <= 1.0
+    return
+
+
+func shake(delta: float) -> void:
+    var delta_offset: Vector2 = Vector2.ZERO
+    if trauma > 0:
+        trauma -= decay * delta
+        var shake_intensity: float = pow(trauma, trauma_power) * max_offset
+        delta_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shake_intensity
+    camera_2d.offset = init_offset + delta_offset
+    return
+
+
+func on_unit_attack_impacted(_unit: Unit) -> void:
+    add_trauma(1.0)
+    return
