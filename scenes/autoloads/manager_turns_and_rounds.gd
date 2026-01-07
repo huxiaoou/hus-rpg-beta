@@ -5,7 +5,7 @@ signal active_unit_changed()
 
 var active_unit: Unit:
     get:
-        return this_turn_book[0]
+        return null if this_turn_book.is_empty() else this_turn_book[0]
 
 var registered_units: Dictionary[int, Unit] = { }
 var this_turn_book: Array[Unit] = []

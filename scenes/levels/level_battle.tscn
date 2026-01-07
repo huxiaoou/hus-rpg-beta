@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c640eb6d5fi7a"]
+[gd_scene load_steps=11 format=4 uid="uid://c640eb6d5fi7a"]
 
 [ext_resource type="Script" uid="uid://cyqyl4ed5ujlw" path="res://scenes/levels/level_battle.gd" id="1_d4bfr"]
 [ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_k1ymq"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="7_pd4wd"]
 [ext_resource type="PackedScene" uid="uid://t6nau0ubmot8" path="res://scenes/units/unit_skull.tscn" id="8_d4bfr"]
 [ext_resource type="PackedScene" uid="uid://bm5m1mow7et3r" path="res://scenes/units/unit_viking.tscn" id="8_k1ymq"]
+[ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="10_wuj0f"]
 
 [node name="LevelBattle" type="Node"]
 script = ExtResource("1_d4bfr")
@@ -55,3 +56,5 @@ init_cell = Vector2i(4, 6)
 
 [node name="UnitViking" parent="Units" instance=ExtResource("8_k1ymq")]
 init_cell = Vector2i(3, 5)
+
+[node name="CameraController" parent="." instance=ExtResource("10_wuj0f")]

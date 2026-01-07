@@ -13,6 +13,7 @@ class_name LevelBattle
 @onready var unit_viking: Unit = $Units/UnitViking
 @onready var unit_skull: Unit = $Units/UnitSkull
 @onready var units_group: Node = $Units
+@onready var camera_controller: CameraController = $CameraController
 
 
 func get_units() -> Array[Unit]:
@@ -28,6 +29,7 @@ func get_units() -> Array[Unit]:
 func init_units(units: Array[Unit]) -> void:
     for unit in units:
         unit.setup_in_battle()
+        unit.unit_attack_impacted.connect(camera_controller.on_unit_attack_impacted)
         ManagerCellBattle.disable_cell(unit.cell, unit)
     return
 
