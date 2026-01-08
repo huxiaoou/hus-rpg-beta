@@ -3,6 +3,7 @@ extends Ability
 class_name AbilitySword
 
 @export var attack_range: int = 1
+@onready var hit_effect: HitEffect = $HitEffectBlood01
 
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
@@ -58,8 +59,10 @@ func launch() -> bool:
     if super.launch():
         target_units.append(ManagerCellBattle.get_cell_occupiant(target_cells[0]))
         owner_unit.adjust_animation_direction_from_cell(target_cells[0])
-        owner_unit.play_animation("attack")
         owner_unit.unit_attack_impacted.connect(target_units[0].on_hurt)
+        owner_unit.unit_attack_impacted.connect(hit_effect.play)
+        hit_effect.set_pos(ManagerCellBattle.cell_to_point(target_units[0].cell))
+        owner_unit.play_animation("attack")
         await owner_unit.anim_player.animation_finished
         finish()
         return true
@@ -68,6 +71,7 @@ func launch() -> bool:
 
 func finish() -> void:
     owner_unit.unit_attack_impacted.disconnect(target_units[0].on_hurt)
+    owner_unit.unit_attack_impacted.disconnect(hit_effect.play)
     owner_unit.play_animation("idle")
     ManagerCellBattle.set_cell_potential(target_cells[0])
     super.finish()

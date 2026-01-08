@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqb1wmb7v6b0i"]
+
+[ext_resource type="PackedScene" uid="uid://t0ftp5jkg1jg" path="res://scenes/effects/hit_effect.tscn" id="1_7qnrp"]
+[ext_resource type="Texture2D" uid="uid://cns04keixivnr" path="res://assets/effects/hit_effect_blood_01.png" id="2_120ji"]
+
+[node name="HitEffectBlood01" instance=ExtResource("1_7qnrp")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_120ji")
