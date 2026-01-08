@@ -2,15 +2,21 @@ extends Node
 
 class_name CameraController
 
-@export_group("move")
+@export_group("Move")
 @export var init_offset: Vector2 = Vector2(1920.0 / 2, 1080.0 / 2)
 @export var enable_move: bool = false
 @export var move_speed: float = 500
 
-@export_group("trauma")
+@export_group("Trauma")
 @export var decay: float = 1.618 # How fast shake fades
 @export var max_offset: int = 12 # Max pixel shake
 @export var trauma_power: float = 2.0 # How trauma affects intensity
+
+@export_group("Bullet Time Effect")
+@export var normal_time_scale = 1.0
+@export var slow_time_scale = 0.382
+@export var slow_duration = 0.15 # The duration of the slow motion effect in seconds
+@export var fade_duration = 0.15 # The fade duration to smoothly transition back to normal speed
 
 @onready var camera_2d: Camera2D = $Camera2D
 
@@ -59,9 +65,19 @@ func camera_offset() -> Vector2:
     return camera_2d.offset
 
 
-func add_trauma(amount):
+func apply_trauma(amount: float = 1.0) -> void:
     camera_2d.make_current()
     trauma = min(1.0, trauma + amount) # <= 1.0
+    return
+
+
+func apply_bullet_time() -> void:
+    if Engine.time_scale != normal_time_scale:
+        Engine.time_scale = normal_time_scale
+    var tween = create_tween()
+    Engine.time_scale = slow_time_scale
+    tween.tween_interval(slow_duration) # Wait for the specified duration
+    tween.tween_property(Engine, "time_scale", normal_time_scale, fade_duration)
     return
 
 
@@ -76,5 +92,6 @@ func shake(delta: float) -> void:
 
 
 func on_unit_attack_impacted(_unit: Unit) -> void:
-    add_trauma(1.0)
+    apply_trauma()
+    apply_bullet_time()
     return
