@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://t0ftp5jkg1jg"]
+[gd_scene load_steps=5 format=3 uid="uid://t0ftp5jkg1jg"]
 
 [ext_resource type="Script" uid="uid://chgx4djn5gifa" path="res://scenes/effects/hit_effect.gd" id="1_ycvwr"]
-[ext_resource type="Texture2D" uid="uid://d3vjdmddsk7go" path="res://assets/effects/hit_effect_blood_06.png" id="2_gdx8f"]
-[ext_resource type="AudioStream" uid="uid://b58m2okv3xlxc" path="res://assets/audios/Blood_Spill_Soft_01.wav" id="2_ycvwr"]
 
 [sub_resource type="Animation" id="Animation_gdx8f"]
 length = 0.001
@@ -30,10 +28,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+"values": []
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -57,16 +55,12 @@ _data = {
 }
 
 [node name="HitEffect" type="Node2D"]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_ycvwr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gdx8f")
-hframes = 6
-vframes = 2
+modulate = Color(1, 1, 1, 0.541176)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_ycvwr")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

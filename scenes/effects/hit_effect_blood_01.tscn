@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqb1wmb7v6b0i"]
+[gd_scene load_steps=4 format=3 uid="uid://bqb1wmb7v6b0i"]
 
 [ext_resource type="PackedScene" uid="uid://t0ftp5jkg1jg" path="res://scenes/effects/hit_effect.tscn" id="1_7qnrp"]
 [ext_resource type="Texture2D" uid="uid://cns04keixivnr" path="res://assets/effects/hit_effect_blood_01.png" id="2_120ji"]
+[ext_resource type="AudioStream" uid="uid://b58m2okv3xlxc" path="res://assets/audios/Blood_Spill_Soft_01.wav" id="3_p7jwx"]
 
 [node name="HitEffectBlood01" instance=ExtResource("1_7qnrp")]
-
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("2_120ji")
+display_scale = Vector2(0.3, 0.3)
+sprt_frms = ExtResource("2_120ji")
+vframes = 8
+sound_effect = ExtResource("3_p7jwx")
