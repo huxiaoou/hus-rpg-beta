@@ -10,3 +10,4 @@ id = "ability_sword"
 description = "Use a sword to do a melee attack"
 
 [node name="HitEffectBlood01" parent="." instance=ExtResource("2_i1n1b")]
+scale = Vector2(0.3, 0.3)

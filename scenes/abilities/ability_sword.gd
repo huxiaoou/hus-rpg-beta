@@ -61,7 +61,7 @@ func launch() -> bool:
         owner_unit.adjust_animation_direction_from_cell(target_cells[0])
         owner_unit.unit_attack_impacted.connect(target_units[0].on_hurt)
         owner_unit.unit_attack_impacted.connect(hit_effect.play)
-        hit_effect.set_pos(ManagerCellBattle.cell_to_point(target_units[0].cell))
+        hit_effect.set_location(ManagerCellBattle.cell_to_point(target_units[0].cell))
         owner_unit.play_animation("attack")
         await owner_unit.anim_player.animation_finished
         finish()

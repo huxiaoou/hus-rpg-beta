@@ -24,7 +24,6 @@ func launch() -> bool:
         start_cell = owner_unit.cell
         end_cell = target_cells[0]
         selected.emit()
-        is_casting = true
         owner_unit.play_animation("walk")
         path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
         ManagerCellBattle.enable_cell(start_cell)

@@ -49,6 +49,7 @@ func launch() -> bool:
         warning.emit()
         print("%s is casting ability %s" % [owner_unit.name, short_name])
         return false
+    is_casting = true
     print("%s launches ability %s" % [owner_unit.name, short_name])
     return true
 
