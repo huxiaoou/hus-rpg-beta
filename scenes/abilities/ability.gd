@@ -2,10 +2,17 @@ extends Node
 
 class_name Ability
 
+@export_group("General")
 @export var short_name: String
 @export var id: String
 @export var description: String
 @export var icon: Texture2D
+
+@export_group("Cost")
+@export var cost_health: int = 0
+@export var cost_stamnia: int = 8
+@export var cost_magicka: int = 0
+@export var cost_resolve: int = 0
 
 var owner_unit: Unit = null
 var is_active: bool = false
@@ -50,14 +57,52 @@ func deactivate() -> void:
     return
 
 
+func check_health_cost() -> bool:
+    if owner_unit.health < cost_health:
+        warning.emit()
+        print("Not enough health, %d/%d" % [owner_unit.health, cost_health])
+        return false
+    return true
+
+
+func check_stamina_cost() -> bool:
+    if owner_unit.stamina < cost_stamnia:
+        warning.emit()
+        print("Not enough stamina, %d/%d" % [owner_unit.stamina, cost_stamnia])
+        return false
+    return true
+
+
+func check_magicka_cost() -> bool:
+    if owner_unit.magicka < cost_magicka:
+        warning.emit()
+        print("Not enough magicka, %d/%d" % [owner_unit.magicka, cost_magicka])
+        return false
+    return true
+
+
+func check_resolve_cost() -> bool:
+    if owner_unit.resolve < cost_resolve:
+        warning.emit()
+        print("Not enough resolve, %d/%d" % [owner_unit.resolve, cost_resolve])
+        return false
+    return true
+
+
 func launch() -> bool:
     if is_casting:
         warning.emit()
         print("%s is casting ability %s" % [owner_unit.name, short_name])
         return false
-    is_casting = true
-    print("%s launches ability %s" % [owner_unit.name, short_name])
-    return true
+    if check_stamina_cost() and check_magicka_cost() and check_resolve_cost() and check_health_cost():
+        is_casting = true
+        owner_unit.change_stamina(-cost_stamnia)
+        owner_unit.change_magicka(-cost_magicka)
+        owner_unit.change_resolve(-cost_resolve)
+        owner_unit.change_health(-cost_health)
+        print("%s launches ability %s" % [owner_unit.name, short_name])
+        return true
+    return false
 
 
 func finish() -> void:

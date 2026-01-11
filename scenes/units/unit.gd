@@ -14,6 +14,12 @@ enum GroupFlag {
 @export_group("Attributes")
 @export var initiative: int = 12
 @export var group_flag: GroupFlag = GroupFlag.NEUTRAL
+@export var health: int = 100
+@export var stamina: int = 12
+@export var magicka: int = 100
+@export var resolve: int = 100
+@export var armor: int = 8
+@export var attack: int = 12
 
 @export_group("Init")
 @export var init_cell: Vector2i
@@ -119,3 +125,19 @@ func on_hurt(_unit: Unit) -> void:
     await anim_player.animation_finished
     anim_player.play("idle")
     return
+
+
+func change_health(delta_health: int) -> void:
+    health += delta_health
+
+
+func change_stamina(delta_stamina: int) -> void:
+    stamina += delta_stamina
+
+
+func change_magicka(delta_magicka: int) -> void:
+    magicka += delta_magicka
+
+
+func change_resolve(delta_resolve: int) -> void:
+    resolve += delta_resolve
