@@ -14,7 +14,13 @@ var is_casting: bool = false
 var max_num_target_cells: int = 16
 var max_num_target_units: int = 16
 var target_cells: Array[Vector2i] = []
+var target_cell: Vector2i:
+    get:
+        return Vector2i.ZERO if target_cells.is_empty() else target_cells[0]
 var target_units: Array[Unit] = []
+var target_unit: Unit:
+    get:
+        return null if target_units.is_empty() else target_units[0]
 
 signal selected()
 signal canceled()
@@ -70,15 +76,15 @@ func _unhandled_input(event: InputEvent) -> void:
         return
     if event.is_action_pressed("left_mouse_click"):
         if target_cells.size() < max_num_target_cells:
-            var target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
-            if is_valid(target_cell):
-                target_cells.append(target_cell)
-                ManagerCellBattle.set_cell_target(target_cell)
+            var new_target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
+            if is_valid(new_target_cell):
+                target_cells.append(new_target_cell)
+                ManagerCellBattle.set_cell_target(new_target_cell)
                 selected.emit()
-                print("Cell %s is add to target cells" % target_cell)
+                print("Cell %s is add to target cells" % new_target_cell)
             else:
                 warning.emit()
-                print("Cell %s is invaild" % target_cell)
+                print("Cell %s is invaild" % new_target_cell)
         else: # target_cells.size() >= max_num_target_cells:
             launch()
     elif event.is_action_pressed("right_mouse_click"):
@@ -87,10 +93,10 @@ func _unhandled_input(event: InputEvent) -> void:
                 warning.emit()
                 print("Ability %s is casting, can not cancel target" % short_name)
             else:
-                var target_cell: Vector2i = target_cells.pop_back()
-                ManagerCellBattle.set_cell_vanilla(target_cell)
+                var old_target_cell: Vector2i = target_cells.pop_back()
+                ManagerCellBattle.set_cell_vanilla(old_target_cell)
                 canceled.emit()
-                print("Cell %s is dropped out from target cells" % target_cell)
+                print("Cell %s is dropped out from target cells" % old_target_cell)
         else: # target_cells.size() == 0
             deactivate()
             canceled.emit()

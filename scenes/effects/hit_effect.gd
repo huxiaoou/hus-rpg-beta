@@ -22,6 +22,7 @@ const SPRT_TRACK: int = 0
 
 func _ready() -> void:
     scale = display_scale
+    visible = false
     sprite_2d.texture = sprt_frms
     sprite_2d.hframes = 1
     sprite_2d.vframes = vframes
