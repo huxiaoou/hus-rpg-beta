@@ -22,7 +22,7 @@ func _ready() -> void:
 func launch() -> bool:
     if super.launch():
         start_cell = owner_unit.cell
-        end_cell = target_cells[0]
+        end_cell = target_cell
         selected.emit()
         owner_unit.play_animation("walk")
         path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
@@ -75,7 +75,7 @@ func _process(delta: float) -> void:
 func finish() -> void:
     owner_unit.play_animation("idle")
     potential_path_cells.clear()
-    ManagerCellBattle.set_cell_potential(target_cells[0])
+    ManagerCellBattle.set_cell_potential(target_cell)
     super.finish()
     return
 
