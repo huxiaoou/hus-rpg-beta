@@ -12,7 +12,7 @@ const SPRT_TRACK: int = 0
 
 @export_group("Visual_Effects")
 @export var pos_offset: Vector2 = Vector2(0, -32)
-@export var rotation_rng: Vector2 = Vector2.ZERO
+@export var rotation_range: Vector2 = Vector2.ZERO
 @export var animation_modulate: Color = Color.WHITE
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
@@ -41,7 +41,7 @@ func set_location(location: Vector2) -> void:
 
 
 func play(_unit: Unit) -> void:
-    rotation = randf_range(rotation_rng.x, rotation_rng.y)
+    rotation = randf_range(rotation_range.x, rotation_range.y)
     visible = true
     animation_player.play("main")
     await animation_player.animation_finished
