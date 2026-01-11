@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6yeeomqdx5nc"]
+
+[ext_resource type="PackedScene" uid="uid://t0ftp5jkg1jg" path="res://scenes/effects/hit_effect.tscn" id="1_128ov"]
+[ext_resource type="Texture2D" uid="uid://d3vjdmddsk7go" path="res://assets/effects/hit_effect_blood_06.png" id="2_rb74o"]
+[ext_resource type="AudioStream" uid="uid://b58m2okv3xlxc" path="res://assets/audios/Blood_Spill_Soft_01.wav" id="3_rqvvj"]
+
+[node name="HitEffectBlood06" instance=ExtResource("1_128ov")]
+display_scale = Vector2(0.3, 0.3)
+sprt_frms = ExtResource("2_rb74o")
+vframes = 9
+sound_effect = ExtResource("3_rqvvj")
+rotation_rng = Vector2(-0.524, 0.524)

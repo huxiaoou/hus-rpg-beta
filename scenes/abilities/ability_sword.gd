@@ -3,7 +3,7 @@ extends Ability
 class_name AbilitySword
 
 @export var attack_range: int = 1
-@onready var hit_effect: HitEffect = $HitEffectBlood01
+@onready var hit_effect: HitEffect = $HitEffectBlood06
 
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
