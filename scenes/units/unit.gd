@@ -4,6 +4,10 @@ class_name Unit
 
 signal unit_turn_finished(unit: Unit)
 signal unit_attack_impacted(unit: Unit)
+signal unit_health_changed(health: int)
+signal unit_magicka_changed(magicka: int)
+signal unit_stamina_changed(stamina: int)
+signal unit_resolve_changed(resolve: int)
 
 enum GroupFlag {
     ALLY,
@@ -18,8 +22,12 @@ enum GroupFlag {
 @export var stamina: int = 12
 @export var magicka: int = 100
 @export var resolve: int = 100
+@export var max_health: int = 100
+@export var max_stamina: int = 12
+@export var max_magicka: int = 100
+@export var max_resolve: int = 100
 @export var armor: int = 8
-@export var attack: int = 12
+@export var attack: int = 240
 
 @export_group("Init")
 @export var init_cell: Vector2i
@@ -120,24 +128,39 @@ func emit_unit_attack_impacted() -> void:
     return
 
 
-func on_hurt(_unit: Unit) -> void:
+func on_hurt(unit: Unit) -> void:
     anim_player.play("hurt")
+    var damage: int = (unit.attack * (1 - min((armor as float) / 40, 1))) as int
     await anim_player.animation_finished
-    anim_player.play("idle")
+    change_health(-damage)
+    print("%s attacks with attack %d" % [unit.name, unit.attack])
+    print("%s takes %d damage, health is %d" % [name, damage, health])
+    if health <= 0:
+        anim_player.play("die")
+    else:
+        anim_player.play("idle")
     return
 
 
 func change_health(delta_health: int) -> void:
-    health += delta_health
+    health = clampi(health + delta_health, 0, max_health)
+    unit_health_changed.emit(health)
+    return
 
 
 func change_stamina(delta_stamina: int) -> void:
-    stamina += delta_stamina
+    stamina = clampi(stamina + delta_stamina, 0, max_stamina)
+    unit_stamina_changed.emit(stamina)
+    return
 
 
 func change_magicka(delta_magicka: int) -> void:
-    magicka += delta_magicka
+    magicka = clampi(magicka + delta_magicka, 0, max_magicka)
+    unit_magicka_changed.emit(magicka)
+    return
 
 
 func change_resolve(delta_resolve: int) -> void:
-    resolve += delta_resolve
+    resolve = clampi(resolve + delta_resolve, 0, max_resolve)
+    unit_resolve_changed.emit(resolve)
+    return
