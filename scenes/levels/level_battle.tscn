@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://glfluus0hekk" path="res://scenes/levels/cell_indicator_battle.tscn" id="4_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://2r2qyutmbsd2" path="res://scenes/levels/layer_battle_nav.tscn" id="5_odxcu"]
 [ext_resource type="TileSet" uid="uid://c884hvc0bg6ua" path="res://resources/tile_set_hex_battle.tres" id="6_or4fg"]
-[ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="7_pd4wd"]
 [ext_resource type="PackedScene" uid="uid://t6nau0ubmot8" path="res://scenes/units/unit_skull.tscn" id="8_d4bfr"]
 [ext_resource type="PackedScene" uid="uid://bm5m1mow7et3r" path="res://scenes/units/unit_viking.tscn" id="8_k1ymq"]
+[ext_resource type="PackedScene" uid="uid://c40qa0yk65dev" path="res://scenes/ui/ui_avatar.tscn" id="8_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="10_wuj0f"]
 
 [node name="LevelBattle" type="Node"]
@@ -36,16 +36,10 @@ tile_set = ExtResource("6_or4fg")
 offset_bottom = 596.0
 scale = Vector2(0.5, 0.5)
 
-[node name="UIAvatar1" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_pd4wd")]
+[node name="UIAvatar1" parent="CanvasLayer/VBoxContainer" instance=ExtResource("8_lxgdc")]
 layout_mode = 2
 
-[node name="UIAvatar2" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_pd4wd")]
-layout_mode = 2
-
-[node name="UIAvatar3" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_pd4wd")]
-layout_mode = 2
-
-[node name="UIAvatar4" parent="CanvasLayer/VBoxContainer" instance=ExtResource("7_pd4wd")]
+[node name="UIAvatar2" parent="CanvasLayer/VBoxContainer" instance=ExtResource("8_lxgdc")]
 layout_mode = 2
 
 [node name="Units" type="Node2D" parent="."]

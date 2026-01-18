@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://lk38fkcel3v8" path="res://scenes/levels/level_world.gd" id="1_xx7ag"]
 [ext_resource type="TileSet" uid="uid://838vgvof2ytn" path="res://resources/tile_set_hex_world.tres" id="2_xx7ag"]
 [ext_resource type="Script" uid="uid://dlya8v2v12tue" path="res://scenes/levels/layer_hex_world.gd" id="3_x4fyf"]
-[ext_resource type="PackedScene" uid="uid://b7i6lo43napfl" path="res://scenes/ui/ui_avatar.tscn" id="4_vru8e"]
+[ext_resource type="PackedScene" uid="uid://c40qa0yk65dev" path="res://scenes/ui/ui_avatar.tscn" id="5_xx7ag"]
 
 [node name="LevelWorld" type="Node"]
 script = ExtResource("1_xx7ag")
@@ -22,4 +22,4 @@ script = ExtResource("3_x4fyf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UIAvatar" parent="CanvasLayer" instance=ExtResource("4_vru8e")]
+[node name="UIAvatar2" parent="CanvasLayer" instance=ExtResource("5_xx7ag")]

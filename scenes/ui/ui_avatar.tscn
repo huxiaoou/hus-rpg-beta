@@ -1,76 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7i6lo43napfl"]
+[gd_scene load_steps=8 format=3 uid="uid://c40qa0yk65dev"]
 
-[ext_resource type="Texture2D" uid="uid://bbrshh7oddct8" path="res://assets/ui/frame_empty.png" id="1_1cfvi"]
-[ext_resource type="Script" uid="uid://dbnub4n1bqvdl" path="res://scenes/ui/ui_avatar.gd" id="1_km680"]
-[ext_resource type="Texture2D" uid="uid://dlpjytq2bny22" path="res://assets/ui/fill_1.png" id="2_kiu1l"]
-[ext_resource type="Texture2D" uid="uid://dww4vd7mes75c" path="res://assets/ui/fill_2.png" id="4_x6ls6"]
+[ext_resource type="Script" uid="uid://eobdlfcjda0m" path="res://scenes/ui/ui_avatar.gd" id="1_7d2qh"]
+[ext_resource type="PackedScene" uid="uid://blygpu0xndw5o" path="res://scenes/ui/ui_unit_frame.tscn" id="1_lfsq8"]
+[ext_resource type="Texture2D" uid="uid://cx6kdf4fhr4xl" path="res://assets/ui/UnitFrame_Avatar_Example.png" id="2_wovc6"]
+[ext_resource type="Texture2D" uid="uid://di4ti3r73dfjy" path="res://assets/ui/UnitFrame_MP_Fill_Grayscale.png" id="3_gssdb"]
+[ext_resource type="PackedScene" uid="uid://deidmkdqdm6n2" path="res://scenes/ui/ui_dual_progress_bar.tscn" id="3_m4day"]
+[ext_resource type="PackedScene" uid="uid://cty2b8d00v7av" path="res://scenes/ui/ui_level.tscn" id="4_m4day"]
+[ext_resource type="PackedScene" uid="uid://b3y1iqpi2uvcb" path="res://scenes/ui/ui_bar_points.tscn" id="8_q6p4n"]
 
 [node name="UIAvatar" type="Control"]
-custom_minimum_size = Vector2(712, 196)
+custom_minimum_size = Vector2(679, 176)
 layout_mode = 3
 anchors_preset = 0
-scale = Vector2(0.5, 0.5)
-script = ExtResource("1_km680")
+script = ExtResource("1_7d2qh")
+avatar = ExtResource("2_wovc6")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="TextureAvatar" type="TextureRect" parent="."]
+[node name="UIUnitFrame" parent="." instance=ExtResource("1_lfsq8")]
 layout_mode = 0
-offset_right = 714.0
-offset_bottom = 201.0
-texture = ExtResource("1_1cfvi")
 
-[node name="BarHealthBg" type="TextureProgressBar" parent="TextureAvatar"]
+[node name="UIBarHealth" parent="." instance=ExtResource("3_m4day")]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 34.0
-offset_right = 690.0
-offset_bottom = 92.0
-value = 100.0
-stretch_margin_left = 16
-stretch_margin_top = 4
-stretch_margin_right = 50
-stretch_margin_bottom = 4
-texture_progress = ExtResource("2_kiu1l")
-tint_progress = Color(0.94, 0.94, 0.94, 0.501961)
+offset_left = 172.0
+offset_top = 48.0
+offset_right = 172.0
+offset_bottom = 48.0
 
-[node name="BarHealthFg" type="TextureProgressBar" parent="TextureAvatar"]
+[node name="UIBarMagicka" parent="." instance=ExtResource("3_m4day")]
 layout_mode = 0
-offset_left = 160.0
-offset_top = 34.0
-offset_right = 690.0
-offset_bottom = 92.0
-value = 100.0
-stretch_margin_left = 16
-stretch_margin_top = 4
-stretch_margin_right = 50
-stretch_margin_bottom = 4
-texture_progress = ExtResource("2_kiu1l")
+offset_left = 166.0
+offset_top = 96.0
+offset_right = 166.0
+offset_bottom = 96.0
+progress_texture = ExtResource("3_gssdb")
+fore_color = Color(0.204797, 0.484309, 1, 1)
 
-[node name="BarMagickaBg" type="TextureProgressBar" parent="TextureAvatar"]
+[node name="UIBarPoints" parent="." instance=ExtResource("8_q6p4n")]
 layout_mode = 0
-offset_left = 156.0
-offset_top = 104.0
-offset_right = 686.0
-offset_bottom = 162.0
-value = 100.0
-stretch_margin_left = 16
-stretch_margin_top = 4
-stretch_margin_right = 50
-stretch_margin_bottom = 4
-texture_progress = ExtResource("4_x6ls6")
-tint_progress = Color(0.94, 0.94, 0.94, 0.501961)
+offset_left = 320.0
+offset_top = 120.0
+offset_right = 448.0
+offset_bottom = 152.0
 
-[node name="BarMagickaFg" type="TextureProgressBar" parent="TextureAvatar"]
+[node name="UILevel" parent="." instance=ExtResource("4_m4day")]
 layout_mode = 0
-offset_left = 156.0
-offset_top = 104.0
-offset_right = 686.0
-offset_bottom = 162.0
-value = 100.0
-stretch_margin_left = 16
-stretch_margin_top = 4
-stretch_margin_right = 50
-stretch_margin_bottom = 4
-texture_progress = ExtResource("4_x6ls6")
+offset_left = 136.0
+offset_top = 117.0
+offset_right = 186.0
+offset_bottom = 167.0
