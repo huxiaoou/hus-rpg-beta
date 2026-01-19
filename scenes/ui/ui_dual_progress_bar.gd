@@ -73,9 +73,10 @@ func _increase_bar(
 
 
 func on_value_changed(new_value: float) -> void:
-    if new_value < dual_pb_val:
-        _decrease_bar(new_value, 0.5)
-    elif new_value > dual_pb_val:
-        _increase_bar(new_value, 0.5)
-    dual_pb_val = new_value
+    var clamped_value: float = clampf(new_value, dual_pb_min_val, dual_pb_max_val)
+    if clamped_value < dual_pb_val:
+        _decrease_bar(clamped_value, 0.5)
+    elif clamped_value > dual_pb_val:
+        _increase_bar(clamped_value, 0.5)
+    dual_pb_val = clamped_value
     return

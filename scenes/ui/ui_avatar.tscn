@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c40qa0yk65dev"]
+[gd_scene load_steps=9 format=3 uid="uid://c40qa0yk65dev"]
 
 [ext_resource type="Script" uid="uid://eobdlfcjda0m" path="res://scenes/ui/ui_avatar.gd" id="1_7d2qh"]
+[ext_resource type="Texture2D" uid="uid://bbturg63epra4" path="res://assets/ui/UnitFrame_Background.png" id="1_8jfd8"]
 [ext_resource type="PackedScene" uid="uid://blygpu0xndw5o" path="res://scenes/ui/ui_unit_frame.tscn" id="1_lfsq8"]
 [ext_resource type="Texture2D" uid="uid://cx6kdf4fhr4xl" path="res://assets/ui/UnitFrame_Avatar_Example.png" id="2_wovc6"]
 [ext_resource type="Texture2D" uid="uid://di4ti3r73dfjy" path="res://assets/ui/UnitFrame_MP_Fill_Grayscale.png" id="3_gssdb"]
@@ -8,15 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://cty2b8d00v7av" path="res://scenes/ui/ui_level.tscn" id="4_m4day"]
 [ext_resource type="PackedScene" uid="uid://b3y1iqpi2uvcb" path="res://scenes/ui/ui_bar_points.tscn" id="8_q6p4n"]
 
-[node name="UIAvatar" type="Control"]
-custom_minimum_size = Vector2(679, 176)
-layout_mode = 3
-anchors_preset = 0
+[node name="UIAvatar" type="TextureRect"]
+offset_right = 679.0
+offset_bottom = 176.0
+texture = ExtResource("1_8jfd8")
 script = ExtResource("1_7d2qh")
 avatar = ExtResource("2_wovc6")
 
 [node name="UIUnitFrame" parent="." instance=ExtResource("1_lfsq8")]
 layout_mode = 0
+offset_left = 37.0
+offset_top = 18.0
+offset_right = 172.0
+offset_bottom = 153.0
 
 [node name="UIBarHealth" parent="." instance=ExtResource("3_m4day")]
 layout_mode = 0

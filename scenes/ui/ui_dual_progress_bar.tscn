@@ -3,22 +3,19 @@
 [ext_resource type="Script" uid="uid://dl7tnu82riyxk" path="res://scenes/ui/ui_dual_progress_bar.gd" id="1_50gne"]
 [ext_resource type="Texture2D" uid="uid://cywvbadg7rue6" path="res://assets/ui/UnitFrame_HP_Fill_Grayscale.png" id="2_iuq7t"]
 
-[node name="UIDualProgressBar" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="UIDualProgressBar" type="CenterContainer"]
+custom_minimum_size = Vector2(256, 32)
+offset_right = 1.0
+offset_bottom = 1.0
 script = ExtResource("1_50gne")
 progress_texture = ExtResource("2_iuq7t")
-fore_color = Color(0.501961, 0, 0, 1)
+fore_color = Color(0.479114, 6.97896e-07, 1.68458e-07, 1)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="PBBack" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 
 [node name="PBFore" type="TextureProgressBar" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2

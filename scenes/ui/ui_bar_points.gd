@@ -12,13 +12,25 @@ var bar_points: Array[UIEnergyPoint] = []
 
 
 func _ready() -> void:
-    var scene_point: PackedScene = preload("res://scenes/ui/ui_energy_point.tscn")
-    for i: int in range(tot_size):
-        var point: UIEnergyPoint = scene_point.instantiate()
-        add_child(point)
+    var counter: int = 0
+    for point: UIEnergyPoint in get_children():
+        bar_points.append(point)
+        counter += 1
+
+    if counter <= tot_size:
+        var scene_point: PackedScene = preload("res://scenes/ui/ui_energy_point.tscn")
+        for i: int in range(tot_size - counter):
+            var point: UIEnergyPoint = scene_point.instantiate()
+            add_child(point)
+            bar_points.append(point)
+    else:
+        for i: int in range(counter - tot_size):
+            var point: UIEnergyPoint = bar_points.pop_back()
+            point.queue_free()
+
+    for point: UIEnergyPoint in bar_points:
         point.max_value = point_max_val
         point.setup()
-        bar_points.append(point)
     bar_max_val = point_max_val * tot_size
     change_bar(bar_max_val)
     return
@@ -53,15 +65,7 @@ func change_bar(delta: float) -> void:
     return
 
 
-func set_bar(value: float) -> void:
+func on_bar_changed(value: float) -> void:
     _set_bar_value(value)
     update_points()
-    return
-
-
-func _unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed("test_add"):
-        change_bar(1.0)
-    elif event.is_action_pressed("test_subtract"):
-        change_bar(-1.0)
     return
