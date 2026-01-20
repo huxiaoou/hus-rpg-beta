@@ -6,9 +6,10 @@
 [node name="UIUnitFrame" type="CenterContainer"]
 offset_right = 135.0
 offset_bottom = 135.0
+mouse_filter = 0
 script = ExtResource("1_bsut2")
 
-[node name="UnitAvatar" type="TextureButton" parent="."]
+[node name="UnitAvatar" type="TextureRect" parent="."]
 layout_mode = 2
 
 [node name="Overlay" type="TextureRect" parent="."]

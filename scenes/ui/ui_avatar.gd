@@ -1,7 +1,8 @@
 extends Control
 
-class_name UIAvatar2
+class_name UIAvatar
 
+## a texture with size = (136, 136) and a round portrait at the center
 @export var avatar: Texture2D
 
 @onready var ui_unit_frame: UIUnitFrame = $UIUnitFrame

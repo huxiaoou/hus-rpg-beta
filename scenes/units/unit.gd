@@ -27,7 +27,7 @@ enum GroupFlag {
 @export var max_magicka: int = 100
 @export var max_resolve: int = 100
 @export var armor: int = 8
-@export var attack: int = 240
+@export var attack: int = 12
 
 @export_group("Init")
 @export var init_cell: Vector2i
