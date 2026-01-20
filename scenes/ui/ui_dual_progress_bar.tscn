@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://deidmkdqdm6n2"]
+[gd_scene load_steps=4 format=3 uid="uid://deidmkdqdm6n2"]
 
 [ext_resource type="Script" uid="uid://dl7tnu82riyxk" path="res://scenes/ui/ui_dual_progress_bar.gd" id="1_50gne"]
 [ext_resource type="Texture2D" uid="uid://cywvbadg7rue6" path="res://assets/ui/UnitFrame_HP_Fill_Grayscale.png" id="2_iuq7t"]
+[ext_resource type="FontFile" uid="uid://du6ww8fjaksqr" path="res://assets/fonts/Assassin$ Regular.ttf" id="3_th5rs"]
 
 [node name="UIDualProgressBar" type="CenterContainer"]
-custom_minimum_size = Vector2(256, 32)
 offset_right = 1.0
 offset_bottom = 1.0
 script = ExtResource("1_50gne")
@@ -19,3 +19,9 @@ layout_mode = 2
 
 [node name="PBFore" type="TextureProgressBar" parent="."]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_th5rs")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
