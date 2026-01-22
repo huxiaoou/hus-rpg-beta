@@ -1,54 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://c40qa0yk65dev"]
+[gd_scene load_steps=10 format=3 uid="uid://c40qa0yk65dev"]
 
 [ext_resource type="Script" uid="uid://eobdlfcjda0m" path="res://scenes/ui/ui_avatar.gd" id="1_7d2qh"]
-[ext_resource type="Texture2D" uid="uid://bbturg63epra4" path="res://assets/ui/UnitFrame_Background.png" id="1_8jfd8"]
 [ext_resource type="PackedScene" uid="uid://blygpu0xndw5o" path="res://scenes/ui/ui_unit_frame.tscn" id="1_lfsq8"]
-[ext_resource type="Texture2D" uid="uid://cx6kdf4fhr4xl" path="res://assets/ui/UnitFrame_Avatar_Example.png" id="2_wovc6"]
-[ext_resource type="Texture2D" uid="uid://di4ti3r73dfjy" path="res://assets/ui/UnitFrame_MP_Fill_Grayscale.png" id="3_gssdb"]
+[ext_resource type="Texture2D" uid="uid://bsaojguwkklfj" path="res://assets/ui/avatar_example.png" id="3_8jfd8"]
 [ext_resource type="PackedScene" uid="uid://deidmkdqdm6n2" path="res://scenes/ui/ui_dual_progress_bar.tscn" id="3_m4day"]
 [ext_resource type="PackedScene" uid="uid://cty2b8d00v7av" path="res://scenes/ui/ui_level.tscn" id="4_m4day"]
+[ext_resource type="Texture2D" uid="uid://dn4lfce5r110y" path="res://assets/ui/bar_main_red.png" id="5_8jfd8"]
+[ext_resource type="Texture2D" uid="uid://bk28gvn7uqf43" path="res://assets/ui/bar_secondary_blue.png" id="6_8jfd8"]
+[ext_resource type="Texture2D" uid="uid://dmst20ej6ouru" path="res://assets/ui/bonus_bar_xp_fill_empty.png" id="7_ymq1w"]
 [ext_resource type="PackedScene" uid="uid://b3y1iqpi2uvcb" path="res://scenes/ui/ui_bar_points.tscn" id="8_q6p4n"]
 
-[node name="UIAvatar" type="TextureRect"]
-offset_right = 679.0
-offset_bottom = 176.0
-texture = ExtResource("1_8jfd8")
+[node name="UIAvatar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_7d2qh")
-avatar = ExtResource("2_wovc6")
+avatar = ExtResource("3_8jfd8")
 
 [node name="UIUnitFrame" parent="." instance=ExtResource("1_lfsq8")]
-layout_mode = 0
-offset_left = 37.0
-offset_top = 18.0
-offset_right = 172.0
-offset_bottom = 153.0
+layout_mode = 1
+offset_right = 704.0
 
 [node name="UIBarHealth" parent="." instance=ExtResource("3_m4day")]
 layout_mode = 0
-offset_left = 172.0
-offset_top = 48.0
-offset_right = 172.0
-offset_bottom = 48.0
+offset_left = 150.0
+offset_top = 42.0
+offset_right = 278.0
+offset_bottom = 66.0
+scale = Vector2(0.81, 0.81)
+progress_texture = ExtResource("5_8jfd8")
+fore_color = Color(0.505075, 4.03095e-07, 3.36915e-07, 1)
 
 [node name="UIBarMagicka" parent="." instance=ExtResource("3_m4day")]
 layout_mode = 0
-offset_left = 166.0
-offset_top = 96.0
-offset_right = 166.0
-offset_bottom = 96.0
-progress_texture = ExtResource("3_gssdb")
+offset_left = 157.0
+offset_top = 88.0
+offset_right = 285.0
+offset_bottom = 112.0
+scale = Vector2(0.8, 0.8)
+progress_texture = ExtResource("6_8jfd8")
 fore_color = Color(0.204797, 0.484309, 1, 1)
+
+[node name="UIBarResolve" parent="." instance=ExtResource("3_m4day")]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 114.0
+offset_right = 279.0
+offset_bottom = 138.0
+scale = Vector2(0.8, 0.8)
+progress_texture = ExtResource("7_ymq1w")
 
 [node name="UIBarPoints" parent="." instance=ExtResource("8_q6p4n")]
 layout_mode = 0
-offset_left = 320.0
-offset_top = 120.0
-offset_right = 448.0
-offset_bottom = 152.0
+offset_left = 283.0
+offset_top = 16.0
+offset_right = 555.0
+offset_bottom = 58.0
 
 [node name="UILevel" parent="." instance=ExtResource("4_m4day")]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 117.0
-offset_right = 186.0
-offset_bottom = 167.0
+offset_left = 90.0
+offset_top = 106.0
+offset_right = 148.0
+offset_bottom = 164.0

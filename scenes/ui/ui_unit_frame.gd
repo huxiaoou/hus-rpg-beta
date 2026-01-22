@@ -4,7 +4,7 @@ class_name UIUnitFrame
 
 signal unit_frame_double_clicked()
 
-@onready var unit_avatar: TextureRect = $UnitAvatar
+@onready var unit_avatar: TextureRect = $CenterContainer/UnitAvatar
 
 
 func set_avatar(avatar: Texture2D) -> void:

@@ -5,11 +5,11 @@
 [ext_resource type="FontFile" uid="uid://du6ww8fjaksqr" path="res://assets/fonts/Assassin$ Regular.ttf" id="3_th5rs"]
 
 [node name="UIDualProgressBar" type="CenterContainer"]
-offset_right = 1.0
-offset_bottom = 1.0
+custom_minimum_size = Vector2(128, 12)
+offset_right = 128.0
+offset_bottom = 22.0
 script = ExtResource("1_50gne")
 progress_texture = ExtResource("2_iuq7t")
-fore_color = Color(0.479114, 6.97896e-07, 1.68458e-07, 1)
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
