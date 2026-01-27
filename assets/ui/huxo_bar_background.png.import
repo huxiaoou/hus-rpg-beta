@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di4ti3r73dfjy"
-path="res://.godot/imported/UnitFrame_MP_Fill_Grayscale.png-baaaac29e791c16cfb4d5fdbe783b1bb.ctex"
+uid="uid://b6e0yqgvx8fq8"
+path="res://.godot/imported/huxo_bar_background.png-0b2f75dfd8712edb37a5c9e956e19a59.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/UnitFrame_MP_Fill_Grayscale.png"
-dest_files=["res://.godot/imported/UnitFrame_MP_Fill_Grayscale.png-baaaac29e791c16cfb4d5fdbe783b1bb.ctex"]
+source_file="res://assets/ui/huxo_bar_background.png"
+dest_files=["res://.godot/imported/huxo_bar_background.png-0b2f75dfd8712edb37a5c9e956e19a59.ctex"]
 
 [params]
 

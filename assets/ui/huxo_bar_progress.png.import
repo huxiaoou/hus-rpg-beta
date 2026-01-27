@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf6ylelq1hpcd"
-path="res://.godot/imported/UnitFrame_Point_Fill.png-cb73fdc482706e1a34328e393bafc4d7.ctex"
+uid="uid://bneewvi2dnxff"
+path="res://.godot/imported/huxo_bar_progress.png-0bb4976034a04c9db9ad555e9dd34f46.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/UnitFrame_Point_Fill.png"
-dest_files=["res://.godot/imported/UnitFrame_Point_Fill.png-cb73fdc482706e1a34328e393bafc4d7.ctex"]
+source_file="res://assets/ui/huxo_bar_progress.png"
+dest_files=["res://.godot/imported/huxo_bar_progress.png-0bb4976034a04c9db9ad555e9dd34f46.ctex"]
 
 [params]
 

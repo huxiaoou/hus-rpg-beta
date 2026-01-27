@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cvew451jfgrjy" path="res://scenes/ui/ui_level.gd" id="1_cn2m4"]
 [ext_resource type="Texture2D" uid="uid://mw4h1vu1b23m" path="res://assets/ui/UnitFrame_Level_Background.png" id="2_f1mk2"]
-[ext_resource type="FontFile" uid="uid://dy8q3ru5ei7t" path="res://assets/fonts/Cambria Math Regular.ttf" id="3_iw7x0"]
 [ext_resource type="Texture2D" uid="uid://b2kyuoxv67vec" path="res://assets/ui/UnitFrame_Level_Border2.png" id="4_70ue7"]
+[ext_resource type="FontFile" uid="uid://dkjx1ffshpy0b" path="res://assets/fonts/Thailandesa.ttf" id="4_cn2m4"]
 
 [node name="UILevel" type="CenterContainer"]
 offset_right = 58.0
@@ -24,7 +24,7 @@ tint_under = Color(0.505882, 0.431373, 0.388235, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_iw7x0")
+theme_override_fonts/font = ExtResource("4_cn2m4")
 theme_override_font_sizes/font_size = 24
 text = "123"
 horizontal_alignment = 1

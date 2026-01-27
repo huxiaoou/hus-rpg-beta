@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g6c8pr4f7mlh"
-path="res://.godot/imported/unitframe_avatar_frame.png-0d75e0823f69dade673cfe17cab25412.ctex"
+uid="uid://bg3bqtu30eyxc"
+path="res://.godot/imported/huxo_info_frame_background.png-560d870db44736f3fe1d65a0de320091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/unitframe_avatar_frame.png"
-dest_files=["res://.godot/imported/unitframe_avatar_frame.png-0d75e0823f69dade673cfe17cab25412.ctex"]
+source_file="res://assets/ui/huxo_info_frame_background.png"
+dest_files=["res://.godot/imported/huxo_info_frame_background.png-560d870db44736f3fe1d65a0de320091.ctex"]
 
 [params]
 

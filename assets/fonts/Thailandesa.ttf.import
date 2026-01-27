@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dy8q3ru5ei7t"
-path="res://.godot/imported/Cambria Math Regular.ttf-7ad71e5c257d85a54e518733ba066273.fontdata"
+uid="uid://dkjx1ffshpy0b"
+path="res://.godot/imported/Thailandesa.ttf-3de8e3917f30a740fcabd073db4a1b73.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Cambria Math Regular.ttf"
-dest_files=["res://.godot/imported/Cambria Math Regular.ttf-7ad71e5c257d85a54e518733ba066273.fontdata"]
+source_file="res://assets/fonts/Thailandesa.ttf"
+dest_files=["res://.godot/imported/Thailandesa.ttf-3de8e3917f30a740fcabd073db4a1b73.fontdata"]
 
 [params]
 

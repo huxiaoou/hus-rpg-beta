@@ -4,11 +4,10 @@ class_name UIUnitFrame
 
 signal unit_frame_double_clicked()
 
-@onready var unit_avatar: TextureRect = $CenterContainer/UnitAvatar
-
+@onready var unit: TextureRect = $Unit
 
 func set_avatar(avatar: Texture2D) -> void:
-    unit_avatar.texture = avatar
+    unit.texture = avatar
 
 
 func _gui_input(event: InputEvent) -> void:
