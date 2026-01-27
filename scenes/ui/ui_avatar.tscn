@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c40qa0yk65dev"]
+[gd_scene load_steps=9 format=3 uid="uid://c40qa0yk65dev"]
 
 [ext_resource type="Script" uid="uid://eobdlfcjda0m" path="res://scenes/ui/ui_avatar.gd" id="1_7d2qh"]
 [ext_resource type="PackedScene" uid="uid://blygpu0xndw5o" path="res://scenes/ui/ui_unit_frame.tscn" id="1_lfsq8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cty2b8d00v7av" path="res://scenes/ui/ui_level.tscn" id="4_m4day"]
 [ext_resource type="Texture2D" uid="uid://bg3bqtu30eyxc" path="res://assets/ui/huxo_info_frame_background.png" id="5_isyae"]
 [ext_resource type="Texture2D" uid="uid://bwkw87nhg3hti" path="res://assets/ui/huxo_sep.png" id="7_mi5tj"]
+[ext_resource type="PackedScene" uid="uid://8yut7qrarppm" path="res://scenes/ui/ui_status.tscn" id="8_8jfd8"]
 
 [node name="UIAvatar" type="HBoxContainer"]
 offset_right = 4170.0
@@ -88,4 +89,10 @@ patch_margin_right = 4
 
 [node name="HBoxPlaceHolder" type="HBoxContainer" parent="HBoxInfo/Bg/HBox/VBoxBars"]
 custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="UIStatusAttack" parent="HBoxInfo/Bg/HBox/VBoxBars/HBoxPlaceHolder" instance=ExtResource("8_8jfd8")]
+layout_mode = 2
+
+[node name="UIStatusDefense" parent="HBoxInfo/Bg/HBox/VBoxBars/HBoxPlaceHolder" instance=ExtResource("8_8jfd8")]
 layout_mode = 2
