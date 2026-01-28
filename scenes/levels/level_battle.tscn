@@ -15,6 +15,7 @@
 script = ExtResource("1_d4bfr")
 bg_texture = ExtResource("2_k1ymq")
 bg_music = ExtResource("3_wuj0f")
+scene_ui_avatar = ExtResource("8_lxgdc")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"BGM"
@@ -36,12 +37,6 @@ tile_set = ExtResource("6_or4fg")
 offset_right = 626.0
 offset_bottom = 388.0
 scale = Vector2(0.5, 0.5)
-
-[node name="UIAvatar1" parent="CanvasLayer/VBoxAvatars" instance=ExtResource("8_lxgdc")]
-layout_mode = 2
-
-[node name="UIAvatar2" parent="CanvasLayer/VBoxAvatars" instance=ExtResource("8_lxgdc")]
-layout_mode = 2
 
 [node name="Units" type="Node2D" parent="."]
 y_sort_enabled = true

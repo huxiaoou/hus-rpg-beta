@@ -89,18 +89,17 @@ patch_margin_left = 4
 patch_margin_right = 4
 
 [node name="HBoxStatus" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars"]
-custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 alignment = 1
 
 [node name="UIStatusAttack" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
 layout_mode = 2
 
-[node name="UIStatusDefense" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
+[node name="UIStatusArmor" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
 layout_mode = 2
 custom_icon = ExtResource("9_ymq1w")
 
-[node name="UIStatusBoots" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
+[node name="UIStatusInitiative" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
 layout_mode = 2
 custom_icon = ExtResource("10_7k6d5")

@@ -16,7 +16,6 @@ enum GroupFlag {
 }
 
 @export_group("Attributes")
-@export var initiative: int = 12
 @export var group_flag: GroupFlag = GroupFlag.NEUTRAL
 @export var health: int = 100
 @export var stamina: int = 12
@@ -26,8 +25,9 @@ enum GroupFlag {
 @export var max_stamina: int = 12
 @export var max_magicka: int = 100
 @export var max_resolve: int = 100
-@export var armor: int = 8
 @export var attack: int = 12
+@export var armor: int = 8
+@export var initiative: int = 12
 
 @export_group("Init")
 @export var init_cell: Vector2i
@@ -56,6 +56,29 @@ static func sort_by_initiative(a: Unit, b: Unit) -> bool:
 func _ready() -> void:
     mgr_abilities.setup(self)
     play_animation("idle")
+    return
+
+
+func connect_ui_avatar(ui_avatar: UIAvatar) -> void:
+    # health bar
+    ui_avatar.ui_bar_health.init_value(health, max_health, 0, 1)
+    unit_health_changed.connect(ui_avatar.ui_bar_health.on_value_changed)
+
+    # magicka bar
+    ui_avatar.ui_bar_magicka.init_value(magicka, max_magicka, 0, 1)
+    unit_magicka_changed.connect(ui_avatar.ui_bar_magicka.on_value_changed)
+
+    # stamina bar
+    ui_avatar.ui_bar_stamina.init_value(stamina, max_stamina, 0, 1)
+    unit_stamina_changed.connect(ui_avatar.ui_bar_stamina.on_value_changed)
+
+    # resolve bar
+    ui_avatar.ui_bar_resolve.init_value(resolve, max_resolve, 0, 1)
+    unit_resolve_changed.connect(ui_avatar.ui_bar_resolve.on_value_changed)
+
+    ui_avatar.ui_status_attack.set_value(attack)
+    ui_avatar.ui_status_armor.set_value(armor)
+    ui_avatar.ui_status_initiative.set_value(initiative)
     return
 
 

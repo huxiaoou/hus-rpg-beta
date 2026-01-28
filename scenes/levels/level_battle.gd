@@ -2,9 +2,12 @@ extends Node
 
 class_name LevelBattle
 
-@export_group("background")
+@export_group("Background")
 @export var bg_texture: Texture2D
 @export var bg_music: AudioStream
+
+@export_group("UI")
+@export var scene_ui_avatar: PackedScene
 
 @onready var sprite_2d_bg: Sprite2D = $Sprite2DBg
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
@@ -14,6 +17,7 @@ class_name LevelBattle
 @onready var unit_skull: Unit = $Units/UnitSkull
 @onready var units_group: Node = $Units
 @onready var camera_controller: CameraController = $CameraController
+@onready var v_box_avatars: VBoxContainer = $CanvasLayer/VBoxAvatars
 
 
 func get_units() -> Array[Unit]:
@@ -31,6 +35,10 @@ func init_units(units: Array[Unit]) -> void:
         unit.setup_in_battle()
         unit.unit_attack_impacted.connect(camera_controller.on_unit_attack_impacted)
         ManagerCellBattle.disable_cell(unit.cell, unit)
+        if unit.group_flag == Unit.GroupFlag.ALLY:
+            var ui_avatar: UIAvatar = scene_ui_avatar.instantiate()
+            v_box_avatars.add_child(ui_avatar)
+            unit.connect_ui_avatar(ui_avatar)
     return
 
 

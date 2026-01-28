@@ -21,7 +21,7 @@ class_name UIDualProgressBar
 @onready var label: Label = $Label
 
 
-func init_pb(pb: TextureProgressBar, pb_texture: Texture2D, pb_color: Color) -> void:
+func init_pb_texture(pb: TextureProgressBar, pb_texture: Texture2D, pb_color: Color) -> void:
     pb.texture_progress = pb_texture
     pb.tint_progress = pb_color
     pb.value = dual_pb_val
@@ -32,10 +32,28 @@ func init_pb(pb: TextureProgressBar, pb_texture: Texture2D, pb_color: Color) -> 
     return
 
 
+func init_pb_value(pb: TextureProgressBar, value: float, max_value: float, min_value: float, step: float) -> void:
+    pb.value = value
+    pb.max_value = max_value
+    pb.min_value = min_value
+    pb.step = step
+    return
+
+
+func init_value(value: float, max_value: float, min_value: float, step: float) -> void:
+    dual_pb_max_val = max_value
+    dual_pb_min_val = min_value
+    dual_pb_step = step
+    dual_pb_val = value
+    init_pb_value(pb_back, value, max_value, min_value, step)
+    init_pb_value(pb_fore, value, max_value, min_value, step)
+    return
+
+
 func _ready() -> void:
     dual_pb_val = dual_pb_val
-    init_pb(pb_back, progress_texture, back_color)
-    init_pb(pb_fore, progress_texture, fore_color)
+    init_pb_texture(pb_back, progress_texture, back_color)
+    init_pb_texture(pb_fore, progress_texture, fore_color)
     return
 
 
