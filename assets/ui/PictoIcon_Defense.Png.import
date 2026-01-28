@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpl0wonahnqor"
-path="res://.godot/imported/huxo_icon_shield.png-deb0890cfb247449c41990a6b44a157a.ctex"
+uid="uid://catl1e5at5ylx"
+path="res://.godot/imported/PictoIcon_Defense.Png-2815db986bc02e682f2654c9b0867bac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/huxo_icon_shield.png"
-dest_files=["res://.godot/imported/huxo_icon_shield.png-deb0890cfb247449c41990a6b44a157a.ctex"]
+source_file="res://assets/ui/PictoIcon_Defense.Png"
+dest_files=["res://.godot/imported/PictoIcon_Defense.Png-2815db986bc02e682f2654c9b0867bac.ctex"]
 
 [params]
 
