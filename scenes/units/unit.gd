@@ -18,11 +18,11 @@ enum GroupFlag {
 @export_group("Attributes")
 @export var group_flag: GroupFlag = GroupFlag.NEUTRAL
 @export var health: int = 100
-@export var stamina: int = 12
+@export var stamina: int = 100
 @export var magicka: int = 100
 @export var resolve: int = 100
 @export var max_health: int = 100
-@export var max_stamina: int = 12
+@export var max_stamina: int = 100
 @export var max_magicka: int = 100
 @export var max_resolve: int = 100
 @export var attack: int = 12
@@ -36,6 +36,7 @@ enum GroupFlag {
 @onready var sprite_shadow: AnimatedSprite2D = $CharacterBody2D/SpriteShadow
 @onready var anim_player: AnimationPlayer = $CharacterBody2D/AnimPlayer
 @onready var mgr_abilities: ManagerAbilities = $ManagerAbilities
+@onready var ui_floating_health_bar: UIFloatingHealthBar = $UIFloatingHealthBar
 
 var astreams: Dictionary[String, AudioStream] = { }
 var cell: Vector2i:
@@ -54,6 +55,7 @@ static func sort_by_initiative(a: Unit, b: Unit) -> bool:
 
 
 func _ready() -> void:
+    connect_ui_floating_health_bar()
     mgr_abilities.setup(self)
     play_animation("idle")
     return
@@ -79,6 +81,12 @@ func connect_ui_avatar(ui_avatar: UIAvatar) -> void:
     ui_avatar.ui_status_attack.set_value(attack)
     ui_avatar.ui_status_armor.set_value(armor)
     ui_avatar.ui_status_initiative.set_value(initiative)
+    return
+
+
+func connect_ui_floating_health_bar() -> void:
+    ui_floating_health_bar.init_value(health, max_health, 0, 1)
+    unit_health_changed.connect(ui_floating_health_bar.on_value_changed)
     return
 
 
@@ -152,12 +160,12 @@ func emit_unit_attack_impacted() -> void:
 
 
 func on_hurt(unit: Unit) -> void:
-    anim_player.play("hurt")
     var damage: int = (unit.attack * (1 - min((armor as float) / 40, 1))) as int
-    await anim_player.animation_finished
     change_health(-damage)
+    anim_player.play("hurt")
     print("%s attacks with attack %d" % [unit.name, unit.attack])
     print("%s takes %d damage, health is %d" % [name, damage, health])
+    await anim_player.animation_finished
     if health <= 0:
         anim_player.play("die")
     else:
