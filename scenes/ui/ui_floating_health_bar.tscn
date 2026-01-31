@@ -1,10 +1,25 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxh1jbvf6hq3l"]
 
 [ext_resource type="Script" uid="uid://binrhawtinqol" path="res://scenes/ui/ui_floating_health_bar.gd" id="1_7n3n0"]
-[ext_resource type="Texture2D" uid="uid://1mmuwabf2os" path="res://assets/ui/Slider_Border_Tapered_01_Bg.png" id="1_pgxom"]
-[ext_resource type="Texture2D" uid="uid://dr7eb3y63m6k0" path="res://assets/ui/Slider_Border_Tapered_01_Border.png" id="3_blaca"]
+[ext_resource type="Texture2D" uid="uid://1mmuwabf2os" path="res://assets/ui/Slider_Border_Tapered_01_Bg.png" id="2_7n3n0"]
+[ext_resource type="Texture2D" uid="uid://dr7eb3y63m6k0" path="res://assets/ui/Slider_Border_Tapered_01_Border.png" id="3_53vuu"]
 [ext_resource type="Texture2D" uid="uid://cuxivnomdunav" path="res://assets/ui/silder_border_tappered_01_fill_red.png" id="3_ht27l"]
 [ext_resource type="FontFile" uid="uid://dkjx1ffshpy0b" path="res://assets/fonts/Thailandesa.ttf" id="4_ht27l"]
+
+[sub_resource type="Animation" id="Animation_53vuu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_7n3n0"]
 resource_name = "default"
@@ -24,21 +39,6 @@ tracks/0/keys = {
 "values": [Vector2(-80, -192), Vector2(-80, -194)]
 }
 
-[sub_resource type="Animation" id="Animation_53vuu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fb7i"]
 _data = {
 &"RESET": SubResource("Animation_53vuu"),
@@ -46,31 +46,33 @@ _data = {
 }
 
 [node name="UIFloatingHealthBar" type="CenterContainer"]
-offset_right = 160.0
-offset_bottom = 18.0
+custom_minimum_size = Vector2(320, 50)
+offset_left = -80.0
+offset_top = -193.058
+offset_right = 240.0
+offset_bottom = -143.058
 script = ExtResource("1_7n3n0")
 
 [node name="Bar" type="TextureProgressBar" parent="."]
-custom_minimum_size = Vector2(160, 18)
+custom_minimum_size = Vector2(320, 50)
 layout_mode = 2
-value = 100.0
+value = 80.0
 fill_mode = 6
 nine_patch_stretch = true
 stretch_margin_left = 24
 stretch_margin_right = 24
-texture_under = ExtResource("1_pgxom")
-texture_over = ExtResource("3_blaca")
+texture_under = ExtResource("2_7n3n0")
+texture_over = ExtResource("3_53vuu")
 texture_progress = ExtResource("3_ht27l")
-tint_under = Color(0.094, 0.071, 0.086, 0.5)
-tint_over = Color(0.458824, 0.341176, 0.231373, 1)
-tint_progress = Color(0.38, 0.071, 0.051, 0.6)
+tint_under = Color(0.272655, 0.272655, 0.272655, 1)
+tint_progress = Color(0.68, 0.68, 0.68, 1)
 
 [node name="Label" type="Label" parent="."]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ht27l")
-theme_override_font_sizes/font_size = 12
-text = "text"
+theme_override_font_sizes/font_size = 32
+text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -25,7 +25,7 @@ enum GroupFlag {
 @export var max_stamina: int = 100
 @export var max_magicka: int = 100
 @export var max_resolve: int = 100
-@export var attack: int = 12
+@export var attack: int = 24
 @export var armor: int = 8
 @export var initiative: int = 12
 

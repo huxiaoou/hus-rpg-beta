@@ -28,7 +28,7 @@ func _tween_bar(
         blink_attitude: Vector2 = Vector2(0.5, 1.0),
         blink_duration_seconds: float = 0.05,
 ):
-    var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+    var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
     tw.tween_interval(delay_sceonds)
     for t: int in range(blink_times):
         tw.tween_property(bar, "self_modulate:a", blink_attitude.x, blink_duration_seconds)

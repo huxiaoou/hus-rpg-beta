@@ -439,7 +439,4 @@ libraries = {
 scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("6_rk2mp")])
 
 [node name="UIFloatingHealthBar" parent="." instance=ExtResource("7_44d7s")]
-offset_left = -80.0
-offset_top = -194.0
-offset_right = 80.0
-offset_bottom = -142.0
+scale = Vector2(0.5, 0.5)
