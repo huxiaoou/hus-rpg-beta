@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c40qa0yk65dev" path="res://scenes/ui/ui_avatar.tscn" id="8_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://d0nmaer24ifid" path="res://scenes/units/unit_wizard.tscn" id="10_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="10_wuj0f"]
+[ext_resource type="PackedScene" uid="uid://n84gr0dlexsq" path="res://scenes/units/unit_archer.tscn" id="11_odxcu"]
 
 [node name="LevelBattle" type="Node" unique_id=1004733659]
 script = ExtResource("1_d4bfr")
@@ -52,5 +53,9 @@ init_cell = Vector2i(3, 5)
 [node name="UnitWizard" parent="Units" unique_id=1659877491 instance=ExtResource("10_lxgdc")]
 position = Vector2(383, 14)
 init_cell = Vector2i(3, 6)
+
+[node name="UnitArcher" parent="Units" unique_id=516109518 instance=ExtResource("11_odxcu")]
+position = Vector2(583, 1)
+init_cell = Vector2i(3, 8)
 
 [node name="CameraController" parent="." unique_id=2074291407 instance=ExtResource("10_wuj0f")]
