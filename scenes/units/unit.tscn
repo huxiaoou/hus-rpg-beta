@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://wqugq4huxv8u"]
+[gd_scene format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
@@ -405,15 +405,15 @@ _data = {
 &"walk": SubResource("Animation_rk2mp")
 }
 
-[node name="Unit" type="Node2D"]
+[node name="Unit" type="Node2D" unique_id=516109518]
 script = ExtResource("1_6e3tn")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=586026160]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1636582902]
 shape = SubResource("RectangleShape2D_5c8dj")
 
-[node name="SpriteShadow" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="SpriteShadow" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=853395425]
 self_modulate = Color(0.11, 0.107708, 0.1045, 0.137255)
 position = Vector2(60, -19)
 scale = Vector2(0.4, 0.4)
@@ -422,21 +422,23 @@ sprite_frames = ExtResource("3_mgebg")
 animation = &"walk"
 frame = 5
 
-[node name="SpriteBody" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="SpriteBody" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1398350913]
 position = Vector2(-5, -72)
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("3_mgebg")
 animation = &"walk"
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
-libraries = {
-&"": SubResource("AnimationLibrary_44d7s")
-}
+[node name="AnimPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=702366665]
+libraries/ = SubResource("AnimationLibrary_44d7s")
 
-[node name="APlayerUnitGamePlay" parent="CharacterBody2D" instance=ExtResource("3_rk2mp")]
+[node name="APlayerUnitGamePlay" parent="CharacterBody2D" unique_id=490961079 instance=ExtResource("3_rk2mp")]
 
-[node name="ManagerAbilities" parent="." instance=ExtResource("4_mgebg")]
+[node name="ManagerAbilities" parent="." unique_id=1772872154 instance=ExtResource("4_mgebg")]
 scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("6_rk2mp")])
 
-[node name="UIFloatingHealthBar" parent="." instance=ExtResource("7_44d7s")]
+[node name="UIFloatingHealthBar" parent="." unique_id=1704756695 instance=ExtResource("7_44d7s")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)

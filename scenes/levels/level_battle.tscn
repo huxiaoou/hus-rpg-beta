@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c640eb6d5fi7a"]
+[gd_scene format=4 uid="uid://c640eb6d5fi7a"]
 
 [ext_resource type="Script" uid="uid://cyqyl4ed5ujlw" path="res://scenes/levels/level_battle.gd" id="1_d4bfr"]
 [ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_k1ymq"]
@@ -9,42 +9,48 @@
 [ext_resource type="PackedScene" uid="uid://t6nau0ubmot8" path="res://scenes/units/unit_skull.tscn" id="8_d4bfr"]
 [ext_resource type="PackedScene" uid="uid://bm5m1mow7et3r" path="res://scenes/units/unit_viking.tscn" id="8_k1ymq"]
 [ext_resource type="PackedScene" uid="uid://c40qa0yk65dev" path="res://scenes/ui/ui_avatar.tscn" id="8_lxgdc"]
+[ext_resource type="PackedScene" uid="uid://d0nmaer24ifid" path="res://scenes/units/unit_wizard.tscn" id="10_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="10_wuj0f"]
 
-[node name="LevelBattle" type="Node"]
+[node name="LevelBattle" type="Node" unique_id=1004733659]
 script = ExtResource("1_d4bfr")
 bg_texture = ExtResource("2_k1ymq")
 bg_music = ExtResource("3_wuj0f")
 scene_ui_avatar = ExtResource("8_lxgdc")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1350419016]
 bus = &"BGM"
 
-[node name="Sprite2DBg" type="Sprite2D" parent="."]
+[node name="Sprite2DBg" type="Sprite2D" parent="." unique_id=1124843929]
 offset = Vector2(960, 540)
 
-[node name="Maps" type="Node" parent="."]
+[node name="Maps" type="Node" parent="." unique_id=1028632316]
 
-[node name="CellIndicatorBattle" parent="Maps" instance=ExtResource("4_lxgdc")]
+[node name="CellIndicatorBattle" parent="Maps" unique_id=1347731942 instance=ExtResource("4_lxgdc")]
 
-[node name="LayerBattleNav" parent="Maps" instance=ExtResource("5_odxcu")]
+[node name="LayerBattleNav" parent="Maps" unique_id=858066906 instance=ExtResource("5_odxcu")]
 tile_map_data = PackedByteArray("AAAAAAcAAgAAAAAAAAAAAAgAAgAAAAAAAAABAAYAAgAAAAAAAAABAAcAAgAAAAAAAAABAAgAAgAAAAAAAAACAAYAAgAAAAAAAAACAAcAAgAAAAAAAAACAAgAAgAAAAAAAAADAAYAAgAAAAAAAAADAAcAAgAAAAAAAAADAAgAAgAAAAAAAAAEAAYAAgAAAAAAAAAEAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAAFAAYAAgAAAAAAAAAFAAcAAgAAAAAAAAAFAAgAAgAAAAAAAAAGAAYAAgAAAAAAAAAGAAcAAgAAAAAAAAAGAAgAAgAAAAAAAAAHAAYAAgAAAAAAAAAHAAcAAgAAAAAAAAAHAAgAAgAAAAAAAAAIAAYAAgAAAAAAAAAIAAcAAgAAAAAAAAAIAAgAAgAAAAAAAAAJAAYAAgAAAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAKAAYAAgAAAAAAAAAKAAcAAgAAAAAAAAAKAAgAAgAAAAAAAAALAAYAAgAAAAAAAAALAAcAAgAAAAAAAAALAAgAAgAAAAAAAAAMAAcAAgAAAAAAAAAMAAgAAgAAAAAAAAAMAAkAAgAAAAAAAAAAAAkAAgAAAAAAAAABAAkAAgAAAAAAAAACAAkAAgAAAAAAAAACAAoAAgAAAAAAAAADAAkAAgAAAAAAAAAEAAkAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAkAAgAAAAAAAAAGAAkAAgAAAAAAAAAGAAoAAgAAAAAAAAAHAAkAAgAAAAAAAAAIAAkAAgAAAAAAAAAIAAoAAgAAAAAAAAAJAAkAAgAAAAAAAAAKAAkAAgAAAAAAAAAKAAoAAgAAAAAAAAALAAkAAgAAAAAAAAAAAAYAAgAAAAAAAAABAAUAAgAAAAAAAAADAAUAAgAAAAAAAAAMAAYAAgAAAAAAAAACAAUAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAUAAgAAAAAAAAAGAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAAIAAUAAgAAAAAAAAAJAAUAAgAAAAAAAAAKAAUAAgAAAAAAAAALAAUAAgAAAAAAAAA=")
 tile_set = ExtResource("6_or4fg")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=649640925]
 
-[node name="VBoxAvatars" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxAvatars" type="VBoxContainer" parent="CanvasLayer" unique_id=1335914158]
 offset_right = 626.0
 offset_bottom = 388.0
 scale = Vector2(0.5, 0.5)
 
-[node name="Units" type="Node2D" parent="."]
+[node name="Units" type="Node2D" parent="." unique_id=919210040]
 y_sort_enabled = true
 
-[node name="UnitSkull" parent="Units" instance=ExtResource("8_d4bfr")]
+[node name="UnitSkull" parent="Units" unique_id=579281172 instance=ExtResource("8_d4bfr")]
 init_cell = Vector2i(4, 6)
 
-[node name="UnitViking" parent="Units" instance=ExtResource("8_k1ymq")]
+[node name="UnitViking" parent="Units" unique_id=161643247 instance=ExtResource("8_k1ymq")]
+position = Vector2(195, 10)
 init_cell = Vector2i(3, 5)
 
-[node name="CameraController" parent="." instance=ExtResource("10_wuj0f")]
+[node name="UnitWizard" parent="Units" unique_id=1659877491 instance=ExtResource("10_lxgdc")]
+position = Vector2(383, 14)
+init_cell = Vector2i(3, 6)
+
+[node name="CameraController" parent="." unique_id=2074291407 instance=ExtResource("10_wuj0f")]

@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm5m1mow7et3r"]
+[gd_scene format=3 uid="uid://bm5m1mow7et3r"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_p5adc"]
 
-[node name="UnitViking" instance=ExtResource("1_p5adc")]
+[node name="UnitViking" unique_id=1765002764 instance=ExtResource("1_p5adc")]
 group_flag = 0
+
+[node name="UIFloatingHealthBar" parent="." index="2"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 50.0

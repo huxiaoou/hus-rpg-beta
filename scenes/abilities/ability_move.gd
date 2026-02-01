@@ -55,7 +55,10 @@ func _process(delta: float) -> void:
             return
         if potential_target_cell != ManagerCellBattle.get_indicator_cell():
             potential_target_cell = ManagerCellBattle.get_indicator_cell()
-            potential_path_cells_new = ManagerCellBattle.get_cells_path(owner_unit.cell, potential_target_cell)
+            potential_path_cells_new = ManagerCellBattle.get_cells_path(
+                owner_unit.cell,
+                potential_target_cell,
+            )
             for cell in potential_path_cells:
                 if cell not in potential_path_cells_new:
                     ManagerCellBattle.set_cell_vanilla(cell)

@@ -64,11 +64,12 @@ func get_cells_path(start_cell: Vector2i, end_cell: Vector2i) -> Array[Vector2i]
     if end_cell.distance_to(astar.get_point_position(end_point_id)) > 1e-2:
         print("Target cell is not in battle.")
         return []
-
+    astar.set_point_disabled(start_point_id, false)
     var id_path: PackedInt64Array = astar.get_id_path(start_point_id, end_point_id)
     var cells_path: Array[Vector2i] = []
     for point_id in id_path:
         cells_path.append(astar.get_point_position(point_id) as Vector2i)
+    astar.set_point_disabled(start_point_id, true)
     # print(cells_path)
     return cells_path
 

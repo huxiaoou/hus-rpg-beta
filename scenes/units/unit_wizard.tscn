@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d0nmaer24ifid"]
+
+[ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_v8pg2"]
+[ext_resource type="SpriteFrames" uid="uid://c74n757b8xlet" path="res://resources/sprt_frms_wizard.tres" id="2_gjdts"]
+
+[node name="UnitWizard" unique_id=1659877491 instance=ExtResource("1_v8pg2")]
+group_flag = 0
+
+[node name="SpriteShadow" parent="CharacterBody2D" index="1"]
+sprite_frames = ExtResource("2_gjdts")
+
+[node name="SpriteBody" parent="CharacterBody2D" index="2"]
+sprite_frames = ExtResource("2_gjdts")
+
+[node name="UIFloatingHealthBar" parent="." index="2"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 320.0
+offset_bottom = 50.0

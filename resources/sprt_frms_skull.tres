@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=88 format=3 uid="uid://c2mv8hkq0xwqm"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://c2mv8hkq0xwqm"]
 
 [ext_resource type="Texture2D" uid="uid://8yhp8pr6jroe" path="res://assets/units/unit_skull_attack.png" id="1_06wx1"]
 [ext_resource type="Texture2D" uid="uid://c6t4sgdgh5p6n" path="res://assets/units/unit_skull_die.png" id="2_4if1v"]
