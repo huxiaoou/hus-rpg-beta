@@ -6,14 +6,10 @@
 [node name="UnitSkull" unique_id=236103932 instance=ExtResource("1_aaq5n")]
 group_flag = 1
 
-[node name="SpriteShadow" parent="CharacterBody2D" index="1"]
+[node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
+position = Vector2(60, -18)
 sprite_frames = ExtResource("2_40vi7")
 
-[node name="SpriteBody" parent="CharacterBody2D" index="2"]
+[node name="SpriteBody" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="2" unique_id=1398350913]
+position = Vector2(-5, -69)
 sprite_frames = ExtResource("2_40vi7")
-
-[node name="UIFloatingHealthBar" parent="." index="2"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 320.0
-offset_bottom = 50.0
