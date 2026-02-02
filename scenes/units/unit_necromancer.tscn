@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://buian7rxpe03l"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_3rbbr"]
+[ext_resource type="Texture2D" uid="uid://colyv7yg7p8ex" path="res://assets/units/unit_necromancer_avatar.png" id="2_4yj6l"]
 [ext_resource type="SpriteFrames" uid="uid://bjgfnjk6onhfw" path="res://resources/sprt_frms_necromancer.tres" id="2_n6mlv"]
 
 [node name="UnitNecromancer" unique_id=516109518 instance=ExtResource("1_3rbbr")]
+avatar = ExtResource("2_4yj6l")
 group_flag = 1
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]

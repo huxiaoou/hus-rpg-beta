@@ -15,6 +15,9 @@ enum GroupFlag {
     NEUTRAL,
 }
 
+@export_group("UI")
+@export var avatar: Texture2D
+
 @export_group("Attributes")
 @export var group_flag: GroupFlag = GroupFlag.NEUTRAL
 @export var health: int = 100
@@ -62,6 +65,8 @@ func _ready() -> void:
 
 
 func connect_ui_avatar(ui_avatar: UIAvatar) -> void:
+    ui_avatar.ui_unit_frame.set_avatar(avatar)
+
     # health bar
     ui_avatar.ui_bar_health.init_value(health, max_health, 0, 1)
     unit_health_changed.connect(ui_avatar.ui_bar_health.on_value_changed)

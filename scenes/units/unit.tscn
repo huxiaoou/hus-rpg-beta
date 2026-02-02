@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wqugq4huxv8u"]
 
 [ext_resource type="Script" uid="uid://chgecv84ro16k" path="res://scenes/units/unit.gd" id="1_6e3tn"]
+[ext_resource type="Texture2D" uid="uid://btjaujdecbbcv" path="res://assets/units/unit_viking_avatar.png" id="2_fe0lq"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
 [ext_resource type="SpriteFrames" uid="uid://eispd8jrh5mt" path="res://resources/sprt_frms_viking.tres" id="3_mgebg"]
 [ext_resource type="PackedScene" uid="uid://bxvh4mn6kfwsn" path="res://scenes/audios/a_player_unit_game_play.tscn" id="3_rk2mp"]
@@ -407,6 +408,7 @@ _data = {
 
 [node name="Unit" type="Node2D" unique_id=516109518]
 script = ExtResource("1_6e3tn")
+avatar = ExtResource("2_fe0lq")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=586026160]
 

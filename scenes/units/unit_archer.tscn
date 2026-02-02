@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://n84gr0dlexsq"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_m4oll"]
+[ext_resource type="Texture2D" uid="uid://b0msdd8jnc2tt" path="res://assets/units/unit_archer_avatar.png" id="2_i5d04"]
 [ext_resource type="SpriteFrames" uid="uid://sjh80dd0nl5d" path="res://resources/sprt_frms_archer.tres" id="2_uf5oq"]
 
 [node name="UnitArcher" unique_id=516109518 instance=ExtResource("1_m4oll")]
+avatar = ExtResource("2_i5d04")
 group_flag = 0
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]

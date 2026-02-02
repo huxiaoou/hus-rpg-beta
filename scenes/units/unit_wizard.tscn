@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://d0nmaer24ifid"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_v8pg2"]
+[ext_resource type="Texture2D" uid="uid://tylhxjng6dv1" path="res://assets/units/unit_wizard_avatar.png" id="2_g5l2l"]
 [ext_resource type="SpriteFrames" uid="uid://c74n757b8xlet" path="res://resources/sprt_frms_wizard.tres" id="2_gjdts"]
 
 [node name="UnitWizard" unique_id=1659877491 instance=ExtResource("1_v8pg2")]
+avatar = ExtResource("2_g5l2l")
 group_flag = 0
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
