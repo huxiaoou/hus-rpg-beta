@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0nmaer24ifid" path="res://scenes/units/unit_wizard.tscn" id="10_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="10_wuj0f"]
 [ext_resource type="PackedScene" uid="uid://n84gr0dlexsq" path="res://scenes/units/unit_archer.tscn" id="11_odxcu"]
+[ext_resource type="PackedScene" uid="uid://bavq0ulcx4e17" path="res://scenes/units/unit_skeleton_archer.tscn" id="12_or4fg"]
 
 [node name="LevelBattle" type="Node" unique_id=1004733659]
 script = ExtResource("1_d4bfr")
@@ -44,18 +45,23 @@ scale = Vector2(0.5, 0.5)
 y_sort_enabled = true
 
 [node name="UnitSkull" parent="Units" unique_id=579281172 instance=ExtResource("8_d4bfr")]
-init_cell = Vector2i(4, 6)
+position = Vector2(1096, 779)
+init_cell = Vector2i(8, 7)
 
 [node name="UnitViking" parent="Units" unique_id=161643247 instance=ExtResource("8_k1ymq")]
-position = Vector2(195, 10)
-init_cell = Vector2i(3, 5)
+position = Vector2(512, 773)
+init_cell = Vector2i(4, 7)
 
 [node name="UnitWizard" parent="Units" unique_id=1659877491 instance=ExtResource("10_lxgdc")]
-position = Vector2(383, 14)
-init_cell = Vector2i(3, 6)
+position = Vector2(359, 898)
+init_cell = Vector2i(2, 6)
 
 [node name="UnitArcher" parent="Units" unique_id=516109518 instance=ExtResource("11_odxcu")]
-position = Vector2(583, 1)
-init_cell = Vector2i(3, 8)
+position = Vector2(364, 661)
+init_cell = Vector2i(2, 8)
+
+[node name="UnitSkeletonArcher" parent="Units" unique_id=158485816 instance=ExtResource("12_or4fg")]
+position = Vector2(1245, 630)
+init_cell = Vector2i(10, 6)
 
 [node name="CameraController" parent="." unique_id=2074291407 instance=ExtResource("10_wuj0f")]
