@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://chlorqrv0h768"]
+
+[ext_resource type="Script" uid="uid://dqwcyaio07eim" path="res://scenes/ui/ui_turn_card.gd" id="1_a3bo1"]
+[ext_resource type="Texture2D" uid="uid://ds2vdf6heqhi" path="res://assets/ui/CardFrame_Rectangle_01_Blue_Bg.png" id="1_dudfh"]
+[ext_resource type="Texture2D" uid="uid://0enql4lr3x4p" path="res://assets/ui/CardFrame_Rectangle_01_Blue_BorderGem.png" id="2_d13ab"]
+[ext_resource type="Texture2D" uid="uid://db2rmwpmyx3er" path="res://assets/ui/CardFrame_Rectangle_01_Red_Bg.png" id="3_gxvya"]
+[ext_resource type="Texture2D" uid="uid://btjaujdecbbcv" path="res://assets/units/unit_viking_avatar.png" id="3_ifdvj"]
+[ext_resource type="Texture2D" uid="uid://dpedumeyu3ihb" path="res://assets/ui/CardFrame_Rectangle_01_Red_BorderGem.png" id="4_a3bo1"]
+[ext_resource type="Texture2D" uid="uid://fm47n286xyyp" path="res://assets/ui/CardFrame_Rectangle_01_Yellow_Bg.png" id="6_ise4m"]
+[ext_resource type="Texture2D" uid="uid://b4yly3ilmr7k8" path="res://assets/ui/CardFrame_Rectangle_01_Yellow_BorderGem.png" id="7_pfkw1"]
+
+[node name="UITurnCard" type="CenterContainer" unique_id=1165583938]
+custom_minimum_size = Vector2(204, 258)
+offset_right = 204.0
+offset_bottom = 258.0
+script = ExtResource("1_a3bo1")
+
+[node name="Neutral" type="CenterContainer" parent="." unique_id=532137592]
+layout_mode = 2
+
+[node name="OrangeBg" type="TextureRect" parent="Neutral" unique_id=1240494522]
+layout_mode = 2
+texture = ExtResource("6_ise4m")
+
+[node name="OrangeBorder" type="TextureRect" parent="Neutral" unique_id=857809704]
+layout_mode = 2
+texture = ExtResource("7_pfkw1")
+
+[node name="Enemy" type="CenterContainer" parent="." unique_id=1980204287]
+layout_mode = 2
+
+[node name="RedBg" type="TextureRect" parent="Enemy" unique_id=54897456]
+layout_mode = 2
+texture = ExtResource("3_gxvya")
+
+[node name="RedBorder" type="TextureRect" parent="Enemy" unique_id=430922479]
+layout_mode = 2
+texture = ExtResource("4_a3bo1")
+
+[node name="Ally" type="CenterContainer" parent="." unique_id=1196737529]
+layout_mode = 2
+
+[node name="BlueBg" type="TextureRect" parent="Ally" unique_id=539858476]
+layout_mode = 2
+texture = ExtResource("1_dudfh")
+
+[node name="BlueBorder" type="TextureRect" parent="Ally" unique_id=1765804012]
+layout_mode = 2
+texture = ExtResource("2_d13ab")
+
+[node name="Avatar" type="TextureRect" parent="." unique_id=2133903901]
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+texture = ExtResource("3_ifdvj")
+expand_mode = 3
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

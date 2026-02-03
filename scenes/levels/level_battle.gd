@@ -18,6 +18,7 @@ class_name LevelBattle
 @onready var units_group: Node = $Units
 @onready var camera_controller: CameraController = $CameraController
 @onready var v_box_avatars: VBoxContainer = $CanvasLayer/VBoxAvatars
+@onready var ui_turn_cards_deck: UITurnCardsDeck = $CanvasLayer/UITurnCardsDeck
 
 
 func get_units() -> Array[Unit]:
@@ -39,6 +40,7 @@ func init_units(units: Array[Unit]) -> void:
             var ui_avatar: UIAvatar = scene_ui_avatar.instantiate()
             v_box_avatars.add_child(ui_avatar)
             unit.connect_ui_avatar(ui_avatar)
+        ui_turn_cards_deck.append(unit)
     return
 
 

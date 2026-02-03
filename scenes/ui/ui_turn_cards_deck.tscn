@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dtmll7ypivaj5"]
+
+[ext_resource type="Script" uid="uid://brbb10boj1as2" path="res://scenes/ui/ui_turn_cards_deck.gd" id="1_lbe7n"]
+
+[node name="UITurnCardsDeck" type="HBoxContainer" unique_id=1902028544]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -206.0
+offset_right = 206.0
+offset_bottom = 258.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0)
+alignment = 1
+script = ExtResource("1_lbe7n")
