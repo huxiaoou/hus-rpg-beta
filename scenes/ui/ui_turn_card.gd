@@ -10,7 +10,13 @@ class_name UITurnCard
 @onready var ally: CenterContainer = $Ally
 
 const CHG_RATIO: Vector2 = Vector2(1.5, 1.0)
+var focused_custom_min_size: Vector2
+var vanilla_custom_min_size: Vector2
 
+
+func _ready() -> void:
+    focused_custom_min_size = custom_minimum_size * CHG_RATIO
+    vanilla_custom_min_size = custom_minimum_size
 
 func setup(unit: Unit) -> void:
     group_flag = unit.group_flag
@@ -52,13 +58,13 @@ func set_neutral_visibility(visibility: bool) -> void:
 
 func _on_mouse_entered() -> void:
     var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-    tw.tween_property(self, "custom_minimum_size", custom_minimum_size * CHG_RATIO, 0.3)
+    tw.tween_property(self, "custom_minimum_size", focused_custom_min_size, 0.3)
     await tw.finished
     return
 
 
 func _on_mouse_exited() -> void:
     var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-    tw.tween_property(self, "custom_minimum_size", custom_minimum_size / CHG_RATIO, 0.3)
+    tw.tween_property(self, "custom_minimum_size", vanilla_custom_min_size, 0.3)
     await tw.finished
     return
