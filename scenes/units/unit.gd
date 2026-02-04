@@ -20,6 +20,7 @@ enum GroupFlag {
 
 @export_group("Attributes")
 @export var group_flag: GroupFlag = GroupFlag.NEUTRAL
+@export var level: int = 1
 @export var health: int = 100
 @export var stamina: int = 100
 @export var magicka: int = 100
@@ -50,11 +51,25 @@ var cell: Vector2i:
 
 
 static func sort_by_initiative(a: Unit, b: Unit) -> bool:
-    if a.initiative == b.initiative:
-        if a.group_flag == b.group_flag:
-            return true
+    if a.initiative != b.initiative:
+        return a.initiative > b.initiative
+    if a.level != b.level:
+        return a.level > b.level
+    if a.group_flag != b.group_flag:
         return a.group_flag < b.group_flag
-    return a.initiative > b.initiative
+    if a.attack != b.attack:
+        return a.attack > b.attack
+    if a.armor != b.armor:
+        return a.armor > b.armor
+    if a.health != b.health:
+        return a.health > b.health
+    if a.stamina != b.stamina:
+        return a.stamina > b.stamina
+    if a.magicka != b.magicka:
+        return a.magicka > b.magicka
+    if a.resolve != b.resolve:
+        return a.resolve > b.resolve
+    return a.name > b.name
 
 
 func _ready() -> void:

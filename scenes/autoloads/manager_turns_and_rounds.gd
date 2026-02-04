@@ -1,6 +1,6 @@
 extends Node
 
-signal turn_books_sorted()
+signal turn_books_updated()
 signal active_unit_changed()
 
 var active_unit: Unit:
@@ -32,7 +32,7 @@ func register_unit(unit: Unit) -> void:
 func sort_turn_books() -> void:
     this_turn_book.sort_custom(Unit.sort_by_initiative)
     next_turn_book.sort_custom(Unit.sort_by_initiative)
-    turn_books_sorted.emit()
+    turn_books_updated.emit()
     return
 
 
@@ -90,8 +90,13 @@ func on_unit_turn_finished(unit: Unit) -> void:
     this_turn_book.pop_front()
     if this_turn_book.is_empty():
         refresh_turnbook()
+    turn_books_updated.emit()
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
     active_unit_changed.emit()
     # print_status()
     print("Unit %s' turn begins." % active_unit.name)
     return
+
+
+func turn_books_size() -> int:
+    return this_turn_book.size() + next_turn_book.size()
