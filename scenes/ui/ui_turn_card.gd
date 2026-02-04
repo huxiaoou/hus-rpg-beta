@@ -8,8 +8,9 @@ class_name UITurnCard
 @onready var neutral: CenterContainer = $Neutral
 @onready var enemy: CenterContainer = $Enemy
 @onready var ally: CenterContainer = $Ally
+@onready var audio_player: AudioStreamPlayer2D = $AudioPlayer
 
-const CHG_RATIO: Vector2 = Vector2(1.5, 1.0)
+const CHG_RATIO: Vector2 = Vector2(1.0, 1.5)
 var focused_custom_min_size: Vector2
 var vanilla_custom_min_size: Vector2
 
@@ -59,6 +60,7 @@ func set_neutral_visibility(visibility: bool) -> void:
 func _on_mouse_entered() -> void:
     var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
     tw.tween_property(self, "custom_minimum_size", focused_custom_min_size, 0.3)
+    audio_player.play()
     await tw.finished
     return
 

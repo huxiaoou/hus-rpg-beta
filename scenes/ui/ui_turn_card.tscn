@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://dpedumeyu3ihb" path="res://assets/ui/CardFrame_Rectangle_01_Red_BorderGem.png" id="4_a3bo1"]
 [ext_resource type="Texture2D" uid="uid://fm47n286xyyp" path="res://assets/ui/CardFrame_Rectangle_01_Yellow_Bg.png" id="6_ise4m"]
 [ext_resource type="Texture2D" uid="uid://b4yly3ilmr7k8" path="res://assets/ui/CardFrame_Rectangle_01_Yellow_BorderGem.png" id="7_pfkw1"]
+[ext_resource type="AudioStream" uid="uid://ds6kkct65kfy7" path="res://assets/audios/Hovers A 001.wav" id="9_pfkw1"]
 
 [node name="UITurnCard" type="CenterContainer" unique_id=1165583938]
 custom_minimum_size = Vector2(204, 258)
 offset_right = 204.0
 offset_bottom = 258.0
+size_flags_vertical = 0
 script = ExtResource("1_a3bo1")
 
 [node name="Neutral" type="CenterContainer" parent="." unique_id=532137592]
@@ -53,6 +55,9 @@ custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 texture = ExtResource("3_ifdvj")
 expand_mode = 3
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=573859247]
+stream = ExtResource("9_pfkw1")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
