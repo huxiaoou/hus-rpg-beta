@@ -90,7 +90,8 @@ func on_unit_turn_finished(unit: Unit) -> void:
     this_turn_book.pop_front()
     if this_turn_book.is_empty():
         refresh_turnbook()
-    turn_books_updated.emit()
+    else:
+        turn_books_updated.emit()
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
     active_unit_changed.emit()
     # print_status()
