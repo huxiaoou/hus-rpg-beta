@@ -19,10 +19,10 @@ func on_turn_books_updated() -> void:
             turn_card.fades_out()
     elif size_units > turn_cards.size():
         for i in range(size_units - turn_cards.size()):
+            await get_tree().create_timer(0.5).timeout
             var turn_card: UITurnCard = scene_turn_card.instantiate()
             add_child(turn_card)
             turn_card.fades_in()
-            await get_tree().create_timer(0.1).timeout
             turn_cards.append(turn_card)
 
     var counter: int = 0

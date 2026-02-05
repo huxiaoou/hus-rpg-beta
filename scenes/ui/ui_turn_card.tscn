@@ -19,52 +19,33 @@ size_flags_vertical = 0
 script = ExtResource("1_a3bo1")
 astream_hover = ExtResource("9_pfkw1")
 astream_fades_in_out = ExtResource("3_i5hj5")
-
-[node name="Neutral" type="CenterContainer" parent="." unique_id=532137592]
-layout_mode = 2
-
-[node name="OrangeBg" type="TextureRect" parent="Neutral" unique_id=1240494522]
-layout_mode = 2
-texture = ExtResource("6_ise4m")
-
-[node name="OrangeBorder" type="TextureRect" parent="Neutral" unique_id=857809704]
-layout_mode = 2
-texture = ExtResource("7_pfkw1")
-
-[node name="Enemy" type="CenterContainer" parent="." unique_id=1980204287]
-layout_mode = 2
-
-[node name="RedBg" type="TextureRect" parent="Enemy" unique_id=54897456]
-layout_mode = 2
-texture = ExtResource("3_gxvya")
-
-[node name="RedBorder" type="TextureRect" parent="Enemy" unique_id=430922479]
-layout_mode = 2
-texture = ExtResource("4_a3bo1")
-
-[node name="Ally" type="CenterContainer" parent="." unique_id=1196737529]
-layout_mode = 2
-
-[node name="BlueBg" type="TextureRect" parent="Ally" unique_id=539858476]
-layout_mode = 2
-texture = ExtResource("1_dudfh")
-
-[node name="BlueBorder" type="TextureRect" parent="Ally" unique_id=1765804012]
-layout_mode = 2
-texture = ExtResource("2_d13ab")
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1230139708]
-layout_mode = 2
-
-[node name="Avatar" type="TextureRect" parent="MarginContainer" unique_id=2133903901]
-custom_minimum_size = Vector2(160, 160)
-layout_mode = 2
-texture = ExtResource("10_i5hj5")
-stretch_mode = 3
+bg_texture_ally = ExtResource("1_dudfh")
+bd_texture_ally = ExtResource("2_d13ab")
+bg_texture_enemy = ExtResource("3_gxvya")
+bd_texture_enemy = ExtResource("4_a3bo1")
+bg_texture_neutral = ExtResource("6_ise4m")
+bd_texture_neutral = ExtResource("7_pfkw1")
 
 [node name="AudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=573859247]
 stream = ExtResource("9_pfkw1")
 bus = &"UI"
+
+[node name="Bg" type="TextureRect" parent="." unique_id=1240494522]
+custom_minimum_size = Vector2(180, 221)
+layout_mode = 2
+texture = ExtResource("6_ise4m")
+
+[node name="Bd" type="TextureRect" parent="." unique_id=857809704]
+custom_minimum_size = Vector2(204, 258)
+layout_mode = 2
+texture = ExtResource("7_pfkw1")
+
+[node name="Avatar" type="TextureRect" parent="." unique_id=2133903901]
+custom_minimum_size = Vector2(180, 190)
+layout_mode = 2
+texture = ExtResource("10_i5hj5")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
