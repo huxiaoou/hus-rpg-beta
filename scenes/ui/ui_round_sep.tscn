@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://3rqy0nmqwr0c"]
+
+[ext_resource type="Texture2D" uid="uid://bkhy24ugfq8qo" path="res://assets/ui/FlagFrame_01_Bg_Green.png" id="1_6e40w"]
+[ext_resource type="Texture2D" uid="uid://bs7okmxb3fmdi" path="res://assets/ui/FlagFrame_01_InnerDeco.png" id="2_5sdgv"]
+
+[node name="UIRoundSep" type="CenterContainer" unique_id=10448046]
+offset_right = 96.0
+offset_bottom = 256.0
+
+[node name="Bg" type="NinePatchRect" parent="." unique_id=465314282]
+custom_minimum_size = Vector2(128, 288)
+layout_mode = 2
+texture = ExtResource("1_6e40w")
+patch_margin_top = 36
+patch_margin_bottom = 96
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1773979083]
+layout_mode = 2
+theme_override_constants/margin_bottom = 37
+
+[node name="Inner" type="NinePatchRect" parent="MarginContainer" unique_id=1003928992]
+custom_minimum_size = Vector2(96, 228)
+layout_mode = 2
+texture = ExtResource("2_5sdgv")
+patch_margin_left = 36
+patch_margin_top = 96
+patch_margin_right = 36
+patch_margin_bottom = 36
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1284083154]
+layout_mode = 2
+theme_override_constants/paragraph_spacing = -20
+theme_override_font_sizes/font_size = 44
+text = "N
+E
+X
+T"
+horizontal_alignment = 1

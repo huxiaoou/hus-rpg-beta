@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dtmll7ypivaj5"]
 
 [ext_resource type="Script" uid="uid://brbb10boj1as2" path="res://scenes/ui/ui_turn_cards_deck.gd" id="1_lbe7n"]
+[ext_resource type="PackedScene" uid="uid://3rqy0nmqwr0c" path="res://scenes/ui/ui_round_sep.tscn" id="2_fwrxq"]
 
 [node name="UITurnCardsDeck" type="HBoxContainer" unique_id=1902028544]
 anchors_preset = 5
@@ -14,3 +15,6 @@ scale = Vector2(0.4, 0.4)
 pivot_offset_ratio = Vector2(0.5, 0)
 alignment = 1
 script = ExtResource("1_lbe7n")
+
+[node name="UIRoundSep" parent="." unique_id=10448046 instance=ExtResource("2_fwrxq")]
+layout_mode = 2

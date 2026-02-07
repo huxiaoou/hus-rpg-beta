@@ -4,6 +4,8 @@ class_name UITurnCardsDeck
 
 signal updated()
 
+@onready var ui_round_sep: CenterContainer = $UIRoundSep
+
 var turn_cards: Array[UITurnCard] = []
 var scene_turn_card: PackedScene = preload("res://scenes/ui/ui_turn_card.tscn")
 
@@ -35,5 +37,8 @@ func on_turn_books_updated() -> void:
         else:
             turn_cards[counter].setup(unit)
         counter += 1
+        if counter == ManagerTurnsAndRounds.this_turn_book.size():
+            call_deferred("move_child", ui_round_sep, counter)
+            await get_tree().create_timer(0.5).timeout
     updated.emit()
     return
