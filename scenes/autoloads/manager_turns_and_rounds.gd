@@ -10,9 +10,11 @@ var active_unit: Unit:
 var registered_units: Dictionary[int, Unit] = { }
 var this_turn_book: Array[Unit] = []
 var next_turn_book: Array[Unit] = []
+var ui_turn_cards_deck: UITurnCardsDeck
 
 
-func setup(units: Array[Unit]) -> void:
+func setup(units: Array[Unit], _turn_cards_deck: UITurnCardsDeck) -> void:
+    ui_turn_cards_deck = _turn_cards_deck
     for unit in units:
         register_unit(unit)
     sort_turn_books()
@@ -77,7 +79,6 @@ func refresh_turnbook() -> void:
     next_turn_book = []
     for unit in registered_units.values():
         next_turn_book.append(unit)
-    sort_turn_books()
     return
 
 
@@ -88,16 +89,20 @@ func on_unit_turn_finished(unit: Unit) -> void:
     active_unit.unit_turn_finished.disconnect(on_unit_turn_finished)
     print("Unit %s's turn ends." % active_unit.name)
     this_turn_book.pop_front()
+    turn_books_updated.emit()
+    await ui_turn_cards_deck.updated
     if this_turn_book.is_empty():
         refresh_turnbook()
-    else:
-        turn_books_updated.emit()
+        sort_turn_books()
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
     active_unit_changed.emit()
-    # print_status()
     print("Unit %s' turn begins." % active_unit.name)
     return
 
 
 func turn_books_size() -> int:
     return this_turn_book.size() + next_turn_book.size()
+
+
+func turn_books() -> Array[Unit]:
+    return this_turn_book + next_turn_book

@@ -53,5 +53,5 @@ func _ready() -> void:
     ManagerCellBattle.cell_indicator_battle = cell_indicator_battle
     var units: Array[Unit] = get_units()
     init_units(units)
-    ManagerTurnsAndRounds.setup(units)
+    ManagerTurnsAndRounds.setup(units, ui_turn_cards_deck)
     return

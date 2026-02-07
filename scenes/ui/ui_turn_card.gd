@@ -83,6 +83,7 @@ func fades_out() -> void:
     audio_player.play()
     var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
     tw.tween_property(self, "modulate:a", 0.0, 0.5)
+    tw.parallel().tween_property(self, "custom_minimum_size", custom_minimum_size * FADES_INOUT_RATIO, 0.1)
     await tw.finished
 
     bg.queue_free()
@@ -91,8 +92,8 @@ func fades_out() -> void:
 
     tw = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
     tw.tween_property(self, "custom_minimum_size:x", 0, 0.5).from(160)
+    tw.finished.connect(self.queue_free)
     await tw.finished
-    queue_free()
     return
 
 
@@ -100,6 +101,6 @@ func fades_in() -> void:
     audio_player.stream = astream_fades_in_out
     audio_player.play()
     var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-    tw.tween_property(self, "modulate:a", 1.0, 0.5).from(0.0)
+    tw.tween_property(self, "modulate:a", 1.0, 0.2)
     await tw.finished
     return

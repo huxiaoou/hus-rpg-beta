@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://fm47n286xyyp" path="res://assets/ui/CardFrame_Rectangle_01_Yellow_Bg.png" id="6_ise4m"]
 [ext_resource type="Texture2D" uid="uid://b4yly3ilmr7k8" path="res://assets/ui/CardFrame_Rectangle_01_Yellow_BorderGem.png" id="7_pfkw1"]
 [ext_resource type="AudioStream" uid="uid://ds6kkct65kfy7" path="res://assets/audios/Hovers A 001.wav" id="9_pfkw1"]
-[ext_resource type="Texture2D" uid="uid://b2u7tmm6uuq7c" path="res://assets/units/unit_skull_avatar.png" id="10_i5hj5"]
 
 [node name="UITurnCard" type="CenterContainer" unique_id=1165583938]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(204, 258)
 offset_right = 204.0
 offset_bottom = 258.0
@@ -43,7 +43,6 @@ texture = ExtResource("7_pfkw1")
 [node name="Avatar" type="TextureRect" parent="." unique_id=2133903901]
 custom_minimum_size = Vector2(180, 190)
 layout_mode = 2
-texture = ExtResource("10_i5hj5")
 expand_mode = 1
 stretch_mode = 5
 
