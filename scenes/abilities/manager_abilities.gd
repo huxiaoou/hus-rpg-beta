@@ -19,7 +19,7 @@ var is_active: bool:
 func setup(_owner_unit: Unit) -> void:
     owner_unit = _owner_unit
     for scene_ability in scenes_abilities:
-        var ability = scene_ability.instantiate()
+        var ability: Ability = scene_ability.instantiate()
         abilities_node.add_child(ability)
         ability.setup(owner_unit, connect_ability)
         abilities[ability.id] = ability
@@ -57,7 +57,7 @@ func activiate_ability(id: String) -> bool:
     active_ability = get_ability(id)
     if active_ability == null:
         aplayer_gmply.play_warning()
-        print("There is ability named '%s'to activate" % id)
+        print("There is no ability named '%s' to activate" % id)
         return false
     active_ability.activate()
     return true
