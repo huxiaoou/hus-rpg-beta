@@ -57,8 +57,8 @@ func set_cell_potential(cell: Vector2i) -> void:
     return
 
 
-func set_cell_cyan(cell: Vector2i) -> void:
-    layer_nav.set_cell_cyan(cell)
+func set_cell_path(cell: Vector2i) -> void:
+    layer_nav.set_cell_path(cell)
     return
 
 

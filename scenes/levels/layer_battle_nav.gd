@@ -11,7 +11,7 @@ enum {
     TILE_COLOR_GREEN,
     TILE_COLOR_TARGET,
     TILE_COLOR_POTENTIAL,
-    TILE_COLOR_CYAN,
+    TILE_COLOR_PATH,
 }
 
 # ---
@@ -135,8 +135,8 @@ func set_cell_potential(cell: Vector2i) -> void:
     return
 
 
-func set_cell_cyan(cell: Vector2i) -> void:
-    set_cell_to_alternative(cell, TILE_COLOR_CYAN)
+func set_cell_path(cell: Vector2i) -> void:
+    set_cell_to_alternative(cell, TILE_COLOR_PATH)
     return
 
 
