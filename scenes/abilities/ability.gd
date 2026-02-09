@@ -10,9 +10,12 @@ class_name Ability
 
 @export_group("Cost")
 @export var cost_health: int = 0
-@export var cost_stamnia: int = 8
+@export var cost_stamnia: int = 33
 @export var cost_magicka: int = 0
 @export var cost_resolve: int = 0
+
+@export_group("Range")
+@export var ability_range: int = 1
 
 var owner_unit: Unit = null
 var is_active: bool = false
@@ -29,10 +32,32 @@ var target_unit: Unit:
     get:
         return null if target_units.is_empty() else target_units[0]
 
+var available_cells: Array[Vector2i] = []
+var potential_target_cell: Vector2i
+var potential_target_cell_new: Vector2i
+
 signal selected()
 signal canceled()
 signal warning()
 signal deactivated()
+
+
+func update_available_cells() -> void:
+    available_cells = ManagerCellBattle.get_cells_in_range(owner_unit.cell, ability_range)
+    return
+
+
+func recolor_available_cells() -> void:
+    for avlb_cell: Vector2i in available_cells:
+        ManagerCellBattle.set_cell_potential(avlb_cell)
+    return
+
+
+func clear_available_cells() -> void:
+    for cell: Vector2i in available_cells:
+        ManagerCellBattle.set_cell_vanilla(cell)
+    available_cells.clear()
+    return
 
 
 func setup(_owner_unit: Unit, _connect: Callable) -> void:
@@ -44,15 +69,21 @@ func setup(_owner_unit: Unit, _connect: Callable) -> void:
 
 
 func activate() -> void:
-    is_active = true
     selected.emit()
+    is_active = true
+    update_available_cells()
+    recolor_available_cells()
+    potential_target_cell = available_cells[0]
+    ManagerCellBattle.set_cell_focused(potential_target_cell)
     print("%s activates Ability %s " % [owner_unit.name, short_name])
     return
 
 
 func deactivate() -> void:
+    clear_available_cells()
+    ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
     is_active = false
-    canceled.emit()
+    deactivated.emit()
     print("%s deactivate ability %s" % [owner_unit.name, short_name])
     return
 
@@ -89,12 +120,16 @@ func check_resolve_cost() -> bool:
     return true
 
 
+func check_ability_cost() -> bool:
+    return check_health_cost() and check_stamina_cost() and check_magicka_cost() and check_resolve_cost()
+
+
 func launch() -> bool:
     if is_casting:
         warning.emit()
         print("%s is casting ability %s" % [owner_unit.name, short_name])
         return false
-    if check_stamina_cost() and check_magicka_cost() and check_resolve_cost() and check_health_cost():
+    if check_ability_cost():
         is_casting = true
         owner_unit.change_stamina(-cost_stamnia)
         owner_unit.change_magicka(-cost_magicka)
@@ -109,6 +144,7 @@ func finish() -> void:
     target_cells.clear()
     target_units.clear()
     is_casting = false
+    deactivate()
     return
 
 
@@ -145,5 +181,4 @@ func _unhandled_input(event: InputEvent) -> void:
         else: # target_cells.size() == 0
             deactivate()
             canceled.emit()
-            deactivated.emit()
     return

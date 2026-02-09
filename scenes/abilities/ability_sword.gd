@@ -2,36 +2,12 @@ extends Ability
 
 class_name AbilitySword
 
-@export var attack_range: int = 1
 @onready var hit_effect: HitEffect = $HitEffectBlood06
-
-var available_cells: Array[Vector2i] = []
-var potential_target_cell: Vector2i
-var potential_target_cell_new: Vector2i
 
 
 func _ready() -> void:
     max_num_target_cells = 1
     max_num_target_units = 1
-    return
-
-
-func activate() -> void:
-    super.activate()
-    for avlb_cell: Vector2i in ManagerCellBattle.get_cells_in_range(owner_unit.cell, attack_range):
-        ManagerCellBattle.set_cell_potential(avlb_cell)
-        available_cells.append(avlb_cell)
-        print("set %s potential white" % avlb_cell)
-    potential_target_cell = available_cells[0]
-    ManagerCellBattle.set_cell_focused(potential_target_cell)
-    return
-
-
-func deactivate() -> void:
-    for cell in available_cells:
-        ManagerCellBattle.set_cell_vanilla(cell)
-    available_cells.clear()
-    super.deactivate()
     return
 
 
@@ -46,11 +22,12 @@ func _process(_delta: float) -> void:
         if target_cells.size() >= max_num_target_cells:
             return
         potential_target_cell_new = ManagerCellBattle.get_indicator_cell()
+        if potential_target_cell_new not in available_cells:
+            return
         if potential_target_cell != potential_target_cell_new:
-            if potential_target_cell_new in available_cells:
-                ManagerCellBattle.set_cell_potential(potential_target_cell)
-                potential_target_cell = potential_target_cell_new
-                ManagerCellBattle.set_cell_focused(potential_target_cell)
+            ManagerCellBattle.set_cell_potential(potential_target_cell)
+            potential_target_cell = potential_target_cell_new
+            ManagerCellBattle.set_cell_focused(potential_target_cell)
         return
     return
 
@@ -73,6 +50,5 @@ func finish() -> void:
     owner_unit.unit_attack_impacted.disconnect(target_unit.on_hurt)
     owner_unit.unit_attack_impacted.disconnect(hit_effect.play)
     owner_unit.play_animation("idle")
-    ManagerCellBattle.set_cell_potential(target_cells[0])
     super.finish()
     return

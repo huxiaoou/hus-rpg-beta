@@ -7,8 +7,8 @@ class_name ManagerAbilities
 
 @onready var abilities_node: Node = $AbilitiesNode
 @onready var aplayer_gmply: APlayerUnitGamePlay = $APlayerUnitGamePlay
+@onready var owner_unit: Unit = get_parent()
 
-var owner_unit: Unit
 var active_ability: Ability = null
 var abilities: Dictionary[String, Ability] = { }
 var is_active: bool:
@@ -16,8 +16,7 @@ var is_active: bool:
         return active_ability != null
 
 
-func setup(_owner_unit: Unit) -> void:
-    owner_unit = _owner_unit
+func setup() -> void:
     for scene_ability in scenes_abilities:
         var ability: Ability = scene_ability.instantiate()
         abilities_node.add_child(ability)

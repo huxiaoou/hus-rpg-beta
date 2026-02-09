@@ -74,7 +74,7 @@ static func sort_by_initiative(a: Unit, b: Unit) -> bool:
 
 func _ready() -> void:
     connect_ui_floating_health_bar()
-    mgr_abilities.setup(self)
+    mgr_abilities.setup()
     play_animation("idle")
     return
 

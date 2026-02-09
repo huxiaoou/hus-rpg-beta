@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://yw4plj15ogko"]
+[gd_scene format=3 uid="uid://yw4plj15ogko"]
 
 [ext_resource type="PackedScene" uid="uid://c1k5fhydqq6y1" path="res://scenes/abilities/ability.tscn" id="1_w8lu7"]
 [ext_resource type="Script" uid="uid://c1hi6d3ieskev" path="res://scenes/abilities/ability_move.gd" id="2_bvkof"]
 
-[node name="AbilityMove" instance=ExtResource("1_w8lu7")]
+[node name="AbilityMove" unique_id=1415258905 instance=ExtResource("1_w8lu7")]
 script = ExtResource("2_bvkof")
 move_speed = 120.0
 short_name = "Move"
 id = "ability_move"
 description = "To move in the battle ground."
+ability_range = 3

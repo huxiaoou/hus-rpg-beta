@@ -2,17 +2,13 @@ extends Ability
 
 class_name AbilityMove
 
-@export var ability_range: int = 3
 @export var move_speed: float = 120
 
-var available_cells: Array[Vector2i] = []
-var potential_target_cell: Vector2i
-var potential_target_cell_new: Vector2i
 var potential_path_cells: Array[Vector2i] = []
 var potential_path_cells_new: Array[Vector2i] = []
 var start_cell: Vector2i
 var end_cell: Vector2i
-var target_pos: Vector2 = Vector2(0, 0)
+var target_pos_in_path: Vector2 = Vector2(0, 0)
 var path_gp_points: Array[Vector2] = []
 
 
@@ -22,23 +18,9 @@ func _ready() -> void:
     return
 
 
-func update_available_cells() -> void:
-    available_cells = ManagerCellBattle.get_cells_in_range(owner_unit.cell, ability_range)
-    for avlb_cell: Vector2i in available_cells:
-        ManagerCellBattle.set_cell_potential(avlb_cell)
-    return
-
-
 func recolor_potential_path_cells() -> void:
     for cell: Vector2i in potential_path_cells:
         ManagerCellBattle.set_cell_path(cell)
-    return
-
-
-func clear_available_cells() -> void:
-    for cell: Vector2i in available_cells:
-        ManagerCellBattle.set_cell_vanilla(cell)
-    available_cells.clear()
     return
 
 
@@ -46,22 +28,6 @@ func clear_potential_path_cells() -> void:
     for cell: Vector2i in potential_path_cells:
         ManagerCellBattle.set_cell_vanilla(cell)
     potential_path_cells.clear()
-    return
-
-
-func activate() -> void:
-    super.activate()
-    update_available_cells()
-    potential_target_cell = available_cells[0]
-    ManagerCellBattle.set_cell_focused(potential_target_cell)
-    return
-
-
-func deactivate() -> void:
-    clear_available_cells()
-    clear_potential_path_cells()
-    ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
-    super.deactivate()
     return
 
 
@@ -92,8 +58,8 @@ func _process(delta: float) -> void:
                     ManagerCellBattle.set_cell_path(cell)
             potential_path_cells = potential_path_cells_new
         return
-    if owner_unit.position != target_pos:
-        owner_unit.move_toward(target_pos, delta * move_speed)
+    if owner_unit.position != target_pos_in_path:
+        owner_unit.move_toward(target_pos_in_path, delta * move_speed)
     else:
         set_target_pos_from_path()
         adjust_animation_direction()
@@ -120,23 +86,21 @@ func launch() -> bool:
 func finish() -> void:
     owner_unit.play_animation("idle")
     clear_potential_path_cells()
-    update_available_cells()
-    ManagerCellBattle.set_cell_potential(target_cell)
     super.finish()
     return
 
 
 func set_target_pos_from_path():
-    ManagerCellBattle.set_cell_vanilla(ManagerCellBattle.point_to_cell(target_pos))
+    ManagerCellBattle.set_cell_vanilla(ManagerCellBattle.point_to_cell(target_pos_in_path))
     if path_gp_points.is_empty():
         finish()
         return
-    target_pos = path_gp_points.pop_front()
+    target_pos_in_path = path_gp_points.pop_front()
     return
 
 
 func adjust_animation_direction():
-    if not owner_unit.adjust_animation_direction(target_pos):
+    if not owner_unit.adjust_animation_direction(target_pos_in_path):
         if not path_gp_points.is_empty():
             owner_unit.adjust_animation_direction(path_gp_points[-1])
     return
