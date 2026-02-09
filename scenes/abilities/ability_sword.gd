@@ -34,8 +34,8 @@ func _process(_delta: float) -> void:
 
 func launch() -> bool:
     if super.launch():
-        target_units.append(ManagerCellBattle.get_cell_occupiant(target_cells[0]))
-        owner_unit.adjust_animation_direction_from_cell(target_cells[0])
+        target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
+        owner_unit.adjust_animation_direction_from_cell(target_cell)
         owner_unit.unit_attack_impacted.connect(target_unit.on_hurt)
         owner_unit.unit_attack_impacted.connect(hit_effect.play)
         hit_effect.set_location(target_unit.position)
