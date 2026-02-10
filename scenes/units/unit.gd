@@ -136,6 +136,12 @@ func _unhandled_input(event: InputEvent) -> void:
             return
         mgr_abilities.activiate_ability("ability_sword")
         get_viewport().set_input_as_handled()
+    elif event.is_action_pressed("ability_3"):
+        if mgr_abilities.is_active:
+            mgr_abilities.show_active_ability()
+            return
+        mgr_abilities.activiate_ability("ability_projectile")
+        get_viewport().set_input_as_handled()
     elif event.is_action_pressed("EndTurn"):
         if mgr_abilities.is_active:
             mgr_abilities.show_active_ability()

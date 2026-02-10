@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://di6gramqjen4p"]
+
+[ext_resource type="Script" uid="uid://ftd0ecyrnjqw" path="res://scenes/weapons/projectile.gd" id="1_qp4n5"]
+[ext_resource type="SpriteFrames" uid="uid://b8cuvxf4751ik" path="res://resources/sprt_frms_projectile.tres" id="1_vl370"]
+[ext_resource type="AudioStream" uid="uid://daxo50u5wjmt" path="res://assets/audios/Metallic_Sword_Impact_01.wav" id="3_bwxup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl370"]
+
+[node name="Projectile" type="Node2D" unique_id=485872768]
+script = ExtResource("1_qp4n5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=770976615]
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("1_vl370")
+animation = &"arrow"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=42222686]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=157377500]
+shape = SubResource("CircleShape2D_vl370")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=147336547]
+stream = ExtResource("3_bwxup")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

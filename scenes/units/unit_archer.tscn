@@ -3,6 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_m4oll"]
 [ext_resource type="Texture2D" uid="uid://b0msdd8jnc2tt" path="res://assets/units/unit_archer_avatar.png" id="2_i5d04"]
 [ext_resource type="SpriteFrames" uid="uid://sjh80dd0nl5d" path="res://resources/sprt_frms_archer.tres" id="2_uf5oq"]
+[ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="4_xufgy"]
+[ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="5_v3aws"]
+[ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="6_u72ir"]
 
 [node name="UnitArcher" unique_id=516109518 instance=ExtResource("1_m4oll")]
 avatar = ExtResource("2_i5d04")
@@ -15,3 +18,6 @@ sprite_frames = ExtResource("2_uf5oq")
 [node name="SpriteBody" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="2" unique_id=1398350913]
 position = Vector2(-15, -56.000004)
 sprite_frames = ExtResource("2_uf5oq")
+
+[node name="ManagerAbilities" parent="." index="1" unique_id=1772872154]
+scenes_abilities = Array[PackedScene]([ExtResource("4_xufgy"), ExtResource("5_v3aws"), ExtResource("6_u72ir")])

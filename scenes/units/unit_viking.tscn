@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://bm5m1mow7et3r"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_p5adc"]
+[ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="2_sc8n4"]
+[ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="3_5f5yq"]
+[ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="4_vq308"]
 
 [node name="UnitViking" unique_id=1765002764 instance=ExtResource("1_p5adc")]
 group_flag = 0
 initiative = 13
+
+[node name="ManagerAbilities" parent="." index="1" unique_id=1772872154]
+scenes_abilities = Array[PackedScene]([ExtResource("2_sc8n4"), ExtResource("3_5f5yq"), ExtResource("4_vq308")])

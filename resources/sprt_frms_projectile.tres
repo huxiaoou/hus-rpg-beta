@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://b8cuvxf4751ik"]
+
+[ext_resource type="Texture2D" uid="uid://dmvk232i8jkix" path="res://assets/weapons/Arrow.png" id="1_8vsof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyupx"]
+atlas = ExtResource("1_8vsof")
+region = Rect2(0, 0, 320, 128)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyupx")
+}],
+"loop": true,
+"name": &"arrow",
+"speed": 5.0
+}]

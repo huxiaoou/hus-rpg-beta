@@ -13,5 +13,5 @@ func _process(_delta: float) -> void:
         return
     indicator_cell = new_mouse_cell
     position = ManagerCellBattle.cell_to_point(indicator_cell)
-    print("Enter Cell %s" % indicator_cell)
+    # print("Enter Cell %s" % indicator_cell)
     return
