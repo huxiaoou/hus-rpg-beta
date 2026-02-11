@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://nndhtw75ygpy"]
+
+[ext_resource type="Script" uid="uid://oudt5bsg3kku" path="res://scenes/abilities/comp_track_drawer.gd" id="1_txmin"]
+
+[node name="CompTrackDrawer" type="Node2D" unique_id=1510121583]
+script = ExtResource("1_txmin")

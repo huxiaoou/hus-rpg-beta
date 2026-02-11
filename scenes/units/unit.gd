@@ -36,6 +36,7 @@ enum GroupFlag {
 @export_group("Init")
 @export var init_cell: Vector2i
 
+@onready var character_body_2d: CharacterBody2D = $CharacterBody2D
 @onready var sprite_body: AnimatedSprite2D = $CharacterBody2D/SpriteBody
 @onready var sprite_shadow: AnimatedSprite2D = $CharacterBody2D/SpriteShadow
 @onready var anim_player: AnimationPlayer = $CharacterBody2D/AnimPlayer
