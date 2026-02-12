@@ -2,7 +2,7 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://dkjx1ffshpy0b"
+uid="uid://rqkv55ns38ao"
 path="res://.godot/imported/Thailandesa.ttf-3de8e3917f30a740fcabd073db4a1b73.fontdata"
 
 [deps]
@@ -21,6 +21,7 @@ msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
+modulate_color_glyphs=false
 hinting=1
 subpixel_positioning=4
 keep_rounding_remainders=true
