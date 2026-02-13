@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cty2b8d00v7av"]
+[gd_scene format=3 uid="uid://cty2b8d00v7av"]
 
 [ext_resource type="Script" uid="uid://cvew451jfgrjy" path="res://scenes/ui/ui_level.gd" id="1_cn2m4"]
 [ext_resource type="Texture2D" uid="uid://mw4h1vu1b23m" path="res://assets/ui/UnitFrame_Level_Background.png" id="2_f1mk2"]
 [ext_resource type="Texture2D" uid="uid://b2kyuoxv67vec" path="res://assets/ui/UnitFrame_Level_Border2.png" id="4_70ue7"]
-[ext_resource type="FontFile" uid="uid://dkjx1ffshpy0b" path="res://assets/fonts/Thailandesa.ttf" id="4_cn2m4"]
+[ext_resource type="FontFile" uid="uid://rqkv55ns38ao" path="res://assets/fonts/Thailandesa.ttf" id="4_cn2m4"]
 
-[node name="UILevel" type="CenterContainer"]
+[node name="UILevel" type="CenterContainer" unique_id=1007846949]
 offset_right = 58.0
 offset_bottom = 58.0
 script = ExtResource("1_cn2m4")
 
-[node name="Bg" type="TextureRect" parent="."]
+[node name="Bg" type="TextureRect" parent="." unique_id=201837799]
 layout_mode = 2
 texture = ExtResource("2_f1mk2")
 
-[node name="ExpCircle" type="TextureProgressBar" parent="."]
+[node name="ExpCircle" type="TextureProgressBar" parent="." unique_id=403499241]
 layout_mode = 2
 step = 0.1
 fill_mode = 4
@@ -22,7 +22,7 @@ texture_under = ExtResource("4_70ue7")
 texture_progress = ExtResource("4_70ue7")
 tint_under = Color(0.505882, 0.431373, 0.388235, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1797177821]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_cn2m4")
 theme_override_font_sizes/font_size = 24

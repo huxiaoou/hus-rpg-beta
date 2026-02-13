@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxh1jbvf6hq3l"]
+[gd_scene format=3 uid="uid://bxh1jbvf6hq3l"]
 
 [ext_resource type="Script" uid="uid://binrhawtinqol" path="res://scenes/ui/ui_floating_health_bar.gd" id="1_7n3n0"]
 [ext_resource type="Texture2D" uid="uid://1mmuwabf2os" path="res://assets/ui/Slider_Border_Tapered_01_Bg.png" id="2_7n3n0"]
 [ext_resource type="Texture2D" uid="uid://dr7eb3y63m6k0" path="res://assets/ui/Slider_Border_Tapered_01_Border.png" id="3_53vuu"]
 [ext_resource type="Texture2D" uid="uid://cuxivnomdunav" path="res://assets/ui/silder_border_tappered_01_fill_red.png" id="3_ht27l"]
-[ext_resource type="FontFile" uid="uid://dkjx1ffshpy0b" path="res://assets/fonts/Thailandesa.ttf" id="4_ht27l"]
+[ext_resource type="FontFile" uid="uid://rqkv55ns38ao" path="res://assets/fonts/Thailandesa.ttf" id="4_ht27l"]
 
 [sub_resource type="Animation" id="Animation_53vuu"]
 length = 0.001
@@ -45,15 +45,13 @@ _data = {
 &"default": SubResource("Animation_7n3n0")
 }
 
-[node name="UIFloatingHealthBar" type="CenterContainer"]
+[node name="UIFloatingHealthBar" type="CenterContainer" unique_id=286140626]
 custom_minimum_size = Vector2(320, 50)
-offset_left = -80.0
-offset_top = -193.058
-offset_right = 240.0
-offset_bottom = -143.058
+offset_right = 320.0
+offset_bottom = 50.0
 script = ExtResource("1_7n3n0")
 
-[node name="Bar" type="TextureProgressBar" parent="."]
+[node name="Bar" type="TextureProgressBar" parent="." unique_id=1886960261]
 custom_minimum_size = Vector2(320, 50)
 layout_mode = 2
 value = 80.0
@@ -64,10 +62,10 @@ stretch_margin_right = 24
 texture_under = ExtResource("2_7n3n0")
 texture_over = ExtResource("3_53vuu")
 texture_progress = ExtResource("3_ht27l")
-tint_under = Color(0.272655, 0.272655, 0.272655, 1)
+tint_under = Color(0.14251405, 0.14251396, 0.14251396, 1)
 tint_progress = Color(0.68, 0.68, 0.68, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=661849451]
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_ht27l")
@@ -76,8 +74,6 @@ text = "100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_5fb7i")
-}
-autoplay = "default"
+[node name="AnimPlayer" type="AnimationPlayer" parent="." unique_id=1317496980]
+libraries/ = SubResource("AnimationLibrary_5fb7i")
+autoplay = &"default"

@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://deidmkdqdm6n2"]
+[gd_scene format=3 uid="uid://deidmkdqdm6n2"]
 
 [ext_resource type="Script" uid="uid://dl7tnu82riyxk" path="res://scenes/ui/ui_dual_progress_bar.gd" id="1_50gne"]
 [ext_resource type="Texture2D" uid="uid://bneewvi2dnxff" path="res://assets/ui/huxo_bar_progress.png" id="2_th5rs"]
 [ext_resource type="Texture2D" uid="uid://b6e0yqgvx8fq8" path="res://assets/ui/huxo_bar_background.png" id="3_brvej"]
-[ext_resource type="FontFile" uid="uid://dkjx1ffshpy0b" path="res://assets/fonts/Thailandesa.ttf" id="4_brvej"]
+[ext_resource type="FontFile" uid="uid://rqkv55ns38ao" path="res://assets/fonts/Thailandesa.ttf" id="4_brvej"]
 
-[node name="UIDualProgressBar" type="CenterContainer"]
+[node name="UIDualProgressBar" type="CenterContainer" unique_id=1517292712]
 offset_right = 187.0
 offset_bottom = 32.0
 size_flags_horizontal = 6
@@ -14,17 +14,17 @@ script = ExtResource("1_50gne")
 progress_texture = ExtResource("2_th5rs")
 back_color = Color(0.494854, 0.494855, 0.494854, 1)
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=905466388]
 layout_mode = 2
 texture = ExtResource("3_brvej")
 
-[node name="PBBack" type="TextureProgressBar" parent="."]
+[node name="PBBack" type="TextureProgressBar" parent="." unique_id=137192930]
 layout_mode = 2
 
-[node name="PBFore" type="TextureProgressBar" parent="."]
+[node name="PBFore" type="TextureProgressBar" parent="." unique_id=1336186282]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=293846899]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_brvej")
 theme_override_font_sizes/font_size = 24
