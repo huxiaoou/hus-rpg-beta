@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
             var start: Vector2 = owner_unit.global_position
             var end: Vector2 = ManagerCellBattle.cell_to_point(potential_target_cell)
             var control: Vector2 = Utils.cal_control_point_for_bezier(start, end, curve_scale)
-            comp_track_drawer.setup(start, control, end)
+            comp_track_drawer.update_points(start, control, end)
         return
     return
 
@@ -60,7 +60,7 @@ func launch() -> bool:
 
 
 func finish() -> void:
-    comp_track_drawer.clear()
+    comp_track_drawer.clear_points()
     owner_unit.play_animation("idle")
     super.finish()
     return
