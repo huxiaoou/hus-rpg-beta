@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
 [ext_resource type="SpriteFrames" uid="uid://eispd8jrh5mt" path="res://resources/sprt_frms_viking.tres" id="3_mgebg"]
 [ext_resource type="PackedScene" uid="uid://bxvh4mn6kfwsn" path="res://scenes/audios/a_player_unit_game_play.tscn" id="3_rk2mp"]
+[ext_resource type="PackedScene" uid="uid://3yo3hswgsjgu" path="res://scenes/abilities/hit_box.tscn" id="3_vewqn"]
 [ext_resource type="PackedScene" uid="uid://crdmqwektpqdb" path="res://scenes/abilities/manager_abilities.tscn" id="4_mgebg"]
 [ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="6_rk2mp"]
 [ext_resource type="PackedScene" uid="uid://bxh1jbvf6hq3l" path="res://scenes/ui/ui_floating_health_bar.tscn" id="7_44d7s"]
@@ -74,6 +75,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fe0lq"]
 resource_name = "attack"
@@ -141,19 +166,29 @@ tracks/4/keys = {
 "method": &"play_unit_sword"
 }]
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("..")
+tracks/5/path = NodePath("HitBox:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.32),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"emit_unit_attack_impacted"
-}]
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(89, -107), Vector2(65, -128), Vector2(33, -147), Vector2(-1, -147), Vector2(0, -149), Vector2(-7, -147), Vector2(-7, -150), Vector2(78, -127), Vector2(130, -48), Vector2(129, -19), Vector2(125, -48), Vector2(112, -80)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox:monitoring")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_amp7q"]
@@ -411,6 +446,8 @@ script = ExtResource("1_6e3tn")
 avatar = ExtResource("2_fe0lq")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=586026160]
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1636582902]
 position = Vector2(8, -49)
@@ -431,6 +468,8 @@ scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("3_mgebg")
 animation = &"walk"
 
+[node name="HitBox" parent="CharacterBody2D" unique_id=181615822 instance=ExtResource("3_vewqn")]
+
 [node name="AnimPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=702366665]
 libraries/ = SubResource("AnimationLibrary_44d7s")
 
@@ -440,8 +479,4 @@ libraries/ = SubResource("AnimationLibrary_44d7s")
 scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("6_rk2mp")])
 
 [node name="UIFloatingHealthBar" parent="." unique_id=1704756695 instance=ExtResource("7_44d7s")]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 320.0
-offset_bottom = 50.0
 scale = Vector2(0.5, 0.5)

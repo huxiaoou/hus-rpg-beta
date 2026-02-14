@@ -17,6 +17,8 @@ sprite_frames = ExtResource("1_vl370")
 animation = &"arrow"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=42222686]
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=157377500]
 position = Vector2(27.5, 0)
