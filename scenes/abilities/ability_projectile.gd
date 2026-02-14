@@ -64,3 +64,9 @@ func finish() -> void:
     owner_unit.play_animation("idle")
     super.finish()
     return
+
+
+func deactivate() -> void:
+    comp_track_drawer.clear_points()
+    super.deactivate()
+    return

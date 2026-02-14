@@ -64,6 +64,7 @@ init_cell = Vector2i(3, 7)
 
 [node name="UnitArcher" parent="Units" unique_id=516109518 instance=ExtResource("11_odxcu")]
 position = Vector2(382, 637)
+initiative = 18
 init_cell = Vector2i(2, 6)
 
 [node name="UnitWizard" parent="Units" unique_id=1659877491 instance=ExtResource("10_lxgdc")]

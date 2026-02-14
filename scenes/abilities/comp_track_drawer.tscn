@@ -1,8 +1,21 @@
 [gd_scene format=3 uid="uid://nndhtw75ygpy"]
 
+[ext_resource type="Texture2D" uid="uid://bgccfu7weyoyr" path="res://assets/ui/PictoIcon_Arrow_Next.Png" id="1_2otxn"]
+[ext_resource type="Shader" uid="uid://dak4sfa52v38p" path="res://scenes/abilities/comp_track_drawer.gdshader" id="1_fiwit"]
 [ext_resource type="Script" uid="uid://oudt5bsg3kku" path="res://scenes/abilities/comp_track_drawer.gd" id="1_txmin"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ec76"]
+shader = ExtResource("1_fiwit")
+shader_parameter/speed = 0.5
+shader_parameter/dash_density = 1.0
+
+[sub_resource type="Gradient" id="Gradient_fiwit"]
+colors = PackedColorArray(0.059340656, 0.56279004, 0.8709155, 1, 1, 1, 1, 1)
+
 [node name="CompTrackDrawer" type="Line2D" unique_id=1386960072]
-width = 2.0
-default_color = Color(0.42694473, 0.23034823, 0.031147718, 1)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_3ec76")
+gradient = SubResource("Gradient_fiwit")
+texture = ExtResource("1_2otxn")
+texture_mode = 1
 script = ExtResource("1_txmin")
