@@ -13,3 +13,5 @@ script = ExtResource("1_t8s4t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=63363949]
 shape = SubResource("CircleShape2D_g8jw5")
 debug_color = Color(0.89052767, 0.29830822, 0.34789386, 0.41960785)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

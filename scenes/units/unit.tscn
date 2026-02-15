@@ -6,12 +6,13 @@
 [ext_resource type="SpriteFrames" uid="uid://eispd8jrh5mt" path="res://resources/sprt_frms_viking.tres" id="3_mgebg"]
 [ext_resource type="PackedScene" uid="uid://bxvh4mn6kfwsn" path="res://scenes/audios/a_player_unit_game_play.tscn" id="3_rk2mp"]
 [ext_resource type="PackedScene" uid="uid://3yo3hswgsjgu" path="res://scenes/abilities/hit_box.tscn" id="3_vewqn"]
+[ext_resource type="PackedScene" uid="uid://bkiyjcodnl3s2" path="res://scenes/abilities/hurt_box.tscn" id="4_amp7q"]
 [ext_resource type="PackedScene" uid="uid://crdmqwektpqdb" path="res://scenes/abilities/manager_abilities.tscn" id="4_mgebg"]
 [ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="6_rk2mp"]
 [ext_resource type="PackedScene" uid="uid://bxh1jbvf6hq3l" path="res://scenes/ui/ui_floating_health_bar.tscn" id="7_44d7s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
-size = Vector2(108, 162)
+size = Vector2(71, 51)
 
 [sub_resource type="Animation" id="Animation_44d7s"]
 length = 0.001
@@ -185,7 +186,7 @@ tracks/6/path = NodePath("HitBox:monitoring")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.4),
+"times": PackedFloat32Array(0, 0.44),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -444,13 +445,13 @@ _data = {
 [node name="Unit" type="Node2D" unique_id=516109518]
 script = ExtResource("1_6e3tn")
 avatar = ExtResource("2_fe0lq")
+stamina = 1000
+max_stamina = 1000
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=586026160]
-collision_layer = 4
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1636582902]
-position = Vector2(8, -49)
+position = Vector2(1.5, 6.5)
 shape = SubResource("RectangleShape2D_5c8dj")
 
 [node name="SpriteShadow" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=853395425]
@@ -467,6 +468,9 @@ position = Vector2(-5, -72)
 scale = Vector2(0.6, 0.6)
 sprite_frames = ExtResource("3_mgebg")
 animation = &"walk"
+
+[node name="HurtBox" parent="CharacterBody2D" unique_id=1139650379 instance=ExtResource("4_amp7q")]
+position = Vector2(6, -76)
 
 [node name="HitBox" parent="CharacterBody2D" unique_id=181615822 instance=ExtResource("3_vewqn")]
 

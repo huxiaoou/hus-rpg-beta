@@ -42,6 +42,8 @@ enum GroupFlag {
 @onready var anim_player: AnimationPlayer = $CharacterBody2D/AnimPlayer
 @onready var mgr_abilities: ManagerAbilities = $ManagerAbilities
 @onready var ui_floating_health_bar: UIFloatingHealthBar = $UIFloatingHealthBar
+@onready var hurt_box: HurtBox = $CharacterBody2D/HurtBox
+@onready var hit_box: HitBox = $CharacterBody2D/HitBox
 
 var astreams: Dictionary[String, AudioStream] = { }
 var cell: Vector2i:
@@ -77,6 +79,7 @@ func _ready() -> void:
     connect_ui_floating_health_bar()
     mgr_abilities.setup()
     play_animation("idle")
+    hurt_box.owner_unit = self
     return
 
 
@@ -154,24 +157,28 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func adjust_animation_direction(target_pos: Vector2) -> bool:
     if target_pos.x > position.x:
-        sprite_body.scale.x = abs(sprite_body.scale.x)
-        sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
+        # sprite_body.scale.x = abs(sprite_body.scale.x)
+        # sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
+        scale.x = abs(scale.x)
         return true
     if target_pos.x < position.x:
-        sprite_body.scale.x = -abs(sprite_body.scale.x)
-        sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
+        # sprite_body.scale.x = -abs(sprite_body.scale.x)
+        # sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
+        scale.x = -abs(scale.x)
         return true
     return false
 
 
 func adjust_animation_direction_from_cell(target_cell: Vector2i) -> bool:
     if target_cell.x > cell.x:
-        sprite_body.scale.x = abs(sprite_body.scale.x)
-        sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
+        # sprite_body.scale.x = abs(sprite_body.scale.x)
+        # sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
+        scale.x = abs(scale.x)
         return true
     if target_cell.x < cell.x:
-        sprite_body.scale.x = -abs(sprite_body.scale.x)
-        sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
+        # sprite_body.scale.x = -abs(sprite_body.scale.x)
+        # sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
+        scale.x = -abs(scale.x)
         return true
     return false
 
@@ -221,4 +228,11 @@ func change_magicka(delta_magicka: int) -> void:
 func change_resolve(delta_resolve: int) -> void:
     resolve = clampi(resolve + delta_resolve, 0, max_resolve)
     unit_resolve_changed.emit(resolve)
+    return
+
+
+func update_hit_box() -> void:
+    hit_box.damage.caster = self
+    hit_box.damage.amount = attack
+    hit_box.damage.dmg_type = DataDamage.EDmgType.PHYSICS
     return

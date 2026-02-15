@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cui1ke0h321ev"]
+[gd_scene format=3 uid="uid://cui1ke0h321ev"]
 
 [ext_resource type="Script" uid="uid://4k7cpru6ia4s" path="res://scenes/abilities/ability_sword.gd" id="1_1bwa0"]
 [ext_resource type="PackedScene" uid="uid://b6yeeomqdx5nc" path="res://scenes/effects/hit_effect_blood_06.tscn" id="2_i1n1b"]
 
-[node name="AbilitySword" type="Node"]
+[node name="AbilitySword" type="Node" unique_id=2123300679]
 script = ExtResource("1_1bwa0")
 short_name = "Sword"
 id = "ability_sword"
 description = "Use a sword to do a melee attack"
 
-[node name="HitEffectBlood06" parent="." instance=ExtResource("2_i1n1b")]
+[node name="HitEffectBlood06" parent="." unique_id=625106896 instance=ExtResource("2_i1n1b")]
