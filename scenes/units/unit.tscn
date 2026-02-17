@@ -432,7 +432,7 @@ tracks/4/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_44d7s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amp7q"]
 _data = {
 &"RESET": SubResource("Animation_44d7s"),
 &"attack": SubResource("Animation_fe0lq"),
@@ -475,7 +475,7 @@ position = Vector2(6, -76)
 [node name="HitBox" parent="CharacterBody2D" unique_id=181615822 instance=ExtResource("3_vewqn")]
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=702366665]
-libraries/ = SubResource("AnimationLibrary_44d7s")
+libraries/ = SubResource("AnimationLibrary_amp7q")
 
 [node name="APlayerUnitGamePlay" parent="CharacterBody2D" unique_id=490961079 instance=ExtResource("3_rk2mp")]
 
