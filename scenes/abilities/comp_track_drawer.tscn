@@ -6,16 +6,18 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ec76"]
 shader = ExtResource("1_fiwit")
-shader_parameter/speed = 0.5
-shader_parameter/dash_density = 1.0
+shader_parameter/speed = 2.0
 
-[sub_resource type="Gradient" id="Gradient_fiwit"]
-colors = PackedColorArray(0.059340656, 0.56279004, 0.8709155, 1, 1, 1, 1, 1)
+[sub_resource type="Curve" id="Curve_fiwit"]
+_data = [Vector2(0, 1), 0.0, -0.5, 0, 1, Vector2(1, 0.5), -0.5, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
 
 [node name="CompTrackDrawer" type="Line2D" unique_id=1386960072]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_3ec76")
-gradient = SubResource("Gradient_fiwit")
+width = 32.0
+width_curve = SubResource("Curve_fiwit")
 texture = ExtResource("1_2otxn")
 texture_mode = 1
 script = ExtResource("1_txmin")
