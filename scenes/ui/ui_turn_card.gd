@@ -3,7 +3,7 @@ extends CenterContainer
 class_name UITurnCard
 
 @export_group("Custom")
-@export var group_flag: Unit.GroupFlag = Unit.GroupFlag.ALLY
+@export var group_flag: DataUnit.GroupFlag = DataUnit.GroupFlag.ALLY
 @export var astream_hover: AudioStream
 @export var astream_fades_in_out: AudioStream
 @export var bg_texture_ally: Texture2D
@@ -39,20 +39,20 @@ func _ready() -> void:
 
 
 func setup(unit: Unit) -> void:
-    group_flag = unit.group_flag
-    av.texture = unit.avatar
+    group_flag = unit.data_unit.group_flag
+    av.texture = unit.data_unit.avatar
     update_color()
     return
 
 
 func update_color() -> void:
-    if group_flag == Unit.GroupFlag.ALLY:
+    if group_flag == DataUnit.GroupFlag.ALLY:
         bg.texture = bg_texture_ally
         bd.texture = bd_texture_ally
-    elif group_flag == Unit.GroupFlag.ENEMY:
+    elif group_flag == DataUnit.GroupFlag.ENEMY:
         bg.texture = bg_texture_enemy
         bd.texture = bd_texture_enemy
-    elif group_flag == Unit.GroupFlag.NEUTRAL:
+    elif group_flag == DataUnit.GroupFlag.NEUTRAL:
         bg.texture = bg_texture_neutral
         bd.texture = bd_texture_neutral
     return

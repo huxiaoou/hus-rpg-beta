@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DataUnit" format=3 uid="uid://bqjij443b0n5k"]
+
+[ext_resource type="Texture2D" uid="uid://b2u7tmm6uuq7c" path="res://assets/units/unit_skull_avatar.png" id="1_yp8n4"]
+[ext_resource type="Script" uid="uid://c8r15jep3ud1p" path="res://scenes/custom_resources/data_unit.gd" id="2_0t4e3"]
+
+[resource]
+script = ExtResource("2_0t4e3")
+name = "Skull"
+avatar = ExtResource("1_yp8n4")
+group_flag = 1
+init_cell = Vector2i(6, 7)
+metadata/_custom_type_script = "uid://c8r15jep3ud1p"

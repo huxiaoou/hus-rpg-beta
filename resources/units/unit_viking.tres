@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DataUnit" format=3 uid="uid://dlqrdyfxb20h0"]
+
+[ext_resource type="Script" uid="uid://c8r15jep3ud1p" path="res://scenes/custom_resources/data_unit.gd" id="1_5bojn"]
+[ext_resource type="Texture2D" uid="uid://btjaujdecbbcv" path="res://assets/units/unit_viking_avatar.png" id="1_p2lj7"]
+
+[resource]
+script = ExtResource("1_5bojn")
+name = "Viking"
+avatar = ExtResource("1_p2lj7")
+group_flag = 0
+init_cell = Vector2i(4, 7)
+metadata/_custom_type_script = "uid://c8r15jep3ud1p"

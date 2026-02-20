@@ -89,7 +89,7 @@ func deactivate() -> void:
 
 
 func check_health_cost() -> bool:
-    if owner_unit.health < cost_health:
+    if owner_unit.data_unit.health < cost_health:
         warning.emit()
         print("Not enough health, %d/%d" % [owner_unit.health, cost_health])
         return false
@@ -97,7 +97,7 @@ func check_health_cost() -> bool:
 
 
 func check_stamina_cost() -> bool:
-    if owner_unit.stamina < cost_stamnia:
+    if owner_unit.data_unit.stamina < cost_stamnia:
         warning.emit()
         print("Not enough stamina, %d/%d" % [owner_unit.stamina, cost_stamnia])
         return false
@@ -105,7 +105,7 @@ func check_stamina_cost() -> bool:
 
 
 func check_magicka_cost() -> bool:
-    if owner_unit.magicka < cost_magicka:
+    if owner_unit.data_unit.magicka < cost_magicka:
         warning.emit()
         print("Not enough magicka, %d/%d" % [owner_unit.magicka, cost_magicka])
         return false
@@ -113,7 +113,7 @@ func check_magicka_cost() -> bool:
 
 
 func check_resolve_cost() -> bool:
-    if owner_unit.resolve < cost_resolve:
+    if owner_unit.data_unit.resolve < cost_resolve:
         warning.emit()
         print("Not enough resolve, %d/%d" % [owner_unit.resolve, cost_resolve])
         return false
@@ -131,10 +131,10 @@ func launch() -> bool:
         return false
     if check_ability_cost():
         is_casting = true
-        owner_unit.change_stamina(-cost_stamnia)
-        owner_unit.change_magicka(-cost_magicka)
-        owner_unit.change_resolve(-cost_resolve)
-        owner_unit.change_health(-cost_health)
+        owner_unit.data_unit.change_stamina(-cost_stamnia)
+        owner_unit.data_unit.change_magicka(-cost_magicka)
+        owner_unit.data_unit.change_resolve(-cost_resolve)
+        owner_unit.data_unit.change_health(-cost_health)
         print("%s launches ability %s" % [owner_unit.name, short_name])
         return true
     return false

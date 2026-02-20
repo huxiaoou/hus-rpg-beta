@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c40qa0yk65dev"]
+[gd_scene format=3 uid="uid://c40qa0yk65dev"]
 
 [ext_resource type="Script" uid="uid://eobdlfcjda0m" path="res://scenes/ui/ui_avatar.gd" id="1_7d2qh"]
 [ext_resource type="PackedScene" uid="uid://blygpu0xndw5o" path="res://scenes/ui/ui_unit_frame.tscn" id="1_lfsq8"]
@@ -11,33 +11,33 @@
 [ext_resource type="Texture2D" uid="uid://catl1e5at5ylx" path="res://assets/ui/PictoIcon_Defense.Png" id="9_ymq1w"]
 [ext_resource type="Texture2D" uid="uid://bnr3ey8dtihw3" path="res://assets/ui/PictoIcon_Boots.Png" id="10_7k6d5"]
 
-[node name="UIAvatar" type="HBoxContainer"]
+[node name="UIAvatar" type="HBoxContainer" unique_id=827327734]
 offset_right = 4170.0
 offset_bottom = 192.0
 theme_override_constants/separation = -56
 script = ExtResource("1_7d2qh")
 avatar = ExtResource("3_8jfd8")
 
-[node name="UIUnitFrame" parent="." instance=ExtResource("1_lfsq8")]
+[node name="UIUnitFrame" parent="." unique_id=1377469989 instance=ExtResource("1_lfsq8")]
 layout_mode = 2
 
-[node name="VBoxLevel" type="VBoxContainer" parent="."]
+[node name="VBoxLevel" type="VBoxContainer" parent="." unique_id=1705487050]
 layout_mode = 2
 
-[node name="UILevel" parent="VBoxLevel" instance=ExtResource("4_m4day")]
+[node name="UILevel" parent="VBoxLevel" unique_id=150941209 instance=ExtResource("4_m4day")]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="HBoxInfo" type="CenterContainer" parent="."]
+[node name="HBoxInfo" type="CenterContainer" parent="." unique_id=1896925301]
 z_index = -1
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Bg" type="TextureRect" parent="HBoxInfo"]
+[node name="Bg" type="TextureRect" parent="HBoxInfo" unique_id=1006231653]
 layout_mode = 2
 texture = ExtResource("5_isyae")
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxInfo/Bg"]
+[node name="MarginContainer" type="MarginContainer" parent="HBoxInfo/Bg" unique_id=446784599]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -51,36 +51,36 @@ theme_override_constants/margin_left = 63
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 
-[node name="VBoxBars" type="VBoxContainer" parent="HBoxInfo/Bg/MarginContainer"]
+[node name="VBoxBars" type="VBoxContainer" parent="HBoxInfo/Bg/MarginContainer" unique_id=84096277]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Row0" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars"]
+[node name="Row0" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars" unique_id=860749882]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="UIBarHealth" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row0" instance=ExtResource("3_m4day")]
+[node name="UIBarHealth" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row0" unique_id=1014716127 instance=ExtResource("3_m4day")]
 layout_mode = 2
 fore_color = Color(0.505075, 4.03095e-07, 3.36915e-07, 1)
 
-[node name="UIBarMagicka" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row0" instance=ExtResource("3_m4day")]
+[node name="UIBarMagicka" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row0" unique_id=2082678273 instance=ExtResource("3_m4day")]
 layout_mode = 2
 fore_color = Color(0.204797, 0.484309, 1, 1)
 
-[node name="Row1" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars"]
+[node name="Row1" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars" unique_id=1874006478]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="UIBarStamina" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row1" instance=ExtResource("3_m4day")]
+[node name="UIBarStamina" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row1" unique_id=538765114 instance=ExtResource("3_m4day")]
 layout_mode = 2
 fore_color = Color(0.115284, 0.32342, 0.22518, 1)
 
-[node name="UIBarResolve" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row1" instance=ExtResource("3_m4day")]
+[node name="UIBarResolve" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/Row1" unique_id=1979299899 instance=ExtResource("3_m4day")]
 layout_mode = 2
 fore_color = Color(0.66, 0.3432, 0.066, 1)
 
-[node name="SepLine" type="NinePatchRect" parent="HBoxInfo/Bg/MarginContainer/VBoxBars"]
+[node name="SepLine" type="NinePatchRect" parent="HBoxInfo/Bg/MarginContainer/VBoxBars" unique_id=121798228]
 custom_minimum_size = Vector2(0, 2)
 layout_mode = 2
 texture = ExtResource("7_mi5tj")
@@ -88,18 +88,18 @@ region_rect = Rect2(1, 3, 146, 2)
 patch_margin_left = 4
 patch_margin_right = 4
 
-[node name="HBoxStatus" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars"]
+[node name="HBoxStatus" type="HBoxContainer" parent="HBoxInfo/Bg/MarginContainer/VBoxBars" unique_id=607118887]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="UIStatusAttack" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
+[node name="UIStatusAttack" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" unique_id=1307473375 instance=ExtResource("8_8jfd8")]
 layout_mode = 2
 
-[node name="UIStatusArmor" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
+[node name="UIStatusArmor" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" unique_id=933937828 instance=ExtResource("8_8jfd8")]
 layout_mode = 2
 custom_icon = ExtResource("9_ymq1w")
 
-[node name="UIStatusInitiative" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" instance=ExtResource("8_8jfd8")]
+[node name="UIStatusInitiative" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" unique_id=1507056335 instance=ExtResource("8_8jfd8")]
 layout_mode = 2
 custom_icon = ExtResource("10_7k6d5")

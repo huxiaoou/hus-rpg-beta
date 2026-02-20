@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DataUnit" format=3 uid="uid://bp15xbf2ajej2"]
+
+[ext_resource type="Texture2D" uid="uid://colyv7yg7p8ex" path="res://assets/units/unit_necromancer_avatar.png" id="1_3cp6j"]
+[ext_resource type="Script" uid="uid://c8r15jep3ud1p" path="res://scenes/custom_resources/data_unit.gd" id="2_442xb"]
+
+[resource]
+script = ExtResource("2_442xb")
+name = "Necromancer"
+avatar = ExtResource("1_3cp6j")
+group_flag = 1
+init_cell = Vector2i(6, 9)
+metadata/_custom_type_script = "uid://c8r15jep3ud1p"

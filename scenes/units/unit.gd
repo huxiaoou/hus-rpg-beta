@@ -3,38 +3,10 @@ extends Node2D
 class_name Unit
 
 signal unit_turn_finished(unit: Unit)
-signal unit_attack_impacted(unit: Unit)
-signal unit_health_changed(health: int)
-signal unit_magicka_changed(magicka: int)
-signal unit_stamina_changed(stamina: int)
-signal unit_resolve_changed(resolve: int)
+signal unit_melee_weapon_impacted(unit: Unit)
 
-enum GroupFlag {
-    ALLY,
-    ENEMY,
-    NEUTRAL,
-}
-
-@export_group("UI")
-@export var avatar: Texture2D
-
-@export_group("Attributes")
-@export var group_flag: GroupFlag = GroupFlag.NEUTRAL
-@export var level: int = 1
-@export var health: int = 100
-@export var stamina: int = 100
-@export var magicka: int = 100
-@export var resolve: int = 100
-@export var max_health: int = 100
-@export var max_stamina: int = 100
-@export var max_magicka: int = 100
-@export var max_resolve: int = 100
-@export var attack: int = 24
-@export var armor: int = 8
-@export var initiative: int = 12
-
-@export_group("Init")
-@export var init_cell: Vector2i
+@export_group("Data")
+@export var data_unit: DataUnit
 
 @onready var character_body_2d: CharacterBody2D = $CharacterBody2D
 @onready var sprite_body: AnimatedSprite2D = $CharacterBody2D/SpriteBody
@@ -54,69 +26,24 @@ var cell: Vector2i:
 
 
 static func sort_by_initiative(a: Unit, b: Unit) -> bool:
-    if a.initiative != b.initiative:
-        return a.initiative > b.initiative
-    if a.level != b.level:
-        return a.level > b.level
-    if a.group_flag != b.group_flag:
-        return a.group_flag < b.group_flag
-    if a.attack != b.attack:
-        return a.attack > b.attack
-    if a.armor != b.armor:
-        return a.armor > b.armor
-    if a.health != b.health:
-        return a.health > b.health
-    if a.stamina != b.stamina:
-        return a.stamina > b.stamina
-    if a.magicka != b.magicka:
-        return a.magicka > b.magicka
-    if a.resolve != b.resolve:
-        return a.resolve > b.resolve
-    return a.name > b.name
+    return a.data_unit.has_greater_turn_order(b.data_unit)
 
 
 func _ready() -> void:
-    connect_ui_floating_health_bar()
+    #ui_floating_health_bar.init_fr
     mgr_abilities.setup()
     play_animation("idle")
     hurt_box.owner_unit = self
     return
 
 
-func connect_ui_avatar(ui_avatar: UIAvatar) -> void:
-    ui_avatar.ui_unit_frame.set_avatar(avatar)
-
-    # health bar
-    ui_avatar.ui_bar_health.init_value(health, max_health, 0, 1)
-    unit_health_changed.connect(ui_avatar.ui_bar_health.on_value_changed)
-
-    # magicka bar
-    ui_avatar.ui_bar_magicka.init_value(magicka, max_magicka, 0, 1)
-    unit_magicka_changed.connect(ui_avatar.ui_bar_magicka.on_value_changed)
-
-    # stamina bar
-    ui_avatar.ui_bar_stamina.init_value(stamina, max_stamina, 0, 1)
-    unit_stamina_changed.connect(ui_avatar.ui_bar_stamina.on_value_changed)
-
-    # resolve bar
-    ui_avatar.ui_bar_resolve.init_value(resolve, max_resolve, 0, 1)
-    unit_resolve_changed.connect(ui_avatar.ui_bar_resolve.on_value_changed)
-
-    ui_avatar.ui_status_attack.set_value(attack)
-    ui_avatar.ui_status_armor.set_value(armor)
-    ui_avatar.ui_status_initiative.set_value(initiative)
-    return
-
-
-func connect_ui_floating_health_bar() -> void:
-    ui_floating_health_bar.init_value(health, max_health, 0, 1)
-    unit_health_changed.connect(ui_floating_health_bar.on_value_changed)
-    return
-
-
 func setup_in_battle() -> void:
-    cell = init_cell
+    cell = data_unit.init_cell
     return
+
+
+func is_ally() -> bool:
+    return data_unit.group_flag == DataUnit.GroupFlag.ALLY
 
 
 func move_toward(target_pos: Vector2, distance: float) -> void:
@@ -188,51 +115,31 @@ func play_animation(animation: String) -> void:
     return
 
 
-func emit_unit_attack_impacted() -> void:
-    unit_attack_impacted.emit(self)
+func emit_unit_melee_weapon_impacted() -> void:
+    unit_melee_weapon_impacted.emit(self)
     return
 
 
-func on_hurt(unit: Unit) -> void:
-    var damage: int = (unit.attack * (1 - min((armor as float) / 40, 1))) as int
-    change_health(-damage)
+func cal_damage(data_damage: DataDamage) -> int:
+    return int(data_damage.amount * (1 - min((data_unit.armor as float) / 40, 1)))
+
+
+func on_hurt(data_damage: DataDamage) -> void:
+    var damage: int = cal_damage(data_damage)
+    data_unit.change_health(-damage)
     anim_player.play("hurt")
-    print("%s attacks with attack %d" % [unit.name, unit.attack])
-    print("%s takes %d damage, health is %d" % [name, damage, health])
+    print("%s attacks with attack %d" % [data_damage.caster, data_damage.amount])
+    print("%s takes %d damage, health is %d" % [name, damage, data_unit.health])
     await anim_player.animation_finished
-    if health <= 0:
+    if data_unit.health <= 0:
         anim_player.play("die")
     else:
         anim_player.play("idle")
     return
 
 
-func change_health(delta_health: int) -> void:
-    health = clampi(health + delta_health, 0, max_health)
-    unit_health_changed.emit(health)
-    return
-
-
-func change_stamina(delta_stamina: int) -> void:
-    stamina = clampi(stamina + delta_stamina, 0, max_stamina)
-    unit_stamina_changed.emit(stamina)
-    return
-
-
-func change_magicka(delta_magicka: int) -> void:
-    magicka = clampi(magicka + delta_magicka, 0, max_magicka)
-    unit_magicka_changed.emit(magicka)
-    return
-
-
-func change_resolve(delta_resolve: int) -> void:
-    resolve = clampi(resolve + delta_resolve, 0, max_resolve)
-    unit_resolve_changed.emit(resolve)
-    return
-
-
 func update_hit_box() -> void:
     hit_box.damage.caster = self
-    hit_box.damage.amount = attack
+    hit_box.damage.amount = data_unit.attack
     hit_box.damage.dmg_type = DataDamage.EDmgType.PHYSICS
     return

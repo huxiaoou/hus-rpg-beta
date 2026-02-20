@@ -42,3 +42,8 @@ func _tween_bar(
 func on_value_changed(new_value: float) -> void:
     _tween_bar(new_value, 0.5, 0.0)
     return
+
+func init_from_unit(unit: Unit) -> void:
+    init_value(unit.health, unit.max_health, 0, 1)
+    unit.unit_health_changed.connect(on_value_changed)
+    return

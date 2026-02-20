@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_aaq5n"]
 [ext_resource type="SpriteFrames" uid="uid://c2mv8hkq0xwqm" path="res://resources/sprt_frms_skull.tres" id="2_40vi7"]
-[ext_resource type="Texture2D" uid="uid://b2u7tmm6uuq7c" path="res://assets/units/unit_skull_avatar.png" id="2_ys3mn"]
+[ext_resource type="Resource" uid="uid://bqjij443b0n5k" path="res://resources/units/unit_skull.tres" id="2_ys3mn"]
 
 [sub_resource type="Animation" id="Animation_40vi7"]
 length = 0.001
@@ -433,9 +433,7 @@ _data = {
 }
 
 [node name="UnitSkull" unique_id=236103932 instance=ExtResource("1_aaq5n")]
-avatar = ExtResource("2_ys3mn")
-group_flag = 1
-initiative = 13
+data_unit = ExtResource("2_ys3mn")
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
 position = Vector2(60, -18)

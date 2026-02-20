@@ -48,33 +48,20 @@ y_sort_enabled = true
 
 [node name="UnitSkull" parent="Units" unique_id=579281172 instance=ExtResource("8_d4bfr")]
 position = Vector2(1388, 773)
-stamina = 100
-init_cell = Vector2i(9, 7)
 
 [node name="UnitSkeletonArcher" parent="Units" unique_id=158485816 instance=ExtResource("12_or4fg")]
 position = Vector2(1537, 645)
-stamina = 100
-init_cell = Vector2i(10, 6)
 
 [node name="UnitNecromancer" parent="Units" unique_id=1755668424 instance=ExtResource("13_pd4wd")]
 position = Vector2(1541, 925)
-stamina = 100
-init_cell = Vector2i(10, 9)
 
 [node name="UnitViking" parent="Units" unique_id=161643247 instance=ExtResource("8_k1ymq")]
 position = Vector2(528, 782)
-stamina = 100
-init_cell = Vector2i(3, 7)
 
 [node name="UnitArcher" parent="Units" unique_id=516109518 instance=ExtResource("11_odxcu")]
 position = Vector2(382, 637)
-stamina = 100
-initiative = 18
-init_cell = Vector2i(2, 6)
 
 [node name="UnitWizard" parent="Units" unique_id=1659877491 instance=ExtResource("10_lxgdc")]
 position = Vector2(383, 915)
-stamina = 100
-init_cell = Vector2i(2, 9)
 
 [node name="CameraController" parent="." unique_id=2074291407 instance=ExtResource("10_wuj0f")]

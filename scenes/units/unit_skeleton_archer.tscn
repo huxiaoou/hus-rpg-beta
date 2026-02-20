@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bavq0ulcx4e17"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_rpqp4"]
-[ext_resource type="Texture2D" uid="uid://c3pge07m0gfsc" path="res://assets/units/unit_skeletonarcher_avatar.png" id="2_037p7"]
+[ext_resource type="Resource" uid="uid://ba58iuyekkb4x" path="res://resources/units/unit_skeleton_archer.tres" id="2_037p7"]
 [ext_resource type="SpriteFrames" uid="uid://dqbmkk56neyj0" path="res://resources/sprt_frms_skeleton_archer.tres" id="2_a10fp"]
 
 [sub_resource type="Animation" id="Animation_037p7"]
@@ -385,8 +385,7 @@ _data = {
 }
 
 [node name="UnitSkeletonArcher" unique_id=516109518 instance=ExtResource("1_rpqp4")]
-avatar = ExtResource("2_037p7")
-group_flag = 1
+data_unit = ExtResource("2_037p7")
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
 position = Vector2(52, -22)
