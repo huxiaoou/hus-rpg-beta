@@ -4,6 +4,7 @@ class_name Unit
 
 signal unit_turn_finished(unit: Unit)
 signal unit_melee_weapon_impacted(unit: Unit)
+signal unit_projectile_launched(unit: Unit)
 
 @export_group("Data")
 @export var data_unit: DataUnit
@@ -117,6 +118,11 @@ func play_animation(animation: String) -> void:
 
 func emit_unit_melee_weapon_impacted() -> void:
     unit_melee_weapon_impacted.emit(self)
+    return
+
+
+func emit_unit_projectile_launched() -> void:
+    unit_projectile_launched.emit(self)
     return
 
 

@@ -36,11 +36,11 @@ func launch() -> bool:
     if super.launch():
         target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
         owner_unit.adjust_animation_direction_from_cell(target_cell)
-        # owner_unit.unit_attack_impacted.connect(target_unit.on_hurt)
-        # owner_unit.unit_attack_impacted.connect(hit_effect.play)
+        owner_unit.unit_melee_weapon_impacted.connect(target_unit.on_hurt)
+        owner_unit.unit_melee_weapon_impacted.connect(hit_effect.play)
         hit_effect.set_location(target_unit.position)
         owner_unit.update_hit_box()
-        owner_unit.play_animation("attack")
+        owner_unit.play_animation("melee_attack")
         await owner_unit.anim_player.animation_finished
         finish()
         return true
@@ -48,8 +48,8 @@ func launch() -> bool:
 
 
 func finish() -> void:
-    #owner_unit.unit_attack_impacted.disconnect(target_unit.on_hurt)
-    #owner_unit.unit_attack_impacted.disconnect(hit_effect.play)
+    owner_unit.unit_melee_weapon_impacted.disconnect(target_unit.on_hurt)
+    owner_unit.unit_melee_weapon_impacted.disconnect(hit_effect.play)
     owner_unit.play_animation("idle")
     super.finish()
     return

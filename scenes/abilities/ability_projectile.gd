@@ -51,7 +51,7 @@ func launch() -> bool:
         projectile.impacted.connect(target_unit.on_hurt)
         projectile.impacted.connect(hit_effect.play)
         hit_effect.set_location(target_unit.global_position)
-        owner_unit.play_animation("attack")
+        owner_unit.play_animation("ranged_attack")
         await owner_unit.anim_player.animation_finished
         await projectile.launch(owner_unit, target_unit, curve_scale)
         finish()
