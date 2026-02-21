@@ -131,7 +131,7 @@ func cal_net_damage(damage: DataDamage) -> int:
     return int(damage.amount * (1 - min((data.armor as float) / 40, 1)))
 
 
-func on_hurt(damage: DataDamage) -> void:
+func on_hurt(damage: DataDamage, _taker: Unit) -> void:
     var net_dmg: int = cal_net_damage(damage)
     data.change_health(-net_dmg)
     anim_player.play("hurt")

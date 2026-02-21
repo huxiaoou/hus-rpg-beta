@@ -2,7 +2,7 @@ extends Area2D
 
 class_name HurtBox
 
-signal damage_taken(damage: DataDamage)
+signal damage_taken(damage: DataDamage, taker: Unit)
 
 @export var size: Vector2 = Vector2(90, 180)
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -23,5 +23,5 @@ func setup(unit: Unit) -> void:
 
 
 func emit_damage_taken(damage: DataDamage) -> void:
-    damage_taken.emit(damage)
+    damage_taken.emit(damage, owner_unit)
     return

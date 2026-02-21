@@ -36,11 +36,11 @@ func _ready() -> void:
 
 
 func set_location(location: Vector2) -> void:
-    position = location + pos_offset
+    global_position = location + pos_offset
     return
 
 
-func play(_unit: Unit) -> void:
+func play() -> void:
     rotation = randf_range(rotation_range.x, rotation_range.y)
     visible = true
     animation_player.play("main")

@@ -36,8 +36,8 @@ func on_melee_weapon_impacted() -> void:
     owner_unit.activate_hit_box()
     target_unit.activate_hurt_box()
     owner_unit.hit_box.global_position = target_unit.global_position
-    hit_effect.set_location(target_unit.position)
-    hit_effect.play(owner_unit)
+    hit_effect.set_location(target_unit.global_position)
+    hit_effect.play()
     return
 
 

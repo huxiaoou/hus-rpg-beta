@@ -13,7 +13,7 @@ func _ready() -> void:
     var left_top_pos: Vector2i = layer_hex.cell_to_point(lim_cells.position)
     var right_bottom_pos: Vector2i = layer_hex.cell_to_point(lim_cells.end)
 
-    var tile_cell_offset: Vector2i = layer_hex.tile_set.tile_size / 2
+    var tile_cell_offset: Vector2i = layer_hex.tile_set.tile_size / 2 as Vector2i
     var camera_offset: Vector2i = camera_controller.camera_offset() * 2 as Vector2i
     var lim_left_top: Vector2i = left_top_pos + tile_cell_offset
     var lim_right_bottom: Vector2i = right_bottom_pos - tile_cell_offset - camera_offset
