@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_aaq5n"]
 [ext_resource type="SpriteFrames" uid="uid://c2mv8hkq0xwqm" path="res://resources/sprt_frms_skull.tres" id="2_40vi7"]
 [ext_resource type="Resource" uid="uid://bqjij443b0n5k" path="res://resources/units/unit_skull.tres" id="2_ys3mn"]
-[ext_resource type="AnimationLibrary" uid="uid://cm5rsooo5x5gk" path="res://resources/anim_lib_unit.res" id="4_ys3mn"]
 
 [node name="UnitSkull" unique_id=236103932 instance=ExtResource("1_aaq5n")]
-data_unit = ExtResource("2_ys3mn")
+data = ExtResource("2_ys3mn")
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
 position = Vector2(60, -18)
@@ -18,6 +17,3 @@ sprite_frames = ExtResource("2_40vi7")
 
 [node name="HitBox" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="4" unique_id=181615822]
 position = Vector2(0, 0)
-
-[node name="AnimPlayer" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="5" unique_id=702366665]
-libraries/anim_lib_unit = ExtResource("4_ys3mn")

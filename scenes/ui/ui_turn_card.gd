@@ -39,8 +39,8 @@ func _ready() -> void:
 
 
 func setup(unit: Unit) -> void:
-    group_flag = unit.data_unit.group_flag
-    av.texture = unit.data_unit.avatar
+    group_flag = unit.data.group_flag
+    av.texture = unit.data.avatar
     update_color()
     return
 

@@ -37,18 +37,18 @@ func _input(event: InputEvent) -> void:
 
 
 func init_from_unit(unit: Unit) -> void:
-    ui_unit_frame.set_avatar(unit.data_unit.avatar)
-    ui_bar_health.init_value(unit.data_unit.health, unit.data_unit.max_health, 0, 1)
-    ui_bar_magicka.init_value(unit.data_unit.magicka, unit.data_unit.max_magicka, 0, 1)
-    ui_bar_stamina.init_value(unit.data_unit.stamina, unit.data_unit.max_stamina, 0, 1)
-    ui_bar_resolve.init_value(unit.data_unit.resolve, unit.data_unit.max_resolve, 0, 1)
+    ui_unit_frame.set_avatar(unit.data.avatar)
+    ui_bar_health.init_value(unit.data.health, unit.data.max_health, 0, 1)
+    ui_bar_magicka.init_value(unit.data.magicka, unit.data.max_magicka, 0, 1)
+    ui_bar_stamina.init_value(unit.data.stamina, unit.data.max_stamina, 0, 1)
+    ui_bar_resolve.init_value(unit.data.resolve, unit.data.max_resolve, 0, 1)
 
-    unit.data_unit.unit_health_changed.connect(ui_bar_health.on_value_changed)
-    unit.data_unit.unit_magicka_changed.connect(ui_bar_magicka.on_value_changed)
-    unit.data_unit.unit_stamina_changed.connect(ui_bar_stamina.on_value_changed)
-    unit.data_unit.unit_resolve_changed.connect(ui_bar_resolve.on_value_changed)
+    unit.data.health_changed.connect(ui_bar_health.on_value_changed)
+    unit.data.magicka_changed.connect(ui_bar_magicka.on_value_changed)
+    unit.data.stamina_changed.connect(ui_bar_stamina.on_value_changed)
+    unit.data.resolve_changed.connect(ui_bar_resolve.on_value_changed)
 
-    ui_status_attack.set_value(unit.data_unit.attack)
-    ui_status_armor.set_value(unit.data_unit.armor)
-    ui_status_initiative.set_value(unit.data_unit.initiative)
+    ui_status_attack.set_value(unit.data.attack)
+    ui_status_armor.set_value(unit.data.armor)
+    ui_status_initiative.set_value(unit.data.initiative)
     return

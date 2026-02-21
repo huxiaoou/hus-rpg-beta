@@ -32,13 +32,20 @@ func _process(_delta: float) -> void:
     return
 
 
+func on_melee_weapon_impacted() -> void:
+    owner_unit.activate_hit_box()
+    target_unit.activate_hurt_box()
+    owner_unit.hit_box.global_position = target_unit.global_position
+    hit_effect.set_location(target_unit.position)
+    hit_effect.play(owner_unit)
+    return
+
+
 func launch() -> bool:
     if super.launch():
         target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
         owner_unit.adjust_animation_direction_from_cell(target_cell)
-        owner_unit.unit_melee_weapon_impacted.connect(target_unit.on_hurt)
-        owner_unit.unit_melee_weapon_impacted.connect(hit_effect.play)
-        hit_effect.set_location(target_unit.position)
+        owner_unit.melee_weapon_impacted.connect(on_melee_weapon_impacted)
         owner_unit.update_hit_box()
         owner_unit.play_animation("melee_attack")
         await owner_unit.anim_player.animation_finished
@@ -48,8 +55,10 @@ func launch() -> bool:
 
 
 func finish() -> void:
-    owner_unit.unit_melee_weapon_impacted.disconnect(target_unit.on_hurt)
-    owner_unit.unit_melee_weapon_impacted.disconnect(hit_effect.play)
+    owner_unit.melee_weapon_impacted.disconnect(on_melee_weapon_impacted)
+    owner_unit.deactivate_hit_box()
+    target_unit.deactivate_hurt_box()
+    owner_unit.hit_box.global_position = owner_unit.global_position
     owner_unit.play_animation("idle")
     super.finish()
     return

@@ -17,7 +17,7 @@ size = Vector2(71, 51)
 
 [node name="Unit" type="Node2D" unique_id=516109518]
 script = ExtResource("1_6e3tn")
-data_unit = ExtResource("2_amp7q")
+data = ExtResource("2_amp7q")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=586026160]
 
@@ -44,7 +44,6 @@ animation = &"walk"
 position = Vector2(6, -76)
 
 [node name="HitBox" parent="CharacterBody2D" unique_id=181615822 instance=ExtResource("3_vewqn")]
-position = Vector2(89, -107)
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=702366665]
 libraries/ = ExtResource("6_mvvv6")

@@ -44,6 +44,6 @@ func on_value_changed(new_value: float) -> void:
     return
 
 func init_from_unit(unit: Unit) -> void:
-    init_value(unit.health, unit.max_health, 0, 1)
-    unit.unit_health_changed.connect(on_value_changed)
+    init_value(unit.data.health, unit.data.max_health, 0, 1)
+    unit.data.health_changed.connect(on_value_changed)
     return

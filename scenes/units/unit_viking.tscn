@@ -4,14 +4,10 @@
 [ext_resource type="Resource" uid="uid://dlqrdyfxb20h0" path="res://resources/units/unit_viking.tres" id="2_5f5yq"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="2_sc8n4"]
 [ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="3_5f5yq"]
-[ext_resource type="AnimationLibrary" uid="uid://cm5rsooo5x5gk" path="res://resources/anim_lib_unit.res" id="3_vq308"]
 [ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="4_vq308"]
 
 [node name="UnitViking" unique_id=1765002764 instance=ExtResource("1_p5adc")]
-data_unit = ExtResource("2_5f5yq")
-
-[node name="AnimPlayer" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="5" unique_id=702366665]
-libraries/anim_lib_unit = ExtResource("3_vq308")
+data = ExtResource("2_5f5yq")
 
 [node name="ManagerAbilities" parent="." index="1" unique_id=1772872154]
 scenes_abilities = Array[PackedScene]([ExtResource("2_sc8n4"), ExtResource("3_5f5yq"), ExtResource("4_vq308")])

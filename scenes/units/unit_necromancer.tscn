@@ -5,7 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://bjgfnjk6onhfw" path="res://resources/sprt_frms_necromancer.tres" id="2_n6mlv"]
 
 [node name="UnitNecromancer" unique_id=516109518 instance=ExtResource("1_3rbbr")]
-data_unit = ExtResource("2_4yj6l")
+data = ExtResource("2_4yj6l")
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
 position = Vector2(60, -13.999999)
@@ -14,7 +14,3 @@ sprite_frames = ExtResource("2_n6mlv")
 [node name="SpriteBody" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="2" unique_id=1398350913]
 position = Vector2(0, -51)
 sprite_frames = ExtResource("2_n6mlv")
-
-[node name="HitBox" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="4" unique_id=181615822]
-position = Vector2(112, -80)
-monitoring = false

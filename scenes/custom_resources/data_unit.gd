@@ -2,10 +2,10 @@ extends Resource
 
 class_name DataUnit
 
-signal unit_health_changed(health: int)
-signal unit_magicka_changed(magicka: int)
-signal unit_stamina_changed(stamina: int)
-signal unit_resolve_changed(resolve: int)
+signal health_changed(health: int)
+signal magicka_changed(magicka: int)
+signal stamina_changed(stamina: int)
+signal resolve_changed(resolve: int)
 
 enum GroupFlag {
     ALLY,
@@ -38,25 +38,25 @@ enum GroupFlag {
 
 func change_health(delta_health: int) -> void:
     health = clampi(health + delta_health, 0, max_health)
-    unit_health_changed.emit(health)
+    health_changed.emit(health)
     return
 
 
 func change_stamina(delta_stamina: int) -> void:
     stamina = clampi(stamina + delta_stamina, 0, max_stamina)
-    unit_stamina_changed.emit(stamina)
+    stamina_changed.emit(stamina)
     return
 
 
 func change_magicka(delta_magicka: int) -> void:
     magicka = clampi(magicka + delta_magicka, 0, max_magicka)
-    unit_magicka_changed.emit(magicka)
+    magicka_changed.emit(magicka)
     return
 
 
 func change_resolve(delta_resolve: int) -> void:
     resolve = clampi(resolve + delta_resolve, 0, max_resolve)
-    unit_resolve_changed.emit(resolve)
+    resolve_changed.emit(resolve)
     return
 
 

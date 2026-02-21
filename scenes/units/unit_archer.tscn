@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="6_u72ir"]
 
 [node name="UnitArcher" unique_id=516109518 instance=ExtResource("1_m4oll")]
-data_unit = ExtResource("2_xufgy")
+data = ExtResource("2_xufgy")
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
 position = Vector2(49.000004, -13)
@@ -17,9 +17,6 @@ sprite_frames = ExtResource("2_uf5oq")
 [node name="SpriteBody" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="2" unique_id=1398350913]
 position = Vector2(-15, -56.000004)
 sprite_frames = ExtResource("2_uf5oq")
-
-[node name="HitBox" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="4" unique_id=181615822]
-position = Vector2(90, -107)
 
 [node name="ManagerAbilities" parent="." index="1" unique_id=1772872154]
 scenes_abilities = Array[PackedScene]([ExtResource("4_xufgy"), ExtResource("5_v3aws"), ExtResource("6_u72ir")])

@@ -3,11 +3,12 @@ extends Node2D
 class_name Unit
 
 signal unit_turn_finished(unit: Unit)
-signal unit_melee_weapon_impacted(unit: Unit)
-signal unit_projectile_launched(unit: Unit)
+signal melee_weapon_impacted()
+signal ranged_projectile_launched()
+signal get_hurt()
 
 @export_group("Data")
-@export var data_unit: DataUnit
+@export var data: DataUnit
 
 @onready var character_body_2d: CharacterBody2D = $CharacterBody2D
 @onready var sprite_body: AnimatedSprite2D = $CharacterBody2D/SpriteBody
@@ -27,24 +28,24 @@ var cell: Vector2i:
 
 
 static func sort_by_initiative(a: Unit, b: Unit) -> bool:
-    return a.data_unit.has_greater_turn_order(b.data_unit)
+    return a.data.has_greater_turn_order(b.data)
 
 
 func _ready() -> void:
-    #ui_floating_health_bar.init_fr
-    mgr_abilities.setup()
     play_animation("idle")
-    hurt_box.owner_unit = self
+    ui_floating_health_bar.init_from_unit(self)
+    mgr_abilities.setup()
+    hurt_box.setup(self)
     return
 
 
 func setup_in_battle() -> void:
-    cell = data_unit.init_cell
+    cell = data.init_cell
     return
 
 
 func is_ally() -> bool:
-    return data_unit.group_flag == DataUnit.GroupFlag.ALLY
+    return data.group_flag == DataUnit.GroupFlag.ALLY
 
 
 func move_toward(target_pos: Vector2, distance: float) -> void:
@@ -116,36 +117,57 @@ func play_animation(animation: String) -> void:
     return
 
 
-func emit_unit_melee_weapon_impacted() -> void:
-    unit_melee_weapon_impacted.emit(self)
+func emit_melee_weapon_impacted() -> void:
+    melee_weapon_impacted.emit()
     return
 
 
-func emit_unit_projectile_launched() -> void:
-    unit_projectile_launched.emit(self)
+func emit_ranged_projectile_launched() -> void:
+    ranged_projectile_launched.emit()
     return
 
 
-func cal_damage(data_damage: DataDamage) -> int:
-    return int(data_damage.amount * (1 - min((data_unit.armor as float) / 40, 1)))
+func cal_net_damage(damage: DataDamage) -> int:
+    return int(damage.amount * (1 - min((data.armor as float) / 40, 1)))
 
 
-func on_hurt(data_damage: DataDamage) -> void:
-    var damage: int = cal_damage(data_damage)
-    data_unit.change_health(-damage)
+func on_hurt(damage: DataDamage) -> void:
+    var net_dmg: int = cal_net_damage(damage)
+    data.change_health(-net_dmg)
     anim_player.play("hurt")
-    print("%s attacks with attack %d" % [data_damage.caster, data_damage.amount])
-    print("%s takes %d damage, health is %d" % [name, damage, data_unit.health])
+    print("%s attacks with attack %d" % [damage.caster.data.name, damage.amount])
+    print("%s takes %d damage, health is %d" % [data.name, net_dmg, data.health])
     await anim_player.animation_finished
-    if data_unit.health <= 0:
+    if data.health <= 0:
         anim_player.play("die")
     else:
         anim_player.play("idle")
+    get_hurt.emit()
     return
 
 
 func update_hit_box() -> void:
     hit_box.damage.caster = self
-    hit_box.damage.amount = data_unit.attack
+    hit_box.damage.amount = data.attack
     hit_box.damage.dmg_type = DataDamage.EDmgType.PHYSICS
+    return
+
+
+func activate_hit_box() -> void:
+    hit_box.monitoring = true
+    return
+
+
+func deactivate_hit_box() -> void:
+    hit_box.monitoring = false
+    return
+
+
+func activate_hurt_box() -> void:
+    hurt_box.monitorable = true
+    return
+
+
+func deactivate_hurt_box() -> void:
+    hurt_box.monitorable = false
     return

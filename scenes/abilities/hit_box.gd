@@ -18,8 +18,10 @@ func setup(unit: Unit, amount: float, dmg_type: DataDamage.EDmgType) -> void:
     damage.caster = unit
     damage.amount = amount
     damage.dmg_type = dmg_type
+    return
 
 
 func _on_area_entered(area: Area2D):
     if area is HurtBox:
-        area.take_damage(damage)
+        area.emit_damage_taken(damage)
+    return

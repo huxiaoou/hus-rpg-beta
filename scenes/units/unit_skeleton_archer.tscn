@@ -3,10 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_rpqp4"]
 [ext_resource type="Resource" uid="uid://ba58iuyekkb4x" path="res://resources/units/unit_skeleton_archer.tres" id="2_037p7"]
 [ext_resource type="SpriteFrames" uid="uid://dqbmkk56neyj0" path="res://resources/sprt_frms_skeleton_archer.tres" id="2_a10fp"]
-[ext_resource type="AnimationLibrary" uid="uid://cm5rsooo5x5gk" path="res://resources/anim_lib_unit.res" id="4_i8n1x"]
 
 [node name="UnitSkeletonArcher" unique_id=516109518 instance=ExtResource("1_rpqp4")]
-data_unit = ExtResource("2_037p7")
+data = ExtResource("2_037p7")
 
 [node name="SpriteShadow" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="1" unique_id=853395425]
 position = Vector2(52, -22)
@@ -15,6 +14,3 @@ sprite_frames = ExtResource("2_a10fp")
 [node name="SpriteBody" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="2" unique_id=1398350913]
 position = Vector2(-3, -59)
 sprite_frames = ExtResource("2_a10fp")
-
-[node name="AnimPlayer" parent="CharacterBody2D" parent_id_path=PackedInt32Array(586026160) index="5" unique_id=702366665]
-libraries/anim_lib_unit = ExtResource("4_i8n1x")
