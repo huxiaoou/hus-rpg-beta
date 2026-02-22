@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ftd0ecyrnjqw" path="res://scenes/weapons/projectile.gd" id="1_qp4n5"]
 [ext_resource type="SpriteFrames" uid="uid://b8cuvxf4751ik" path="res://resources/sprt_frms_projectile.tres" id="1_vl370"]
-[ext_resource type="AudioStream" uid="uid://daxo50u5wjmt" path="res://assets/audios/Metallic_Sword_Impact_01.wav" id="3_bwxup"]
+[ext_resource type="AudioStream" uid="uid://bft6eu36662pp" path="res://assets/audios/Impact_01.wav" id="3_jhuo1"]
 [ext_resource type="PackedScene" uid="uid://3yo3hswgsjgu" path="res://scenes/abilities/hit_box.tscn" id="4_dwani"]
 [ext_resource type="PackedScene" uid="uid://bqb1wmb7v6b0i" path="res://scenes/effects/hit_effect_blood_01.tscn" id="5_jhuo1"]
 
@@ -16,7 +16,7 @@ sprite_frames = ExtResource("1_vl370")
 animation = &"arrow"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=147336547]
-stream = ExtResource("3_bwxup")
+stream = ExtResource("3_jhuo1")
 
 [node name="HitBox" parent="." unique_id=181615822 instance=ExtResource("4_dwani")]
 position = Vector2(36, 0)

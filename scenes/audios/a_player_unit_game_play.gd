@@ -8,6 +8,7 @@ class_name APlayerUnitGamePlay
 @export var warning: AudioStream
 @export var unit_walk: AudioStream
 @export var unit_sword: AudioStream
+@export var unit_projectile: AudioStream
 
 @onready var a_player: AudioStreamPlayer2D = $APlayer
 
@@ -46,4 +47,9 @@ func play_unit_walk() -> void:
 
 func play_unit_sword() -> void:
     _play(unit_sword)
+    return
+
+
+func play_unit_projectile() -> void:
+    _play(unit_projectile)
     return
