@@ -4,10 +4,10 @@ class_name Projectile
 
 @export var speed: float = 600.0
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var hit_box: HitBox = $HitBox
 @onready var hit_effect: HitEffect = $HitEffectBlood01
-#@onready var hit_effect: HitEffect = $HitEffectBlood06
 
 signal impacted()
 
@@ -18,6 +18,9 @@ var curve_scale: float = 0.0
 
 
 func on_impacted(_damage: DataDamage, taker: Unit) -> void:
+    var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+    tw.tween_property(animated_sprite_2d, "modulate:a", 0.0, 0.3)
+
     hit_effect.set_location(taker.global_position)
     audio_stream_player_2d.play()
     await hit_effect.play()

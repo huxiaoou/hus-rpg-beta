@@ -91,7 +91,7 @@ func shake(delta: float) -> void:
     return
 
 
-func on_unit_attack_impacted() -> void:
+func on_unit_attack_impacted(_damage: DataDamage, _taker: Unit) -> void:
     apply_trauma()
     apply_bullet_time()
     return

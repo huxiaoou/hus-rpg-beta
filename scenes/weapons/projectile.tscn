@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://daxo50u5wjmt" path="res://assets/audios/Metallic_Sword_Impact_01.wav" id="3_bwxup"]
 [ext_resource type="PackedScene" uid="uid://3yo3hswgsjgu" path="res://scenes/abilities/hit_box.tscn" id="4_dwani"]
 [ext_resource type="PackedScene" uid="uid://bqb1wmb7v6b0i" path="res://scenes/effects/hit_effect_blood_01.tscn" id="5_jhuo1"]
-[ext_resource type="PackedScene" uid="uid://b6yeeomqdx5nc" path="res://scenes/effects/hit_effect_blood_06.tscn" id="6_r1f0g"]
 
 [node name="Projectile" type="Node2D" unique_id=485872768]
 script = ExtResource("1_qp4n5")
@@ -20,7 +19,7 @@ animation = &"arrow"
 stream = ExtResource("3_bwxup")
 
 [node name="HitBox" parent="." unique_id=181615822 instance=ExtResource("4_dwani")]
+position = Vector2(36, 0)
 
 [node name="HitEffectBlood01" parent="." unique_id=29497935 instance=ExtResource("5_jhuo1")]
-
-[node name="HitEffectBlood06" parent="." unique_id=280750609 instance=ExtResource("6_r1f0g")]
+pos_offset = Vector2(-32, -32)
