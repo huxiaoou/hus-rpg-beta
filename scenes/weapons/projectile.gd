@@ -2,7 +2,8 @@ extends Node2D
 
 class_name Projectile
 
-@export var speed: float = 600.0
+@export var speed: float = 1800.0
+@export var animation_name: String = "arrow"
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -15,6 +16,10 @@ var p0: Vector2 # Start
 var p1: Vector2 # Control
 var p2: Vector2 # End
 var curve_scale: float = 0.0
+
+
+func _ready() -> void:
+    animated_sprite_2d.animation = animation_name
 
 
 func on_impacted(_damage: DataDamage, taker: Unit) -> void:

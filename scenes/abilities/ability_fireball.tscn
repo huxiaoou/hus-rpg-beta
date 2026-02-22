@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b17uugaqj2f83"]
+
+[ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="1_tbcqm"]
+[ext_resource type="PackedScene" uid="uid://f0i2hncvbk46" path="res://scenes/weapons/fireball.tscn" id="2_jkrko"]
+
+[node name="AbilityFireball" unique_id=381435778 instance=ExtResource("1_tbcqm")]
+scene_projectile = ExtResource("2_jkrko")
+short_name = "Fireball"
+id = "ability_fireball"
+description = "Project a fireball to the enemy and deal some damage"

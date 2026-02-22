@@ -73,7 +73,13 @@ func _unhandled_input(event: InputEvent) -> void:
         if mgr_abilities.is_active:
             mgr_abilities.show_active_ability()
             return
-        mgr_abilities.activiate_ability("ability_projectile")
+        mgr_abilities.activiate_ability("ability_bow_shoot")
+        get_viewport().set_input_as_handled()
+    elif event.is_action_pressed("ability_4"):
+        if mgr_abilities.is_active:
+            mgr_abilities.show_active_ability()
+            return
+        mgr_abilities.activiate_ability("ability_fireball")
         get_viewport().set_input_as_handled()
     elif event.is_action_pressed("EndTurn"):
         if mgr_abilities.is_active:
@@ -98,14 +104,12 @@ func adjust_animation_direction(target_pos: Vector2) -> bool:
 
 func adjust_animation_direction_from_cell(target_cell: Vector2i) -> bool:
     if target_cell.x > cell.x:
-        # sprite_body.scale.x = abs(sprite_body.scale.x)
-        # sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
-        scale.x = abs(scale.x)
+        sprite_body.scale.x = abs(sprite_body.scale.x)
+        sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
         return true
     if target_cell.x < cell.x:
-        # sprite_body.scale.x = -abs(sprite_body.scale.x)
-        # sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
-        scale.x = -abs(scale.x)
+        sprite_body.scale.x = -abs(sprite_body.scale.x)
+        sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
         return true
     return false
 

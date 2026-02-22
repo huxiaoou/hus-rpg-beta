@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bm8fd6cs2fj8i"]
+
+[ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="1_jvac3"]
+
+[node name="AbilityBowShoot" unique_id=381435778 instance=ExtResource("1_jvac3")]
+short_name = "BowShoot"
+id = "ability_bow_shoot"
+description = "Project an arrow to the enemy and deal some damage"

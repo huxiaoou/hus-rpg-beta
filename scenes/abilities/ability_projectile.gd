@@ -4,10 +4,9 @@ class_name AbilityProjectile
 
 @export_group("Projectile")
 @export var curve_scale: float = 0.00
+@export var scene_projectile: PackedScene
 
 @onready var comp_track_drawer: CompTrackDrawer = $CompTrackDrawer
-
-var scene_projectile: PackedScene = preload("res://scenes/weapons/projectile.tscn")
 
 
 func _ready() -> void:

@@ -8,12 +8,12 @@
 
 [node name="Projectile" type="Node2D" unique_id=485872768]
 script = ExtResource("1_qp4n5")
-speed = 1800.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=770976615]
 scale = Vector2(0.3, 0.3)
 sprite_frames = ExtResource("1_vl370")
 animation = &"arrow"
+autoplay = "arrow"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=147336547]
 stream = ExtResource("3_jhuo1")

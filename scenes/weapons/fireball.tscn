@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://f0i2hncvbk46"]
+
+[ext_resource type="PackedScene" uid="uid://di6gramqjen4p" path="res://scenes/weapons/projectile.tscn" id="1_bxiq0"]
+[ext_resource type="Script" uid="uid://c63s8dl7mqhbw" path="res://scenes/weapons/fireball.gd" id="2_uu6q0"]
+[ext_resource type="AudioStream" uid="uid://cyysnacjhpoi7" path="res://assets/audios/Weapon_Fire_Attack_01.wav" id="3_jve0i"]
+
+[node name="Fireball" unique_id=485872768 instance=ExtResource("1_bxiq0")]
+script = ExtResource("2_uu6q0")
+animation_name = "fireball"
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=770976615]
+animation = &"flame"
+autoplay = "fireball"
+frame = 2
+frame_progress = 0.048187118
+
+[node name="AudioStreamPlayer2D" parent="." index="1" unique_id=147336547]
+stream = ExtResource("3_jve0i")
+
+[node name="HitBox" parent="." index="2" unique_id=181615822]
+position = Vector2(24, 0)

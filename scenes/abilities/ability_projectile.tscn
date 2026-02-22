@@ -2,11 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c1k5fhydqq6y1" path="res://scenes/abilities/ability.tscn" id="1_mpcdh"]
 [ext_resource type="Script" uid="uid://c8vlqp4auujgm" path="res://scenes/abilities/ability_projectile.gd" id="2_4nsdc"]
+[ext_resource type="PackedScene" uid="uid://di6gramqjen4p" path="res://scenes/weapons/projectile.tscn" id="3_lm7ra"]
 [ext_resource type="PackedScene" uid="uid://nndhtw75ygpy" path="res://scenes/abilities/comp_track_drawer.tscn" id="4_lm7ra"]
 
 [node name="AbilityProjectile" unique_id=381435778 instance=ExtResource("1_mpcdh")]
 script = ExtResource("2_4nsdc")
 curve_scale = 0.0
+scene_projectile = ExtResource("3_lm7ra")
 short_name = "Projectile"
 id = "ability_projectile"
 description = "Project a projectile to the enemy and deal some damage"
