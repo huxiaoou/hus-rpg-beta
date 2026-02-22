@@ -3,7 +3,7 @@ extends Ability
 class_name AbilityProjectile
 
 @export_group("Projectile")
-@export var curve_scale: float = 0.05
+@export var curve_scale: float = 0.00
 
 @onready var comp_track_drawer: CompTrackDrawer = $CompTrackDrawer
 

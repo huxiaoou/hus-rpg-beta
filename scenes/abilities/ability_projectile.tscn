@@ -6,7 +6,7 @@
 
 [node name="AbilityProjectile" unique_id=381435778 instance=ExtResource("1_mpcdh")]
 script = ExtResource("2_4nsdc")
-curve_scale = 0.05
+curve_scale = 0.0
 short_name = "Projectile"
 id = "ability_projectile"
 description = "Project a projectile to the enemy and deal some damage"

@@ -86,14 +86,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func adjust_animation_direction(target_pos: Vector2) -> bool:
     if target_pos.x > position.x:
-        # sprite_body.scale.x = abs(sprite_body.scale.x)
-        # sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
-        scale.x = abs(scale.x)
+        sprite_body.scale.x = abs(sprite_body.scale.x)
+        sprite_shadow.scale.x = abs(sprite_shadow.scale.x)
         return true
     if target_pos.x < position.x:
-        # sprite_body.scale.x = -abs(sprite_body.scale.x)
-        # sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
-        scale.x = -abs(scale.x)
+        sprite_body.scale.x = -abs(sprite_body.scale.x)
+        sprite_shadow.scale.x = -abs(sprite_shadow.scale.x)
         return true
     return false
 
