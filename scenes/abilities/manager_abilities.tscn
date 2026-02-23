@@ -1,11 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://crdmqwektpqdb"]
+[gd_scene format=3 uid="uid://crdmqwektpqdb"]
 
 [ext_resource type="Script" uid="uid://dq73d4gbwse15" path="res://scenes/abilities/manager_abilities.gd" id="1_qsnjf"]
+[ext_resource type="Script" uid="uid://bu1qgvtsn0ox5" path="res://scenes/abilities/states/ability_state_deactivated.gd" id="3_yibry"]
+[ext_resource type="Script" uid="uid://bm7lt3h1bx71c" path="res://scenes/abilities/states/ability_state_aiming.gd" id="4_qt7jg"]
+[ext_resource type="Script" uid="uid://5p6rg8xkux0f" path="res://scenes/abilities/states/ability_state_casting.gd" id="5_ovkvo"]
 [ext_resource type="PackedScene" uid="uid://bxvh4mn6kfwsn" path="res://scenes/audios/a_player_unit_game_play.tscn" id="5_yibry"]
 
-[node name="ManagerAbilities" type="Node"]
+[node name="ManagerAbilities" type="Node" unique_id=362039259]
 script = ExtResource("1_qsnjf")
 
-[node name="AbilitiesNode" type="Node" parent="."]
+[node name="AbilitiesNode" type="Node" parent="." unique_id=1227714938]
 
-[node name="APlayerUnitGamePlay" parent="." instance=ExtResource("5_yibry")]
+[node name="APlayerUnitGamePlay" parent="." unique_id=156437966 instance=ExtResource("5_yibry")]
+
+[node name="StatesNode" type="Node" parent="." unique_id=1313537045]
+
+[node name="AbilityStateDeactivated" type="Node" parent="StatesNode" unique_id=767368316]
+script = ExtResource("3_yibry")
+metadata/_custom_type_script = "uid://bu1qgvtsn0ox5"
+
+[node name="AbilityStateAiming" type="Node" parent="StatesNode" unique_id=2137979954]
+script = ExtResource("4_qt7jg")
+metadata/_custom_type_script = "uid://bm7lt3h1bx71c"
+
+[node name="AbilityStateCasting" type="Node" parent="StatesNode" unique_id=1818074995]
+script = ExtResource("5_ovkvo")
+metadata/_custom_type_script = "uid://5p6rg8xkux0f"

@@ -34,7 +34,7 @@ static func sort_by_initiative(a: Unit, b: Unit) -> bool:
 func _ready() -> void:
     play_animation("idle")
     ui_floating_health_bar.init_from_unit(self)
-    mgr_abilities.setup()
+    # mgr_abilities.setup()
     hurt_box.setup(self)
     return
 

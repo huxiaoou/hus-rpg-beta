@@ -6,22 +6,30 @@ class_name ManagerAbilities
 @export var scenes_abilities: Array[PackedScene] = []
 
 @onready var abilities_node: Node = $AbilitiesNode
+@onready var states_node: Node = $StatesNode
 @onready var aplayer_gmply: APlayerUnitGamePlay = $APlayerUnitGamePlay
 @onready var owner_unit: Unit = get_parent()
 
 var active_ability: Ability = null
+var curr_state: AbilityState = null
+
 var abilities: Dictionary[String, Ability] = { }
+var states: Dictionary[AbilityState.State, AbilityState] = { }
+
 var is_active: bool:
     get:
         return active_ability != null
 
 
-func setup() -> void:
+func _ready() -> void:
     for scene_ability in scenes_abilities:
         var ability: Ability = scene_ability.instantiate()
         abilities_node.add_child(ability)
         ability.setup(owner_unit, connect_ability)
         abilities[ability.id] = ability
+    for state: AbilityState in states_node.get_children():
+        states[state.state_id] = state
+    curr_state = states[AbilityState.State.DEACTIVATED]
     return
 
 
@@ -30,6 +38,28 @@ func connect_ability(ability: Ability) -> void:
     ability.canceled.connect(on_ability_canceled)
     ability.warning.connect(on_ability_warning)
     ability.deactivated.connect(on_ability_deactivated)
+    return
+
+
+func _process(delta: float) -> void:
+    if curr_state != null:
+        curr_state.process(delta)
+    return
+
+
+func _physics_process(delta: float) -> void:
+    if curr_state != null:
+        curr_state.physics_process(delta)
+    return
+
+
+func on_state_changed(state_id: AbilityState.State) -> void:
+    var new_state: AbilityState = states.get(state_id)
+    if new_state == null:
+        return
+    curr_state.exit()
+    curr_state = new_state
+    curr_state.enter()
     return
 
 
