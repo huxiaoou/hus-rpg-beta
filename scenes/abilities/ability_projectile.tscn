@@ -12,7 +12,10 @@ scene_projectile = ExtResource("3_lm7ra")
 short_name = "Projectile"
 id = "ability_projectile"
 description = "Project a projectile to the enemy and deal some damage"
+cost_health = 0
 cost_stamnia = 5
+cost_magicka = 0
+cost_resolve = 0
 ability_range = 3
 
 [node name="CompTrackDrawer" parent="." index="0" unique_id=1510121583 instance=ExtResource("4_lm7ra")]
