@@ -8,3 +8,4 @@ scene_projectile = ExtResource("2_jkrko")
 short_name = "Fireball"
 id = "ability_fireball"
 description = "Project a fireball to the enemy and deal some damage"
+key_binding = "ability_4"

@@ -6,3 +6,4 @@
 short_name = "BowShoot"
 id = "ability_bow_shoot"
 description = "Project an arrow to the enemy and deal some damage"
+key_binding = "ability_3"

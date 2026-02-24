@@ -2,24 +2,33 @@ extends Node
 
 class_name AbilityState
 
+const STATE_NAME_MAPPER: Dictionary = {
+    State.DEACTIVATED: "Deactivated",
+    State.AIMING: "Aiming",
+    State.CASTING: "Casting",
+}
+
 enum State {
     DEACTIVATED,
     AIMING,
     CASTING,
 }
 
-var state_id: State
-var state_name_mapper: Dictionary = {
-    State.DEACTIVATED: "Deactivated",
-    State.AIMING: "Aiming",
-    State.CASTING: "Casting",
-}
+var state: State
 var state_name: String
+var ability: Ability = null
+
+signal change_state(state: State)
+
+
+func setup(_ability: Ability) -> void:
+    ability = _ability
+    return
 
 
 func enter() -> void:
     print("Enter %s" % state_name)
-    match state_id:
+    match state:
         State.DEACTIVATED:
             pass
         State.AIMING:
@@ -36,6 +45,10 @@ func process(_delta: float) -> void:
 
 
 func physics_process(_delta: float) -> void:
+    pass
+
+
+func unhandled_input(_event: InputEvent) -> void:
     pass
 
 

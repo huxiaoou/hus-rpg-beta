@@ -47,8 +47,8 @@ func on_ranged_projectile_launched() -> void:
     return
 
 
-func launch() -> bool:
-    if super.launch():
+func try_launch() -> bool:
+    if super.try_launch():
         target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
         owner_unit.adjust_animation_direction_from_cell(target_cell)
         owner_unit.ranged_projectile_launched.connect(on_ranged_projectile_launched)

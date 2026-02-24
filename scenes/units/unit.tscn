@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bkiyjcodnl3s2" path="res://scenes/abilities/hurt_box.tscn" id="4_amp7q"]
 [ext_resource type="PackedScene" uid="uid://crdmqwektpqdb" path="res://scenes/abilities/manager_abilities.tscn" id="4_mgebg"]
 [ext_resource type="AnimationLibrary" uid="uid://cm5rsooo5x5gk" path="res://resources/anim_lib_unit.res" id="6_mvvv6"]
-[ext_resource type="PackedScene" uid="uid://cui1ke0h321ev" path="res://scenes/abilities/ability_sword.tscn" id="6_rk2mp"]
 [ext_resource type="PackedScene" uid="uid://bxh1jbvf6hq3l" path="res://scenes/ui/ui_floating_health_bar.tscn" id="7_44d7s"]
+[ext_resource type="PackedScene" uid="uid://c18rlyogycdbw" path="res://scenes/abilities/ability_melee.tscn" id="10_mvvv6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(71, 51)
@@ -51,7 +51,7 @@ libraries/ = ExtResource("6_mvvv6")
 [node name="APlayerUnitGamePlay" parent="CharacterBody2D" unique_id=490961079 instance=ExtResource("3_rk2mp")]
 
 [node name="ManagerAbilities" parent="." unique_id=1772872154 instance=ExtResource("4_mgebg")]
-scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("6_rk2mp")])
+scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("10_mvvv6")])
 
 [node name="UIFloatingHealthBar" parent="." unique_id=1704756695 instance=ExtResource("7_44d7s")]
 scale = Vector2(0.5, 0.5)

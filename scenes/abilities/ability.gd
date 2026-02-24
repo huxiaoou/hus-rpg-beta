@@ -7,6 +7,7 @@ class_name Ability
 @export var id: String
 @export var description: String
 @export var icon: Texture2D
+@export var key_binding: String
 
 @export_group("Cost")
 @export var cost_health: int = 0
@@ -16,6 +17,8 @@ class_name Ability
 
 @export_group("Range")
 @export var ability_range: int = 1
+
+@onready var asm: AbilityStatesMachine = $AbilityStatesMachine
 
 var owner_unit: Unit = null
 var is_active: bool = false
@@ -40,8 +43,23 @@ signal selected()
 signal canceled()
 signal warning()
 signal deactivated()
+signal casting_finished()
 
 
+# ---- Setup ----
+func _ready() -> void:
+    asm.setup(self)
+
+
+func setup(_owner_unit: Unit, _connect: Callable) -> void:
+    owner_unit = _owner_unit
+    is_active = false
+    is_casting = false
+    _connect.call(self)
+    return
+
+
+# --- Available cells management ----
 func update_available_cells() -> void:
     available_cells = ManagerCellBattle.get_cells_in_range(owner_unit.cell, ability_range)
     return
@@ -60,34 +78,7 @@ func clear_available_cells() -> void:
     return
 
 
-func setup(_owner_unit: Unit, _connect: Callable) -> void:
-    owner_unit = _owner_unit
-    is_active = false
-    is_casting = false
-    _connect.call(self)
-    return
-
-
-func activate() -> void:
-    selected.emit()
-    is_active = true
-    update_available_cells()
-    recolor_available_cells()
-    potential_target_cell = available_cells[0]
-    ManagerCellBattle.set_cell_focused(potential_target_cell)
-    print("%s activates Ability %s " % [owner_unit.name, short_name])
-    return
-
-
-func deactivate() -> void:
-    clear_available_cells()
-    ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
-    is_active = false
-    deactivated.emit()
-    print("%s deactivate ability %s" % [owner_unit.name, short_name])
-    return
-
-
+# --- Cost check ----
 func check_health_cost() -> bool:
     if owner_unit.data.health < cost_health:
         warning.emit()
@@ -124,7 +115,19 @@ func check_ability_cost() -> bool:
     return check_health_cost() and check_stamina_cost() and check_magicka_cost() and check_resolve_cost()
 
 
-func launch() -> bool:
+# ---- Ability State logic ----
+func activate() -> void:
+    selected.emit()
+    is_active = true
+    update_available_cells()
+    recolor_available_cells()
+    potential_target_cell = available_cells[0]
+    ManagerCellBattle.set_cell_focused(potential_target_cell)
+    print("%s activates Ability %s " % [owner_unit.name, short_name])
+    return
+
+
+func try_launch() -> bool:
     if is_casting:
         warning.emit()
         print("%s is casting ability %s" % [owner_unit.name, short_name])
@@ -140,45 +143,66 @@ func launch() -> bool:
     return false
 
 
+func launch() -> void:
+    pass
+
+
 func finish() -> void:
+    casting_finished.emit()
+    return
+
+
+func deactivate() -> void:
     target_cells.clear()
     target_units.clear()
+    clear_available_cells()
     is_casting = false
-    deactivate()
+    is_active = false
+    if owner_unit:
+        ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
+        print("%s deactivate ability %s" % [owner_unit.name, short_name])
     return
+
+
+func process_aiming(_delta: float) -> void:
+    pass
+
+
+func process_casting(_delta: float) -> void:
+    pass
 
 
 func is_valid(_cell: Vector2i) -> bool:
     return true
 
 
-func _unhandled_input(event: InputEvent) -> void:
-    if not is_active:
-        return
-    if event.is_action_pressed("left_mouse_click"):
-        if target_cells.size() < max_num_target_cells:
-            var new_target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
-            if is_valid(new_target_cell):
-                target_cells.append(new_target_cell)
-                ManagerCellBattle.set_cell_target(new_target_cell)
-                selected.emit()
-                print("Cell %s is add to target cells" % new_target_cell)
-            else:
-                warning.emit()
-                print("Cell %s is invaild" % new_target_cell)
-        else: # target_cells.size() >= max_num_target_cells:
-            launch()
-    elif event.is_action_pressed("right_mouse_click"):
-        if target_cells.size() > 0:
-            if is_casting:
-                warning.emit()
-                print("Ability %s is casting, can not cancel target" % short_name)
-            else:
-                var old_target_cell: Vector2i = target_cells.pop_back()
-                ManagerCellBattle.set_cell_vanilla(old_target_cell)
-                canceled.emit()
-                print("Cell %s is dropped out from target cells" % old_target_cell)
-        else: # target_cells.size() == 0
-            deactivate()
+func add_target() -> bool:
+    if target_cells.size() < max_num_target_cells:
+        var new_target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
+        if is_valid(new_target_cell):
+            target_cells.append(new_target_cell)
+            ManagerCellBattle.set_cell_target(new_target_cell)
+            selected.emit()
+            print("Cell %s is add to target cells" % new_target_cell)
+        else:
+            warning.emit()
+            print("Cell %s is invaild" % new_target_cell)
+        return true
+    # target_cells.size() >= max_num_target_cells:
+    return false
+
+
+func remove_target() -> bool:
+    if target_cells.size() > 0:
+        if is_casting:
+            warning.emit()
+            print("Ability %s is casting, can not cancel target" % short_name)
+        else:
+            var old_target_cell: Vector2i = target_cells.pop_back()
+            ManagerCellBattle.set_cell_vanilla(old_target_cell)
             canceled.emit()
-    return
+            print("Cell %s is dropped out from target cells" % old_target_cell)
+        return true
+    # target_cells.size() == 0
+    canceled.emit()
+    return false

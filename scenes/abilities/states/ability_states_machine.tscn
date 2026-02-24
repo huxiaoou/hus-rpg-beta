@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://byi7vh4fo07t6"]
+
+[ext_resource type="Script" uid="uid://bu1qgvtsn0ox5" path="res://scenes/abilities/states/ability_state_deactivated.gd" id="1_bohsl"]
+[ext_resource type="Script" uid="uid://jsu07w4ud4yv" path="res://scenes/abilities/states/ability_states_machine.gd" id="1_xcovn"]
+[ext_resource type="Script" uid="uid://bm7lt3h1bx71c" path="res://scenes/abilities/states/ability_state_aiming.gd" id="2_xcovn"]
+[ext_resource type="Script" uid="uid://5p6rg8xkux0f" path="res://scenes/abilities/states/ability_state_casting.gd" id="3_myypl"]
+
+[node name="AbilityStatesMachine" type="Node" unique_id=1513046321]
+script = ExtResource("1_xcovn")
+
+[node name="AbilityStateDeactivated" type="Node" parent="." unique_id=1346887731]
+script = ExtResource("1_bohsl")
+metadata/_custom_type_script = "uid://bu1qgvtsn0ox5"
+
+[node name="AbilityStateAiming" type="Node" parent="." unique_id=1039166998]
+script = ExtResource("2_xcovn")
+metadata/_custom_type_script = "uid://bm7lt3h1bx71c"
+
+[node name="AbilityStateCasting" type="Node" parent="." unique_id=576292406]
+script = ExtResource("3_myypl")
+metadata/_custom_type_script = "uid://5p6rg8xkux0f"

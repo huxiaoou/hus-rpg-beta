@@ -34,7 +34,6 @@ static func sort_by_initiative(a: Unit, b: Unit) -> bool:
 func _ready() -> void:
     play_animation("idle")
     ui_floating_health_bar.init_from_unit(self)
-    # mgr_abilities.setup()
     hurt_box.setup(self)
     return
 
@@ -57,32 +56,32 @@ func _unhandled_input(event: InputEvent) -> void:
     if not ManagerTurnsAndRounds.is_active(self):
         return
 
-    if event.is_action_pressed("ability_1"):
-        if mgr_abilities.is_active:
-            mgr_abilities.show_active_ability()
-            return
-        mgr_abilities.activiate_ability("ability_move")
-        get_viewport().set_input_as_handled()
-    elif event.is_action_pressed("ability_2"):
-        if mgr_abilities.is_active:
-            mgr_abilities.show_active_ability()
-            return
-        mgr_abilities.activiate_ability("ability_sword")
-        get_viewport().set_input_as_handled()
-    elif event.is_action_pressed("ability_3"):
-        if mgr_abilities.is_active:
-            mgr_abilities.show_active_ability()
-            return
-        mgr_abilities.activiate_ability("ability_bow_shoot")
-        get_viewport().set_input_as_handled()
-    elif event.is_action_pressed("ability_4"):
-        if mgr_abilities.is_active:
-            mgr_abilities.show_active_ability()
-            return
-        mgr_abilities.activiate_ability("ability_fireball")
-        get_viewport().set_input_as_handled()
-    elif event.is_action_pressed("EndTurn"):
-        if mgr_abilities.is_active:
+    # if event.is_action_pressed("ability_1"):
+    #     if mgr_abilities.has_selected_ability:
+    #         mgr_abilities.show_active_ability()
+    #         return
+    #     mgr_abilities.activiate_ability("ability_move")
+    #     get_viewport().set_input_as_handled()
+    # elif event.is_action_pressed("ability_2"):
+    #     if mgr_abilities.has_selected_ability:
+    #         mgr_abilities.show_active_ability()
+    #         return
+    #     mgr_abilities.activiate_ability("ability_sword")
+    #     get_viewport().set_input_as_handled()
+    # elif event.is_action_pressed("ability_3"):
+    #     if mgr_abilities.has_selected_ability:
+    #         mgr_abilities.show_active_ability()
+    #         return
+    #     mgr_abilities.activiate_ability("ability_bow_shoot")
+    #     get_viewport().set_input_as_handled()
+    # elif event.is_action_pressed("ability_4"):
+    #     if mgr_abilities.has_selected_ability:
+    #         mgr_abilities.show_active_ability()
+    #         return
+    #     mgr_abilities.activiate_ability("ability_fireball")
+    #     get_viewport().set_input_as_handled()
+    if event.is_action_pressed("EndTurn"):
+        if mgr_abilities.has_selected_ability:
             mgr_abilities.show_active_ability()
             return
         unit_turn_finished.emit(self)

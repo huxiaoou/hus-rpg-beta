@@ -1,6 +1,17 @@
 [gd_scene format=3 uid="uid://c1k5fhydqq6y1"]
 
 [ext_resource type="Script" uid="uid://35rnra4sh6je" path="res://scenes/abilities/ability.gd" id="1_d2gvf"]
+[ext_resource type="PackedScene" uid="uid://byi7vh4fo07t6" path="res://scenes/abilities/states/ability_states_machine.tscn" id="2_iid0f"]
 
 [node name="Ability" type="Node" unique_id=381435778]
 script = ExtResource("1_d2gvf")
+short_name = null
+id = null
+description = null
+cost_health = null
+cost_stamnia = null
+cost_magicka = null
+cost_resolve = null
+ability_range = null
+
+[node name="AbilityStatesMachine" parent="." unique_id=1513046321 instance=ExtResource("2_iid0f")]

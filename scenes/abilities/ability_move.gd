@@ -13,6 +13,7 @@ var path_gp_points: Array[Vector2] = []
 
 
 func _ready() -> void:
+    super._ready()
     max_num_target_cells = 1
     max_num_target_units = 0
     return
@@ -35,29 +36,29 @@ func is_valid(cell: Vector2i) -> bool:
     return ManagerCellBattle.cell_is_reachable(cell) and cell in available_cells
 
 
-func _process(delta: float) -> void:
-    if not is_active:
+func process_aiming(_delta: float) -> void:
+    if target_cells.size() >= max_num_target_cells:
         return
-    if not is_casting:
-        if target_cells.size() >= max_num_target_cells:
-            return
-        potential_target_cell_new = ManagerCellBattle.get_indicator_cell()
-        if potential_target_cell_new not in available_cells:
-            return
-        if potential_target_cell != potential_target_cell_new:
-            potential_target_cell = ManagerCellBattle.get_indicator_cell()
-            potential_path_cells_new = ManagerCellBattle.get_cells_path(
-                owner_unit.cell,
-                potential_target_cell,
-            )
-            for cell in potential_path_cells:
-                if cell not in potential_path_cells_new:
-                    ManagerCellBattle.set_cell_potential(cell)
-            for cell in potential_path_cells_new:
-                if cell not in potential_path_cells:
-                    ManagerCellBattle.set_cell_path(cell)
+    potential_target_cell_new = ManagerCellBattle.get_indicator_cell()
+    if potential_target_cell_new not in available_cells:
+        return
+    if potential_target_cell != potential_target_cell_new:
+        potential_target_cell = ManagerCellBattle.get_indicator_cell()
+        potential_path_cells_new = ManagerCellBattle.get_cells_path(
+            owner_unit.cell,
+            potential_target_cell,
+        )
+        for cell in potential_path_cells:
+            if cell not in potential_path_cells_new:
+                ManagerCellBattle.set_cell_potential(cell)
+        for cell in potential_path_cells_new:
+            if cell not in potential_path_cells:
+                ManagerCellBattle.set_cell_path(cell)
             potential_path_cells = potential_path_cells_new
-        return
+    return
+
+
+func process_casting(delta: float) -> void:
     if owner_unit.position != target_pos_in_path:
         owner_unit.move_toward(target_pos_in_path, delta * move_speed)
     else:
@@ -66,21 +67,19 @@ func _process(delta: float) -> void:
     return
 
 
-func launch() -> bool:
-    if super.launch():
-        clear_available_cells()
-        recolor_potential_path_cells()
-        start_cell = owner_unit.cell
-        end_cell = target_cell
-        selected.emit()
-        owner_unit.play_animation("walk")
-        path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
-        ManagerCellBattle.enable_cell(start_cell)
-        ManagerCellBattle.disable_cell(end_cell, owner_unit)
-        set_target_pos_from_path()
-        adjust_animation_direction()
-        return true
-    return false
+func launch() -> void:
+    clear_available_cells()
+    recolor_potential_path_cells()
+    start_cell = owner_unit.cell
+    end_cell = target_cell
+    selected.emit()
+    owner_unit.play_animation("walk")
+    path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
+    ManagerCellBattle.enable_cell(start_cell)
+    ManagerCellBattle.disable_cell(end_cell, owner_unit)
+    set_target_pos_from_path()
+    adjust_animation_direction()
+    return
 
 
 func finish() -> void:

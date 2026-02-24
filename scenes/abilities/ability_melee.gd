@@ -1,6 +1,6 @@
 extends Ability
 
-class_name AbilitySword
+class_name AbilityMelee
 
 @onready var hit_effect: HitEffect = $HitEffectBlood06
 
@@ -41,8 +41,8 @@ func on_melee_weapon_impacted() -> void:
     return
 
 
-func launch() -> bool:
-    if super.launch():
+func try_launch() -> bool:
+    if super.try_launch():
         target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
         owner_unit.adjust_animation_direction_from_cell(target_cell)
         owner_unit.melee_weapon_impacted.connect(on_melee_weapon_impacted)
