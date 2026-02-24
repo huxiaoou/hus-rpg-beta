@@ -6,6 +6,9 @@
 
 [node name="AbilityMelee" unique_id=381435778 instance=ExtResource("1_wqob8")]
 script = ExtResource("2_cn658")
+short_name = "Melee"
+id = "ability_melee"
+description = "To give a melee attack"
 key_binding = "ability_2"
 
 [node name="HitEffectBlood06" parent="." index="1" unique_id=1700645983 instance=ExtResource("3_njw15")]
