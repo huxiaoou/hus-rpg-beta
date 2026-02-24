@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://nndhtw75ygpy"]
 
 [ext_resource type="Texture2D" uid="uid://bgccfu7weyoyr" path="res://assets/ui/PictoIcon_Arrow_Next.Png" id="1_2otxn"]
-[ext_resource type="Shader" uid="uid://dak4sfa52v38p" path="res://scenes/abilities/comp_track_drawer.gdshader" id="1_fiwit"]
-[ext_resource type="Script" uid="uid://oudt5bsg3kku" path="res://scenes/abilities/comp_track_drawer.gd" id="1_txmin"]
+[ext_resource type="Shader" uid="uid://dak4sfa52v38p" path="res://scenes/abilities/components/comp_track_drawer.gdshader" id="1_fiwit"]
+[ext_resource type="Script" uid="uid://oudt5bsg3kku" path="res://scenes/abilities/components/comp_track_drawer.gd" id="1_txmin"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ec76"]
 shader = ExtResource("1_fiwit")
