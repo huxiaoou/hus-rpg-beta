@@ -1,7 +1,7 @@
 extends Node
 
 signal turn_books_updated()
-signal active_unit_changed()
+signal active_unit_changed(unit: Unit)
 
 var active_unit: Unit:
     get:
@@ -20,7 +20,7 @@ func setup(units: Array[Unit], _turn_cards_deck: UITurnCardsDeck) -> void:
     sort_turn_books()
     if not this_turn_book.is_empty():
         active_unit.unit_turn_finished.connect(on_unit_turn_finished)
-        active_unit_changed.emit()
+        active_unit_changed.emit(active_unit)
     return
 
 
@@ -95,8 +95,8 @@ func on_unit_turn_finished(unit: Unit) -> void:
         refresh_turnbook()
         sort_turn_books()
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
-    active_unit_changed.emit()
     print("Unit %s' turn begins." % active_unit.name)
+    active_unit_changed.emit(active_unit)
     return
 
 

@@ -34,6 +34,7 @@ var target_units: Array[Unit] = []
 var target_unit: Unit:
     get:
         return null if target_units.is_empty() else target_units[0]
+var ai_targets: AIDataAbilityTargets
 
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
@@ -42,13 +43,20 @@ var potential_target_cell_new: Vector2i
 signal selected()
 signal canceled()
 signal warning()
-signal deactivated()
+
+signal activated(Ability)
+signal deactivated(Ability)
 signal casting_finished()
 
 
 # ---- Setup ----
 func _ready() -> void:
     asm.setup(self)
+
+
+func activate_by_ai(_ai_targets: AIDataAbilityTargets) -> void:
+    asm.activate_by_ai(_ai_targets)
+    return
 
 
 func setup(_owner_unit: Unit, _connect: Callable) -> void:
@@ -124,6 +132,7 @@ func activate() -> void:
     potential_target_cell = available_cells[0]
     ManagerCellBattle.set_cell_focused(potential_target_cell)
     print("%s activates Ability %s " % [owner_unit.name, short_name])
+    activated.emit(self)
     return
 
 
@@ -161,6 +170,7 @@ func deactivate() -> void:
     if owner_unit:
         ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
         print("%s deactivate ability %s" % [owner_unit.name, short_name])
+    deactivated.emit(self)
     return
 
 
@@ -176,9 +186,8 @@ func is_valid(_cell: Vector2i) -> bool:
     return true
 
 
-func add_target() -> bool:
+func add_target(new_target_cell: Vector2i) -> bool:
     if target_cells.size() < max_num_target_cells:
-        var new_target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
         if is_valid(new_target_cell):
             target_cells.append(new_target_cell)
             ManagerCellBattle.set_cell_target(new_target_cell)

@@ -26,6 +26,8 @@ var cell: Vector2i:
     set(value):
         position = ManagerCellBattle.cell_to_point(value)
 
+var ability_casted: bool = true
+
 
 static func sort_by_initiative(a: Unit, b: Unit) -> bool:
     return a.data.has_greater_turn_order(b.data)
@@ -35,6 +37,7 @@ func _ready() -> void:
     play_animation("idle")
     ui_floating_health_bar.init_from_unit(self)
     hurt_box.setup(self)
+    ManagerTurnsAndRounds.active_unit_changed.connect(on_turn_begin)
     return
 
 
@@ -47,39 +50,56 @@ func is_ally() -> bool:
     return data.group_flag == DataUnit.GroupFlag.ALLY
 
 
+func is_enemy() -> bool:
+    return data.group_flag == DataUnit.GroupFlag.ENEMY
+
+
+func is_neutral() -> bool:
+    return data.group_flag == DataUnit.GroupFlag.NEUTRAL
+
+
 func move_toward(target_pos: Vector2, distance: float) -> void:
     position = position.move_toward(target_pos, distance)
+    return
+
+
+func on_turn_begin(unit: Unit) -> void:
+    if unit != self:
+        return
+    print("%s is thinking" % data.name)
+    await get_tree().create_timer(3).timeout
+    ability_casted = false
+    return
+
+
+func on_ability_deactivated(ability: Ability) -> void:
+    ability.deactivated.disconnect(on_ability_deactivated)
+    unit_turn_finished.emit(self)
+    return
+
+
+func _process(_delta: float) -> void:
+    if not ManagerTurnsAndRounds.is_active(self):
+        return
+    if is_ally():
+        return
+    if mgr_abilities.has_selected_ability:
+        return
+    if not ability_casted:
+        var ability: Ability = mgr_abilities.get_ability("ability_move")
+        var ai_targets: AIDataAbilityTargets = AIDataAbilityTargets.new()
+        ai_targets.targets.append(data.init_cell + Vector2i(1, 0))
+        ability.activate_by_ai(ai_targets)
+        ability.deactivated.connect(on_ability_deactivated)
+        ability_casted = true
     return
 
 
 func _unhandled_input(event: InputEvent) -> void:
     if not ManagerTurnsAndRounds.is_active(self):
         return
-
-    # if event.is_action_pressed("ability_1"):
-    #     if mgr_abilities.has_selected_ability:
-    #         mgr_abilities.show_active_ability()
-    #         return
-    #     mgr_abilities.activiate_ability("ability_move")
-    #     get_viewport().set_input_as_handled()
-    # elif event.is_action_pressed("ability_2"):
-    #     if mgr_abilities.has_selected_ability:
-    #         mgr_abilities.show_active_ability()
-    #         return
-    #     mgr_abilities.activiate_ability("ability_sword")
-    #     get_viewport().set_input_as_handled()
-    # elif event.is_action_pressed("ability_3"):
-    #     if mgr_abilities.has_selected_ability:
-    #         mgr_abilities.show_active_ability()
-    #         return
-    #     mgr_abilities.activiate_ability("ability_bow_shoot")
-    #     get_viewport().set_input_as_handled()
-    # elif event.is_action_pressed("ability_4"):
-    #     if mgr_abilities.has_selected_ability:
-    #         mgr_abilities.show_active_ability()
-    #         return
-    #     mgr_abilities.activiate_ability("ability_fireball")
-    #     get_viewport().set_input_as_handled()
+    if not is_ally():
+        return
     if event.is_action_pressed("EndTurn"):
         if mgr_abilities.has_selected_ability:
             mgr_abilities.show_active_ability()

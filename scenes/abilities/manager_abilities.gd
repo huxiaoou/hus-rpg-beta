@@ -28,6 +28,7 @@ func connect_ability(ability: Ability) -> void:
     ability.selected.connect(on_ability_selected)
     ability.canceled.connect(on_ability_canceled)
     ability.warning.connect(on_ability_warning)
+    ability.activated.connect(on_ability_activated)
     ability.deactivated.connect(on_ability_deactivated)
     return
 
@@ -51,7 +52,12 @@ func get_ability(id: String) -> Ability:
     return abilities.get(id)
 
 
-func on_ability_deactivated():
+func on_ability_activated(ability: Ability) -> void:
+    selected_ability = ability
+    return
+
+
+func on_ability_deactivated(_ability: Ability) -> void:
     selected_ability = null
     return
 
