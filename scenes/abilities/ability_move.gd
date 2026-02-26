@@ -68,6 +68,7 @@ func process_casting(delta: float) -> void:
 
 
 func launch() -> void:
+    super.launch()
     clear_available_cells()
     recolor_potential_path_cells()
     start_cell = owner_unit.cell

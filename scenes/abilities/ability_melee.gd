@@ -39,6 +39,7 @@ func on_melee_weapon_impacted() -> void:
 
 
 func launch() -> void:
+    super.launch()
     target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
     owner_unit.adjust_animation_direction_from_cell(target_cell)
     owner_unit.melee_weapon_impacted.connect(on_melee_weapon_impacted)

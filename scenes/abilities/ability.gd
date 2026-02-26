@@ -142,18 +142,18 @@ func try_launch() -> bool:
         print("%s is casting ability %s" % [owner_unit.name, short_name])
         return false
     if check_ability_cost():
-        is_casting = true
         owner_unit.data.change_stamina(-cost_stamnia)
         owner_unit.data.change_magicka(-cost_magicka)
         owner_unit.data.change_resolve(-cost_resolve)
         owner_unit.data.change_health(-cost_health)
-        print("%s launches ability %s" % [owner_unit.name, short_name])
         return true
     return false
 
 
 func launch() -> void:
-    pass
+    print("%s launches ability %s" % [owner_unit.name, short_name])
+    is_casting = true
+    return
 
 
 func finish() -> void:
@@ -162,11 +162,11 @@ func finish() -> void:
 
 
 func deactivate() -> void:
+    is_casting = false
+    is_active = false
     target_cells.clear()
     target_units.clear()
     clear_available_cells()
-    is_casting = false
-    is_active = false
     if owner_unit:
         ManagerCellBattle.set_cell_vanilla(owner_unit.cell)
         print("%s deactivate ability %s" % [owner_unit.name, short_name])
