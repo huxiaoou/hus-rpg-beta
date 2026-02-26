@@ -20,13 +20,15 @@ func process(delta: float) -> void:
     return
 
 
-func on_casting_finished() -> void:
-    ability.casting_finished.disconnect(on_casting_finished)
-    change_state.emit(AbilityState.State.DEACTIVATED)
+func unhandled_input(event: InputEvent) -> void:
+    if ability.owner_unit.is_ai():
+        return
+    if event.is_action_pressed(ability.key_binding):
+        print("%s has ability %s as active" % [ability.owner_unit.name, ability.short_name])
     return
 
 
-func unhandled_input(event: InputEvent) -> void:
-    if event.is_action_pressed(ability.key_binding):
-        print("%s has ability %s as active" % [ability.owner_unit.name, ability.short_name])
+func on_casting_finished() -> void:
+    ability.casting_finished.disconnect(on_casting_finished)
+    change_state.emit(AbilityState.State.DEACTIVATED)
     return

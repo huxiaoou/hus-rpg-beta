@@ -42,9 +42,3 @@ func on_change_state(state: AbilityState.State) -> void:
     curr_state = new_state
     curr_state.enter()
     return
-
-
-func activate_by_ai(ai_targets: AIDataAbilityTargets) -> void:
-    if curr_state.state == AbilityState.State.DEACTIVATED:
-        curr_state.cast_by_ai(ai_targets)
-    return

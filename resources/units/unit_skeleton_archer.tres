@@ -7,6 +7,8 @@
 script = ExtResource("2_ttp5x")
 name = "SkeletonArcher"
 avatar = ExtResource("1_msc6f")
+is_ai = true
 group_flag = 1
+initiative = 13
 init_cell = Vector2i(6, 8)
 metadata/_custom_type_script = "uid://c8r15jep3ud1p"

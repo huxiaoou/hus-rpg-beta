@@ -8,5 +8,6 @@ script = ExtResource("1_5bojn")
 name = "Viking"
 avatar = ExtResource("1_p2lj7")
 group_flag = 0
+initiative = 14
 init_cell = Vector2i(4, 7)
 metadata/_custom_type_script = "uid://c8r15jep3ud1p"

@@ -11,7 +11,7 @@ func _ready() -> void:
 func enter() -> void:
     super.enter()
     ability.activate()
-    if ability.owner_unit.is_enemy():
+    if ability.owner_unit.is_ai():
         cast_by_ai()
     return
 
@@ -22,6 +22,9 @@ func process(delta: float) -> void:
 
 
 func unhandled_input(event: InputEvent) -> void:
+    if ability.owner_unit.is_ai():
+        return
+
     if event.is_action_pressed("left_mouse_click"):
         var new_target_cell: Vector2i = ManagerCellBattle.get_indicator_cell()
         if not ability.add_target(new_target_cell):
@@ -36,7 +39,7 @@ func unhandled_input(event: InputEvent) -> void:
 
 
 func cast_by_ai() -> void:
-    for new_target_cell in ability.ai_targets.targets:
+    for new_target_cell in ability.data_ai_ability.targets:
         ability.add_target(new_target_cell)
     if ability.try_launch():
         change_state.emit(AbilityState.State.CASTING)

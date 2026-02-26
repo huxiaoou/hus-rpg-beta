@@ -26,8 +26,6 @@ var cell: Vector2i:
     set(value):
         position = ManagerCellBattle.cell_to_point(value)
 
-var ability_casted: bool = true
-
 
 static func sort_by_initiative(a: Unit, b: Unit) -> bool:
     return a.data.has_greater_turn_order(b.data)
@@ -44,6 +42,10 @@ func _ready() -> void:
 func setup_in_battle() -> void:
     cell = data.init_cell
     return
+
+
+func is_ai() -> bool:
+    return data.is_ai
 
 
 func is_ally() -> bool:
@@ -66,9 +68,20 @@ func move_toward(target_pos: Vector2, distance: float) -> void:
 func on_turn_begin(unit: Unit) -> void:
     if unit != self:
         return
-    print("%s is thinking" % data.name)
-    await get_tree().create_timer(3).timeout
-    ability_casted = false
+    if is_ai():
+        for i: int in range(3, 0, -1):
+            print("%s is thinking ... %d" % [data.name, i])
+            await get_tree().create_timer(1).timeout
+        try_ai_to_cast()
+    return
+
+
+func try_ai_to_cast() -> void:
+    var ability: Ability = mgr_abilities.get_ability("ability_move")
+    var data_ai_ability: DataAiAbility = DataAiAbility.new()
+    data_ai_ability.targets.append(data.init_cell + Vector2i(2, 0))
+    ability.call_ai_to_cast(data_ai_ability)
+    ability.deactivated.connect(on_ability_deactivated)
     return
 
 
@@ -77,28 +90,27 @@ func on_ability_deactivated(ability: Ability) -> void:
     unit_turn_finished.emit(self)
     return
 
-
-func _process(_delta: float) -> void:
-    if not ManagerTurnsAndRounds.is_active(self):
-        return
-    if is_ally():
-        return
-    if mgr_abilities.has_selected_ability:
-        return
-    if not ability_casted:
-        var ability: Ability = mgr_abilities.get_ability("ability_move")
-        var ai_targets: AIDataAbilityTargets = AIDataAbilityTargets.new()
-        ai_targets.targets.append(data.init_cell + Vector2i(1, 0))
-        ability.activate_by_ai(ai_targets)
-        ability.deactivated.connect(on_ability_deactivated)
-        ability_casted = true
-    return
+# func _process(_delta: float) -> void:
+#     # if not ManagerTurnsAndRounds.is_active(self):
+#     #     return
+#     # if not is_ai():
+#     #     return
+#     # if mgr_abilities.has_selected_ability:
+#     #     return
+#     # if not ability_casted:
+#     #     var ability: Ability = mgr_abilities.get_ability("ability_move")
+#     #     var data_ai_ability: DataAiAbility = DataAiAbility.new()
+#     #     data_ai_ability.targets.append(data.init_cell + Vector2i(2, 0))
+#     #     ability.call_ai_to_cast(data_ai_ability)
+#     #     ability.deactivated.connect(on_ability_deactivated)
+#     #     ability_casted = true
+#     return
 
 
 func _unhandled_input(event: InputEvent) -> void:
     if not ManagerTurnsAndRounds.is_active(self):
         return
-    if not is_ally():
+    if is_ai():
         return
     if event.is_action_pressed("EndTurn"):
         if mgr_abilities.has_selected_ability:

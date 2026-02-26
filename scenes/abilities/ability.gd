@@ -34,7 +34,7 @@ var target_units: Array[Unit] = []
 var target_unit: Unit:
     get:
         return null if target_units.is_empty() else target_units[0]
-var ai_targets: AIDataAbilityTargets
+var data_ai_ability: DataAiAbility
 
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
@@ -54,8 +54,9 @@ func _ready() -> void:
     asm.setup(self)
 
 
-func activate_by_ai(_ai_targets: AIDataAbilityTargets) -> void:
-    asm.activate_by_ai(_ai_targets)
+func call_ai_to_cast(_data_ai_ability: DataAiAbility) -> void:
+    data_ai_ability = _data_ai_ability
+    asm.on_change_state(AbilityState.State.AIMING)
     return
 
 

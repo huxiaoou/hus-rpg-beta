@@ -18,6 +18,7 @@ enum GroupFlag {
 @export var avatar: Texture2D
 
 @export_group("Attributes")
+@export var is_ai: bool = false
 @export var group_flag: GroupFlag = GroupFlag.NEUTRAL
 @export var level: int = 1
 @export var health: int = 100

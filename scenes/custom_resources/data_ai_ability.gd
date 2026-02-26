@@ -1,5 +1,5 @@
 extends Resource
 
-class_name AIDataAbilityTargets
+class_name DataAiAbility
 
 var targets: Array[Vector2i] = []
