@@ -41,6 +41,7 @@ func unhandled_input(event: InputEvent) -> void:
 func cast_by_ai() -> void:
     for new_target_cell in ability.data_ai_ability.targets:
         ability.add_target(new_target_cell)
+    await get_tree().create_timer(0.5).timeout
     if ability.try_launch():
         change_state.emit(AbilityState.State.CASTING)
     return

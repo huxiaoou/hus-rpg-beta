@@ -38,12 +38,16 @@ func is_valid(cell: Vector2i) -> bool:
 
 func process_aiming(_delta: float) -> void:
     if target_cells.size() >= max_num_target_cells:
-        return
-    potential_target_cell_new = ManagerCellBattle.get_indicator_cell()
+        potential_target_cell_new = target_cell
+    else:
+        potential_target_cell_new = ManagerCellBattle.get_indicator_cell()
     if potential_target_cell_new not in available_cells:
         return
+    if potential_target_cell not in available_cells:
+        potential_target_cell = owner_unit.cell
+
     if potential_target_cell != potential_target_cell_new:
-        potential_target_cell = ManagerCellBattle.get_indicator_cell()
+        potential_target_cell = potential_target_cell_new
         potential_path_cells_new = ManagerCellBattle.get_cells_path(
             owner_unit.cell,
             potential_target_cell,
@@ -54,7 +58,7 @@ func process_aiming(_delta: float) -> void:
         for cell in potential_path_cells_new:
             if cell not in potential_path_cells:
                 ManagerCellBattle.set_cell_path(cell)
-            potential_path_cells = potential_path_cells_new
+        potential_path_cells = potential_path_cells_new
     return
 
 

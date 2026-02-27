@@ -71,7 +71,7 @@ func on_turn_begin(unit: Unit) -> void:
     if is_ai():
         for i: int in range(3, 0, -1):
             print("%s is thinking ... %d" % [data.name, i])
-            await get_tree().create_timer(1).timeout
+            await get_tree().create_timer(0.5).timeout
         try_ai_to_cast()
     return
 

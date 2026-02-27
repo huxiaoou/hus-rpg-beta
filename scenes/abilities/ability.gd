@@ -52,6 +52,7 @@ signal casting_finished()
 # ---- Setup ----
 func _ready() -> void:
     asm.setup(self)
+    return
 
 
 func call_ai_to_cast(_data_ai_ability: DataAiAbility) -> void:
