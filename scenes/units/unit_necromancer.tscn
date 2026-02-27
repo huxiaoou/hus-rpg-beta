@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_3rbbr"]
 [ext_resource type="Resource" uid="uid://bp15xbf2ajej2" path="res://resources/units/unit_necromancer.tres" id="2_4yj6l"]
-[ext_resource type="SpriteFrames" uid="uid://bjgfnjk6onhfw" path="res://resources/sprt_frms_necromancer.tres" id="2_n6mlv"]
+[ext_resource type="SpriteFrames" uid="uid://bjgfnjk6onhfw" path="res://resources/sprite_frames/sprt_frms_necromancer.tres" id="2_n6mlv"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="4_njqi6"]
 [ext_resource type="PackedScene" uid="uid://b17uugaqj2f83" path="res://scenes/abilities/ability_fireball.tscn" id="5_yi3t3"]
 

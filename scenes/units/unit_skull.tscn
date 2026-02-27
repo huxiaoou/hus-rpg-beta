@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t6nau0ubmot8"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_aaq5n"]
-[ext_resource type="SpriteFrames" uid="uid://c2mv8hkq0xwqm" path="res://resources/sprt_frms_skull.tres" id="2_40vi7"]
+[ext_resource type="SpriteFrames" uid="uid://c2mv8hkq0xwqm" path="res://resources/sprite_frames/sprt_frms_skull.tres" id="2_40vi7"]
 [ext_resource type="Resource" uid="uid://bqjij443b0n5k" path="res://resources/units/unit_skull.tres" id="2_ys3mn"]
 
 [node name="UnitSkull" unique_id=236103932 instance=ExtResource("1_aaq5n")]

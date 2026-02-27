@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://n84gr0dlexsq"]
 
 [ext_resource type="PackedScene" uid="uid://wqugq4huxv8u" path="res://scenes/units/unit.tscn" id="1_m4oll"]
-[ext_resource type="SpriteFrames" uid="uid://sjh80dd0nl5d" path="res://resources/sprt_frms_archer.tres" id="2_uf5oq"]
+[ext_resource type="SpriteFrames" uid="uid://sjh80dd0nl5d" path="res://resources/sprite_frames/sprt_frms_archer.tres" id="2_uf5oq"]
 [ext_resource type="Resource" uid="uid://bjkqkhiukk0a2" path="res://resources/units/unit_archer.tres" id="2_xufgy"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="4_xufgy"]
 [ext_resource type="PackedScene" uid="uid://bm8fd6cs2fj8i" path="res://scenes/abilities/ability_bow_shoot.tscn" id="5_dg51l"]
