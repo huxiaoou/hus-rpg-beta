@@ -219,3 +219,11 @@ func remove_target() -> bool:
     # target_cells.size() == 0
     audio_player.play_canceled()
     return false
+
+
+# --- AI logic ---
+func think() -> DataAiAbility:
+    var possible_data_ai_ability: DataAiAbility = DataAiAbility.new()
+    if check_ability_cost():
+        possible_data_ai_ability.score = 0
+    return possible_data_ai_ability

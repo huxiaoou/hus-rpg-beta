@@ -33,8 +33,7 @@ func clear_potential_path_cells() -> void:
 
 
 func is_valid(cell: Vector2i) -> bool:
-    return ManagerCellBattle.cell_is_reachable(cell) and cell in available_cells
-
+    return cell in available_cells and ManagerCellBattle.cell_is_reachable(cell)
 
 func process_aiming(_delta: float) -> void:
     if target_cells.size() >= max_num_target_cells:
@@ -107,3 +106,26 @@ func adjust_animation_direction():
         if not path_gp_points.is_empty():
             owner_unit.adjust_animation_direction(path_gp_points[-1])
     return
+
+
+func think() -> DataAiAbility:
+    var posssible_data_ai_ability: DataAiAbility = super.think()
+    if posssible_data_ai_ability.score == 0:
+        update_available_cells()
+        var min_distance: float = INF
+        var best_cell: Vector2i = owner_unit.cell
+        for cell: Vector2i in available_cells:
+            if not is_valid(cell):
+                continue
+            for unit: Unit in ManagerTurnsAndRounds.registered_units.values():
+                if unit.data.group_flag == owner_unit.data.group_flag:
+                    continue
+                var d: float = cell.distance_to(unit.cell)
+                if d < min_distance:
+                    best_cell = cell
+                    min_distance = d
+        if min_distance < INF:
+            posssible_data_ai_ability.score = 10
+            posssible_data_ai_ability.targets.append(best_cell)
+    print("AI thinks about ability %s, result is %s" % [short_name, posssible_data_ai_ability])
+    return posssible_data_ai_ability

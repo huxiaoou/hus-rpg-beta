@@ -78,10 +78,13 @@ func on_turn_begin(unit: Unit) -> void:
 
 func try_ai_to_cast() -> void:
     var ability: Ability = mgr_abilities.get_ability("ability_move")
-    var data_ai_ability: DataAiAbility = DataAiAbility.new()
-    data_ai_ability.targets.append(data.init_cell + Vector2i(2, 0))
-    ability.call_ai_to_cast(data_ai_ability)
-    ability.deactivated.connect(on_ability_deactivated)
+    var data_ai_ability: DataAiAbility = ability.think()
+    if data_ai_ability.score > 0:
+        ability.call_ai_to_cast(data_ai_ability)
+        ability.deactivated.connect(on_ability_deactivated)
+    else:
+        print("%s has no good ability to cast, ending turn" % data.name)
+        unit_turn_finished.emit(self)
     return
 
 
