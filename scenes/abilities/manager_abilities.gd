@@ -5,7 +5,6 @@ class_name ManagerAbilities
 @export_group("Abilities")
 @export var scenes_abilities: Array[PackedScene] = []
 @onready var abilities_node: Node = $AbilitiesNode
-@onready var aplayer_gmply: APlayerUnitGamePlay = $APlayerUnitGamePlay
 @onready var owner_unit: Unit = get_parent()
 
 var selected_ability: Ability = null
@@ -45,6 +44,6 @@ func on_ability_deactivated(_ability: Ability) -> void:
 
 
 func show_active_ability() -> void:
-    aplayer_gmply.play_warning()
+    selected_ability.audio_player.play_warning()
     print("%s has ability %s as active" % [owner_unit.name, selected_ability.short_name])
     return

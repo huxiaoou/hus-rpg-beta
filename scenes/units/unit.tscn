@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://b1yurdv7fv74v" path="res://resources/units/unit.tres" id="2_amp7q"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="3_cx6aj"]
 [ext_resource type="SpriteFrames" uid="uid://eispd8jrh5mt" path="res://resources/sprite_frames/sprt_frms_viking.tres" id="3_mgebg"]
-[ext_resource type="PackedScene" uid="uid://bxvh4mn6kfwsn" path="res://scenes/audios/a_player_unit_game_play.tscn" id="3_rk2mp"]
+[ext_resource type="PackedScene" uid="uid://bxvh4mn6kfwsn" path="res://scenes/audios/audio_player_for_unit.tscn" id="3_rk2mp"]
 [ext_resource type="PackedScene" uid="uid://3yo3hswgsjgu" path="res://scenes/abilities/components/hit_box.tscn" id="3_vewqn"]
 [ext_resource type="PackedScene" uid="uid://bkiyjcodnl3s2" path="res://scenes/abilities/components/hurt_box.tscn" id="4_amp7q"]
 [ext_resource type="PackedScene" uid="uid://crdmqwektpqdb" path="res://scenes/abilities/manager_abilities.tscn" id="4_mgebg"]
@@ -48,7 +48,7 @@ position = Vector2(6, -76)
 [node name="AnimPlayer" type="AnimationPlayer" parent="CharacterBody2D" unique_id=702366665]
 libraries/ = ExtResource("6_mvvv6")
 
-[node name="APlayerUnitGamePlay" parent="CharacterBody2D" unique_id=490961079 instance=ExtResource("3_rk2mp")]
+[node name="AudioPlayerForUnit" parent="CharacterBody2D" unique_id=490961079 instance=ExtResource("3_rk2mp")]
 
 [node name="ManagerAbilities" parent="." unique_id=1772872154 instance=ExtResource("4_mgebg")]
 scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("10_mvvv6")])

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bxvh4mn6kfwsn"]
+
+[ext_resource type="Script" uid="uid://tej7f2wsu6ew" path="res://scenes/audios/audio_player_for_unit.gd" id="1_psf80"]
+[ext_resource type="AudioStream" uid="uid://cbvdppyvwbwtb" path="res://assets/audios/Footsteps_Leaves_Walk_04.wav" id="2_6offe"]
+[ext_resource type="AudioStream" uid="uid://daxo50u5wjmt" path="res://assets/audios/Metallic_Sword_Impact_01.wav" id="3_40txi"]
+[ext_resource type="AudioStream" uid="uid://bumq10pfqmmx0" path="res://assets/audios/Projectile_Attack.wav" id="4_6ocxw"]
+
+[node name="AudioPlayerForUnit" type="AudioStreamPlayer2D" unique_id=382870696]
+script = ExtResource("1_psf80")
+walk = ExtResource("2_6offe")
+melee = ExtResource("3_40txi")
+projectile = ExtResource("4_6ocxw")
