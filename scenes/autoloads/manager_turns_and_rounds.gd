@@ -18,6 +18,7 @@ func setup(units: Array[Unit], _turn_cards_deck: UITurnCardsDeck) -> void:
     for unit in units:
         register_unit(unit)
     sort_turn_books()
+    await ui_turn_cards_deck.updated
     if not this_turn_book.is_empty():
         active_unit.unit_turn_finished.connect(on_unit_turn_finished)
         active_unit_changed.emit(active_unit)
@@ -94,6 +95,7 @@ func on_unit_turn_finished(unit: Unit) -> void:
     if this_turn_book.is_empty():
         refresh_turnbook()
         sort_turn_books()
+        await ui_turn_cards_deck.updated
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
     print("Unit %s' turn begins." % active_unit.name)
     active_unit_changed.emit(active_unit)
