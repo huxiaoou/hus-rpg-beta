@@ -43,6 +43,10 @@ func on_ability_deactivated(_ability: Ability) -> void:
     return
 
 
+func has_ability_selected() -> bool:
+    return selected_ability != null
+
+
 func show_active_ability() -> void:
     selected_ability.audio_player.play_warning()
     print("%s has ability %s as active" % [owner_unit.name, selected_ability.short_name])

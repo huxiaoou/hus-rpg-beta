@@ -34,6 +34,7 @@ func unhandled_input(event: InputEvent) -> void:
         if not ability.remove_target():
             change_state.emit(AbilityState.State.DEACTIVATED)
     elif event.is_action_pressed(ability.key_binding):
+        ability.audio_player.play_warning()
         print("%s has ability %s as active" % [ability.owner_unit.name, ability.short_name])
     return
 

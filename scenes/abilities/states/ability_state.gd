@@ -27,7 +27,7 @@ func setup(_ability: Ability) -> void:
 
 
 func enter() -> void:
-    print("Enter %s" % state_name)
+    print("Ability %s enter %s" % [ability.short_name, state_name])
     match state:
         State.DEACTIVATED:
             pass
@@ -53,5 +53,5 @@ func unhandled_input(_event: InputEvent) -> void:
 
 
 func exit() -> void:
-    print("Exit %s" % state_name)
+    print("Ability %s exit %s" % [ability.short_name, state_name])
     return

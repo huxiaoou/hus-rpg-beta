@@ -6,15 +6,6 @@
 
 [node name="Ability" type="Node" unique_id=381435778]
 script = ExtResource("1_d2gvf")
-short_name = null
-id = null
-description = null
-key_binding = null
-cost_health = null
-cost_stamnia = null
-cost_magicka = null
-cost_resolve = null
-ability_range = null
 
 [node name="AbilityStatesMachine" parent="." unique_id=1513046321 instance=ExtResource("2_iid0f")]
 

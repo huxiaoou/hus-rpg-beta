@@ -66,6 +66,10 @@ func setup(_owner_unit: Unit, _connect: Callable) -> void:
     return
 
 
+func is_selected() -> bool:
+    return owner_unit.mgr_abilities.selected_ability == self
+
+
 # --- Available cells management ----
 func update_available_cells() -> void:
     available_cells = ManagerCellBattle.get_cells_in_range(owner_unit.cell, ability_range)
