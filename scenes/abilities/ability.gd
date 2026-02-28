@@ -19,6 +19,7 @@ class_name Ability
 @export var ability_range: int = 1
 
 @onready var asm: AbilityStatesMachine = $AbilityStatesMachine
+@onready var audio_player: AudioPlayerForAbility = $AudioPlayerForAbility
 
 var owner_unit: Unit = null
 var is_active: bool = false
@@ -39,10 +40,6 @@ var data_ai_ability: DataAiAbility
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
 var potential_target_cell_new: Vector2i
-
-signal selected()
-signal canceled()
-signal warning()
 
 signal activated(Ability)
 signal deactivated(Ability)
@@ -91,7 +88,7 @@ func clear_available_cells() -> void:
 # --- Cost check ----
 func check_health_cost() -> bool:
     if owner_unit.data.health < cost_health:
-        warning.emit()
+        audio_player.play_warning()
         print("Not enough health, %d/%d" % [owner_unit.data.health, cost_health])
         return false
     return true
@@ -99,7 +96,7 @@ func check_health_cost() -> bool:
 
 func check_stamina_cost() -> bool:
     if owner_unit.data.stamina < cost_stamnia:
-        warning.emit()
+        audio_player.play_warning()
         print("Not enough stamina, %d/%d" % [owner_unit.data.stamina, cost_stamnia])
         return false
     return true
@@ -107,7 +104,7 @@ func check_stamina_cost() -> bool:
 
 func check_magicka_cost() -> bool:
     if owner_unit.data.magicka < cost_magicka:
-        warning.emit()
+        audio_player.play_warning()
         print("Not enough magicka, %d/%d" % [owner_unit.data.magicka, cost_magicka])
         return false
     return true
@@ -115,7 +112,7 @@ func check_magicka_cost() -> bool:
 
 func check_resolve_cost() -> bool:
     if owner_unit.data.resolve < cost_resolve:
-        warning.emit()
+        audio_player.play_warning()
         print("Not enough resolve, %d/%d" % [owner_unit.data.resolve, cost_resolve])
         return false
     return true
@@ -127,7 +124,7 @@ func check_ability_cost() -> bool:
 
 # ---- Ability State logic ----
 func activate() -> void:
-    selected.emit()
+    audio_player.play_selected()
     is_active = true
     update_available_cells()
     recolor_available_cells()
@@ -140,7 +137,7 @@ func activate() -> void:
 
 func try_launch() -> bool:
     if is_casting:
-        warning.emit()
+        audio_player.play_warning()
         print("%s is casting ability %s" % [owner_unit.name, short_name])
         return false
     if check_ability_cost():
@@ -153,8 +150,9 @@ func try_launch() -> bool:
 
 
 func launch() -> void:
-    print("%s launches ability %s" % [owner_unit.name, short_name])
     is_casting = true
+    print("%s launches ability %s" % [owner_unit.name, short_name])
+    audio_player.play_selected()
     return
 
 
@@ -193,10 +191,10 @@ func add_target(new_target_cell: Vector2i) -> bool:
         if is_valid(new_target_cell):
             target_cells.append(new_target_cell)
             ManagerCellBattle.set_cell_target(new_target_cell)
-            selected.emit()
+            audio_player.play_selected()
             print("Cell %s is add to target cells" % new_target_cell)
         else:
-            warning.emit()
+            audio_player.play_warning()
             print("Cell %s is invaild" % new_target_cell)
         return true
     # target_cells.size() >= max_num_target_cells:
@@ -206,14 +204,14 @@ func add_target(new_target_cell: Vector2i) -> bool:
 func remove_target() -> bool:
     if target_cells.size() > 0:
         if is_casting:
-            warning.emit()
+            audio_player.play_warning()
             print("Ability %s is casting, can not cancel target" % short_name)
         else:
             var old_target_cell: Vector2i = target_cells.pop_back()
             ManagerCellBattle.set_cell_vanilla(old_target_cell)
-            canceled.emit()
+            audio_player.play_canceled()
             print("Cell %s is dropped out from target cells" % old_target_cell)
         return true
     # target_cells.size() == 0
-    canceled.emit()
+    audio_player.play_canceled()
     return false

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bbfxr7hw1nn0"]
+
+[ext_resource type="Script" uid="uid://c04radd7hqncu" path="res://scenes/abilities/audio_player_for_ability.gd" id="1_1pla6"]
+[ext_resource type="AudioStream" uid="uid://c4l1bl2autee1" path="res://assets/audios/Toggle A 001.wav" id="2_auqjk"]
+[ext_resource type="AudioStream" uid="uid://dc36tsxfat3v5" path="res://assets/audios/Toggle B 001.wav" id="3_1pyyo"]
+[ext_resource type="AudioStream" uid="uid://dpeneqij6e68j" path="res://assets/audios/Toggle C 001.wav" id="4_n6nee"]
+
+[node name="AudioPlayerForAbility" type="AudioStreamPlayer2D" unique_id=269981258]
+script = ExtResource("1_1pla6")
+selected = ExtResource("2_auqjk")
+canceled = ExtResource("3_1pyyo")
+warning = ExtResource("4_n6nee")

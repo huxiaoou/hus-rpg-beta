@@ -77,7 +77,6 @@ func launch() -> void:
     recolor_potential_path_cells()
     start_cell = owner_unit.cell
     end_cell = target_cell
-    selected.emit()
     owner_unit.play_animation("walk")
     path_gp_points = ManagerCellBattle.get_points_path(start_cell, end_cell)
     ManagerCellBattle.enable_cell(start_cell)

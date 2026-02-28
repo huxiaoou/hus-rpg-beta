@@ -25,26 +25,8 @@ func _ready() -> void:
 
 
 func connect_ability(ability: Ability) -> void:
-    ability.selected.connect(on_ability_selected)
-    ability.canceled.connect(on_ability_canceled)
-    ability.warning.connect(on_ability_warning)
     ability.activated.connect(on_ability_activated)
     ability.deactivated.connect(on_ability_deactivated)
-    return
-
-
-func on_ability_selected() -> void:
-    aplayer_gmply.play_selected()
-    return
-
-
-func on_ability_canceled() -> void:
-    aplayer_gmply.play_canceled()
-    return
-
-
-func on_ability_warning() -> void:
-    aplayer_gmply.play_warning()
     return
 
 
