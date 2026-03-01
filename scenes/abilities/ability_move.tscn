@@ -10,4 +10,4 @@ short_name = "Move"
 id = "ability_move"
 description = "To move in the battle ground."
 key_binding = "ability_1"
-ability_range = 3
+ability_range = 2
