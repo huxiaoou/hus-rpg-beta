@@ -33,7 +33,8 @@ func clear_potential_path_cells() -> void:
 
 
 func is_valid(cell: Vector2i) -> bool:
-    return cell in available_cells and ManagerCellBattle.cell_is_reachable(cell)
+    return ManagerCellBattle.cell_is_reachable(cell) and cell in available_cells
+
 
 func process_aiming(_delta: float) -> void:
     if target_cells.size() >= max_num_target_cells:

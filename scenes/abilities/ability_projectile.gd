@@ -68,3 +68,26 @@ func deactivate() -> void:
     comp_track_drawer.clear_points()
     super.deactivate()
     return
+
+
+func think() -> DataAiAbility:
+    var posssible_data_ai_ability: DataAiAbility = super.think()
+    if posssible_data_ai_ability.score == 0:
+        update_available_cells()
+        var min_health: float = INF
+        var best_cell: Vector2i = owner_unit.cell
+        for cell: Vector2i in available_cells:
+            if not is_valid(cell):
+                continue
+            var unit: Unit = ManagerCellBattle.get_cell_occupiant(cell)
+            if unit.data.group_flag == owner_unit.data.group_flag:
+                continue
+            var h: float = unit.data.health
+            if h < min_health:
+                best_cell = cell
+                min_health = h
+        if min_health < INF:
+            posssible_data_ai_ability.score = 20
+            posssible_data_ai_ability.targets.append(best_cell)
+    print("AI thinks about ability %s, result is %s" % [short_name, posssible_data_ai_ability])
+    return posssible_data_ai_ability
