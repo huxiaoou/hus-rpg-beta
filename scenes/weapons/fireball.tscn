@@ -6,7 +6,6 @@
 
 [node name="Fireball" unique_id=485872768 instance=ExtResource("1_bxiq0")]
 script = ExtResource("2_uu6q0")
-animation_name = "fireball"
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=770976615]
 animation = &"flame"
@@ -18,4 +17,9 @@ frame_progress = 0.048187118
 stream = ExtResource("3_jve0i")
 
 [node name="HitBox" parent="." index="2" unique_id=181615822]
-position = Vector2(24, 0)
+position = Vector2(0, 0)
+radius = 120.0
+
+[node name="HitEffectBlood01" parent="." index="3" unique_id=29497935]
+display_scale = Vector2(0.5, 0.5)
+pos_offset = Vector2(0, 0)

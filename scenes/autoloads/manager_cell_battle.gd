@@ -70,6 +70,10 @@ func get_cells_in_range(cell: Vector2i, rng: int = 0) -> Array[Vector2i]:
     return layer_nav.get_cells_in_range(cell, rng)
 
 
+func get_units_in_range(cell: Vector2i, rng: int = 1) -> Array[Unit]:
+    return layer_nav.get_units_in_range(cell, rng)
+
+
 func disable_cell(cell: Vector2i, unit: Unit) -> void:
     layer_nav.disable_cell(cell, unit)
     return

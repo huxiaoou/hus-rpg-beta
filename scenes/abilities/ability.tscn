@@ -6,6 +6,7 @@
 
 [node name="Ability" type="Node" unique_id=381435778]
 script = ExtResource("1_d2gvf")
+cost_stamnia = 66
 
 [node name="AbilityStatesMachine" parent="." unique_id=1513046321 instance=ExtResource("2_iid0f")]
 

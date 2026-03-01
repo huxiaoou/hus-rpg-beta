@@ -167,6 +167,15 @@ func get_cells_in_range(cell: Vector2i, rng: int = 0) -> Array[Vector2i]:
     return res
 
 
+func get_units_in_range(cell: Vector2i, rng: int = 1) -> Array[Unit]:
+    var units: Array[Unit] = []
+    for potential_cell in get_cells_in_range(cell, rng):
+        var unit: Unit = get_cell_occupiant(potential_cell)
+        if unit != null:
+            units.append(unit)
+    return units
+
+
 func disable_cell(cell: Vector2i, unit: Unit) -> void:
     astar.set_point_disabled(astar.get_closest_point(cell), true)
     datasets_cells[cell].walkable = false

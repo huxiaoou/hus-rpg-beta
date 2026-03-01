@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://b17uugaqj2f83"]
 
 [ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="1_tbcqm"]
-[ext_resource type="PackedScene" uid="uid://f0i2hncvbk46" path="res://scenes/weapons/fireball.tscn" id="2_jkrko"]
+[ext_resource type="Script" uid="uid://3xq4id6u02rp" path="res://scenes/abilities/ability_fireball.gd" id="2_jkrko"]
+[ext_resource type="PackedScene" uid="uid://f0i2hncvbk46" path="res://scenes/weapons/fireball.tscn" id="3_pukva"]
 
 [node name="AbilityFireball" unique_id=381435778 instance=ExtResource("1_tbcqm")]
-scene_projectile = ExtResource("2_jkrko")
+script = ExtResource("2_jkrko")
+scene_projectile = ExtResource("3_pukva")
 short_name = "Fireball"
 id = "ability_fireball"
-description = "Project a fireball to the enemy and deal some damage"
+description = "Project a fireball to a cell, and deals some damage"
 key_binding = "ability_4"
+cost_stamnia = 3
