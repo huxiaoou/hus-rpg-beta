@@ -51,3 +51,12 @@ func show_active_ability() -> void:
     selected_ability.audio_player.play_warning()
     print("%s has ability %s as active" % [owner_unit.name, selected_ability.short_name])
     return
+
+
+func find_best_ability_to_cast() -> Ability:
+    var best_ability: Ability = null
+    for ability in abilities.values():
+        ability.think()
+        if best_ability == null or ability.is_better_than(best_ability):
+            best_ability = ability
+    return best_ability

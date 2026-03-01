@@ -230,3 +230,7 @@ func think() -> DataAiAbility:
 
 func score_gt_zero() -> bool:
     return data_ai_ability.score > 0
+
+
+func is_better_than(other: Ability) -> bool:
+    return data_ai_ability.score > other.data_ai_ability.score

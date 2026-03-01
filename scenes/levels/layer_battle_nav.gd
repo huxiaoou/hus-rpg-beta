@@ -184,9 +184,10 @@ func enable_cell(cell: Vector2i) -> void:
 func cell_is_reachable(cell: Vector2i) -> bool:
     if cell in datasets_cells:
         return datasets_cells[cell].is_reachable
-    else:
-        return false
+    return false
 
 
 func get_cell_occupiant(cell: Vector2i) -> Unit:
-    return datasets_cells[cell].occupiant
+    if cell in datasets_cells:
+        return datasets_cells[cell].occupiant
+    return null

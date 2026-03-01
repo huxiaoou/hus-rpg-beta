@@ -78,8 +78,7 @@ func on_turn_begin(unit: Unit) -> void:
 
 func try_ai_to_cast() -> void:
     while true:
-        var ability: Ability = mgr_abilities.get_ability("ability_move")
-        ability.think()
+        var ability: Ability = mgr_abilities.find_best_ability_to_cast()
         if ability.score_gt_zero():
             ability.call_ai_to_cast()
             await ability.deactivated
