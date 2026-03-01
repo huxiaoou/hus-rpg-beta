@@ -110,8 +110,8 @@ func adjust_animation_direction():
 
 
 func think() -> DataAiAbility:
-    var posssible_data_ai_ability: DataAiAbility = super.think()
-    if posssible_data_ai_ability.score == 0:
+    super.think()
+    if data_ai_ability.score == 0:
         update_available_cells()
         var min_distance: float = INF
         var best_cell: Vector2i = owner_unit.cell
@@ -126,7 +126,7 @@ func think() -> DataAiAbility:
                     best_cell = cell
                     min_distance = d
         if min_distance < INF:
-            posssible_data_ai_ability.score = 10
-            posssible_data_ai_ability.targets.append(best_cell)
-    print("AI thinks about ability %s, result is %s" % [short_name, posssible_data_ai_ability])
-    return posssible_data_ai_ability
+            data_ai_ability.score = 10
+            data_ai_ability.targets.append(best_cell)
+    print("AI thinks about ability %s, result is %s" % [short_name, data_ai_ability])
+    return data_ai_ability

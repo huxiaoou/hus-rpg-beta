@@ -8,3 +8,9 @@ var score: int = -1
 
 func _to_string() -> String:
     return "Targets: %s, Score: %d" % [str(targets), score]
+
+
+func reset() -> void:
+    targets.clear()
+    score = -1
+    return

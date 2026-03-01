@@ -35,7 +35,7 @@ var target_units: Array[Unit] = []
 var target_unit: Unit:
     get:
         return null if target_units.is_empty() else target_units[0]
-var data_ai_ability: DataAiAbility
+var data_ai_ability: DataAiAbility = DataAiAbility.new()
 
 var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
@@ -52,8 +52,7 @@ func _ready() -> void:
     return
 
 
-func call_ai_to_cast(_data_ai_ability: DataAiAbility) -> void:
-    data_ai_ability = _data_ai_ability
+func call_ai_to_cast() -> void:
     asm.on_change_state(AbilityState.State.AIMING)
     return
 
@@ -223,7 +222,11 @@ func remove_target() -> bool:
 
 # --- AI logic ---
 func think() -> DataAiAbility:
-    var possible_data_ai_ability: DataAiAbility = DataAiAbility.new()
+    data_ai_ability.reset()
     if check_ability_cost():
-        possible_data_ai_ability.score = 0
-    return possible_data_ai_ability
+        data_ai_ability.score = 0
+    return data_ai_ability
+
+
+func score_gt_zero() -> bool:
+    return data_ai_ability.score > 0
