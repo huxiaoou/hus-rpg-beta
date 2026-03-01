@@ -2,8 +2,7 @@ extends Ability
 
 class_name AbilityMelee
 
-@onready var hit_effect: HitEffect = $HitEffectBlood06
-
+@onready var hit_effect: HitEffect = $HitEffect
 
 func _ready() -> void:
     super._ready()
@@ -34,7 +33,7 @@ func on_melee_weapon_impacted() -> void:
     target_unit.activate_hurt_box()
     owner_unit.hit_box.global_position = target_unit.global_position
     hit_effect.set_location(target_unit.global_position)
-    hit_effect.play()
+    hit_effect.play_main()
     return
 
 

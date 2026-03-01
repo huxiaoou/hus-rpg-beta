@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://di6gramqjen4p" path="res://scenes/weapons/projectile.tscn" id="1_sr7iq"]
 [ext_resource type="Script" uid="uid://dojbyug54lcaw" path="res://scenes/weapons/arrow.gd" id="2_j1yim"]
+[ext_resource type="PackedScene" uid="uid://t0ftp5jkg1jg" path="res://scenes/effects/hit_effect_flame.tscn" id="3_spdgb"]
 
 [node name="Arrow" unique_id=485872768 instance=ExtResource("1_sr7iq")]
 script = ExtResource("2_j1yim")
+scene_hit_effect = ExtResource("3_spdgb")

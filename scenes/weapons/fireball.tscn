@@ -2,16 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://di6gramqjen4p" path="res://scenes/weapons/projectile.tscn" id="1_bxiq0"]
 [ext_resource type="Script" uid="uid://c63s8dl7mqhbw" path="res://scenes/weapons/fireball.gd" id="2_uu6q0"]
+[ext_resource type="PackedScene" uid="uid://t0ftp5jkg1jg" path="res://scenes/effects/hit_effect_flame.tscn" id="3_5y0vp"]
 [ext_resource type="AudioStream" uid="uid://cyysnacjhpoi7" path="res://assets/audios/Weapon_Fire_Attack_01.wav" id="3_jve0i"]
 
 [node name="Fireball" unique_id=485872768 instance=ExtResource("1_bxiq0")]
 script = ExtResource("2_uu6q0")
+scene_hit_effect = ExtResource("3_5y0vp")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=770976615]
-animation = &"flame"
 autoplay = "fireball"
-frame = 2
-frame_progress = 0.048187118
 
 [node name="AudioStreamPlayer2D" parent="." index="1" unique_id=147336547]
 stream = ExtResource("3_jve0i")
@@ -19,7 +18,3 @@ stream = ExtResource("3_jve0i")
 [node name="HitBox" parent="." index="2" unique_id=181615822]
 position = Vector2(0, 0)
 radius = 120.0
-
-[node name="HitEffectBlood01" parent="." index="3" unique_id=29497935]
-display_scale = Vector2(0.5, 0.5)
-pos_offset = Vector2(0, 0)

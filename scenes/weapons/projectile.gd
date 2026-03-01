@@ -3,11 +3,11 @@ extends Node2D
 class_name Projectile
 
 @export var speed: float = 1800.0
+@export var scene_hit_effect: PackedScene
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var hit_box: HitBox = $HitBox
-@onready var hit_effect: HitEffect = $HitEffectBlood01
 
 signal impacted()
 
@@ -18,8 +18,18 @@ var curve_scale: float = 0.0
 var target_cell: Vector2i
 
 
-func on_unit_damage_taken(_damage: DataDamage, _taker: Unit) -> void:
-    pass
+func on_unit_damage_taken(_damage: DataDamage, taker: Unit) -> void:
+    var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+    tw.tween_property(animated_sprite_2d, "modulate:a", 0.0, 0.3)
+
+    var hit_effect: HitEffect = scene_hit_effect.instantiate()
+    taker.add_child(hit_effect)
+    hit_effect.global_position = ManagerCellBattle.cell_to_point(taker.cell)
+    audio_stream_player_2d.play()
+    await hit_effect.play_main()
+    hit_effect.queue_free()
+    impacted.emit()
+    return
 
 
 func launch(_caster: Unit, _target_cell: Vector2i, targets: Array[Unit], _curve_scale: float) -> void:
