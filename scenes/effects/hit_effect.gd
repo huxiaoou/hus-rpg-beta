@@ -7,11 +7,17 @@ class_name HitEffect
 @export var display_scale: Vector2 = Vector2(0.5, 0.5)
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func _ready() -> void:
     scale = display_scale
     visible = false
+
+
+func play_effect() -> void:
+    animated_sprite_2d.play(animated_sprite_2d.animation)
+    return
 
 
 func play_main() -> void:

@@ -2,13 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://c1k5fhydqq6y1" path="res://scenes/abilities/ability.tscn" id="1_wqob8"]
 [ext_resource type="Script" uid="uid://4k7cpru6ia4s" path="res://scenes/abilities/ability_melee.gd" id="2_cn658"]
-[ext_resource type="PackedScene" uid="uid://t0ftp5jkg1jg" path="res://scenes/effects/hit_effect_flame.tscn" id="3_njw15"]
+[ext_resource type="PackedScene" uid="uid://dctdjn3chuq70" path="res://scenes/effects/hit_effect_blood_a.tscn" id="3_njw15"]
 
 [node name="AbilityMelee" unique_id=381435778 instance=ExtResource("1_wqob8")]
 script = ExtResource("2_cn658")
+scene_hit_effect = ExtResource("3_njw15")
 short_name = "Melee"
 id = "ability_melee"
 description = "To give a melee attack"
 key_binding = "ability_2"
-
-[node name="HitEffect" parent="." index="2" unique_id=1170464810 instance=ExtResource("3_njw15")]

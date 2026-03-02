@@ -1,6 +1,76 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://cr7oagcmxt3pd"]
 
 [ext_resource type="Texture2D" uid="uid://070dpctgeyqf" path="res://assets/effects/hit_effect_flame.png" id="1_3frgw"]
+[ext_resource type="Texture2D" uid="uid://cns04keixivnr" path="res://assets/effects/hit_effect_blood_01.png" id="1_po4ps"]
+[ext_resource type="Texture2D" uid="uid://d3vjdmddsk7go" path="res://assets/effects/hit_effect_blood_06.png" id="2_tt13k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0raso"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 0, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eycy1"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 496, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbo5b"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 992, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3sq1"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 1488, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngtij"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 1984, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3opr"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 2480, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tve6a"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 2976, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq1q2"]
+atlas = ExtResource("1_po4ps")
+region = Rect2(0, 3472, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3it2u"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 0, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r3wx"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 496, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fml4"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 992, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shjon"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 1488, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edyd6"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 1984, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y3rk"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 2480, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rv3o"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 2976, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4rov"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 3472, 496, 496)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt56w"]
+atlas = ExtResource("2_tt13k")
+region = Rect2(0, 3968, 496, 496)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_po4ps"]
 atlas = ExtResource("1_3frgw")
@@ -38,6 +108,67 @@ region = Rect2(0, 3472, 496, 496)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_0raso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eycy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbo5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3sq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngtij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3opr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tve6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq1q2")
+}],
+"loop": false,
+"name": &"blood_a",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3it2u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r3wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fml4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shjon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edyd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y3rk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rv3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4rov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt56w")
+}],
+"loop": false,
+"name": &"blood_b",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_po4ps")
 }, {
 "duration": 1.0,
@@ -63,5 +194,5 @@ animations = [{
 }],
 "loop": false,
 "name": &"flame",
-"speed": 24.0
+"speed": 12.0
 }]

@@ -2,7 +2,9 @@ extends Ability
 
 class_name AbilityMelee
 
-@onready var hit_effect: HitEffect = $HitEffect
+@export_group("Melee")
+@export var scene_hit_effect: PackedScene
+
 
 func _ready() -> void:
     super._ready()
@@ -32,8 +34,11 @@ func on_melee_weapon_impacted() -> void:
     owner_unit.activate_hit_box()
     target_unit.activate_hurt_box()
     owner_unit.hit_box.global_position = target_unit.global_position
-    hit_effect.set_location(target_unit.global_position)
-    hit_effect.play_main()
+    var hit_effect: HitEffect = scene_hit_effect.instantiate()
+    add_child(hit_effect)
+    hit_effect.global_position = target_unit.global_position
+    await hit_effect.play_main()
+    hit_effect.queue_free()
     return
 
 
