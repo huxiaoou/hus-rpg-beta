@@ -10,6 +10,7 @@ class_name HitBox
 
 func _ready() -> void:
     monitoring = false
+    monitorable = false
     if collision_shape_2d.shape is CircleShape2D:
         collision_shape_2d.shape.radius = radius
 
@@ -30,5 +31,6 @@ func setup_from_other(other: HitBox) -> void:
 
 func _on_area_entered(area: Area2D):
     if area is HurtBox:
+        print("%s's hurtbox is entered by hitbox of %s" % [area.owner_unit.name, damage.caster.data.name])
         area.emit_damage_taken(damage)
     return

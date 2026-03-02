@@ -11,6 +11,7 @@ var owner_unit: Unit = null
 
 
 func _ready() -> void:
+    monitoring = false
     monitorable = false
     if collision_shape_2d.shape is RectangleShape2D:
         collision_shape_2d.shape.size = size

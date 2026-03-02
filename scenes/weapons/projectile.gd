@@ -16,6 +16,7 @@ var p1: Vector2 # Control
 var p2: Vector2 # End
 var curve_scale: float = 0.0
 var target_cell: Vector2i
+var targets: Array[Unit]
 
 
 func on_unit_damage_taken(_damage: DataDamage, taker: Unit) -> void:
@@ -32,15 +33,16 @@ func on_unit_damage_taken(_damage: DataDamage, taker: Unit) -> void:
     return
 
 
-func launch(_caster: Unit, _target_cell: Vector2i, targets: Array[Unit], _curve_scale: float) -> void:
+func launch(_caster: Unit, _target_cell: Vector2i, _targets: Array[Unit], _curve_scale: float) -> void:
     target_cell = _target_cell
+    targets = _targets.duplicate()
     print("Launching projectile %s towards %s" % [name, target_cell])
     self.activate_hit_box()
     hit_box.setup_from_other(_caster.hit_box)
     for target: Unit in targets:
         target.activate_hurt_box()
         target.hurt_box.damage_taken.connect(on_unit_damage_taken)
-        print("%s is targeted by projectile" % target.data.name)
+        print("%s is targeted by projectile %s" % [target.data.name, name])
     curve_scale = _curve_scale
     global_position = _caster.global_position
     p0 = global_position
@@ -54,6 +56,7 @@ func launch(_caster: Unit, _target_cell: Vector2i, targets: Array[Unit], _curve_
     self.deactivate_hit_box()
     for target in targets:
         target.deactivate_hurt_box()
+        print("deactivate hurtbox for %s" % target.data.name)
     queue_free()
     return
 

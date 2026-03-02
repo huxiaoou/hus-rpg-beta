@@ -11,4 +11,3 @@ short_name = "Fireball"
 id = "ability_fireball"
 description = "Project a fireball to a cell, and deals some damage"
 key_binding = "ability_4"
-cost_stamnia = 3

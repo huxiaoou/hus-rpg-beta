@@ -10,6 +10,7 @@ script = ExtResource("2_uu6q0")
 scene_hit_effect = ExtResource("3_5y0vp")
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=770976615]
+animation = &"fireball"
 autoplay = "fireball"
 
 [node name="AudioStreamPlayer2D" parent="." index="1" unique_id=147336547]

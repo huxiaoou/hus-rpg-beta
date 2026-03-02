@@ -75,6 +75,7 @@ _data = {
 script = ExtResource("1_86ijj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=776742299]
+position = Vector2(0, -128)
 sprite_frames = ExtResource("2_fin8e")
 animation = &"flame"
 
