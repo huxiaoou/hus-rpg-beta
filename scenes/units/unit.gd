@@ -6,6 +6,7 @@ signal unit_turn_finished(unit: Unit)
 signal melee_weapon_impacted()
 signal ranged_projectile_launched()
 signal get_hurt()
+signal died(unit: Unit)
 
 @export_group("Data")
 @export var data: DataUnit
@@ -153,11 +154,13 @@ func on_hurt(damage: DataDamage, _taker: Unit) -> void:
     print("%s attacks with attack %d" % [damage.caster.data.name, damage.amount])
     print("%s takes %d damage, health is %d" % [data.name, net_dmg, data.health])
     await anim_player.animation_finished
+    get_hurt.emit()
     if data.health <= 0:
         anim_player.play("die")
+        await anim_player.animation_finished
+        died.emit(self)
     else:
         anim_player.play("idle")
-    get_hurt.emit()
     return
 
 

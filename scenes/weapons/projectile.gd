@@ -56,7 +56,7 @@ func launch(_caster: Unit, _target_cell: Vector2i, _targets: Array[Unit], _curve
     self.deactivate_hit_box()
     for target in targets:
         target.deactivate_hurt_box()
-        print("deactivate hurtbox for %s" % target.data.name)
+        # print("deactivate hurtbox for %s" % target.data.name)
     queue_free()
     return
 

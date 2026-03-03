@@ -29,6 +29,7 @@ func register_unit(unit: Unit) -> void:
     registered_units[unit.get_instance_id()] = unit
     this_turn_book.append(unit)
     next_turn_book.append(unit)
+    unit.died.connect(on_unit_died)
     return
 
 
@@ -99,6 +100,27 @@ func on_unit_turn_finished(unit: Unit) -> void:
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
     print("Unit %s' turn begins." % active_unit.name)
     active_unit_changed.emit(active_unit)
+    return
+
+
+func on_unit_died(unit: Unit) -> void:
+    var is_active_unit_died: bool = unit == active_unit
+    if is_active_unit_died:
+        unit.unit_turn_finished.disconnect(on_unit_turn_finished)
+    unit.died.disconnect(on_unit_died)
+    registered_units.erase(unit.get_instance_id())
+    this_turn_book.erase(unit)
+    next_turn_book.erase(unit)
+    turn_books_updated.emit()
+    await ui_turn_cards_deck.updated
+    if this_turn_book.is_empty():
+        refresh_turnbook()
+        sort_turn_books()
+        await ui_turn_cards_deck.updated
+    if is_active_unit_died:
+        active_unit.unit_turn_finished.connect(on_unit_turn_finished)
+        print("Unit %s' turn begins." % active_unit.name)
+        active_unit_changed.emit(active_unit)
     return
 
 
