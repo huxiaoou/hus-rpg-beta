@@ -18,4 +18,4 @@ stream = ExtResource("3_jve0i")
 
 [node name="HitBox" parent="." index="2" unique_id=181615822]
 position = Vector2(0, 0)
-radius = 120.0
+radius = 180.0

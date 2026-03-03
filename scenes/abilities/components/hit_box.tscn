@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2qpfk4fbm0hd" path="res://scenes/abilities/components/hit_box.gd" id="1_t8s4t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g8jw5"]
+resource_local_to_scene = true
 radius = 30.0
 
 [node name="HitBox" type="Area2D" unique_id=181615822]
