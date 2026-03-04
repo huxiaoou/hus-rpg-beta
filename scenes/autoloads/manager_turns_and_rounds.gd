@@ -111,20 +111,13 @@ func process_unit_turn_finished(unit: Unit) -> void:
 
 
 func process_unit_died(unit: Unit) -> void:
-    var is_active_unit_died: bool = unit == active_unit
-    if is_active_unit_died:
-        unit.unit_turn_finished.disconnect(on_unit_turn_finished)
     unit.died.disconnect(on_unit_died)
     registered_units.erase(unit.get_instance_id())
-    this_turn_book.erase(unit)
+    if unit != active_unit:
+        this_turn_book.erase(unit)
     next_turn_book.erase(unit)
     turn_books_updated.emit()
     await ui_turn_cards_deck.updated
-    await try_create_new_round()
-    if is_active_unit_died:
-        active_unit.unit_turn_finished.connect(on_unit_turn_finished)
-        print("Unit %s' turn begins." % active_unit.name)
-        active_unit_changed.emit(active_unit)
     return
 
 

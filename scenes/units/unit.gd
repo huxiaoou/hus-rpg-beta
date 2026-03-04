@@ -159,6 +159,8 @@ func on_hurt(damage: DataDamage, _taker: Unit) -> void:
         anim_player.play("die")
         await anim_player.animation_finished
         died.emit(self)
+        if ManagerTurnsAndRounds.is_active(self):
+            unit_turn_finished.emit(self)
     else:
         anim_player.play("idle")
     return
