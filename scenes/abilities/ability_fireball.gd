@@ -48,7 +48,7 @@ func think() -> DataAiAbility:
                 best_cell = cell
                 enemy_count = c
         if enemy_count > 0:
-            data_ai_ability.score = enemy_count * 8
+            data_ai_ability.score = enemy_count * SCORE_PER_UNIT_HIT_AOE
             data_ai_ability.targets.append(best_cell)
     print("AI thinks about ability %s, result is %s" % [short_name, data_ai_ability])
     return data_ai_ability

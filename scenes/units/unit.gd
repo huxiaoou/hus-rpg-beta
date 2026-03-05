@@ -158,9 +158,9 @@ func on_hurt(damage: DataDamage, _taker: Unit) -> void:
     if data.health <= 0:
         anim_player.play("die")
         await anim_player.animation_finished
-        died.emit(self)
         if ManagerTurnsAndRounds.is_active(self):
             unit_turn_finished.emit(self)
+        died.emit(self)
     else:
         anim_player.play("idle")
     return
@@ -190,4 +190,11 @@ func activate_hurt_box() -> void:
 
 func deactivate_hurt_box() -> void:
     hurt_box.monitorable = false
+    return
+
+
+func clear() -> void:
+    ManagerCellBattle.set_cell_vanilla(cell)
+    ManagerCellBattle.enable_cell(cell)
+    queue_free()
     return

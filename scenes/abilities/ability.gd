@@ -41,6 +41,11 @@ var available_cells: Array[Vector2i] = []
 var potential_target_cell: Vector2i
 var potential_target_cell_new: Vector2i
 
+const SCORE_BASIC: int = 10
+const SCORE_PER_UNIT_HIT_AOE: int = 12
+const SCORE_SINGLE_UNIT_RANGED: int = 15
+const SCORE_SINGLE_UNIT_MELEE: int = 20
+
 signal activated(Ability)
 signal deactivated(Ability)
 signal casting_finished()

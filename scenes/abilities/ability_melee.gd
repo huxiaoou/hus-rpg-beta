@@ -81,7 +81,7 @@ func think() -> DataAiAbility:
                 best_cell = cell
                 min_health = h
         if min_health < INF:
-            data_ai_ability.score = 20
+            data_ai_ability.score = SCORE_SINGLE_UNIT_MELEE
             data_ai_ability.targets.append(best_cell)
     print("AI thinks about ability %s, result is %s" % [short_name, data_ai_ability])
     return data_ai_ability

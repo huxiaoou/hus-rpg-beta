@@ -126,7 +126,7 @@ func think() -> DataAiAbility:
                     best_cell = cell
                     min_distance = d
         if min_distance < INF:
-            data_ai_ability.score = 10
+            data_ai_ability.score = SCORE_BASIC
             data_ai_ability.targets.append(best_cell)
     print("AI thinks about ability %s, result is %s" % [short_name, data_ai_ability])
     return data_ai_ability

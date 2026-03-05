@@ -118,6 +118,7 @@ func process_unit_died(unit: Unit) -> void:
     next_turn_book.erase(unit)
     turn_books_updated.emit()
     await ui_turn_cards_deck.updated
+    unit.clear()
     return
 
 
