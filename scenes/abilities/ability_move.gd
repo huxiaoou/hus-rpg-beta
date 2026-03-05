@@ -2,7 +2,7 @@ extends Ability
 
 class_name AbilityMove
 
-@export var move_speed: float = 120
+@export var move_speed: float = 240
 
 var potential_path_cells: Array[Vector2i] = []
 var potential_path_cells_new: Array[Vector2i] = []
@@ -10,12 +10,26 @@ var start_cell: Vector2i
 var end_cell: Vector2i
 var target_pos_in_path: Vector2 = Vector2(0, 0)
 var path_gp_points: Array[Vector2] = []
+var paused_seconds: float = 0
+
+const PAUSED_SECONDS_BEFORE_NEXT_STEP: float = 0.3
 
 
 func _ready() -> void:
     super._ready()
     max_num_target_cells = 1
     max_num_target_units = 0
+    return
+
+
+func update_available_cells() -> void:
+    super.update_available_cells()
+    var new_available_cells: Array[Vector2i] = []
+    for cell: Vector2i in available_cells:
+        var p: Array[Vector2i] = ManagerCellBattle.get_cells_path(owner_unit.cell, cell) # Pre-cache paths
+        if p.size() > 0 and p.size() <= (ability_range + 1):
+            new_available_cells.append(cell)
+    available_cells = new_available_cells
     return
 
 
@@ -66,8 +80,12 @@ func process_casting(delta: float) -> void:
     if owner_unit.position != target_pos_in_path:
         owner_unit.move_toward(target_pos_in_path, delta * move_speed)
     else:
+        paused_seconds += delta
+        if paused_seconds < PAUSED_SECONDS_BEFORE_NEXT_STEP:
+            return
         set_target_pos_from_path()
         adjust_animation_direction()
+        paused_seconds = 0
     return
 
 
