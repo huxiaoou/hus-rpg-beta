@@ -16,5 +16,16 @@ pivot_offset_ratio = Vector2(0.5, 0)
 alignment = 1
 script = ExtResource("1_lbe7n")
 
-[node name="UIRoundSep" parent="." unique_id=10448046 instance=ExtResource("2_fwrxq")]
+[node name="UIRoundCurr" parent="." unique_id=10448046 instance=ExtResource("2_fwrxq")]
+layout_mode = 2
+round_id = "Curr"
+
+[node name="QueueCurrRoundCards" type="HBoxContainer" parent="." unique_id=507491966]
+layout_mode = 2
+
+[node name="UIRoundNext" parent="." unique_id=407637574 instance=ExtResource("2_fwrxq")]
+layout_mode = 2
+round_id = "Next"
+
+[node name="QueueNextRoundCards" type="HBoxContainer" parent="." unique_id=256346284]
 layout_mode = 2
