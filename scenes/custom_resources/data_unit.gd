@@ -29,6 +29,10 @@ enum GroupFlag {
 @export var max_stamina: int = 100
 @export var max_magicka: int = 100
 @export var max_resolve: int = 100
+@export var health_regen: int = 5
+@export var stamina_regen: int = 34
+@export var magicka_regen: int = 5
+@export var resolve_regen: int = 5
 @export var attack: int = 24
 @export var armor: int = 8
 @export var initiative: int = 12
@@ -81,3 +85,11 @@ func has_greater_turn_order(other: DataUnit) -> bool:
     if resolve != other.resolve:
         return resolve > other.resolve
     return name > other.name
+
+
+func regen() -> void:
+    change_health(health_regen)
+    change_stamina(stamina_regen)
+    change_magicka(magicka_regen)
+    change_resolve(resolve_regen)
+    return

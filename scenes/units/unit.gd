@@ -69,6 +69,7 @@ func move_toward(target_pos: Vector2, distance: float) -> void:
 func on_turn_begin(unit: Unit) -> void:
     if unit != self:
         return
+    data.regen()
     if is_ai():
         for i: int in range(3, 0, -1):
             print("%s is thinking ... %d" % [data.name, i])
