@@ -101,6 +101,6 @@ func fades_in() -> void:
     audio_player.stream = astream_fades_in_out
     audio_player.play()
     var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-    tw.tween_property(self, "modulate:a", 1.0, 0.2)
+    tw.tween_property(self, "modulate:a", 1.0, 0.1)
     await tw.finished
     return
