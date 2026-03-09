@@ -26,6 +26,7 @@ var bd_focused_custom_min_size: Vector2
 var bd_vanilla_custom_min_size: Vector2
 var av_focused_custom_min_size: Vector2
 var av_vanilla_custom_min_size: Vector2
+var unit: Unit = null
 
 
 func _ready() -> void:
@@ -38,9 +39,10 @@ func _ready() -> void:
     update_color()
 
 
-func setup(unit: Unit) -> void:
-    group_flag = unit.data.group_flag
-    av.texture = unit.data.avatar
+func setup(_unit: Unit) -> void:
+    unit = _unit
+    group_flag = _unit.data.group_flag
+    av.texture = _unit.data.avatar
     update_color()
     return
 

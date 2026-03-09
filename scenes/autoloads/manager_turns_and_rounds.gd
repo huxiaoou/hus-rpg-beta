@@ -1,12 +1,5 @@
 extends Node
 
-signal turn_books_updated()
-signal curr_round_appended(unit: Unit)
-signal next_round_appended(unit: Unit)
-signal curr_round_pop_front()
-signal next_round_pop_front()
-signal next_round_entered()
-
 signal active_unit_changed(unit: Unit)
 signal event_appended()
 
@@ -15,7 +8,6 @@ var curr_round_book: Array[Unit] = []
 var next_round_book: Array[Unit] = []
 var events_queue: Array[DataEventTurn] = []
 var ui_turn_cards_deck: UITurnCardsDeck
-
 var active_unit: Unit:
     get:
         return null if curr_round_book.is_empty() else curr_round_book[0]
@@ -46,30 +38,38 @@ func setup(units: Array[Unit], _turn_cards_deck: UITurnCardsDeck) -> void:
 
 func append_unit_to_curr_round_book(unit: Unit) -> void:
     curr_round_book.append(unit)
-    curr_round_appended.emit(unit)
-    await ui_turn_cards_deck.updated
+    await ui_turn_cards_deck.curr_queue_append_card(unit)
     return
 
 
 func append_unit_to_next_round_book(unit: Unit) -> void:
     next_round_book.append(unit)
-    next_round_appended.emit(unit)
-    await ui_turn_cards_deck.updated
+    await ui_turn_cards_deck.next_queue_append_card(unit)
     return
 
 
 func pop_front_unit_from_curr_round_book() -> Unit:
     var unit: Unit = curr_round_book.pop_front()
-    curr_round_pop_front.emit()
-    await ui_turn_cards_deck.updated
+    await ui_turn_cards_deck.curr_queue_pop_front_card()
     return unit
 
 
 func pop_front_unit_from_next_round_book() -> Unit:
     var unit: Unit = next_round_book.pop_front()
-    next_round_pop_front.emit()
-    await ui_turn_cards_deck.updated
+    await ui_turn_cards_deck.next_queue_pop_front_card()
     return unit
+
+
+func erase_unit_from_curr_round_book(unit: Unit) -> void:
+    curr_round_book.erase(unit)
+    await ui_turn_cards_deck.curr_queue_erase_unit_card(unit)
+    return
+
+
+func erase_unit_from_next_round_book(unit: Unit) -> void:
+    next_round_book.erase(unit)
+    await ui_turn_cards_deck.next_queue_erase_unit_card(unit)
+    return
 
 
 func main_loop() -> void:
@@ -110,26 +110,25 @@ func on_unit_died(unit: Unit) -> void:
 func enter_next_round() -> void:
     curr_round_book = next_round_book.duplicate()
     next_round_book.clear()
-    next_round_entered.emit()
-    await ui_turn_cards_deck.updated
+    ui_turn_cards_deck.on_next_round_entered()
     return
 
 
 func try_enter_next_round() -> void:
     if curr_round_book.is_empty():
-        await enter_next_round()
+        enter_next_round()
     return
 
 
 func process_unit_turn_finished(unit: Unit) -> void:
     if unit != active_unit:
-        print("[WRN] wrong unit finishes turn")
+        print("[WRN] Wrong unit finishes turn")
         return
     active_unit.unit_turn_finished.disconnect(on_unit_turn_finished)
     print("Unit %s's turn ends." % active_unit.name)
     await pop_front_unit_from_curr_round_book()
     await append_unit_to_next_round_book(unit)
-    await try_enter_next_round()
+    try_enter_next_round()
     active_unit.unit_turn_finished.connect(on_unit_turn_finished)
     print("Unit %s' turn begins." % active_unit.name)
     active_unit_changed.emit(active_unit)
@@ -139,11 +138,10 @@ func process_unit_turn_finished(unit: Unit) -> void:
 func process_unit_died(unit: Unit) -> void:
     unit.died.disconnect(on_unit_died)
     registered_units.erase(unit.get_instance_id())
-    if unit != active_unit:
-        curr_round_book.erase(unit)
-    next_round_book.erase(unit)
-    turn_books_updated.emit()
-    await ui_turn_cards_deck.updated
+    if unit == active_unit:
+        print("[WRN] Active unit %s died." % active_unit.name)
+    await erase_unit_from_curr_round_book(unit)
+    await erase_unit_from_next_round_book(unit)
     unit.clear()
     return
 
