@@ -22,6 +22,12 @@ enum {
 # cells: Vector2i are used as points in AStar
 
 
+func _ready() -> void:
+    ManagerCellBattle.layer_nav = self
+    setup()
+    return
+
+
 func setup() -> void:
     astar = AStar2D.new()
     astar.clear()

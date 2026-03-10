@@ -47,10 +47,6 @@ func _ready() -> void:
     sprite_2d_bg.texture = bg_texture
     audio_stream_player.stream = bg_music
     audio_stream_player.play()
-
-    ManagerCellBattle.layer_nav = layer_battle_nav
-    ManagerCellBattle.layer_nav.setup()
-    ManagerCellBattle.cell_indicator_battle = cell_indicator_battle
     var units: Array[Unit] = get_units()
     init_units(units)
     ManagerTurnsAndRounds.setup(units, ui_turn_cards_deck)

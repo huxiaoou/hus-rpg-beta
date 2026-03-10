@@ -6,6 +6,11 @@ var indicator_cell: Vector2i = Vector2i.ZERO
 var toggle_test: bool = false
 
 
+func _ready() -> void:
+    ManagerCellBattle.cell_indicator_battle = self
+    return
+
+
 func _process(_delta: float) -> void:
     var new_mouse_cell: Vector2i = ManagerCellBattle.get_mouse_cell()
     if new_mouse_cell == indicator_cell:
