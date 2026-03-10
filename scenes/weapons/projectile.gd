@@ -9,14 +9,13 @@ class_name Projectile
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var hit_box: HitBox = $HitBox
 
-signal impacted()
-
 var p0: Vector2 # Start
 var p1: Vector2 # Control
 var p2: Vector2 # End
 var curve_scale: float = 0.0
 var target_cell: Vector2i
-var targets: Array[Unit]
+var targets: Array[Unit] = []
+var impacted_records: Dictionary[Unit, bool] = { }
 
 
 func on_unit_damage_taken(_damage: DataDamage, taker: Unit) -> void:
@@ -29,13 +28,31 @@ func on_unit_damage_taken(_damage: DataDamage, taker: Unit) -> void:
     audio_stream_player_2d.play()
     await hit_effect.play_main()
     hit_effect.queue_free()
-    impacted.emit()
+    impacted_records[taker] = true
     return
 
 
-func launch(_caster: Unit, _target_cell: Vector2i, _targets: Array[Unit], _curve_scale: float) -> void:
+func wait_for_impact() -> void:
+    while true:
+        if impacted_records.values().all(func(z): return z):
+            break
+        await get_tree().process_frame
+    return
+
+
+func launch(
+        _caster: Unit,
+        _target_cell: Vector2i,
+        _targets: Array[Unit],
+        _curve_scale: float,
+        _hit_effect_applied: Signal,
+) -> void:
     target_cell = _target_cell
     targets = _targets.duplicate()
+    impacted_records.clear()
+    for target in targets:
+        impacted_records[target] = false
+
     print("Launching projectile %s towards %s" % [name, target_cell])
     self.activate_hit_box()
     hit_box.setup_from_other(_caster.hit_box)
@@ -50,13 +67,11 @@ func launch(_caster: Unit, _target_cell: Vector2i, _targets: Array[Unit], _curve
     p1 = Utils.cal_control_point_for_bezier(p0, p2, curve_scale)
     var tw = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
     tw.tween_method(_update_position, 0.0, 1.0, (p0.distance_to(p1) + p1.distance_to(p2)) / speed)
-
-    for target in targets:
-        await impacted
+    await wait_for_impact()
     self.deactivate_hit_box()
     for target in targets:
         target.deactivate_hurt_box()
-        # print("deactivate hurtbox for %s" % target.data.name)
+    _hit_effect_applied.emit()
     queue_free()
     return
 

@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func enter() -> void:
-    super.enter()
+    # super.enter()
     ability.deactivate()
     return
 

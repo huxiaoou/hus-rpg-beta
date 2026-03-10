@@ -2,6 +2,8 @@ extends Ability
 
 class_name AbilityProjectile
 
+signal hit_effect_applied()
+
 @export_group("Projectile")
 @export var curve_scale: float = 0.00
 @export var scene_projectile: PackedScene
@@ -36,7 +38,7 @@ func process_aiming(_delta: float) -> void:
 func on_ranged_projectile_launched() -> void:
     var projectile: Projectile = scene_projectile.instantiate()
     add_child(projectile)
-    await projectile.launch(owner_unit, target_cell, target_units, curve_scale)
+    await projectile.launch(owner_unit, target_cell, target_units, curve_scale, hit_effect_applied)
     return
 
 
@@ -52,7 +54,7 @@ func launch() -> void:
     owner_unit.ranged_projectile_launched.connect(on_ranged_projectile_launched)
     owner_unit.update_hit_box()
     owner_unit.play_animation("ranged_attack")
-    await owner_unit.anim_player.animation_finished
+    await hit_effect_applied
     finish()
     return
 
