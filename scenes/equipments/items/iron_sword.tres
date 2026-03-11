@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EquipableItem" format=3 uid="uid://cwsq3vugwuvf0"]
+
+[ext_resource type="Texture2D" uid="uid://cwqkobv27cj3g" path="res://assets/equipments/10.png" id="1_88tda"]
+[ext_resource type="Script" uid="uid://sgk2cmga5ad3" path="res://scenes/custom_resources/equipable_item.gd" id="1_ark0u"]
+
+[resource]
+script = ExtResource("1_ark0u")
+name = "Iron Sword"
+icon = ExtResource("1_88tda")
+power_bonus = 24
+metadata/_custom_type_script = "uid://sgk2cmga5ad3"

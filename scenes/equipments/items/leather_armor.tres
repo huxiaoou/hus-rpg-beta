@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EquipableItem" format=3 uid="uid://cco3cio1lw751"]
+
+[ext_resource type="Texture2D" uid="uid://b4h5d0yhpqe8s" path="res://assets/equipments/12.png" id="1_vt5e0"]
+[ext_resource type="Script" uid="uid://sgk2cmga5ad3" path="res://scenes/custom_resources/equipable_item.gd" id="2_2wnw4"]
+
+[resource]
+script = ExtResource("2_2wnw4")
+name = "Leather Armor"
+icon = ExtResource("1_vt5e0")
+slot = 1
+defense_bonus = 24
+metadata/_custom_type_script = "uid://sgk2cmga5ad3"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EquipableItem" format=3 uid="uid://3dsrbyrko0l4"]
+
+[ext_resource type="Texture2D" uid="uid://cmgsnywodpa6u" path="res://assets/equipments/23.png" id="1_r3kpt"]
+[ext_resource type="Script" uid="uid://sgk2cmga5ad3" path="res://scenes/custom_resources/equipable_item.gd" id="2_4n1iw"]
+
+[resource]
+script = ExtResource("2_4n1iw")
+name = "Necklace"
+icon = ExtResource("1_r3kpt")
+slot = 2
+defense_bonus = 24
+metadata/_custom_type_script = "uid://sgk2cmga5ad3"

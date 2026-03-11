@@ -19,6 +19,7 @@ signal died(unit: Unit)
 @onready var ui_floating_health_bar: UIFloatingHealthBar = $UIFloatingHealthBar
 @onready var hurt_box: HurtBox = $CharacterBody2D/HurtBox
 @onready var hit_box: HitBox = $CharacterBody2D/HitBox
+@onready var manager_equipment: ManagerEquipment = $ManagerEquipment
 
 var astreams: Dictionary[String, AudioStream] = { }
 var cell: Vector2i:
@@ -36,6 +37,7 @@ func _ready() -> void:
     play_animation("idle")
     ui_floating_health_bar.init_from_unit(self)
     hurt_box.setup(self)
+    manager_equipment.equipment_changed.connect(on_equipped_item_changed)
     ManagerTurnsAndRounds.active_unit_changed.connect(on_turn_begin)
     return
 
@@ -102,6 +104,23 @@ func _unhandled_input(event: InputEvent) -> void:
             return
         unit_turn_finished.emit(self)
         get_viewport().set_input_as_handled()
+    test_handle_input_equipment(event)
+    return
+
+
+func test_handle_input_equipment(event: InputEvent) -> void:
+    var item: EquipableItem = null
+    if event.is_action_pressed("test_action_1"):
+        item = load("res://scenes/equipments/items/iron_sword.tres")
+    elif event.is_action_pressed("test_action_2"):
+        item = load("res://scenes/equipments/items/leather_armor.tres")
+    elif event.is_action_pressed("test_action_3"):
+        item = load("res://scenes/equipments/items/necklace.tres")
+    if item != null:
+        if manager_equipment.has_equipped(item.slot):
+            manager_equipment.unequip(item.slot)
+        else:
+            manager_equipment.equip(item)
     return
 
 
@@ -145,7 +164,7 @@ func emit_ranged_projectile_launched() -> void:
 
 
 func cal_net_damage(damage: DataDamage) -> int:
-    return int(damage.amount * (1 - min((data.armor as float) / 40, 1)))
+    return int(damage.amount * (1 - min((get_final_armor() as float) / 40, 1)))
 
 
 func on_hurt(damage: DataDamage, _taker: Unit) -> void:
@@ -167,9 +186,22 @@ func on_hurt(damage: DataDamage, _taker: Unit) -> void:
     return
 
 
+func on_equipped_item_changed() -> void:
+    update_hit_box()
+    return
+
+
+func get_final_attack() -> int:
+    return data.attack + manager_equipment.get_power_bonus()
+
+
+func get_final_armor() -> int:
+    return data.armor + manager_equipment.get_defense_bonus()
+
+
 func update_hit_box() -> void:
     hit_box.damage.caster = self
-    hit_box.damage.amount = data.attack
+    hit_box.damage.amount = get_final_attack()
     hit_box.damage.dmg_type = DataDamage.EDmgType.PHYSICS
     return
 

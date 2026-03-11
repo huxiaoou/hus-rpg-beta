@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bg3bqtu30eyxc" path="res://assets/ui/huxo_info_frame_background.png" id="5_isyae"]
 [ext_resource type="Texture2D" uid="uid://bwkw87nhg3hti" path="res://assets/ui/huxo_sep.png" id="7_mi5tj"]
 [ext_resource type="PackedScene" uid="uid://8yut7qrarppm" path="res://scenes/ui/ui_status.tscn" id="8_8jfd8"]
-[ext_resource type="Texture2D" uid="uid://catl1e5at5ylx" path="res://assets/ui/PictoIcon_Defense.Png" id="9_ymq1w"]
-[ext_resource type="Texture2D" uid="uid://bnr3ey8dtihw3" path="res://assets/ui/PictoIcon_Boots.Png" id="10_7k6d5"]
+[ext_resource type="Texture2D" uid="uid://csvkpa77ukd0x" path="res://assets/ui/ItemIcon_Skill_Attack.png" id="9_vaeyb"]
+[ext_resource type="Texture2D" uid="uid://cpvadehu045nl" path="res://assets/ui/ItemIcon_Skill_Defense.png" id="10_sdvd7"]
+[ext_resource type="Texture2D" uid="uid://culoblr87uyl" path="res://assets/ui/ItemIcon_Energy_Purple.png" id="11_8n74a"]
 
 [node name="UIAvatar" type="HBoxContainer" unique_id=827327734]
 offset_right = 4170.0
@@ -95,11 +96,12 @@ alignment = 1
 
 [node name="UIStatusAttack" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" unique_id=1307473375 instance=ExtResource("8_8jfd8")]
 layout_mode = 2
+custom_icon = ExtResource("9_vaeyb")
 
 [node name="UIStatusArmor" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" unique_id=933937828 instance=ExtResource("8_8jfd8")]
 layout_mode = 2
-custom_icon = ExtResource("9_ymq1w")
+custom_icon = ExtResource("10_sdvd7")
 
 [node name="UIStatusInitiative" parent="HBoxInfo/Bg/MarginContainer/VBoxBars/HBoxStatus" unique_id=1507056335 instance=ExtResource("8_8jfd8")]
 layout_mode = 2
-custom_icon = ExtResource("10_7k6d5")
+custom_icon = ExtResource("11_8n74a")

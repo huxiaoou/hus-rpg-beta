@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cda2ch3kkgpjj"]
+
+[ext_resource type="Script" uid="uid://b03tbgfoebe6h" path="res://scenes/equipments/manager_equipment.gd" id="1_goper"]
+[ext_resource type="AudioStream" uid="uid://bkm8w0mhm88kc" path="res://assets/audios/Inventory A 001.wav" id="2_kt2yf"]
+[ext_resource type="AudioStream" uid="uid://gcwn1bhfb8na" path="res://assets/audios/Inventory A 002.wav" id="3_v65cg"]
+
+[node name="ManagerEquipment" type="Node" unique_id=801007692]
+script = ExtResource("1_goper")
+astream_equip = ExtResource("2_kt2yf")
+astream_unequip = ExtResource("3_v65cg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1771347965]
+bus = &"SFX"

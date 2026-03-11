@@ -11,6 +11,7 @@
 [ext_resource type="AnimationLibrary" uid="uid://cm5rsooo5x5gk" path="res://resources/anim_lib_unit.res" id="6_mvvv6"]
 [ext_resource type="PackedScene" uid="uid://bxh1jbvf6hq3l" path="res://scenes/ui/ui_floating_health_bar.tscn" id="7_44d7s"]
 [ext_resource type="PackedScene" uid="uid://c18rlyogycdbw" path="res://scenes/abilities/ability_melee.tscn" id="10_mvvv6"]
+[ext_resource type="PackedScene" uid="uid://cda2ch3kkgpjj" path="res://scenes/equipments/manager_equipment.tscn" id="12_npoq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5c8dj"]
 size = Vector2(71, 51)
@@ -55,3 +56,5 @@ scenes_abilities = Array[PackedScene]([ExtResource("3_cx6aj"), ExtResource("10_m
 
 [node name="UIFloatingHealthBar" parent="." unique_id=1704756695 instance=ExtResource("7_44d7s")]
 scale = Vector2(0.5, 0.5)
+
+[node name="ManagerEquipment" parent="." unique_id=801007692 instance=ExtResource("12_npoq2")]
