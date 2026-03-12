@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnr3ey8dtihw3"
-path="res://.godot/imported/PictoIcon_Boots.Png-d81a5a992361b781407ade47e4d2d440.ctex"
+uid="uid://dp0ci5qbm0ymi"
+path="res://.godot/imported/Background.png-43aaa8521cd0d4776a642d06ef29bd5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/PictoIcon_Boots.Png"
-dest_files=["res://.godot/imported/PictoIcon_Boots.Png-d81a5a992361b781407ade47e4d2d440.ctex"]
+source_file="res://assets/ui/Background.png"
+dest_files=["res://.godot/imported/Background.png-43aaa8521cd0d4776a642d06ef29bd5a.ctex"]
 
 [params]
 

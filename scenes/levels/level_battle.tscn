@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://c884hvc0bg6ua" path="res://resources/tile_set_hex_battle.tres" id="6_or4fg"]
 [ext_resource type="PackedScene" uid="uid://dtmll7ypivaj5" path="res://scenes/ui/ui_turn_cards_deck.tscn" id="8_66584"]
 [ext_resource type="PackedScene" uid="uid://t6nau0ubmot8" path="res://scenes/units/unit_skull.tscn" id="8_d4bfr"]
+[ext_resource type="PackedScene" uid="uid://cj812y6d5u5m6" path="res://scenes/ui/ui_menu_equipment.tscn" id="8_f0aak"]
 [ext_resource type="PackedScene" uid="uid://bm5m1mow7et3r" path="res://scenes/units/unit_viking.tscn" id="8_k1ymq"]
 [ext_resource type="PackedScene" uid="uid://c40qa0yk65dev" path="res://scenes/ui/ui_avatar.tscn" id="8_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://d0nmaer24ifid" path="res://scenes/units/unit_wizard.tscn" id="10_lxgdc"]
@@ -42,6 +43,9 @@ tile_set = ExtResource("6_or4fg")
 scale = Vector2(0.6, 0.6)
 
 [node name="UITurnCardsDeck" parent="CanvasLayer" unique_id=1902028544 instance=ExtResource("8_66584")]
+offset_bottom = 288.0
+
+[node name="UIMenuEquipment" parent="CanvasLayer" unique_id=1899500239 instance=ExtResource("8_f0aak")]
 
 [node name="Units" type="Node2D" parent="." unique_id=919210040]
 y_sort_enabled = true

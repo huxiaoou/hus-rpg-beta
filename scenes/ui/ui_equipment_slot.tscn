@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bfi6iiucbxvmm"]
+
+[ext_resource type="Script" uid="uid://chdsrt4h43lsk" path="res://scenes/ui/ui_equipment_slot.gd" id="1_tyef4"]
+[ext_resource type="Texture2D" uid="uid://v07810heykap" path="res://assets/ui/ItemFrame_Square_01_Gray.png" id="2_xck7g"]
+
+[node name="EquipmentSlot" type="CenterContainer" unique_id=1236713845]
+script = ExtResource("1_tyef4")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=516943080]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("2_xck7g")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="." unique_id=633469736]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+expand_mode = 1

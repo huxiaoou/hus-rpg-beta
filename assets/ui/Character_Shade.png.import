@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://catl1e5at5ylx"
-path="res://.godot/imported/PictoIcon_Defense.Png-2815db986bc02e682f2654c9b0867bac.ctex"
+uid="uid://bl85b0rhgygk0"
+path="res://.godot/imported/Character_Shade.png-8f2eda2e95568293379d0b6ba2bafde1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/PictoIcon_Defense.Png"
-dest_files=["res://.godot/imported/PictoIcon_Defense.Png-2815db986bc02e682f2654c9b0867bac.ctex"]
+source_file="res://assets/ui/Character_Shade.png"
+dest_files=["res://.godot/imported/Character_Shade.png-8f2eda2e95568293379d0b6ba2bafde1.ctex"]
 
 [params]
 
