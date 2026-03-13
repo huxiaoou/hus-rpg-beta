@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://chdsrt4h43lsk" path="res://scenes/ui/ui_equipment_slot.gd" id="1_tyef4"]
 [ext_resource type="Texture2D" uid="uid://v07810heykap" path="res://assets/ui/ItemFrame_Square_01_Gray.png" id="2_xck7g"]
+[ext_resource type="Shader" uid="uid://cjh47kk5x41j3" path="res://scenes/shaders/ui_equipment_slot.gdshader" id="3_7ywj7"]
+[ext_resource type="Texture2D" uid="uid://cwqkobv27cj3g" path="res://assets/equipments/10.png" id="4_ehqfx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_amc3a"]
+shader = ExtResource("3_7ywj7")
+shader_parameter/mask_tex = ExtResource("2_xck7g")
 
 [node name="EquipmentSlot" type="CenterContainer" unique_id=1236713845]
 script = ExtResource("1_tyef4")
@@ -13,6 +19,8 @@ texture = ExtResource("2_xck7g")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="." unique_id=633469736]
-custom_minimum_size = Vector2(72, 72)
+material = SubResource("ShaderMaterial_amc3a")
+custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
+texture = ExtResource("4_ehqfx")
 expand_mode = 1
