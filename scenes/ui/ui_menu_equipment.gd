@@ -44,9 +44,12 @@ func _input(event: InputEvent) -> void:
 
 
 func toggle_menu():
-    var new_pause_state: bool = !get_tree().paused
-    get_tree().paused = new_pause_state
-    if new_pause_state:
-        show()
-    else:
-        hide()
+    visible = not visible
+    return
+
+    # var new_pause_state: bool = !get_tree().paused
+    # get_tree().paused = new_pause_state
+    # if new_pause_state:
+    #     show()
+    # else:
+    #     hide()
