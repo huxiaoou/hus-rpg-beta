@@ -9,4 +9,6 @@ name = "Necklace"
 icon = ExtResource("1_r3kpt")
 slot = 2
 defense_bonus = 24
+weight = 1
+value = 20
 metadata/_custom_type_script = "uid://sgk2cmga5ad3"

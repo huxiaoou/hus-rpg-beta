@@ -34,6 +34,7 @@ func unequip(slot: EquipableItem.TypeSlot) -> EquipableItem:
 
     var unequipped_item: EquipableItem = equipped_items[slot]
     equipped_items.erase(slot)
+    ManagerInventory.add_item(unequipped_item)
     equipment_changed.emit()
     play_sfx_unequip()
     print("Unequipped item: %s from slot %s" % [unequipped_item.name, slot])

@@ -8,4 +8,6 @@ script = ExtResource("1_ark0u")
 name = "Iron Sword"
 icon = ExtResource("1_88tda")
 power_bonus = 24
+weight = 12
+value = 36
 metadata/_custom_type_script = "uid://sgk2cmga5ad3"

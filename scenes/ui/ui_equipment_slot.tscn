@@ -8,7 +8,7 @@
 shader = ExtResource("3_7ywj7")
 shader_parameter/mask_tex = ExtResource("2_xck7g")
 
-[node name="EquipmentSlot" type="CenterContainer" unique_id=1236713845]
+[node name="UIEquipmentSlot" type="CenterContainer" unique_id=1236713845]
 script = ExtResource("1_tyef4")
 
 [node name="Bg" type="TextureRect" parent="." unique_id=516943080]
@@ -22,3 +22,5 @@ material = SubResource("ShaderMaterial_amc3a")
 custom_minimum_size = Vector2(84, 84)
 layout_mode = 2
 expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

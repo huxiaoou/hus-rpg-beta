@@ -104,23 +104,6 @@ func _unhandled_input(event: InputEvent) -> void:
             return
         unit_turn_finished.emit(self)
         get_viewport().set_input_as_handled()
-    test_handle_input_equipment(event)
-    return
-
-
-func test_handle_input_equipment(event: InputEvent) -> void:
-    var item: EquipableItem = null
-    if event.is_action_pressed("test_action_1"):
-        item = load("res://scenes/equipments/items/iron_sword.tres")
-    elif event.is_action_pressed("test_action_2"):
-        item = load("res://scenes/equipments/items/leather_armor.tres")
-    elif event.is_action_pressed("test_action_3"):
-        item = load("res://scenes/equipments/items/necklace.tres")
-    if item != null:
-        if manager_equipment.has_equipped(item.slot):
-            manager_equipment.unequip(item.slot)
-        else:
-            manager_equipment.equip(item)
     return
 
 

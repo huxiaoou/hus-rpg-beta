@@ -35,6 +35,8 @@ func refresh_ui() -> void:
 
 
 func _input(event: InputEvent) -> void:
+    if not unit:
+        return
     if unit.is_ai():
         return
     if event.is_action_pressed("toggle_invetory"):

@@ -9,4 +9,6 @@ name = "Leather Armor"
 icon = ExtResource("1_vt5e0")
 slot = 1
 defense_bonus = 24
+weight = 18
+value = 27
 metadata/_custom_type_script = "uid://sgk2cmga5ad3"

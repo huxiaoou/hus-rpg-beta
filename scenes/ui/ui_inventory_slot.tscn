@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbecchln8o2x5"]
+
+[ext_resource type="Script" uid="uid://brklg081i33rr" path="res://scenes/ui/ui_inventory_slot.gd" id="1_2ua7x"]
+[ext_resource type="Texture2D" uid="uid://bsmwx7abnke21" path="res://assets/ui/Character_ItemSlot_Background.png" id="2_sjpth"]
+[ext_resource type="Shader" uid="uid://cjh47kk5x41j3" path="res://scenes/shaders/ui_equipment_slot.gdshader" id="3_sjpth"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_amc3a"]
+shader = ExtResource("3_sjpth")
+shader_parameter/mask_tex = ExtResource("2_sjpth")
+
+[node name="UIInventorySlot" type="CenterContainer" unique_id=1236713845]
+offset_right = 126.0
+offset_bottom = 126.0
+script = ExtResource("1_2ua7x")
+
+[node name="Bg" type="TextureRect" parent="." unique_id=516943080]
+custom_minimum_size = Vector2(126, 126)
+layout_mode = 2
+texture = ExtResource("2_sjpth")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="." unique_id=633469736]
+material = SubResource("ShaderMaterial_amc3a")
+custom_minimum_size = Vector2(92, 92)
+layout_mode = 2
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
