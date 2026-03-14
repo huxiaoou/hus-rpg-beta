@@ -17,11 +17,13 @@ func display_item(_item: EquipableItem):
         icon.texture = null
         icon.visible = false
         tooltip_text = "Empty Slot"
+    return
 
 
 func _on_gui_input(event: InputEvent) -> void:
     if event.is_action_pressed("unequip_item"):
         var unit: Unit = ManagerTurnsAndRounds.active_unit
         if unit != null and item != null:
-            unit.manager_equipment.unequip(item.slot)
+            var unequipped_item: EquipableItem = unit.manager_equipment.unequip(item.slot)
+            ManagerInventory.add_item(unequipped_item)
     return

@@ -23,6 +23,8 @@ func _on_gui_input(event: InputEvent) -> void:
     if event.is_action_pressed("equip_item"):
         var unit: Unit = ManagerTurnsAndRounds.active_unit
         if unit != null and item != null:
-            unit.manager_equipment.equip(item)
+            var unequipped_item: EquipableItem = unit.manager_equipment.equip(item)
+            if unequipped_item:
+                ManagerInventory.add_item(unequipped_item)
             ManagerInventory.remove_item(item)
     return

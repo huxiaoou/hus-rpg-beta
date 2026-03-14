@@ -17,15 +17,16 @@ func has_equipped(slot: EquipableItem.TypeSlot) -> bool:
     return equipped_items.has(slot)
 
 
-func equip(item: EquipableItem) -> void:
+func equip(item: EquipableItem) -> EquipableItem:
+    var unequipped_item: EquipableItem = null
     if equipped_items.has(item.slot):
-        unequip(item.slot)
+        unequipped_item = unequip(item.slot)
 
     equipped_items[item.slot] = item
     equipment_changed.emit()
     play_sfx_equip()
     print("Equipped item: %s in slot %s" % [item.name, item.slot])
-    return
+    return unequipped_item
 
 
 func unequip(slot: EquipableItem.TypeSlot) -> EquipableItem:
@@ -34,7 +35,6 @@ func unequip(slot: EquipableItem.TypeSlot) -> EquipableItem:
 
     var unequipped_item: EquipableItem = equipped_items[slot]
     equipped_items.erase(slot)
-    ManagerInventory.add_item(unequipped_item)
     equipment_changed.emit()
     play_sfx_unequip()
     print("Unequipped item: %s from slot %s" % [unequipped_item.name, slot])

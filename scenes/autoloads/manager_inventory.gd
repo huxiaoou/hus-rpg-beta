@@ -6,14 +6,16 @@ signal inventory_updated
 
 
 func add_item(item: EquipableItem):
-    items.append(item)
-    inventory_updated.emit()
+    if item:
+        items.append(item)
+        inventory_updated.emit()
     return
 
 
 func remove_item(item: EquipableItem):
-    items.erase(item)
-    inventory_updated.emit()
+    if item:
+        items.erase(item)
+        inventory_updated.emit()
     return
 
 
