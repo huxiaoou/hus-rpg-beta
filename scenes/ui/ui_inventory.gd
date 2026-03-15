@@ -1,11 +1,12 @@
-extends ScrollContainer
+extends VBoxContainer
 
 class_name UIInventory
 
 const GRID_COLUMNS: int = 8
-const MIN_GRID_ROWS: int = 6
+const MIN_GRID_ROWS: int = 10
 
-@onready var grid: GridContainer = $GridContainer
+@onready var grid: GridContainer = $ScrollContainer/GridContainer
+@onready var option_button: OptionButton = $OptionButton
 
 var scene_inv_slot: PackedScene = preload("res://scenes/ui/ui_inventory_slot.tscn")
 var rows: int = MIN_GRID_ROWS
@@ -18,6 +19,10 @@ func _ready():
         var slot: UIInventorySlot = scene_inv_slot.instantiate()
         grid.add_child(slot)
     ManagerInventory.inventory_updated.connect(refresh_inventory)
+    ManagerInventory.set_sort_func_by_weight()
+
+    var popup: PopupMenu = option_button.get_popup()
+    popup.add_theme_font_size_override("font_size", 28)
     refresh_inventory()
     return
 
@@ -42,6 +47,23 @@ func refresh_inventory():
     for i: int in range(counter, grid.get_child_count()):
         var slot: UIInventorySlot = grid.get_child(i)
         slot.display_item(null)
+    return
+
+
+func _on_option_button_item_selected(index: int) -> void:
+    var text: String = option_button.get_item_text(index)
+    match text:
+        "By Value":
+            ManagerInventory.set_sort_func_by_value()
+        "By Weight":
+            ManagerInventory.set_sort_func_by_weight()
+        "By Power Bonus":
+            ManagerInventory.set_sort_func_by_power_bonus()
+        "By Defense Bonus":
+            ManagerInventory.set_sort_func_by_defense_bonus()
+        "By Name":
+            ManagerInventory.set_sort_func_by_name()
+    ManagerInventory.sort_items()
     return
 
 

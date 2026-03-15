@@ -11,7 +11,7 @@ func display_item(_item: EquipableItem):
     if item:
         icon.texture = item.icon
         icon.visible = true
-        tooltip_text = item.name + "\nPower: " + str(item.power_bonus)
+        tooltip_text = item.display_info()
     else:
         icon.texture = null
         icon.visible = false

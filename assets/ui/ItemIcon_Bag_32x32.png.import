@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b343181fvbwx0"
-path="res://.godot/imported/PictoIcon_Attack.Png-924863714a9587a5fda884a6fe653c3b.ctex"
+uid="uid://cbg43pvpky52n"
+path="res://.godot/imported/ItemIcon_Bag_32x32.png-f0a70b559efbb86e0e10aaa559af9b41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/PictoIcon_Attack.Png"
-dest_files=["res://.godot/imported/PictoIcon_Attack.Png-924863714a9587a5fda884a6fe653c3b.ctex"]
+source_file="res://assets/ui/ItemIcon_Bag_32x32.png"
+dest_files=["res://.godot/imported/ItemIcon_Bag_32x32.png-f0a70b559efbb86e0e10aaa559af9b41.ctex"]
 
 [params]
 

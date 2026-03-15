@@ -39,3 +39,8 @@ static func compare_items_by_defense_bonus(item_a: EquipableItem, item_b: Equipa
 
 static func compare_items_by_name(item_a: EquipableItem, item_b: EquipableItem) -> bool:
     return item_a.name > item_b.name
+
+
+func display_info() -> String:
+    return "%s\nPower Bonus: %d\nDefense Bonus: %d\nWeight: %.2f\nValue: %.2f" \
+    % [name, power_bonus, defense_bonus, weight, value]
