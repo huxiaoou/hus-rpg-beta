@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://cj812y6d5u5m6"]
 
-[ext_resource type="PackedScene" uid="uid://bfi6iiucbxvmm" path="res://scenes/ui/ui_equipment_slot.tscn" id="1_13svd"]
 [ext_resource type="Script" uid="uid://ck7xqegp441t7" path="res://scenes/ui/ui_menu_equipment.gd" id="1_mcnq6"]
 [ext_resource type="Texture2D" uid="uid://dp0ci5qbm0ymi" path="res://assets/ui/Background.png" id="2_5peis"]
-[ext_resource type="Texture2D" uid="uid://bl85b0rhgygk0" path="res://assets/ui/Character_Shade.png" id="3_b6oeq"]
+[ext_resource type="PackedScene" uid="uid://cbwyxxvrk80dk" path="res://scenes/ui/ui_unit_equipment.tscn" id="3_b6oeq"]
 [ext_resource type="PackedScene" uid="uid://cy5xap61gl44j" path="res://scenes/ui/ui_inventory.tscn" id="5_h4iqf"]
 
 [node name="UIMenuEquipment" type="Control" unique_id=1899500239]
@@ -23,39 +22,16 @@ offset_bottom = 40.0
 texture = ExtResource("2_5peis")
 expand_mode = 1
 
-[node name="Body" type="TextureRect" parent="." unique_id=195327454]
-custom_minimum_size = Vector2(0, 1080)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -540.0
-offset_right = 613.95654
-offset_bottom = 540.0
-grow_vertical = 2
-texture = ExtResource("3_b6oeq")
-expand_mode = 3
-
-[node name="SlotWeapon" parent="Body" unique_id=1236713845 instance=ExtResource("1_13svd")]
+[node name="UnitEquipment" parent="." unique_id=1935691709 instance=ExtResource("3_b6oeq")]
 layout_mode = 0
-offset_left = 8.9782715
-offset_top = 790.0
-offset_right = 136.97827
-offset_bottom = 918.0
-
-[node name="SlotArmor" parent="Body" unique_id=441673516 instance=ExtResource("1_13svd")]
-layout_mode = 0
-offset_left = 264.0
-offset_top = 327.0
-offset_right = 392.0
-offset_bottom = 455.0
-
-[node name="SlotAccessory" parent="Body" unique_id=1580007297 instance=ExtResource("1_13svd")]
-layout_mode = 0
-offset_left = 264.0
-offset_top = 134.0
-offset_right = 392.0
-offset_bottom = 262.0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 0.0
+offset_bottom = 1080.0
+grow_vertical = 1
 
 [node name="Inventory" parent="." unique_id=1190247464 instance=ExtResource("5_h4iqf")]
 layout_mode = 1
+
+[connection signal="unit_set" from="UnitEquipment" to="." method="_on_unit_equipment_unit_set"]

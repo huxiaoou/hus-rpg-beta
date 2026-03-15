@@ -11,6 +11,7 @@ const MIN_GRID_ROWS: int = 10
 var scene_inv_slot: PackedScene = preload("res://scenes/ui/ui_inventory_slot.tscn")
 var rows: int = MIN_GRID_ROWS
 var new_rows: int = MIN_GRID_ROWS
+var unit: Unit = null
 
 
 func _ready():
@@ -78,3 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
     if item != null:
         ManagerInventory.add_item(item)
     return
+
+
+func set_unit(_unit:Unit) -> void:
+    unit = _unit

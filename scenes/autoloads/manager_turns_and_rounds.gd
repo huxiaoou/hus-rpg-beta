@@ -2,6 +2,7 @@ extends Node
 
 signal active_unit_changed(unit: Unit)
 signal event_appended()
+signal units_registered()
 
 var registered_units: Dictionary[int, Unit] = { }
 var curr_round_book: Array[Unit] = []
@@ -19,10 +20,26 @@ func register_unit(unit: Unit) -> void:
     return
 
 
+func regiestered_allies() -> Array[Unit]:
+    var allies: Array[Unit] = []
+    for unit: Unit in registered_units.values():
+        if unit.is_ally():
+            allies.append(unit)
+    return allies
+
+
+func find_next_ally(curr_ally: Unit, shift: int = 1) -> Unit:
+    var allies: Array[Unit] = regiestered_allies()
+    var i: int = allies.find(curr_ally)
+    var next: int = (i + shift) % allies.size()
+    return allies[next]
+
+
 func setup(units: Array[Unit], _turn_cards_deck: UITurnCardsDeck) -> void:
     ui_turn_cards_deck = _turn_cards_deck
     for unit in units:
         register_unit(unit)
+    units_registered.emit()
 
     var sorted_units: Array[Unit] = registered_units.values()
     sorted_units.sort_custom(Unit.sort_by_initiative)

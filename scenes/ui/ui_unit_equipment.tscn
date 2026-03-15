@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cbwyxxvrk80dk"]
+
+[ext_resource type="Texture2D" uid="uid://bl85b0rhgygk0" path="res://assets/ui/Character_Shade.png" id="1_ikwu3"]
+[ext_resource type="Script" uid="uid://b4j2jdll61cig" path="res://scenes/ui/ui_unit_equipment.gd" id="2_eipia"]
+[ext_resource type="PackedScene" uid="uid://bfi6iiucbxvmm" path="res://scenes/ui/ui_equipment_slot.tscn" id="2_xxkyg"]
+[ext_resource type="Texture2D" uid="uid://xraneb64nswf" path="res://assets/ui/PictoIcon_Arrow_Prev.Png" id="3_v0hyh"]
+[ext_resource type="Texture2D" uid="uid://bgccfu7weyoyr" path="res://assets/ui/PictoIcon_Arrow_Next.Png" id="4_v0hyh"]
+
+[node name="UIUnitEquipment" type="TextureRect" unique_id=1935691709]
+custom_minimum_size = Vector2(0, 1080)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -540.0
+offset_right = 613.95654
+offset_bottom = 540.0
+grow_vertical = 2
+texture = ExtResource("1_ikwu3")
+expand_mode = 3
+script = ExtResource("2_eipia")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1342862391]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="BtnPrev" type="Button" parent="HBoxContainer" unique_id=253749815]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "PREV"
+icon = ExtResource("3_v0hyh")
+flat = true
+icon_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="HBoxContainer" unique_id=220469219]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+expand_mode = 5
+
+[node name="BtnNext" type="Button" parent="HBoxContainer" unique_id=991277773]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "NEXT"
+icon = ExtResource("4_v0hyh")
+flat = true
+icon_alignment = 1
+
+[node name="SlotWeapon" parent="." unique_id=1236713845 instance=ExtResource("2_xxkyg")]
+layout_mode = 0
+offset_left = 8.9782715
+offset_top = 790.0
+offset_right = 136.97827
+offset_bottom = 918.0
+
+[node name="SlotArmor" parent="." unique_id=758718226 instance=ExtResource("2_xxkyg")]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 327.0
+offset_right = 392.0
+offset_bottom = 455.0
+
+[node name="SlotAccessory" parent="." unique_id=527510640 instance=ExtResource("2_xxkyg")]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 134.0
+offset_right = 392.0
+offset_bottom = 262.0
+
+[connection signal="pressed" from="HBoxContainer/BtnPrev" to="." method="_on_btn_prev_pressed"]
+[connection signal="pressed" from="HBoxContainer/BtnNext" to="." method="_on_btn_next_pressed"]

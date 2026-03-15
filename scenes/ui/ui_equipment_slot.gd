@@ -4,7 +4,9 @@ class_name UIEquipmentSlot
 
 @export var slot_type: EquipableItem.TypeSlot
 @onready var icon: TextureRect = $Icon
+
 var item: EquipableItem = null
+var unit: Unit = null
 
 
 func display_item(_item: EquipableItem):
@@ -22,7 +24,6 @@ func display_item(_item: EquipableItem):
 
 func _on_gui_input(event: InputEvent) -> void:
     if event.is_action_pressed("unequip_item"):
-        var unit: Unit = ManagerTurnsAndRounds.active_unit
         if unit != null and item != null:
             var unequipped_item: EquipableItem = unit.manager_equipment.unequip(item.slot)
             ManagerInventory.add_item(unequipped_item)
