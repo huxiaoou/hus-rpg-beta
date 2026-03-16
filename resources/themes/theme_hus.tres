@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://bitjenxkbuoah"]
+
+[ext_resource type="FontFile" uid="uid://rqkv55ns38ao" path="res://assets/fonts/Thailandesa.ttf" id="1_hq3ni"]
+
+[resource]
+ButtonHus/base_type = &"Button"
+ButtonHus/colors/font_hover_color = Color(0.37548587, 0.053346597, 0.08746716, 1)
+ButtonHus/colors/font_hover_pressed_color = Color(0.75570077, 0.058462247, 0.3380035, 1)
+ButtonHus/colors/font_pressed_color = Color(0.75686276, 0.05882353, 0.3372549, 1)
+ButtonHus/colors/icon_hover_color = Color(0.6279267, 0.6279267, 0.6279267, 1)
+ButtonHus/colors/icon_normal_color = Color(0.15281937, 0.15281937, 0.15281937, 1)
+ButtonHus/colors/icon_pressed_color = Color(1, 1, 1, 1)
+ButtonHus/font_sizes/font_size = 16
+ButtonHus/fonts/font = ExtResource("1_hq3ni")
+LabelHus/base_type = &"Label"
+LabelHus/colors/font_color = Color(0.5518933, 0.4415644, 0.17430112, 1)
+LabelHus/colors/font_shadow_color = Color(0, 0, 0, 1)
+LabelHus/font_sizes/font_size = 32
+LabelHus/fonts/font = ExtResource("1_hq3ni")
+OptionButtonHus/base_type = &"OptionButton"
+OptionButtonHus/font_sizes/font_size = 32
+OptionButtonHus/fonts/font = ExtResource("1_hq3ni")

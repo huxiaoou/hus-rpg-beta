@@ -10,6 +10,7 @@ signal unit_set(unit: Unit)
 @onready var slot_accessory: UIEquipmentSlot = $SlotAccessory
 @onready var btn_prev: Button = $HBoxContainer/BtnPrev
 @onready var btn_next: Button = $HBoxContainer/BtnNext
+@onready var aplayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var unit: Unit = null
 
@@ -25,6 +26,8 @@ func on_units_registered() -> void:
 
 
 func set_unit(_unit: Unit) -> void:
+    if unit:
+        unit.manager_equipment.equipment_changed.disconnect(refresh_ui)
     unit = _unit
     avatar.texture = unit.data.avatar
     slot_weapon.unit = unit
@@ -46,9 +49,11 @@ func refresh_ui() -> void:
 
 func _on_btn_prev_pressed() -> void:
     set_unit(ManagerTurnsAndRounds.find_next_ally(unit, -1))
+    aplayer.play()
     return
 
 
 func _on_btn_next_pressed() -> void:
     set_unit(ManagerTurnsAndRounds.find_next_ally(unit, 1))
+    aplayer.play()
     return

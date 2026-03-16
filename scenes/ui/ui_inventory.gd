@@ -6,7 +6,8 @@ const GRID_COLUMNS: int = 8
 const MIN_GRID_ROWS: int = 10
 
 @onready var grid: GridContainer = $ScrollContainer/GridContainer
-@onready var option_button: OptionButton = $OptionButton
+@onready var aplayer: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var option_button: OptionButton = $HBoxContainer/OptionButton
 
 var scene_inv_slot: PackedScene = preload("res://scenes/ui/ui_inventory_slot.tscn")
 var rows: int = MIN_GRID_ROWS
@@ -52,17 +53,18 @@ func refresh_inventory():
 
 
 func _on_option_button_item_selected(index: int) -> void:
+    aplayer.play()
     var text: String = option_button.get_item_text(index)
     match text:
-        "By Value":
+        "Value":
             ManagerInventory.set_sort_func_by_value()
-        "By Weight":
+        "Weight":
             ManagerInventory.set_sort_func_by_weight()
-        "By Power Bonus":
+        "Power Bonus":
             ManagerInventory.set_sort_func_by_power_bonus()
-        "By Defense Bonus":
+        "Defense Bonus":
             ManagerInventory.set_sort_func_by_defense_bonus()
-        "By Name":
+        "Name":
             ManagerInventory.set_sort_func_by_name()
     ManagerInventory.sort_items()
     return

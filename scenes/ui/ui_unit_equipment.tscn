@@ -4,7 +4,30 @@
 [ext_resource type="Script" uid="uid://b4j2jdll61cig" path="res://scenes/ui/ui_unit_equipment.gd" id="2_eipia"]
 [ext_resource type="PackedScene" uid="uid://bfi6iiucbxvmm" path="res://scenes/ui/ui_equipment_slot.tscn" id="2_xxkyg"]
 [ext_resource type="Texture2D" uid="uid://xraneb64nswf" path="res://assets/ui/PictoIcon_Arrow_Prev.Png" id="3_v0hyh"]
+[ext_resource type="Shader" uid="uid://dha56l8g6xsd5" path="res://scenes/shaders/ui_unit_equipment_avatar.gdshader" id="4_id33l"]
 [ext_resource type="Texture2D" uid="uid://bgccfu7weyoyr" path="res://assets/ui/PictoIcon_Arrow_Next.Png" id="4_v0hyh"]
+[ext_resource type="Texture2D" uid="uid://tylhxjng6dv1" path="res://assets/units/unit_wizard_avatar.png" id="5_m4ati"]
+[ext_resource type="Theme" uid="uid://bitjenxkbuoah" path="res://resources/themes/theme_hus.tres" id="6_pufvf"]
+[ext_resource type="AudioStream" uid="uid://3n04jww4otw4" path="res://assets/audios/Clicks B 001.wav" id="9_68vs6"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_m4ati"]
+device = -1
+keycode = 81
+unicode = 113
+
+[sub_resource type="Shortcut" id="Shortcut_pufvf"]
+events = [SubResource("InputEventKey_m4ati")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4ati"]
+shader = ExtResource("4_id33l")
+
+[sub_resource type="InputEventKey" id="InputEventKey_pufvf"]
+device = -1
+keycode = 69
+unicode = 101
+
+[sub_resource type="Shortcut" id="Shortcut_68vs6"]
+events = [SubResource("InputEventKey_pufvf")]
 
 [node name="UIUnitEquipment" type="TextureRect" unique_id=1935691709]
 custom_minimum_size = Vector2(0, 1080)
@@ -23,29 +46,36 @@ script = ExtResource("2_eipia")
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 128.0
+offset_bottom = 136.0
 grow_horizontal = 2
 
 [node name="BtnPrev" type="Button" parent="HBoxContainer" unique_id=253749815]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("6_pufvf")
+theme_type_variation = &"ButtonHus"
+shortcut = SubResource("Shortcut_pufvf")
 text = "PREV"
 icon = ExtResource("3_v0hyh")
 flat = true
 icon_alignment = 1
 
 [node name="Avatar" type="TextureRect" parent="HBoxContainer" unique_id=220469219]
+material = SubResource("ShaderMaterial_m4ati")
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
-expand_mode = 5
+texture = ExtResource("5_m4ati")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="BtnNext" type="Button" parent="HBoxContainer" unique_id=991277773]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme = ExtResource("6_pufvf")
+theme_type_variation = &"ButtonHus"
+shortcut = SubResource("Shortcut_68vs6")
 text = "NEXT"
 icon = ExtResource("4_v0hyh")
 flat = true
@@ -71,6 +101,9 @@ offset_left = 264.0
 offset_top = 134.0
 offset_right = 392.0
 offset_bottom = 262.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=241691642]
+stream = ExtResource("9_68vs6")
 
 [connection signal="pressed" from="HBoxContainer/BtnPrev" to="." method="_on_btn_prev_pressed"]
 [connection signal="pressed" from="HBoxContainer/BtnNext" to="." method="_on_btn_next_pressed"]
