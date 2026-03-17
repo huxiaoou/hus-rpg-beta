@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://iagcw2du1157"]
+[gd_scene format=3 uid="uid://iagcw2du1157"]
 
 [ext_resource type="Script" uid="uid://bbgfd7xmlhql7" path="res://scenes/general/camera_controller.gd" id="1_le55e"]
 
-[node name="CameraController" type="Node"]
+[node name="CameraController" type="Node" unique_id=2037132771]
 script = ExtResource("1_le55e")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(960, 540)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1240922381]
+position = Vector2(960, 540)

@@ -27,6 +27,7 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 ManagerCellBattle="*res://scenes/autoloads/manager_cell_battle.gd"
 ManagerTurnsAndRounds="*res://scenes/autoloads/manager_turns_and_rounds.gd"
 ManagerInventory="*uid://bobtecfpyjrvg"
+ManagerCamera="*uid://cdcbbdonnfq6v"
 
 [display]
 

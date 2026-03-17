@@ -101,10 +101,12 @@ func launch() -> void:
     ManagerCellBattle.disable_cell(end_cell, owner_unit)
     set_target_pos_from_path()
     adjust_animation_direction()
+    ManagerCamera.move_to(path_gp_points[-1])
     return
 
 
 func finish() -> void:
+    ManagerCamera.reset_to_init_status()
     owner_unit.play_animation("idle")
     clear_potential_path_cells()
     super.finish()

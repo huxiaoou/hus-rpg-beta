@@ -3,7 +3,6 @@ extends Node
 class_name CameraController
 
 @export_group("Move")
-@export var init_offset: Vector2 = Vector2(1920.0 / 2, 1080.0 / 2)
 @export var enable_move: bool = false
 @export var move_speed: float = 500
 
@@ -30,7 +29,7 @@ var trauma = 0.0
 
 
 func _ready() -> void:
-    camera_2d.offset = init_offset
+    ManagerCamera.setup(camera_2d)
 
 
 func set_camera_lim(left_top: Vector2, right_down: Vector2) -> void:
@@ -87,7 +86,7 @@ func shake(delta: float) -> void:
         trauma -= decay * delta
         var shake_intensity: float = pow(trauma, trauma_power) * max_offset
         delta_offset = Vector2(randf_range(-1, 1), randf_range(-1, 1)) * shake_intensity
-    camera_2d.offset = init_offset + delta_offset
+    camera_2d.offset = delta_offset
     return
 
 
