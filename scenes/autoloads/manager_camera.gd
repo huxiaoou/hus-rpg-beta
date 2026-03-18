@@ -6,9 +6,10 @@ var camera: Camera2D = null
 var queue_event_camera_change: Array[EventCameraChange] = []
 var init_status: CameraStatus = CameraStatus.new()
 
-const DEFAULT_ZOOM_SCALE: float = 1.50
+const DEFAULT_ZOOM_SCALE: float = 1.25
 const DEFAULT_ZOOM: Vector2 = Vector2.ONE * DEFAULT_ZOOM_SCALE
 const DEFAULT_DURATION: float = 1.0
+const DEFAULT_ROU: float = 0.382
 
 var top_left_lim: Vector2 = Vector2.ZERO
 var bottom_right_lim: Vector2 = Vector2(1920, 1080)
@@ -69,6 +70,17 @@ func move_to(_global_position: Vector2, _zoom: Vector2 = DEFAULT_ZOOM, _duration
     event.status.zoom = _zoom
     event.duration = _duration
     append_event(event)
+    return
+
+
+func move_to_between(
+        p0: Vector2,
+        p1: Vector2,
+        rou: float = DEFAULT_ROU,
+        _zoom: Vector2 = DEFAULT_ZOOM,
+        _duration: float = DEFAULT_DURATION,
+) -> void:
+    move_to(lerp(p0, p1, 1 - rou), _zoom, _duration)
     return
 
 

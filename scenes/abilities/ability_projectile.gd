@@ -50,6 +50,7 @@ func update_target_units() -> void:
 func launch() -> void:
     super.launch()
     update_target_units()
+    ManagerCamera.move_to_between(owner_unit.global_position, ManagerCellBattle.cell_to_point(target_cell))
     owner_unit.adjust_animation_direction_from_cell(target_cell)
     owner_unit.ranged_projectile_launched.connect(on_ranged_projectile_launched)
     owner_unit.update_hit_box()
@@ -60,6 +61,7 @@ func launch() -> void:
 
 
 func finish() -> void:
+    ManagerCamera.reset_to_init_status()
     owner_unit.ranged_projectile_launched.disconnect(on_ranged_projectile_launched)
     comp_track_drawer.clear_points()
     owner_unit.play_animation("idle")

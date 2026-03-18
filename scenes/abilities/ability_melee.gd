@@ -44,6 +44,7 @@ func on_melee_weapon_impacted() -> void:
 
 func launch() -> void:
     super.launch()
+    ManagerCamera.move_to_between(owner_unit.global_position, ManagerCellBattle.cell_to_point(target_cell))
     target_units.append(ManagerCellBattle.get_cell_occupiant(target_cell))
     owner_unit.adjust_animation_direction_from_cell(target_cell)
     owner_unit.melee_weapon_impacted.connect(on_melee_weapon_impacted)
@@ -55,6 +56,7 @@ func launch() -> void:
 
 
 func finish() -> void:
+    ManagerCamera.reset_to_init_status()
     owner_unit.melee_weapon_impacted.disconnect(on_melee_weapon_impacted)
     owner_unit.deactivate_hit_box()
     target_unit.deactivate_hurt_box()
