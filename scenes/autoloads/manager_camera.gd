@@ -6,12 +6,13 @@ var camera: Camera2D = null
 var queue_event_camera_change: Array[EventCameraChange] = []
 var init_status: CameraStatus = CameraStatus.new()
 
-const DEFAULT_ZOOM_SCALE: float = 1.05
+const DEFAULT_ZOOM_SCALE: float = 1.50
 const DEFAULT_ZOOM: Vector2 = Vector2.ONE * DEFAULT_ZOOM_SCALE
 const DEFAULT_DURATION: float = 1.0
 
-var hlim: Vector2 = Vector2(960 / DEFAULT_ZOOM_SCALE, 1920 - 960 / DEFAULT_ZOOM_SCALE)
-var vlim: Vector2 = Vector2(540 / DEFAULT_ZOOM_SCALE, 1080 - 540 / DEFAULT_ZOOM_SCALE)
+var top_left_lim: Vector2 = Vector2.ZERO
+var bottom_right_lim: Vector2 = Vector2(1920, 1080)
+
 
 func setup(new_camera: Camera2D) -> void:
     camera = new_camera
@@ -19,6 +20,10 @@ func setup(new_camera: Camera2D) -> void:
         camera.make_current()
         init_status.global_position = camera.global_position
         init_status.zoom = camera.zoom
+
+    var viewport_size: Vector2 = get_viewport().size
+    top_left_lim = viewport_size / 2 / DEFAULT_ZOOM_SCALE
+    bottom_right_lim = viewport_size - viewport_size / 2 / DEFAULT_ZOOM_SCALE
     main_loop()
     return
 
@@ -58,8 +63,8 @@ func reset_to_init_status(_duration: float = DEFAULT_DURATION) -> void:
 func move_to(_global_position: Vector2, _zoom: Vector2 = DEFAULT_ZOOM, _duration: float = DEFAULT_DURATION) -> void:
     var event: EventCameraChange = EventCameraChange.new()
     event.status = CameraStatus.new()
-    _global_position.x = clamp(_global_position.x, hlim.x, hlim.y)
-    _global_position.y = clamp(_global_position.y, vlim.x, vlim.y)
+    _global_position.x = clamp(_global_position.x, top_left_lim.x, bottom_right_lim.x)
+    _global_position.y = clamp(_global_position.y, top_left_lim.y, bottom_right_lim.y)
     event.status.global_position = _global_position
     event.status.zoom = _zoom
     event.duration = _duration
