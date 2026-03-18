@@ -3,6 +3,7 @@ extends Node
 signal active_unit_changed(unit: Unit)
 signal event_appended()
 signal units_registered()
+signal ally_died(unit: Unit)
 
 var registered_units: Dictionary[int, Unit] = { }
 var curr_round_book: Array[Unit] = []
@@ -155,6 +156,8 @@ func process_unit_turn_finished(unit: Unit) -> void:
 func process_unit_died(unit: Unit) -> void:
     unit.died.disconnect(on_unit_died)
     registered_units.erase(unit.get_instance_id())
+    if unit.is_ally():
+        ally_died.emit(unit)
     if unit == active_unit:
         print("[WRN] Active unit %s died." % active_unit.name)
     await erase_unit_from_curr_round_book(unit)

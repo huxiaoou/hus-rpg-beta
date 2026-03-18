@@ -17,11 +17,18 @@ var unit: Unit = null
 
 func _ready() -> void:
     ManagerTurnsAndRounds.units_registered.connect(on_units_registered)
+    ManagerTurnsAndRounds.ally_died.connect(on_ally_died)
     return
 
 
 func on_units_registered() -> void:
     set_unit(ManagerTurnsAndRounds.regiestered_allies()[0])
+    return
+
+
+func on_ally_died(_unit: Unit) -> void:
+    if _unit == unit:
+        set_unit(ManagerTurnsAndRounds.regiestered_allies()[0])
     return
 
 
