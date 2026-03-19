@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b1xya7y6h18in"]
+
+[ext_resource type="Theme" uid="uid://bitjenxkbuoah" path="res://resources/themes/theme_hus.tres" id="1_f3guo"]
+[ext_resource type="Script" uid="uid://cmaek55qaubha" path="res://scenes/ui/button_ui.gd" id="2_je2vw"]
+
+[node name="ButtonUI" type="Button" unique_id=1565820235]
+custom_minimum_size = Vector2(256, 89)
+theme = ExtResource("1_f3guo")
+theme_type_variation = &"ButtonUI"
+text = "START GAME"
+script = ExtResource("2_je2vw")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

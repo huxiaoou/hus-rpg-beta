@@ -1,8 +1,32 @@
 [gd_resource type="Theme" format=3 uid="uid://bitjenxkbuoah"]
 
 [ext_resource type="FontFile" uid="uid://rqkv55ns38ao" path="res://assets/fonts/Thailandesa.ttf" id="1_hq3ni"]
+[ext_resource type="Texture2D" uid="uid://4xwccotp227u" path="res://assets/ui/button - normal.png" id="2_lqy6s"]
+[ext_resource type="Texture2D" uid="uid://b3sv60cnpdgd7" path="res://assets/ui/button - hovered.png" id="2_vmyoi"]
+[ext_resource type="Texture2D" uid="uid://opgydabcpf5n" path="res://assets/ui/button - focus.png" id="4_crpi5"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50bbk"]
+texture = ExtResource("2_vmyoi")
+texture_margin_left = 128.0
+texture_margin_right = 128.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_crpi5"]
+texture = ExtResource("2_vmyoi")
+texture_margin_left = 128.0
+texture_margin_right = 128.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vmyoi"]
+texture = ExtResource("2_lqy6s")
+texture_margin_left = 128.0
+texture_margin_right = 128.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dbjvx"]
+texture = ExtResource("4_crpi5")
+texture_margin_left = 128.0
+texture_margin_right = 128.0
 
 [resource]
+default_font = ExtResource("1_hq3ni")
 ButtonHus/base_type = &"Button"
 ButtonHus/colors/font_hover_color = Color(0.37548587, 0.053346597, 0.08746716, 1)
 ButtonHus/colors/font_hover_pressed_color = Color(0.75570077, 0.058462247, 0.3380035, 1)
@@ -12,6 +36,12 @@ ButtonHus/colors/icon_normal_color = Color(0.15281937, 0.15281937, 0.15281937, 1
 ButtonHus/colors/icon_pressed_color = Color(1, 1, 1, 1)
 ButtonHus/font_sizes/font_size = 16
 ButtonHus/fonts/font = ExtResource("1_hq3ni")
+ButtonUI/base_type = &"Button"
+ButtonUI/font_sizes/font_size = 32
+ButtonUI/styles/focus = SubResource("StyleBoxTexture_50bbk")
+ButtonUI/styles/hover = SubResource("StyleBoxTexture_crpi5")
+ButtonUI/styles/normal = SubResource("StyleBoxTexture_vmyoi")
+ButtonUI/styles/pressed = SubResource("StyleBoxTexture_dbjvx")
 LabelHus/base_type = &"Label"
 LabelHus/colors/font_color = Color(0.5518933, 0.4415644, 0.17430112, 1)
 LabelHus/colors/font_shadow_color = Color(0, 0, 0, 1)

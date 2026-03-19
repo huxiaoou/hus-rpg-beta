@@ -15,12 +15,12 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="hus-rpg-beta"
-run/main_scene="uid://c640eb6d5fi7a"
+run/main_scene="uid://bjqdbghna0ddh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
 [audio]
 
-buses/default_bus_layout="res://resources/default_bus_layout.tres"
+buses/default_bus_layout="uid://c1c225vbewfjm"
 
 [autoload]
 
