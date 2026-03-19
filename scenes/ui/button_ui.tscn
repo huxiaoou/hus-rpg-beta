@@ -10,4 +10,5 @@ theme_type_variation = &"ButtonUI"
 text = "START GAME"
 script = ExtResource("2_je2vw")
 
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
