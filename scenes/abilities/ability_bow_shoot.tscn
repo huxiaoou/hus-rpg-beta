@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dqa7abur8g4wd" path="res://scenes/abilities/ability_projectile.tscn" id="1_jvac3"]
 [ext_resource type="Script" uid="uid://c2dkyw7wg8prk" path="res://scenes/abilities/ability_bow_shoot.gd" id="2_uk6eo"]
 [ext_resource type="PackedScene" uid="uid://dsr8ovv5716iv" path="res://scenes/weapons/arrow.tscn" id="3_xtitq"]
+[ext_resource type="Texture2D" uid="uid://4521u23dbbks" path="res://assets/ui/skill icon 55.png" id="4_ma4ml"]
 
 [node name="AbilityBowShoot" unique_id=381435778 instance=ExtResource("1_jvac3")]
 script = ExtResource("2_uk6eo")
@@ -10,4 +11,5 @@ scene_projectile = ExtResource("3_xtitq")
 short_name = "Bowshoot"
 id = "ability_bowshoot"
 description = "Shoot an arrow to the enemy and deal some damage"
+icon = ExtResource("4_ma4ml")
 key_binding = "ability_3"

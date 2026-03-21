@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bm5m1mow7et3r" path="res://scenes/units/unit_viking.tscn" id="8_k1ymq"]
 [ext_resource type="PackedScene" uid="uid://c40qa0yk65dev" path="res://scenes/ui/ui_avatar.tscn" id="8_lxgdc"]
 [ext_resource type="PackedScene" uid="uid://d0nmaer24ifid" path="res://scenes/units/unit_wizard.tscn" id="10_lxgdc"]
+[ext_resource type="PackedScene" uid="uid://cql6lnngiygt7" path="res://scenes/ui/ui_ability_panel.tscn" id="10_son2h"]
 [ext_resource type="PackedScene" uid="uid://iagcw2du1157" path="res://scenes/general/camera_controller.tscn" id="10_wuj0f"]
 [ext_resource type="PackedScene" uid="uid://n84gr0dlexsq" path="res://scenes/units/unit_archer.tscn" id="11_odxcu"]
 [ext_resource type="PackedScene" uid="uid://bavq0ulcx4e17" path="res://scenes/units/unit_skeleton_archer.tscn" id="12_or4fg"]
@@ -46,6 +47,8 @@ scale = Vector2(0.6, 0.6)
 offset_bottom = 288.0
 
 [node name="UIMenuEquipment" parent="CanvasLayer" unique_id=1899500239 instance=ExtResource("8_f0aak")]
+
+[node name="UIAbilityPanel" parent="CanvasLayer" unique_id=1859892437 instance=ExtResource("10_son2h")]
 
 [node name="Units" type="Node2D" parent="." unique_id=919210040]
 y_sort_enabled = true

@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cql6lnngiygt7"]
+
+[ext_resource type="Script" uid="uid://3d0lo6lfjdgt" path="res://scenes/ui/ui_ability_panel.gd" id="1_5kjqg"]
+[ext_resource type="PackedScene" uid="uid://cyivf5ps6mklu" path="res://scenes/ui/button_ui_skill.tscn" id="1_j7y5c"]
+
+[node name="UIAbilityPanel" type="MarginContainer" unique_id=1859892437]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -640.0
+offset_top = -136.0
+offset_right = 640.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_5kjqg")
+
+[node name="AbilityContainer" type="HBoxContainer" parent="." unique_id=86819559]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Button1" parent="AbilityContainer" unique_id=1006841614 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button2" parent="AbilityContainer" unique_id=242485163 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button3" parent="AbilityContainer" unique_id=588500818 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button4" parent="AbilityContainer" unique_id=1081940832 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button5" parent="AbilityContainer" unique_id=2004727082 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button6" parent="AbilityContainer" unique_id=1101469149 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button7" parent="AbilityContainer" unique_id=98025449 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button8" parent="AbilityContainer" unique_id=1976921105 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button9" parent="AbilityContainer" unique_id=1286350760 instance=ExtResource("1_j7y5c")]
+layout_mode = 2
+
+[node name="Button10" parent="AbilityContainer" unique_id=181192511 instance=ExtResource("1_j7y5c")]
+layout_mode = 2

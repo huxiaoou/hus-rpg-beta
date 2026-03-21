@@ -4,6 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://cqwkca50bj2bf" path="res://resources/ui/button_ui_hover_focused.tres" id="2_crpi5"]
 [ext_resource type="StyleBox" uid="uid://broq8wynlcssx" path="res://resources/ui/button_ui_normal.tres" id="3_dbjvx"]
 [ext_resource type="StyleBox" uid="uid://db0e3bljn0862" path="res://resources/ui/button_ui_pressed.tres" id="4_crpi5"]
+[ext_resource type="StyleBox" uid="uid://cyfvfbfsity8d" path="res://resources/ui/button_ui_skill_normal.tres" id="5_dbjvx"]
 
 [resource]
 default_font = ExtResource("1_hq3ni")
@@ -22,6 +23,10 @@ ButtonUI/styles/focus = ExtResource("2_crpi5")
 ButtonUI/styles/hover = ExtResource("2_crpi5")
 ButtonUI/styles/normal = ExtResource("3_dbjvx")
 ButtonUI/styles/pressed = ExtResource("4_crpi5")
+ButtonUISkill/base_type = &"Button"
+ButtonUISkill/styles/hover = ExtResource("5_dbjvx")
+ButtonUISkill/styles/normal = ExtResource("5_dbjvx")
+ButtonUISkill/styles/pressed = ExtResource("5_dbjvx")
 LabelHus/base_type = &"Label"
 LabelHus/colors/font_color = Color(0.5518933, 0.4415644, 0.17430112, 1)
 LabelHus/colors/font_shadow_color = Color(0, 0, 0, 1)
