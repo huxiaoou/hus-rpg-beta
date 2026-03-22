@@ -14,16 +14,14 @@ func enter() -> void:
     return
 
 
-func unhandled_input(event: InputEvent) -> void:
+func on_ui_pressed() -> void:
     if not ManagerTurnsAndRounds.is_active(ability.owner_unit):
         return
     if ability.owner_unit.is_ai():
         return
-    if event.is_action_pressed(ability.key_binding):
-        if ability.owner_unit.mgr_abilities.has_ability_selected():
-            ability.audio_player.play_warning()
-            print("%s has ability %s as active" % [ability.owner_unit.name, ability.short_name])
-            return
-        change_state.emit(AbilityState.State.AIMING)
-        get_viewport().set_input_as_handled()
+    if ability.owner_unit.mgr_abilities.has_ability_selected():
+        ability.audio_player.play_warning()
+        ability.owner_unit.mgr_abilities.show_active_ability()
+        return
+    change_state.emit(AbilityState.State.AIMING)
     return

@@ -239,3 +239,16 @@ func score_gt_zero() -> bool:
 
 func is_better_than(other: Ability) -> bool:
     return data_ai_ability.score > other.data_ai_ability.score
+
+
+# -- UI Logic ---
+func connect_to_ui_button_skill(button: ButtonUISkill) -> void:
+    button.skill_tex.texture = icon
+    button.pressed.connect(asm.get_deactivated_state().on_ui_pressed)
+    return
+
+
+func disconnect_from_ui_button_skill(button: ButtonUISkill) -> void:
+    button.set_default()
+    button.pressed.disconnect(asm.get_deactivated_state().on_ui_pressed)
+    return

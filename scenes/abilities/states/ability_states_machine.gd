@@ -42,3 +42,7 @@ func on_change_state(state: AbilityState.State) -> void:
     curr_state = new_state
     curr_state.enter()
     return
+
+
+func get_deactivated_state() -> AbilityStateDeactivated:
+    return states.get(AbilityState.State.DEACTIVATED) as AbilityStateDeactivated

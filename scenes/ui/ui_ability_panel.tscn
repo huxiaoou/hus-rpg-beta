@@ -3,6 +3,86 @@
 [ext_resource type="Script" uid="uid://3d0lo6lfjdgt" path="res://scenes/ui/ui_ability_panel.gd" id="1_5kjqg"]
 [ext_resource type="PackedScene" uid="uid://cyivf5ps6mklu" path="res://scenes/ui/button_ui_skill.tscn" id="1_j7y5c"]
 
+[sub_resource type="InputEventKey" id="InputEventKey_j7y5c"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_5kjqg"]
+events = [SubResource("InputEventKey_j7y5c")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_5kjqg"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_fntwn"]
+events = [SubResource("InputEventKey_5kjqg")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_fntwn"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_gxv8c"]
+events = [SubResource("InputEventKey_fntwn")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_gxv8c"]
+device = -1
+keycode = 52
+unicode = 52
+
+[sub_resource type="Shortcut" id="Shortcut_i8r3e"]
+events = [SubResource("InputEventKey_gxv8c")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_i8r3e"]
+device = -1
+keycode = 53
+unicode = 53
+
+[sub_resource type="Shortcut" id="Shortcut_3vg4n"]
+events = [SubResource("InputEventKey_i8r3e")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3vg4n"]
+device = -1
+keycode = 54
+unicode = 54
+
+[sub_resource type="Shortcut" id="Shortcut_t48kk"]
+events = [SubResource("InputEventKey_3vg4n")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_t48kk"]
+device = -1
+keycode = 55
+unicode = 55
+
+[sub_resource type="Shortcut" id="Shortcut_no6rv"]
+events = [SubResource("InputEventKey_t48kk")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_no6rv"]
+device = -1
+keycode = 56
+unicode = 56
+
+[sub_resource type="Shortcut" id="Shortcut_l2c0x"]
+events = [SubResource("InputEventKey_no6rv")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_l2c0x"]
+device = -1
+keycode = 57
+unicode = 57
+
+[sub_resource type="Shortcut" id="Shortcut_f55iq"]
+events = [SubResource("InputEventKey_l2c0x")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_f55iq"]
+device = -1
+keycode = 48
+unicode = 48
+
+[sub_resource type="Shortcut" id="Shortcut_8t2bw"]
+events = [SubResource("InputEventKey_f55iq")]
+
 [node name="UIAbilityPanel" type="MarginContainer" unique_id=1859892437]
 anchors_preset = 7
 anchor_left = 0.5
@@ -24,30 +104,40 @@ alignment = 1
 
 [node name="Button1" parent="AbilityContainer" unique_id=1006841614 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_5kjqg")
 
 [node name="Button2" parent="AbilityContainer" unique_id=242485163 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_fntwn")
 
 [node name="Button3" parent="AbilityContainer" unique_id=588500818 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_gxv8c")
 
 [node name="Button4" parent="AbilityContainer" unique_id=1081940832 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_i8r3e")
 
 [node name="Button5" parent="AbilityContainer" unique_id=2004727082 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_3vg4n")
 
 [node name="Button6" parent="AbilityContainer" unique_id=1101469149 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_t48kk")
 
 [node name="Button7" parent="AbilityContainer" unique_id=98025449 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_no6rv")
 
 [node name="Button8" parent="AbilityContainer" unique_id=1976921105 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_l2c0x")
 
 [node name="Button9" parent="AbilityContainer" unique_id=1286350760 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_f55iq")
 
-[node name="Button10" parent="AbilityContainer" unique_id=181192511 instance=ExtResource("1_j7y5c")]
+[node name="Button0" parent="AbilityContainer" unique_id=181192511 instance=ExtResource("1_j7y5c")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_8t2bw")
