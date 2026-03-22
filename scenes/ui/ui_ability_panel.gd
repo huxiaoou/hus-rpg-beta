@@ -12,6 +12,10 @@ func _ready() -> void:
 
 
 func on_active_unit_changed(unit: Unit) -> void:
+    if unit.is_ai():
+        visible = false
+        return
+    visible = true
     var abilities: Array[Ability] = unit.mgr_abilities.abilities.values()
     var abilities_container_size: int = ability_container.get_child_count()
     var abilities_size: int = abilities.size()
@@ -22,5 +26,5 @@ func on_active_unit_changed(unit: Unit) -> void:
             button.skill_tex.texture = ability.icon
         else:
             var button: ButtonUISkill = ability_container.get_child(i) as ButtonUISkill
-            button.skill_tex.texture = null
+            button.set_default()
     return

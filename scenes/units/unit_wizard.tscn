@@ -5,6 +5,7 @@
 [ext_resource type="SpriteFrames" uid="uid://c74n757b8xlet" path="res://resources/sprite_frames/sprt_frms_wizard.tres" id="2_gjdts"]
 [ext_resource type="PackedScene" uid="uid://yw4plj15ogko" path="res://scenes/abilities/ability_move.tscn" id="4_5h8is"]
 [ext_resource type="PackedScene" uid="uid://b17uugaqj2f83" path="res://scenes/abilities/ability_fireball.tscn" id="5_qhyov"]
+[ext_resource type="PackedScene" uid="uid://c18rlyogycdbw" path="res://scenes/abilities/ability_melee.tscn" id="6_qhyov"]
 
 [node name="UnitWizard" unique_id=1659877491 instance=ExtResource("1_v8pg2")]
 data = ExtResource("2_g5l2l")
@@ -19,4 +20,4 @@ sprite_frames = ExtResource("2_gjdts")
 monitoring = false
 
 [node name="ManagerAbilities" parent="." index="1" unique_id=1772872154]
-scenes_abilities = Array[PackedScene]([ExtResource("4_5h8is"), ExtResource("5_qhyov")])
+scenes_abilities = Array[PackedScene]([ExtResource("4_5h8is"), ExtResource("5_qhyov"), ExtResource("6_qhyov")])

@@ -3,13 +3,17 @@
 [ext_resource type="Shader" uid="uid://b03cg52n0vpec" path="res://scenes/shaders/button_ui_skill.gdshader" id="1_2ngvf"]
 [ext_resource type="Theme" uid="uid://bitjenxkbuoah" path="res://resources/themes/theme_hus.tres" id="1_8f23w"]
 [ext_resource type="Script" uid="uid://bra3u5fd06hf0" path="res://scenes/ui/button_ui_skill.gd" id="2_s3h58"]
+[ext_resource type="Texture2D" uid="uid://citlsl4m68o58" path="res://assets/ui/action_bar_slot.png" id="4_6hbcs"]
 [ext_resource type="Texture2D" uid="uid://cgn62hj27v5y7" path="res://assets/ui/default_skill_icon_bg.png" id="4_s3h58"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ngvf"]
 resource_local_to_scene = true
 shader = ExtResource("1_2ngvf")
 shader_parameter/tint = Color(1, 1, 1, 0)
-shader_parameter/tint_wgt = 0.0
+shader_parameter/use_gradient = false
+shader_parameter/border_width = 0.0125
+shader_parameter/border_tex = ExtResource("4_6hbcs")
+shader_parameter/gradient_tex = ExtResource("4_s3h58")
 
 [node name="Button" type="Button" unique_id=1006841614]
 custom_minimum_size = Vector2(128, 128)
@@ -21,24 +25,25 @@ theme_type_variation = &"ButtonUISkill"
 script = ExtResource("2_s3h58")
 
 [node name="SkillTex" type="TextureRect" parent="." unique_id=916582486]
-z_index = -1
 material = SubResource("ShaderMaterial_2ngvf")
-custom_minimum_size = Vector2(108, 108)
+custom_minimum_size = Vector2(116, 116)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
+offset_left = -58.0
+offset_top = -58.0
+offset_right = 58.0
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_s3h58")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1707921207]
+bus = &"SFX"
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="button_up" from="." to="." method="_on_button_up"]
