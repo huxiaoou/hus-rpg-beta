@@ -21,6 +21,8 @@ class_name Ability
 @onready var asm: AbilityStatesMachine = $AbilityStatesMachine
 @onready var audio_player: AudioPlayerForAbility = $AudioPlayerForAbility
 
+var ui_button: ButtonUISkill = null
+
 var owner_unit: Unit = null
 var is_active: bool = false
 var is_casting: bool = false
@@ -243,12 +245,14 @@ func is_better_than(other: Ability) -> bool:
 
 # -- UI Logic ---
 func connect_to_ui_button_skill(button: ButtonUISkill) -> void:
+    ui_button = button
     button.skill_tex.texture = icon
     button.pressed.connect(asm.get_deactivated_state().on_ui_pressed)
     return
 
 
 func disconnect_from_ui_button_skill(button: ButtonUISkill) -> void:
+    ui_button = null
     button.set_default()
     button.pressed.disconnect(asm.get_deactivated_state().on_ui_pressed)
     return

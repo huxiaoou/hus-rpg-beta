@@ -2,8 +2,8 @@ shader_type canvas_item;
 
 uniform vec4 tint: source_color = vec4(1.0, 1.0, 1.0, 0.0);
 uniform bool use_gradient = false;
-uniform bool use_highlitht = true;
-uniform vec4 shine_color : source_color = vec4(1.0, 0.8, 0.0, 1.0);
+uniform bool use_highlight = false;
+uniform vec4 shine_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float border_width : hint_range(0.0, 0.1) = 0.025;
 uniform float shine_size : hint_range(0.0, 0.5) = 0.1;
 uniform float speed : hint_range(0.0, 5.0) = 0.3;
@@ -26,7 +26,7 @@ void fragment() {
 
     // Apply the border over the texture
     if (is_border > 0.0){
-        if (use_highlitht){
+        if (use_highlight){
             // Calculate progress along the perimeter (0.0 to 1.0)
             float progress = fract(TIME * speed);
 

@@ -56,6 +56,14 @@ func set_tex_color_default() -> void:
     skill_tex.material.set_shader_parameter("border_width", BORDER_WIDTH_DEFAULT)
 
 
+func set_activated() -> void:
+    skill_tex.material.set_shader_parameter("use_highlight", true)
+
+
+func set_deactivated() -> void:
+    skill_tex.material.set_shader_parameter("use_highlight", false)
+
+
 func _on_mouse_entered() -> void:
     set_tex_color_focus_hover()
     aplay_hover()

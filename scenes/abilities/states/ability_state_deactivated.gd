@@ -11,6 +11,15 @@ func _ready() -> void:
 func enter() -> void:
     # super.enter()
     ability.deactivate()
+    if ability.ui_button:
+        ability.ui_button.set_deactivated()
+    return
+
+
+func exit() -> void:
+    if ability.ui_button:
+        ability.ui_button.set_activated()
+    super.exit()
     return
 
 
