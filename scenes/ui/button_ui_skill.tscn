@@ -11,7 +11,11 @@ resource_local_to_scene = true
 shader = ExtResource("1_2ngvf")
 shader_parameter/tint = Color(1, 1, 1, 0)
 shader_parameter/use_gradient = false
-shader_parameter/border_width = 0.0125
+shader_parameter/use_highlitht = true
+shader_parameter/shine_color = Color(1, 0.8, 0, 1)
+shader_parameter/border_width = 0.025
+shader_parameter/shine_size = 0.1
+shader_parameter/speed = 0.3
 shader_parameter/border_tex = ExtResource("4_6hbcs")
 shader_parameter/gradient_tex = ExtResource("4_s3h58")
 

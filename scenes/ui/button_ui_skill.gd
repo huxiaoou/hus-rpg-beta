@@ -12,9 +12,9 @@ const COLOR_FOCUS_HOVER: Color = Color.WHITE
 const COLOR_FOCUS_PRESSED: Color = Color.BLACK
 const COLOR_DEFAULT: Color = Color(1, 1, 1, 0)
 
-const BORDER_WIDTH_FOCUS_HOVER: float = 0.0250
-const BORDER_WIDTH_FOCUS_PRESSED: float = 0.0400
-const BORDER_WIDTH_DEFAULT: float = 0.0125
+const BORDER_WIDTH_FOCUS_HOVER: float = 0.025
+const BORDER_WIDTH_FOCUS_PRESSED: float = 0.040
+const BORDER_WIDTH_DEFAULT: float = 0.025
 
 var astream_hover: AudioStream = preload("res://assets/audios/Hovers A 001.wav")
 var astream_click: AudioStream = preload("res://assets/audios/Clicks B 001.wav")
