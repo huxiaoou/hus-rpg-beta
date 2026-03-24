@@ -5,7 +5,7 @@ uniform bool use_gradient = false;
 uniform bool use_highlight = false;
 uniform vec4 shine_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform float border_width : hint_range(0.0, 0.1) = 0.025;
-uniform float shine_size : hint_range(0.0, 0.5) = 0.1;
+uniform float shine_size : hint_range(0.0, 0.5) = 0.5;
 uniform float speed : hint_range(0.0, 5.0) = 0.3;
 
 uniform sampler2D border_tex;
@@ -32,10 +32,10 @@ void fragment() {
 
             // Map UV to a 1D perimeter value
             float perimeter_pos = 0.0;
-            if (uv.y <= border_width) perimeter_pos = uv.x * 0.25; // Top
-            else if (uv.x >= 1.0 - border_width) perimeter_pos = 0.25 + uv.y * 0.25; // Right
-            else if (uv.y >= 1.0 - border_width) perimeter_pos = 0.5 + (1.0 - uv.x) * 0.25; // Bottom
-            else if (uv.x <= border_width) perimeter_pos = 0.75 + (1.0 - uv.y) * 0.25; // Left
+            if (top > 0.0) perimeter_pos = uv.x * 0.25; // Top
+            else if (right > 0.0) perimeter_pos = 0.25 + uv.y * 0.25; // Right
+            else if (bottom > 0.0) perimeter_pos = 0.5 + (1.0 - uv.x) * 0.25; // Bottom
+            else if (left > 0.0) perimeter_pos = 0.75 + (1.0 - uv.y) * 0.25; // Left
 
             // Calculate the shine intensity based on distance to the progress point
             float dist = abs(perimeter_pos - progress);
@@ -49,7 +49,7 @@ void fragment() {
         }
     }else{
         if (use_gradient) {
-            COLOR = mix(COLOR, tint, texture(gradient_tex, uv).r);
+            COLOR = mix(COLOR, tint, texture(gradient_tex, uv).r / 3.0);
         }
     }
 }
