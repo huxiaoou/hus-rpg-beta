@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://hljj4u255bnb"]
+
+[ext_resource type="Texture2D" uid="uid://fide2pcwddqm" path="res://assets/ui/Panel - Title.png" id="1_1028e"]
+[ext_resource type="Theme" uid="uid://bitjenxkbuoah" path="res://resources/themes/theme_hus.tres" id="2_70scj"]
+[ext_resource type="Script" uid="uid://cud8olc7tywfv" path="res://scenes/ui/ui_options.gd" id="2_d2bb2"]
+[ext_resource type="PackedScene" uid="uid://l3322j3t2l6o" path="res://scenes/ui/ui_audio_control.tscn" id="3_gcct1"]
+[ext_resource type="Texture2D" uid="uid://b57mhl126l17e" path="res://assets/ui/Panel - Info.png" id="4_tgciq"]
+[ext_resource type="PackedScene" uid="uid://b1xya7y6h18in" path="res://scenes/ui/button_ui.tscn" id="6_gde7o"]
+[ext_resource type="AudioStream" uid="uid://3n04jww4otw4" path="res://assets/audios/Clicks B 001.wav" id="7_pjoru"]
+
+[node name="UIOptions" type="TextureRect" unique_id=1060901911]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("1_1028e")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_d2bb2")
+
+[node name="Label" type="Label" parent="." unique_id=383539874]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.5
+offset_top = 39.0
+offset_right = 65.5
+offset_bottom = 78.0
+grow_horizontal = 2
+theme = ExtResource("2_70scj")
+theme_type_variation = &"GraphFrameTitleLabel"
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioControllers" type="CenterContainer" parent="." unique_id=117745983]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -34.0
+offset_right = 216.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="AudioControllers" unique_id=1534060388]
+layout_mode = 2
+texture = ExtResource("4_tgciq")
+patch_margin_left = 460
+patch_margin_top = 172
+patch_margin_right = 460
+patch_margin_bottom = 172
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioControllers" unique_id=1828709811]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="MasterController" parent="AudioControllers/VBoxContainer" unique_id=1927870948 instance=ExtResource("3_gcct1")]
+layout_mode = 2
+
+[node name="BGMController" parent="AudioControllers/VBoxContainer" unique_id=1652990567 instance=ExtResource("3_gcct1")]
+layout_mode = 2
+bus_name = "BGM"
+
+[node name="SFXController" parent="AudioControllers/VBoxContainer" unique_id=1172743047 instance=ExtResource("3_gcct1")]
+layout_mode = 2
+bus_name = "SFX"
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=907515514]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -472.0
+offset_top = -121.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 48
+
+[node name="ButtonUI" parent="MarginContainer" unique_id=1565820235 instance=ExtResource("6_gde7o")]
+layout_mode = 2
+text = "RETURN"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1140279482]
+stream = ExtResource("7_pjoru")
+
+[connection signal="pressed" from="MarginContainer/ButtonUI" to="." method="_on_button_ui_pressed"]

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b1xya7y6h18in" path="res://scenes/ui/button_ui.tscn" id="3_btxxm"]
 [ext_resource type="AudioStream" uid="uid://ds6kkct65kfy7" path="res://assets/audios/Hovers A 001.wav" id="4_wb0q5"]
 [ext_resource type="AudioStream" uid="uid://bjay35t64swo5" path="res://assets/audios/Fantasy Vol8 Moonveil Main.wav" id="5_q85j6"]
+[ext_resource type="PackedScene" uid="uid://hljj4u255bnb" path="res://scenes/ui/ui_options.tscn" id="6_uhagc"]
 
 [node name="MainMenu" type="TextureRect" unique_id=2037555650]
 anchors_preset = 15
@@ -58,5 +59,9 @@ stream = ExtResource("5_q85j6")
 autoplay = true
 bus = &"BGM"
 
+[node name="UIOptions" parent="." unique_id=1060901911 instance=ExtResource("6_uhagc")]
+layout_mode = 1
+
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

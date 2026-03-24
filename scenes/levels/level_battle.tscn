@@ -40,15 +40,15 @@ tile_set = ExtResource("6_or4fg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=649640925]
 
-[node name="VBoxAvatars" type="VBoxContainer" parent="CanvasLayer" unique_id=1335914158]
-scale = Vector2(0.6, 0.6)
+[node name="UIAbilityPanel" parent="CanvasLayer" unique_id=1859892437 instance=ExtResource("10_son2h")]
 
 [node name="UITurnCardsDeck" parent="CanvasLayer" unique_id=1902028544 instance=ExtResource("8_66584")]
 offset_bottom = 288.0
 
-[node name="UIMenuEquipment" parent="CanvasLayer" unique_id=1899500239 instance=ExtResource("8_f0aak")]
+[node name="VBoxAvatars" type="VBoxContainer" parent="CanvasLayer" unique_id=1335914158]
+scale = Vector2(0.6, 0.6)
 
-[node name="UIAbilityPanel" parent="CanvasLayer" unique_id=1859892437 instance=ExtResource("10_son2h")]
+[node name="UIMenuEquipment" parent="CanvasLayer" unique_id=1899500239 instance=ExtResource("8_f0aak")]
 
 [node name="Units" type="Node2D" parent="." unique_id=919210040]
 y_sort_enabled = true

@@ -10,6 +10,8 @@ class_name MainMenu
 @onready var aplayer_sfx: AudioStreamPlayer2D = $aplayer_sfx
 @onready var aplayer_bg_music: AudioStreamPlayer2D = $aplayer_bg_music
 
+@onready var ui_options: TextureRect = $UIOptions
+
 
 func _ready() -> void:
     connect_buttion_to_aplayer(start_button)
@@ -33,13 +35,21 @@ func play_sfx() -> void:
 
 
 func _on_start_button_pressed() -> void:
-    aplayer_sfx.play()
+    play_sfx()
     await get_tree().create_timer(0.2).timeout
     get_tree().change_scene_to_file("res://scenes/levels/level_battle.tscn")
 
 
 func _on_exit_button_pressed() -> void:
-    aplayer_sfx.play()
+    play_sfx()
     await get_tree().create_timer(0.2).timeout
     get_tree().quit()
+    return
+
+
+func _on_options_button_pressed() -> void:
+    play_sfx()
+    ui_options.visible = true
+    var tw: Tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+    tw.tween_property(ui_options, "modulate:a", 1.0, 0.5)
     return
