@@ -60,8 +60,34 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func save_game() -> void:
-    print("Game saved")
+    var save_data: DataSave = DataSave.new()
+    for unit in get_units():
+        save_data.units[unit.data.name] = unit.data
+
+    var error: int = ResourceSaver.save(save_data, "user://save_game.tres")
+    if error != OK:
+        print("[ERR] Failed to save game: %d" % error)
+    else:
+        print("Game saved")
+    return
 
 
 func load_game() -> void:
+    if FileAccess.file_exists("user://save_game.tres"):
+        var loaded_resource: DataSave = ResourceLoader.load(
+            "user://save_game.tres",
+            "DataSave",
+            ResourceLoader.CACHE_MODE_IGNORE,
+        )
+        if loaded_resource:
+            for unit_name in loaded_resource.units:
+                print("unit:%s" % unit_name)
+                
+            var current_units: Array[Unit] = get_units()
+            for unit in current_units:
+                var data: DataUnit = loaded_resource.units[unit.data.name]
+                if data:
+                    unit.data = data
+                    unit.cell = data.cell
     print("Game loaded")
+    return
