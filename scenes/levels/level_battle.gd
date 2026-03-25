@@ -49,3 +49,19 @@ func _ready() -> void:
     init_units(units)
     ManagerTurnsAndRounds.setup(units, ui_turn_cards_deck)
     return
+
+
+func _unhandled_input(event: InputEvent) -> void:
+    if event.is_action_pressed("quick_save"):
+        save_game()
+    elif event.is_action_pressed("quick_load"):
+        load_game()
+    return
+
+
+func save_game() -> void:
+    print("Game saved")
+
+
+func load_game() -> void:
+    print("Game loaded")
