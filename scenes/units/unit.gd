@@ -39,11 +39,8 @@ func _ready() -> void:
     hurt_box.setup(self)
     manager_equipment.equipment_changed.connect(on_equipped_item_changed)
     ManagerTurnsAndRounds.active_unit_changed.connect(on_turn_begin)
-    return
-
-
-func setup_in_battle() -> void:
     cell = data.init_cell
+    ManagerCellBattle.disable_cell(cell, self)
     return
 
 

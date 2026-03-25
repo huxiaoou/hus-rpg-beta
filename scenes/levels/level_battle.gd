@@ -33,9 +33,7 @@ func get_units() -> Array[Unit]:
 
 func init_units(units: Array[Unit]) -> void:
     for unit in units:
-        unit.setup_in_battle()
         unit.hurt_box.damage_taken.connect(camera_controller.on_unit_attack_impacted)
-        ManagerCellBattle.disable_cell(unit.cell, unit)
         if unit.is_ally():
             var ui_avatar: UIAvatar = scene_ui_avatar.instantiate()
             v_box_avatars.add_child(ui_avatar)
