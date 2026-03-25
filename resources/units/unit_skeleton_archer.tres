@@ -10,5 +10,5 @@ avatar = ExtResource("1_msc6f")
 is_ai = true
 group_flag = 1
 initiative = 13
-init_cell = Vector2i(10, 6)
+cell = Vector2i(10, 7)
 metadata/_custom_type_script = "uid://c8r15jep3ud1p"

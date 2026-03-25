@@ -26,9 +26,9 @@ var cell: Vector2i:
     get:
         return ManagerCellBattle.point_to_cell(position)
     set(value):
-        cell = value
+        data.cell = value
         position = ManagerCellBattle.cell_to_point(value)
-        ManagerCellBattle.disable_cell(cell, self)
+        ManagerCellBattle.disable_cell(value, self)
 
 
 static func sort_by_initiative(a: Unit, b: Unit) -> bool:
@@ -41,7 +41,7 @@ func _ready() -> void:
     hurt_box.setup(self)
     manager_equipment.equipment_changed.connect(on_equipped_item_changed)
     ManagerTurnsAndRounds.active_unit_changed.connect(on_turn_begin)
-    cell = data.init_cell
+    cell = data.cell
     return
 
 

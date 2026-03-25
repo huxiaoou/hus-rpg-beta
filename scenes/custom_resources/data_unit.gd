@@ -36,9 +36,7 @@ enum GroupFlag {
 @export var attack: int = 24
 @export var armor: int = 8
 @export var initiative: int = 12
-
-@export_group("Init")
-@export var init_cell: Vector2i
+@export var cell: Vector2i
 
 
 func change_health(delta_health: int) -> void:
