@@ -37,7 +37,7 @@ func play_sfx() -> void:
 func _on_start_button_pressed() -> void:
     play_sfx()
     await get_tree().create_timer(0.2).timeout
-    get_tree().change_scene_to_file("res://scenes/levels/level_battle.tscn")
+    SceneChanger.change_scene("res://scenes/levels/level_battle.tscn")
 
 
 func _on_exit_button_pressed() -> void:
