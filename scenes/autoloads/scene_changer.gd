@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@onready var background: TextureRect = $Background
 @onready var progress_bar: ProgressBar = $ProgressBar
 @onready var label: Label = $Label
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
