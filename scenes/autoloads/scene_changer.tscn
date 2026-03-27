@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://2lgm404cgr4a"]
 
 [ext_resource type="Script" uid="uid://dfkwn573ck81t" path="res://scenes/autoloads/scene_changer.gd" id="1_cxkab"]
+[ext_resource type="Theme" uid="uid://bitjenxkbuoah" path="res://resources/themes/theme_hus.tres" id="2_ft37k"]
+[ext_resource type="Texture2D" uid="uid://da8q1btdbl1va" path="res://assets/backgrounds/2DBackground_22.png" id="2_yywcc"]
 
 [sub_resource type="Animation" id="Animation_epmdd"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -23,6 +25,30 @@ tracks/1/path = NodePath("ProgressBar:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -35,7 +61,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -55,6 +81,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ft37k"]
@@ -63,7 +101,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/path = NodePath("Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -84,25 +122,66 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yywcc"]
+resource_name = "show_tips"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.49803922), Color(1, 1, 1, 1), Color(1, 1, 1, 0.49803922)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ft37k"]
 _data = {
 &"RESET": SubResource("Animation_epmdd"),
 &"fade_in": SubResource("Animation_cxkab"),
-&"fade_out": SubResource("Animation_ft37k")
+&"fade_out": SubResource("Animation_ft37k"),
+&"show_tips": SubResource("Animation_yywcc")
 }
 
 [node name="SceneChanger" type="CanvasLayer" unique_id=1476977063]
 layer = 99
 script = ExtResource("1_cxkab")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=2045767322]
+[node name="Background" type="TextureRect" parent="." unique_id=349856530]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.08, 0.07445333, 0.0736, 1)
+texture = ExtResource("2_yywcc")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=691552993]
 custom_minimum_size = Vector2(256, 32)
@@ -118,6 +197,22 @@ offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
+
+[node name="Label" type="Label" parent="." unique_id=1751273635]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.5
+offset_top = -96.0
+offset_right = 96.5
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_ft37k")
+theme_type_variation = &"GraphFrameTitleLabel"
+text = "Press `space` to continue"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=961371538]
 libraries/ = SubResource("AnimationLibrary_ft37k")
