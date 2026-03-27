@@ -26,7 +26,7 @@ A turn-based RPG prototype built with [Godot 4](https://godotengine.org/) (versi
 | Toggle inventory | V |
 | Equip item | Right-click |
 | Quick save | F5 |
-| Quick load | F9 |
+| Quick load | F10 |
 | Toggle test panel | F11 |
 
 ## Project Structure
