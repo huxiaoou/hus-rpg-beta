@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://81juhncab1cu" path="res://assets/ui/banner (red).png" id="1_ak2cs"]
 [ext_resource type="Theme" uid="uid://bitjenxkbuoah" path="res://resources/themes/theme_hus.tres" id="2_e7b4o"]
 [ext_resource type="Script" uid="uid://ny8135addxc6" path="res://scenes/ui/ui_message.gd" id="2_sjc4m"]
+[ext_resource type="AudioStream" uid="uid://co261sjse5nc1" path="res://assets/audios/Popup A 001.wav" id="4_h2yb6"]
 
 [node name="UIMessage" type="TextureRect" unique_id=981075573]
 custom_minimum_size = Vector2(384, 64)
@@ -43,3 +44,6 @@ theme_override_font_sizes/font_size = 24
 text = "Test Message"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=599071366]
+stream = ExtResource("4_h2yb6")

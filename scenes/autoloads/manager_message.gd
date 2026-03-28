@@ -1,6 +1,7 @@
 extends Control
 
 signal message_appended()
+signal available_ui_appended()
 
 var queue_messages: Array[String] = []
 var scene_message: PackedScene = preload("res://scenes/ui/ui_message.tscn")
@@ -20,19 +21,26 @@ func _ready() -> void:
         var ui_message: UIMessage = scene_message.instantiate()
         add_child(ui_message)
         ui_message.init(i, SEP)
+        ui_message.fade_out_finished.connect(on_ui_fade_out)
         queue_available_ui.append(ui_message)
     main_loop()
+
+
+func on_ui_fade_out(ui: UIMessage) -> void:
+    queue_displayed_ui.erase(ui)
+    queue_available_ui.append(ui)
+    available_ui_appended.emit()
+    return
 
 
 func main_loop() -> void:
     while true:
         if queue_messages.is_empty():
             await message_appended
-        var message: String = queue_messages.pop_front()
-        if queue_displayed_ui.size() == DISPLAYED_UI_SIZE:
-            var ui: UIMessage = queue_displayed_ui.pop_front()
-            queue_available_ui.append(ui)
+        if queue_available_ui.is_empty():
+            await available_ui_appended
 
+        var message: String = queue_messages.pop_front()
         var ui: UIMessage = queue_available_ui.pop_front()
         ui.setup(message)
         ui.fade_in()
