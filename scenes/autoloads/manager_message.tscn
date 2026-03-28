@@ -2,11 +2,6 @@
 
 [ext_resource type="Script" uid="uid://8t8puww75w1c" path="res://scenes/autoloads/manager_message.gd" id="1_1stkg"]
 
-[node name="ManagerMessage" type="Control" unique_id=734092521]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ManagerMessage" type="CanvasLayer" unique_id=298621410]
+layer = 99
 script = ExtResource("1_1stkg")

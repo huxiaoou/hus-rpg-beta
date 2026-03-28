@@ -24,11 +24,12 @@ buses/default_bus_layout="uid://c1c225vbewfjm"
 
 [autoload]
 
+ManagerMessage="*uid://rg1s8hf6rjjo"
+SceneChanger="*uid://2lgm404cgr4a"
 ManagerCellBattle="*res://scenes/autoloads/manager_cell_battle.gd"
 ManagerTurnsAndRounds="*res://scenes/autoloads/manager_turns_and_rounds.gd"
 ManagerInventory="*uid://bobtecfpyjrvg"
 ManagerCamera="*uid://cdcbbdonnfq6v"
-SceneChanger="*uid://2lgm404cgr4a"
 
 [display]
 

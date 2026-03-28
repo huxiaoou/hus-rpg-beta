@@ -12,7 +12,7 @@ const DURATION: float = 2.0
 
 func init(order: int, sep: float) -> void:
     label.text = ""
-    modulate.a = 0.5
+    modulate.a = 0.0
     position.y += order * (size.y + sep)
     fade_in_finished.connect(on_fade_in_finished)
     return
