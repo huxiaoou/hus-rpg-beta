@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cd5qr7xr07r6r" path="res://assets/backgrounds/Low_battlebacks_forest.png" id="2_k1ymq"]
 [ext_resource type="AudioStream" uid="uid://bp3qemwbmgn20" path="res://assets/audios/Fantasy Vol8 Loria Main.wav" id="3_wuj0f"]
 [ext_resource type="PackedScene" uid="uid://glfluus0hekk" path="res://scenes/levels/cell_indicator_battle.tscn" id="4_lxgdc"]
+[ext_resource type="Shader" uid="uid://ccobts78uw3tb" path="res://scenes/levels/level_battle.gdshader" id="5_kkls5"]
 [ext_resource type="PackedScene" uid="uid://2r2qyutmbsd2" path="res://scenes/levels/layer_battle_nav.tscn" id="5_odxcu"]
 [ext_resource type="TileSet" uid="uid://c884hvc0bg6ua" path="res://resources/tile_set_hex_battle.tres" id="6_or4fg"]
 [ext_resource type="PackedScene" uid="uid://dtmll7ypivaj5" path="res://scenes/ui/ui_turn_cards_deck.tscn" id="8_66584"]
@@ -18,6 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://bavq0ulcx4e17" path="res://scenes/units/unit_skeleton_archer.tscn" id="12_or4fg"]
 [ext_resource type="PackedScene" uid="uid://buian7rxpe03l" path="res://scenes/units/unit_necromancer.tscn" id="13_pd4wd"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8mq7"]
+shader = ExtResource("5_kkls5")
+shader_parameter/fov = 0.33100001246262
+shader_parameter/curvature = 0.0
+
 [node name="LevelBattle" type="Node" unique_id=1004733659]
 script = ExtResource("1_d4bfr")
 bg_texture = ExtResource("2_k1ymq")
@@ -30,11 +36,22 @@ bus = &"BGM"
 [node name="Sprite2DBg" type="Sprite2D" parent="." unique_id=1124843929]
 offset = Vector2(960, 540)
 
-[node name="Maps" type="Node" parent="." unique_id=1028632316]
+[node name="Maps" type="SubViewportContainer" parent="." unique_id=1358778818]
+material = SubResource("ShaderMaterial_t8mq7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CellIndicatorBattle" parent="Maps" unique_id=1347731942 instance=ExtResource("4_lxgdc")]
+[node name="SubViewport" type="SubViewport" parent="Maps" unique_id=765770195]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
 
-[node name="LayerBattleNav" parent="Maps" unique_id=858066906 instance=ExtResource("5_odxcu")]
+[node name="CellIndicatorBattle" parent="Maps/SubViewport" unique_id=1347731942 instance=ExtResource("4_lxgdc")]
+
+[node name="LayerBattleNav" parent="Maps/SubViewport" unique_id=858066906 instance=ExtResource("5_odxcu")]
 tile_map_data = PackedByteArray("AAAAAAcAAgAAAAAAAAAAAAgAAgAAAAAAAAABAAYAAgAAAAAAAAABAAcAAgAAAAAAAAABAAgAAgAAAAAAAAACAAYAAgAAAAAAAAACAAcAAgAAAAAAAAACAAgAAgAAAAAAAAADAAYAAgAAAAAAAAADAAcAAgAAAAAAAAADAAgAAgAAAAAAAAAEAAYAAgAAAAAAAAAEAAcAAgAAAAAAAAAEAAgAAgAAAAAAAAAFAAYAAgAAAAAAAAAFAAcAAgAAAAAAAAAFAAgAAgAAAAAAAAAGAAYAAgAAAAAAAAAGAAcAAgAAAAAAAAAGAAgAAgAAAAAAAAAHAAYAAgAAAAAAAAAHAAcAAgAAAAAAAAAHAAgAAgAAAAAAAAAIAAYAAgAAAAAAAAAIAAcAAgAAAAAAAAAIAAgAAgAAAAAAAAAJAAYAAgAAAAAAAAAJAAcAAgAAAAAAAAAJAAgAAgAAAAAAAAAKAAYAAgAAAAAAAAAKAAcAAgAAAAAAAAAKAAgAAgAAAAAAAAALAAYAAgAAAAAAAAALAAcAAgAAAAAAAAALAAgAAgAAAAAAAAAMAAcAAgAAAAAAAAAMAAgAAgAAAAAAAAAMAAkAAgAAAAAAAAAAAAkAAgAAAAAAAAABAAkAAgAAAAAAAAACAAkAAgAAAAAAAAACAAoAAgAAAAAAAAADAAkAAgAAAAAAAAAEAAkAAgAAAAAAAAAEAAoAAgAAAAAAAAAFAAkAAgAAAAAAAAAGAAkAAgAAAAAAAAAGAAoAAgAAAAAAAAAHAAkAAgAAAAAAAAAIAAkAAgAAAAAAAAAIAAoAAgAAAAAAAAAJAAkAAgAAAAAAAAAKAAkAAgAAAAAAAAAKAAoAAgAAAAAAAAALAAkAAgAAAAAAAAAAAAYAAgAAAAAAAAABAAUAAgAAAAAAAAADAAUAAgAAAAAAAAAMAAYAAgAAAAAAAAACAAUAAgAAAAAAAAAEAAUAAgAAAAAAAAAFAAUAAgAAAAAAAAAGAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAAIAAUAAgAAAAAAAAAJAAUAAgAAAAAAAAAKAAUAAgAAAAAAAAALAAUAAgAAAAAAAAA=")
 tile_set = ExtResource("6_or4fg")
 

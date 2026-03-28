@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cy5xap61gl44j" path="res://scenes/ui/ui_inventory.tscn" id="5_h4iqf"]
 
 [node name="UIMenuEquipment" type="Control" unique_id=1899500239]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

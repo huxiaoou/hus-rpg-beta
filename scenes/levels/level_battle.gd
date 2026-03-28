@@ -11,14 +11,14 @@ class_name LevelBattle
 
 @onready var sprite_2d_bg: Sprite2D = $Sprite2DBg
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
-@onready var layer_battle_nav: LayerBattleNav = $Maps/LayerBattleNav
-@onready var cell_indicator_battle: CellIndicatorBattle = $Maps/CellIndicatorBattle
 @onready var unit_viking: Unit = $Units/UnitViking
 @onready var unit_skull: Unit = $Units/UnitSkull
 @onready var units_group: Node = $Units
 @onready var camera_controller: CameraController = $CameraController
 @onready var v_box_avatars: VBoxContainer = $CanvasLayer/VBoxAvatars
 @onready var ui_turn_cards_deck: UITurnCardsDeck = $CanvasLayer/UITurnCardsDeck
+@onready var cell_indicator_battle: CellIndicatorBattle = $Maps/SubViewport/CellIndicatorBattle
+@onready var layer_battle_nav: LayerBattleNav = $Maps/SubViewport/LayerBattleNav
 
 
 func get_units() -> Array[Unit]:
