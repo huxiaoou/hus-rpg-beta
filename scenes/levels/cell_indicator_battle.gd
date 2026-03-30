@@ -3,7 +3,7 @@ extends Node2D
 class_name CellIndicatorBattle
 
 var indicator_cell: Vector2i = Vector2i.ZERO
-var toggle_test: bool = false
+var test_model: bool = false
 
 
 func _ready() -> void:
@@ -19,13 +19,13 @@ func _process(_delta: float) -> void:
         return
     indicator_cell = new_mouse_cell
     position = ManagerCellBattle.cell_to_point(indicator_cell)
-    if toggle_test:
-        print("Enter Cell %s" % indicator_cell)
+    if test_model:
+        ManagerMessage.append_message("Enter Cell %s" % indicator_cell)
     return
 
 
 func _unhandled_input(event: InputEvent) -> void:
     if event.is_action_pressed("toggle_test"):
-        toggle_test = !toggle_test
-        print("toggle_test: %s" % toggle_test)
+        test_model = !test_model
+        ManagerMessage.append_message("Cell indicator Test Model: %s" % ["ON" if test_model else "OFF"])
     return

@@ -45,6 +45,13 @@ func _ready() -> void:
     return
 
 
+func _process(_delta: float) -> void:
+    var s0: float = 0.6
+    var s1: float = 1.0
+    scale = Vector2.ONE * (position.y * (s1 - s0) / 540.0 + 2 * s0 - s1)
+    return
+
+
 func is_ai() -> bool:
     return data.is_ai
 
